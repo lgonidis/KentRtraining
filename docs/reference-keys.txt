@@ -11,3 +11,13 @@ final-words
 prelude
 a-few-words
 a-few-words-1
+Intro
+learning-objectives
+getting-things-ready
+starting-with-rstudio
+console
+exercise-1
+environment
+files
+scripts
+exercise

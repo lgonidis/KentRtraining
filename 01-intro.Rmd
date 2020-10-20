@@ -1,19 +1,109 @@
-# Introduction {#intro}
+# Introduction {#Intro}
 
-## A few words...
 
-...regarding the structure of this course. Given that this course is tailored mainly for PhD students some minimal knowledge of statistics will be assumed. By very minimal I do mean very minimal.  
+## Learning Objectives
 
-1. We will first start by introducing R and RStudio together and I will frequently be saying just "R" or just "RStudio" but in reality I will be implying **"using RStudio to carry out R commands"**.  
+In this first session we will introduce you to some basic features of R. This will allow you to write your first basic scripts. It should be noted that R is a versatile programming language with numerous features and capabilities. However, we will be focusing on concepts that are directly relevant to us, as Psychologists. Therefore, do not consider this course as an exhaustive guide to R. Instead treat it as a spotlight that will be shedding light on specific topics and techniques.   
+By the end of this session you should have a clear understanding of the following concepts:  
+   
+* **Variables**   
+* **Operators**   
+* **Difference between script and console** 
+* **How to create a new script and save it**
+* **How to add comments in your script**
+* **How to see the content of a variable in the Environment**
+* **How to write your own simple script to calculate an arithmetic expression**
 
-2. Once you are introduced to R and RStudio we will then move to get familiarised to **variables**, **vectors**, **dataframes**, **operations**, and **calculations**. Many argue that you cannot teach the use or R without teaching programming. I disagree, and will be doing very minimal, almost no programming at all.  
 
-3. This is thanks to **packages** and **functions** that will be doing the heavy lifting for us. We will therefore learn how to install and use additional packages and benefit from their *supply* of **functions**.
+    
+## Getting Things Ready   
+   
+Ideally, we would like you to have your R related files organised. This will make your work easier to maintain but also help us to aid you when you get stuck. Therefore, we recommend creating a folder on your desktop called "R training". Inside that folder you could be creating a new project for every session. This will make it much easier for you to navigate back and forth from topic to topic and look at different aspects of your work. Before you proceed with the following steps make sure you have created a folder named "R training" on your "Desktop" folder.  
+    
+## Starting with RStudio  
+Run RStudio and create a new project by clicking on File >> New Project ... .Then select New Directory and then New Project. Enter a Directory name. As mentioned above we recommend naming the folder **"Introduction to R"** and by clicking Browse make sure you place that folder in your **"R training"** folder that you created on your Desktop.Click "Create Project" to finalise creating your new project.  
 
-4. For example today we will be doing lots of work with data. This is because most of our work involves data preparation before we even carry out any analysis. We will therefore manipulating data using a famous package collection called **tidyverse** and most specifically **dplyr** and **tidyr**. It is through this work that you will become more confident and warm up to R.  
+You should now be seeing **three main windows**, the **Console**, the **Environment**, and the **Files**. 
+  
+## Console  
+In the console we typically see the ">" symbol and the cursor flashing next to it. Here we can type in R commands straight away and execute them by hitting "Enter" or "Return".
+You can try it out. Go to your console and type the following and press "Enter"
 
-5. Once we are happy with how our data files look, we will proceed to data visualisations using another powerful package called **ggplot2**. This is also included in the **tidyverse** collection.  
+```{r eval=FALSE}
+3+2
+```
 
-6. Finally, we will *open the floor* to more practice examples and questions for you. You can even try today's techniques to some of your own data files and ask me questions in the process. This will conclude the first session and prepare us for the next session where we will be carrying out different types of analysis.
+Once you have done that you should be able to see the result of the calculation:
 
+```{r echo=FALSE, results='asis'}
+3+2
+```
+
+So with the above command line we executed a simple calculation, an addition of 3 and 2. The symbol **+** is called an **operator**. R accepts a number of operators, for more information on operators see: https://www.datamentor.io/r-programming/operator/ . Most of them are straight forward and you have used them numerous times doing arithmetic calculations. For our purposes we will mostly be using the most common ones.  
+
+Sometimes in programming we might want to carry out a calculation and use the results in many different occasions. We would not want to keep typing in the Console the same and the same operation, especially if it is a rather big expression. In order to save ourselves time and effort we can assign the result of an operation to **variable**. For example type the following in your Console and then hit "Enter":
+```{r eval=FALSE}
+p <- 3+2
+```
+
+By doing the above, strangely enough we do not get an answer from R. Instead our Console looks like nothing really happened. In actual truth two things happened. First, R calculated the result of "3+2" and then it assigned the result of that calculation in to a **variable** called "p". The reason that we do not see any result is because we did not instruct R to show the content of the variable "p". If we want to see the content of the variable named "p" we have to type its name in the Console. Just type p and press enter. You should be able now to see the value that the variable p holds.
+
+```{r echo=FALSE, results='asis'}
+p <-3+2
+p
+```
+
+This is extremely valuable as I can now use the symbol p to refer to that content anywhere I need to, for example I can calculate the surface of a square with size equal to 5 (or p in this case). Type the following and press "Enter".
+
+```{r results='asis'}
+surface <- p*p
+surface
+```  
+
+So you see now that R calculated the result of 5x5, then assigned it to a new variable called "surface" and then returned the value of "surface" in the console, 25. We will be using **variables** a lot in our work in SP300 and it is worth noting that a variable is not restricted to numerical content. Other types of data can also be assigned to a variable. For example characters:
+
+```{r eval=FALSE}
+day <- "Monday"
+```
+
+The above variable "day" is what we called a character variable. Notice how we used the **""** symbols around the value that we want to assign. 
+
+### Exercise 1
+
+In the **console** carry out the following operation:
+1. assign the value of 5 to a variable called **f**
+2. assign the value of 8 to a variable called **g**
+3. calculate the product of f*g, without assigning it to a new variable
+
+## Environment  
+Usually the **Environment** window is on the top right side of our session. It includes valuable information about our work. For example you might already be able to see that it shows our two variable p and surface as well as their values. It also includes some other tabs next to the Environment but we will discuss those in the future.  
+
+## Files   
+At the bottom right of our session (usually) we can see our **Files** window. This includes information about the files that we are working on. At the moment you should be able to see just one file (probably), that shoud be your project name file. Next to Files we can also see a number of tabs that we will discuss in the future.
+
+## Scripts
+
+Once we get more familiarised with R we will need to type a number of commands so we can complete more complex tasks than just simple arithmetic calculations. Furthermore, we might want to be able to run again and again with different data files. So typing commands straight into the Console would be rather time wasteful. A more efficient way to work is to create a **script** instead that will allow us to carry out many commands at once as well as save our work for future use.  
+Let us create our first script. Go to File >> New File >> R Script . That should create a new Untitled script in a new window that just opened above the Console window. We will be referring to this new window as the **script window**. Let's now go ahead and type a number of commands in our new script. Type the following commands as you see them below:
+
+```{r eval=FALSE}
+## hourly refers to the hourly pay of £9 per hour
+hourly <- 9
+
+## hours refers to the number of hours I worked per day
+hours <- 7
+
+## days refers to the number of days I worked in the current month
+days <- 25
+
+## the total salary can be calculated by multiplying all the above
+salary <- hours*hourly
+```
+
+Now that you have typed all that nothing seems to be happening. This is because contrary to the Console, in a script a command is not executed when we press "Enter" or "Return". Instead we have place our cursor in the line we want to execute and then click "Run". When we click "Run" the lines is being executed and the cursor moves automatically to the next line, we click "Run" again and so on. Every time we click "Run" we can see the outcome in our Console, as well as in the Environment. Notice that our script also contains lines starting with **"#", these are comment lines** that I include in my code to make it easier to read and understand. The use of "#" and comments is highly advisable and considered as **a good practice*. You should spend some time now to visually explore the screen in front you. Familiarise yourself with the different windows and click on different tabs to see what kind of information they contain. Also do not forget to save our script giving it a meaningful name. I suggest something like "the most amazing script". You can save it by clicking File >> Save, and then type a name of your preference. Once you do that you should be able to see the new scripts in the "Files" window too.  
+
+## Exercise
+
+Create a new script and name it "Exercise1". Write the necessary lines of code that can solve the following problem:  
+"The price for one cinema ticket is £10. The price for a large popcorn in £8. The price for one soft drink is £4. We want to calculate the total amount of money we spent if we bought 5 tickets, 3 popcorns and 4 soft drinks". Make sure you create a variable for each of the above costs, as well as one variable for the total. Also, make sure to include detailed comments as the ones in the example above. Once you finish the script run all the commands and discuss the result with your group mates. If you all agree with the answer then report it back to the main channel.
 

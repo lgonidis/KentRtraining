@@ -14,11 +14,11 @@ description: "This is a work in progress"
 
 ## A few words...
 
-...regarding the structure of this course. Given that this course is tailored mainly for PhD students some minimal knowledge of statistics will be assumed. By very minimal I do mean very minimal.  
+...regarding the structure of this course. Given that this course is tailored mainly for PhD students some minimal knowledge of statistics will be assumed. By minimal I do mean  minimal.  
 
 1. We will first start by introducing R and RStudio together and I will frequently be saying just "R" or just "RStudio" but in reality I will be implying **"using RStudio to carry out R commands"**.  
 
-2. Once you are introduced to R and RStudio we will then move to get familiarised to **variables**, **vectors**, **dataframes**, **operations**, and **calculations**. Many argue that you cannot teach the use or R without teaching programming. I disagree, and will be doing very minimal, almost no programming at all.  
+2. Once you are introduced to R and RStudio we will then move to get familiarised to **variables**, **vectors**, **dataframes**, **operations**, and **calculations**. Many argue that you cannot teach the use of R without teaching programming. I disagree, and we will be doing very minimal, almost no programming at all.  
 
 3. This is thanks to **packages** and **functions** that will be doing the heavy lifting for us. We will therefore learn how to install and use additional packages and benefit from their *supply* of **functions**.
 
