@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Session 4 Packages | Kent R training</title>
+  <meta name="description" content="This is a work in progress" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Session 4 Packages | Kent R training" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a work in progress" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Session 4 Packages | Kent R training" />
+  
+  <meta name="twitter:description" content="This is a work in progress" />
+  
+
+<meta name="author" content="Lazaros Gonidis" />
+
+
+<meta name="date" content="2020-10-20" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="session2.html"/>
+<link rel="next" href="applications.html"/>
+<script src="libs/header-attrs-2.4/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Kent R training</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prelude</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#a-few-words"><i class="fa fa-check"></i><b>1.1</b> A few words…</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="Intro.html"><a href="Intro.html"><i class="fa fa-check"></i><b>2</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="Intro.html"><a href="Intro.html#learning-objectives"><i class="fa fa-check"></i><b>2.1</b> Learning Objectives</a></li>
+<li class="chapter" data-level="2.2" data-path="Intro.html"><a href="Intro.html#getting-things-ready"><i class="fa fa-check"></i><b>2.2</b> Getting Things Ready</a></li>
+<li class="chapter" data-level="2.3" data-path="Intro.html"><a href="Intro.html#starting-with-rstudio"><i class="fa fa-check"></i><b>2.3</b> Starting with RStudio</a></li>
+<li class="chapter" data-level="2.4" data-path="Intro.html"><a href="Intro.html#console"><i class="fa fa-check"></i><b>2.4</b> Console</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="Intro.html"><a href="Intro.html#exercise-1"><i class="fa fa-check"></i><b>2.4.1</b> Exercise 1</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="Intro.html"><a href="Intro.html#environment"><i class="fa fa-check"></i><b>2.5</b> Environment</a></li>
+<li class="chapter" data-level="2.6" data-path="Intro.html"><a href="Intro.html#files"><i class="fa fa-check"></i><b>2.6</b> Files</a></li>
+<li class="chapter" data-level="2.7" data-path="Intro.html"><a href="Intro.html#scripts"><i class="fa fa-check"></i><b>2.7</b> Scripts</a></li>
+<li class="chapter" data-level="2.8" data-path="Intro.html"><a href="Intro.html#exercise-2"><i class="fa fa-check"></i><b>2.8</b> Exercise 2</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="session2.html"><a href="session2.html"><i class="fa fa-check"></i><b>3</b> Using Vectors and Functions</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="session2.html"><a href="session2.html#learning-objectives-1"><i class="fa fa-check"></i><b>3.1</b> Learning Objectives</a></li>
+<li class="chapter" data-level="3.2" data-path="session2.html"><a href="session2.html#vectors"><i class="fa fa-check"></i><b>3.2</b> Vectors</a></li>
+<li class="chapter" data-level="3.3" data-path="session2.html"><a href="session2.html#creating-vectors-with-random-numbers"><i class="fa fa-check"></i><b>3.3</b> Creating vectors with random numbers</a></li>
+<li class="chapter" data-level="3.4" data-path="session2.html"><a href="session2.html#frequency-tables-in-r-and-histograms"><i class="fa fa-check"></i><b>3.4</b> Frequency tables in R and Histograms</a></li>
+<li class="chapter" data-level="3.5" data-path="session2.html"><a href="session2.html#exercise-3"><i class="fa fa-check"></i><b>3.5</b> Exercise 3</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="session3.html"><a href="session3.html"><i class="fa fa-check"></i><b>4</b> Packages</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="session3.html"><a href="session3.html#what-we-have-learnt-so-far"><i class="fa fa-check"></i><b>4.1</b> What we have learnt so far</a></li>
+<li class="chapter" data-level="4.2" data-path="session3.html"><a href="session3.html#learning-objectives-2"><i class="fa fa-check"></i><b>4.2</b> Learning objectives</a></li>
+<li class="chapter" data-level="4.3" data-path="session3.html"><a href="session3.html#lets-get-started"><i class="fa fa-check"></i><b>4.3</b> Let’s get started</a></li>
+<li class="chapter" data-level="4.4" data-path="session3.html"><a href="session3.html#measures-of-central-tendency"><i class="fa fa-check"></i><b>4.4</b> Measures of Central Tendency</a></li>
+<li class="chapter" data-level="4.5" data-path="session3.html"><a href="session3.html#adding-a-new-package"><i class="fa fa-check"></i><b>4.5</b> Adding a new package</a></li>
+<li class="chapter" data-level="4.6" data-path="session3.html"><a href="session3.html#to-sum-up"><i class="fa fa-check"></i><b>4.6</b> To sum up</a></li>
+<li class="chapter" data-level="4.7" data-path="session3.html"><a href="session3.html#additional-exercises-spoiler-alert-if-you-get-stuck-the-answers-are-at-the-end-of-the-pdf"><i class="fa fa-check"></i><b>4.7</b> Additional Exercises (spoiler alert: if you get stuck the answers are at the end of the pdf)</a></li>
+<li class="chapter" data-level="4.8" data-path="session3.html"><a href="session3.html#solutions-spoiler-alert"><i class="fa fa-check"></i><b>4.8</b> Solutions: SPOILER ALERT</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>5</b> Applications</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="applications.html"><a href="applications.html#example-one"><i class="fa fa-check"></i><b>5.1</b> Example one</a></li>
+<li class="chapter" data-level="5.2" data-path="applications.html"><a href="applications.html#example-two"><i class="fa fa-check"></i><b>5.2</b> Example two</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>6</b> Final Words</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Kent R training</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="session3" class="section level1" number="4">
+<h1><span class="header-section-number">Session 4</span> Packages</h1>
+<div id="what-we-have-learnt-so-far" class="section level2" number="4.1">
+<h2><span class="header-section-number">4.1</span> What we have learnt so far</h2>
+<p>In the first two labs (Week 2 and Week 3) we learnt about variables, vectors, and operators. Furthermore, we were introduced to the used of functions and their arguments. These were the fundamental steps that we had to take before we can start carrying out statistical tasks. In the last lab session, we began exploring some basic statistical tasks such as creating grouped frequency tables and histograms. These steps, even though simple, they allowed us to develop a sense of our data. Creating visual representations of our data is one of R’s strongest aspects. For the time being we only practiced with <strong>hist()</strong> and <strong>pie()</strong>, however as we become more confident with R we will also explore some additional features that R <strong>packages</strong> can give us.</p>
+<p>R in its core installation has a number of useful functions. However, these functions do not cover all the possible tasks we would wish to perform. In order to overcome this weakness R allows us to install and use additional <strong>packages</strong>. These packages are more specialised than the core R and can provide us with numerous new statistical tools. Today we will learn how to install and use such packages and see how they can provide us with useful new features. We will also see a number of examples of how to use R to acquire the <strong>mean, median, and mode</strong> of a sample. <strong>Finally, in order to make things more interesting we will use some experimental data that R offers by default. So today we will not be generating datasets comprised of random data.</strong> Instead we will be using some of the built-in datasets.</p>
+</div>
+<div id="learning-objectives-2" class="section level2" number="4.2">
+<h2><span class="header-section-number">4.2</span> Learning objectives</h2>
+<ul>
+<li><strong>Installing R packages</strong></li>
+<li><strong>Calling R packages</strong></li>
+<li><strong>Use core R and packages to find measures of central tendency</strong></li>
+</ul>
+</div>
+<div id="lets-get-started" class="section level2" number="4.3">
+<h2><span class="header-section-number">4.3</span> Let’s get started</h2>
+<p><strong>If you are working on RStudio Cloud skip to step 1 below</strong></p>
+<ol style="list-style-type: decimal">
+<li>For this session you will need to create a new project in RStudio. Run RStudio and create a new project by clicking on File &gt;&gt; New Project … .Then select New Directory and then New Project. Use <strong>“packages”</strong> as a Directory name. Click Browse and make sure you place that folder in your “R training” folder that you created on your Desktop.Click “Create Project” to finalise creating your new project.<br />
+</li>
+<li>Now create a new script from File &gt;&gt; New File &gt;&gt; R Script. Save your new script under the name <strong>session3</strong>.</li>
+</ol>
+<p>One of the built-in datasets that R offers for free is called <strong>ToothGrowth</strong>.
+The ToothGrowth data set contains the result from an experiment studying the effect of vitamin C on tooth growth in 60 Guinea pigs. Each animal received one of three dose levels of vitamin C (0.5, 1, and 2 mg/day) by one of two delivery methods, (orange juice (OJ) or ascorbic acid (a form of vitamin C and coded as VC).
+Even though this dataset is not the result of Psychological research it does have the structure of a data file from Psychological research where we administer an intervention in three different dosages and two different methods. Let’s see how we can explore this dataset.</p>
+<p>In your new script type and run the following:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="session3.html#cb1-1"></a><span class="kw">data</span>(<span class="st">&quot;ToothGrowth&quot;</span>)</span></code></pre></div>
+<p>This informs R that we want to work with the build-in dataset called “ToothGrowth”. If you have a look at your Environment you will now see under the section called <strong>Data</strong> an object called <strong>ToothGrowth</strong>. You will also see some additional information, it has 60 observations and 3 variables. If you also move your mouse pointer on top of <strong>ToothGrowth</strong> and leave it there you will get a tooltip window informing you that this is a <strong>data.frame</strong>. For now you can consider a data.frame as a table that contains information for more than one variables. If you click once on <strong>ToothGrowth</strong> then RStudio will open and display this data.frame for you. You can see it in a new tab that opened next to your script. You can see it has three columns, one per variable. The top row includes the variable names. <strong>len</strong> is the variable that contains information on the tooth growth, <strong>supp</strong> is the variable that contains information on the vitamin supplement used, and <strong>dose</strong> is the variable that describes the dosage that was administered.</p>
+<p>If you type and run each the following commands one at a time you will see each variable displayed in your console:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="session3.html#cb2-1"></a>ToothGrowth<span class="op">$</span>len</span>
+<span id="cb2-2"><a href="session3.html#cb2-2"></a></span>
+<span id="cb2-3"><a href="session3.html#cb2-3"></a>ToothGrowth<span class="op">$</span>supp</span>
+<span id="cb2-4"><a href="session3.html#cb2-4"></a></span>
+<span id="cb2-5"><a href="session3.html#cb2-5"></a>ToothGrowth<span class="op">$</span>dose</span></code></pre></div>
+<p>So if I want to work with one of the variables in a dataset I can call it by typing the name of the dataset, then type the <strong>$</strong> symbol, and in after that type the name of the variable.</p>
+<p><strong>Exercise 1</strong>
+Try to create a histogram for the variable <strong>len</strong> of the dataset <strong>ToothGrowth</strong>. If you are not certain how to do this you can check the solution at the end of this pdf</p>
+</div>
+<div id="measures-of-central-tendency" class="section level2" number="4.4">
+<h2><span class="header-section-number">4.4</span> Measures of Central Tendency</h2>
+<p>Let us know see how we can use R functions to calculate the mean, median, and mode for a variable. If we want to find the mean of a variable we can use the function <strong>mean()</strong>. Similarly, if we want to find the median, we can use the <strong>median()</strong> function. Let’s see them in practice for the variable <strong>len</strong> of the <strong>Toothgrowth</strong> dataset.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="session3.html#cb3-1"></a><span class="co"># the following command will calculate the mean of len</span></span>
+<span id="cb3-2"><a href="session3.html#cb3-2"></a><span class="kw">mean</span>(ToothGrowth<span class="op">$</span>len)</span>
+<span id="cb3-3"><a href="session3.html#cb3-3"></a></span>
+<span id="cb3-4"><a href="session3.html#cb3-4"></a><span class="co"># the following command will find the median value of len</span></span>
+<span id="cb3-5"><a href="session3.html#cb3-5"></a><span class="kw">median</span>(ToothGrowth<span class="op">$</span>len)</span></code></pre></div>
+<p>You can see now how with one line of code we can find in an instant a figure that would have taken us much more time and energy to calculate by hand.</p>
+<p>Now let’s see if we can also find the <strong>mode</strong> in a similar way. Try the following command and see what happens.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="session3.html#cb4-1"></a><span class="kw">mode</span>(ToothGrowth<span class="op">$</span>len)</span></code></pre></div>
+<p>You probably got the answer “numeric”. This is because the function <strong>mode()</strong> corresponds to a different task that what we hoped it would perform. Actually, the core installation of R does not have a function that can find the mode value of a variable. However, as we said earlier this is not a problem as we can install and run external packages that can add additional functionalities.</p>
+</div>
+<div id="adding-a-new-package" class="section level2" number="4.5">
+<h2><span class="header-section-number">4.5</span> Adding a new package</h2>
+<p>In order to have a function that can find the mode of our sample we need to install a new package called <strong>DescTools</strong>. We do that by clicking <strong>Tools</strong> in the menu and then <strong>Install Packages…</strong>. Then where it says packages type in <strong>DescTools</strong> and click <strong>Install</strong>. If you are promtped with any questions then click on <strong>Yes</strong>. RStudio will download and install everything automatically and you should be ready to go once you can see the <strong>&gt;</strong> symbol in the console. Once you install a package you can use it in all future projects and scripts without the need to re-install it. Now we can tell R that we want to use this package in our script by adding and running the following command:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="session3.html#cb5-1"></a><span class="kw">library</span>(DescTools)</span></code></pre></div>
+<p>As a good practice we tend to declare the packages we want to use at the top of our scripts. We also need to include the command <strong>library(DescTools)</strong> only once per script, if we need it at all.
+Now we have the necessary function to find the <strong>mode</strong> of <strong>len</strong> by calling the function <strong>Mode()</strong> that comes with the package <strong>DescTools</strong>. Add the following command and run it to get the mode.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="session3.html#cb6-1"></a><span class="kw">library</span>(DescTools)</span>
+<span id="cb6-2"><a href="session3.html#cb6-2"></a><span class="kw">Mode</span>(ToothGrowth<span class="op">$</span>len)</span></code></pre></div>
+<p>You should get the following output:</p>
+<pre><code>## [1] 26.4
+## attr(,&quot;freq&quot;)
+## [1] 4</code></pre>
+<p>This means that your mode is 26.4 and it has a frequency of 4.</p>
+</div>
+<div id="to-sum-up" class="section level2" number="4.6">
+<h2><span class="header-section-number">4.6</span> To sum up</h2>
+<p>As we progress through our course we will be using specific packages and functions. You do not need to memorise the packages names. We will be providing those for you. You will also not need to memorise the names of the functions for this term. We will be providing those too.</p>
+</div>
+<div id="additional-exercises-spoiler-alert-if-you-get-stuck-the-answers-are-at-the-end-of-the-pdf" class="section level2" number="4.7">
+<h2><span class="header-section-number">4.7</span> Additional Exercises (spoiler alert: if you get stuck the answers are at the end of the pdf)</h2>
+<p>Another dataset that comes build-in with R is called <strong>iris</strong>. iris dataset gives the measurements in centimeters of the variables sepal length, sepal width, petal length and petal width, respectively, for 50 flowers from each of 3 species of iris. The species are Iris setosa, versicolor, and virginica. The following exercises should be completed in one script and are in practice one exercise. They are broken down to smaller questions to make your work easier, as well as making it easier to refer to the solutions in the end.</p>
+<p><strong>Exercise 2</strong>
+Create a new script and name it <strong>week 4 iris</strong>. Then type in and execute the right command in order to load the dataset <strong>iris</strong></p>
+<p><strong>Exercise 3</strong>
+Explore the data.frame called <strong>iris</strong> (you can find it in your <strong>Environment</strong>). You should be able to see that some of the included variables are <strong>Sepal.Length</strong>, <strong>Sepal.Width</strong>, <strong>Petal.Length</strong>, and <strong>Petal.Width</strong>. Write the right code that would create one histogram for each of the above variables. Do spend some time to observe each histogram and think about how the scores are distributed and whether we have <strong>skewed</strong> distributions. (CAUTION: In R upper case and lower case letter do matter, make sure to type them exactly as you see them)</p>
+<p><strong>Exercise 4</strong>
+Type the right code in order to get the <strong>mean</strong> and the <strong>median</strong> for all the above variables.</p>
+<p><strong>Exercise 5</strong>
+Type the right code in order to get the <strong>mode</strong> for all the above variables. (Hint: do not forget the <strong>library</strong> and remember the importance of upper case letters.)
+.</p>
+<p>.</p>
+<p>.</p>
+<p>.</p>
+<p>.</p>
+<p>.</p>
+<p>.</p>
+<p>.</p>
+<p>.</p>
+</div>
+<div id="solutions-spoiler-alert" class="section level2" number="4.8">
+<h2><span class="header-section-number">4.8</span> Solutions: SPOILER ALERT</h2>
+<p><strong>Exercise 1</strong></p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="session3.html#cb8-1"></a><span class="kw">hist</span>(ToothGrowth<span class="op">$</span>len)</span></code></pre></div>
+<p><img src="Kent-R-training_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<p><strong>Exercise 2</strong></p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="session3.html#cb9-1"></a><span class="kw">data</span>(iris)</span></code></pre></div>
+<p><strong>Exercise 3</strong></p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="session3.html#cb10-1"></a><span class="kw">hist</span>(iris<span class="op">$</span>Sepal.Length)</span></code></pre></div>
+<p><img src="Kent-R-training_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="session3.html#cb11-1"></a><span class="kw">hist</span>(iris<span class="op">$</span>Sepal.Width)</span></code></pre></div>
+<p><img src="Kent-R-training_files/figure-html/unnamed-chunk-10-2.png" width="672" /></p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="session3.html#cb12-1"></a><span class="kw">hist</span>(iris<span class="op">$</span>Petal.Length)</span></code></pre></div>
+<p><img src="Kent-R-training_files/figure-html/unnamed-chunk-10-3.png" width="672" /></p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="session3.html#cb13-1"></a><span class="kw">hist</span>(iris<span class="op">$</span>Petal.Width)</span></code></pre></div>
+<p><img src="Kent-R-training_files/figure-html/unnamed-chunk-10-4.png" width="672" /></p>
+<p><strong>Exercise 4</strong></p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="session3.html#cb14-1"></a><span class="kw">mean</span>(iris<span class="op">$</span>Sepal.Length)</span>
+<span id="cb14-2"><a href="session3.html#cb14-2"></a><span class="co">## [1] 5.843333</span></span>
+<span id="cb14-3"><a href="session3.html#cb14-3"></a><span class="kw">mean</span>(iris<span class="op">$</span>Sepal.Width)</span>
+<span id="cb14-4"><a href="session3.html#cb14-4"></a><span class="co">## [1] 3.057333</span></span>
+<span id="cb14-5"><a href="session3.html#cb14-5"></a><span class="kw">mean</span>(iris<span class="op">$</span>Petal.Length)</span>
+<span id="cb14-6"><a href="session3.html#cb14-6"></a><span class="co">## [1] 3.758</span></span>
+<span id="cb14-7"><a href="session3.html#cb14-7"></a><span class="kw">mean</span>(iris<span class="op">$</span>Petal.Width)</span>
+<span id="cb14-8"><a href="session3.html#cb14-8"></a><span class="co">## [1] 1.199333</span></span>
+<span id="cb14-9"><a href="session3.html#cb14-9"></a><span class="kw">median</span>(iris<span class="op">$</span>Sepal.Length)</span>
+<span id="cb14-10"><a href="session3.html#cb14-10"></a><span class="co">## [1] 5.8</span></span>
+<span id="cb14-11"><a href="session3.html#cb14-11"></a><span class="kw">median</span>(iris<span class="op">$</span>Sepal.Width)</span>
+<span id="cb14-12"><a href="session3.html#cb14-12"></a><span class="co">## [1] 3</span></span>
+<span id="cb14-13"><a href="session3.html#cb14-13"></a><span class="kw">median</span>(iris<span class="op">$</span>Petal.Length)</span>
+<span id="cb14-14"><a href="session3.html#cb14-14"></a><span class="co">## [1] 4.35</span></span>
+<span id="cb14-15"><a href="session3.html#cb14-15"></a><span class="kw">median</span>(iris<span class="op">$</span>Petal.Width)</span>
+<span id="cb14-16"><a href="session3.html#cb14-16"></a><span class="co">## [1] 1.3</span></span></code></pre></div>
+<p><strong>Exercise 5</strong></p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="session3.html#cb15-1"></a><span class="kw">library</span>(DescTools)</span>
+<span id="cb15-2"><a href="session3.html#cb15-2"></a><span class="kw">Mode</span>(iris<span class="op">$</span>Sepal.Length)</span>
+<span id="cb15-3"><a href="session3.html#cb15-3"></a><span class="co">## [1] 5</span></span>
+<span id="cb15-4"><a href="session3.html#cb15-4"></a><span class="co">## attr(,&quot;freq&quot;)</span></span>
+<span id="cb15-5"><a href="session3.html#cb15-5"></a><span class="co">## [1] 10</span></span>
+<span id="cb15-6"><a href="session3.html#cb15-6"></a><span class="kw">Mode</span>(iris<span class="op">$</span>Sepal.Width)</span>
+<span id="cb15-7"><a href="session3.html#cb15-7"></a><span class="co">## [1] 3</span></span>
+<span id="cb15-8"><a href="session3.html#cb15-8"></a><span class="co">## attr(,&quot;freq&quot;)</span></span>
+<span id="cb15-9"><a href="session3.html#cb15-9"></a><span class="co">## [1] 26</span></span>
+<span id="cb15-10"><a href="session3.html#cb15-10"></a><span class="kw">Mode</span>(iris<span class="op">$</span>Petal.Length)</span>
+<span id="cb15-11"><a href="session3.html#cb15-11"></a><span class="co">## [1] 1.4 1.5</span></span>
+<span id="cb15-12"><a href="session3.html#cb15-12"></a><span class="co">## attr(,&quot;freq&quot;)</span></span>
+<span id="cb15-13"><a href="session3.html#cb15-13"></a><span class="co">## [1] 13</span></span>
+<span id="cb15-14"><a href="session3.html#cb15-14"></a><span class="kw">Mode</span>(iris<span class="op">$</span>Petal.Width)</span>
+<span id="cb15-15"><a href="session3.html#cb15-15"></a><span class="co">## [1] 0.2</span></span>
+<span id="cb15-16"><a href="session3.html#cb15-16"></a><span class="co">## attr(,&quot;freq&quot;)</span></span>
+<span id="cb15-17"><a href="session3.html#cb15-17"></a><span class="co">## [1] 29</span></span></code></pre></div>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="session2.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="applications.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["Kent R training.pdf", "Kent R training.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

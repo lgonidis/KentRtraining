@@ -29,3 +29,12 @@ vectors
 creating-vectors-with-random-numbers
 frequency-tables-in-r-and-histograms
 exercise-3
+session3
+what-we-have-learnt-so-far
+learning-objectives-2
+lets-get-started
+measures-of-central-tendency
+adding-a-new-package
+to-sum-up
+additional-exercises-spoiler-alert-if-you-get-stuck-the-answers-are-at-the-end-of-the-pdf
+solutions-spoiler-alert
