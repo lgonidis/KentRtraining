@@ -21,3 +21,5 @@ environment
 files
 scripts
 exercise
+exercise-2
+prelude-session-1
