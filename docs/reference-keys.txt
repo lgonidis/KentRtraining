@@ -23,3 +23,9 @@ scripts
 exercise
 exercise-2
 prelude-session-1
+session2
+learning-objectives-1
+vectors
+creating-vectors-with-random-numbers
+frequency-tables-in-r-and-histograms
+exercise-3
