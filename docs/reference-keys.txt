@@ -38,3 +38,4 @@ adding-a-new-package
 to-sum-up
 additional-exercises-spoiler-alert-if-you-get-stuck-the-answers-are-at-the-end-of-the-pdf
 solutions-spoiler-alert
+session1
