@@ -47,3 +47,7 @@ our-first-data-file
 correcting-variable-types
 recoding
 exercise-9
+session5
+reflecting-on-the-last-session
+pipe-operator
+exercise-10

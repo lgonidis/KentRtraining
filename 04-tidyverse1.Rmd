@@ -141,8 +141,9 @@ write_csv(alc_df6, "finalfile.csv")
 Load the file **alcohol_exp** to a data frame called **df**. Then write the appropriate commands to complete the following steps:
 
 1. Set group, session, meditation, and gender as factors
-2. Keep only these five variables
+2. Keep only these four variables and response.rt
 3. Recode session from 1 and 2 to **pre** and **post**
 4. Recode group from 1 and 2 to **high** and **low**
 5. Keep only Female participants
+6. Keep only response.rt below 1.5
 6. save your final data frame into a file called **"wastedresources.csv"**

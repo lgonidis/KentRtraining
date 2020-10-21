@@ -1,0 +1,75 @@
+# Tidyverse 2 {#session5}
+
+## Reflecting on the last session
+
+We have managed to do quite a few tasks already. However, we also managed to create a proper in the process. Our **environment**  must be full of objects that I will not be using. And even though I could remove them it is best if I actually do not create them in the first place. That can be achieved with the use of the **pipe operator** or else **%<%** (ctrl+shift+m).
+
+##Learning objectives 
+1. Work more efficiently using tidyverse (dplyr and tidyr)
+2. manipulating data
+3. summarising data
+4. change from long to wide format and vice-versa
+
+**Note:** In this session we will be focusing on describing a number of tasks and then discussing how we can best perform them. We have already introduced enough concepts to do really meaningful work. Now we have to put our progress to the test. 
+
+
+## Pipe Operator %<%  
+
+Lets start with seeing how the **pipe operator** works. If you think about the last exercise in the previous session you can remember that it took a number of steps where we kept assigning our work to a new data frame. With the use of **%<%** we can write all these steps one under the other in one chunk of code.
+
+**Exercise 9**
+
+Load the file **alcohol_exp** to a data frame called **df**. Then write the appropriate commands to complete the following steps:
+
+1. Set group, session, meditation, and gender as factors
+2. Keep only these four variables and response.rt
+3. Recode session from 1 and 2 to **pre** and **post**
+4. Recode group from 1 and 2 to **high** and **low**
+5. Keep only Female participants
+6. Keep only response.rt below 1.5
+6. save your final data frame into a file called **"wastedresources.csv"**
+
+
+```{r eval=FALSE}
+library(tidyverse)
+df <- read_csv("alcohol_exp.csv")
+
+df3 <- df %>% 
+  mutate(group = as.factor(group)) %>% 
+  mutate(session = as.factor(session)) %>% 
+  mutate(meditation = as.factor(meditation)) %>% 
+  mutate(gender = as.factor(gender)) %>% 
+  select(group, session, meditation, gender, response.rt) %>% 
+  filter(gender == 2) %>% 
+  filter(response.rt < 1.5) %>% ### this could be done with the above
+  mutate(gender = recode(gender,'1' = "Male", '2'="Female")) %>% 
+  mutate(gender = recode(group,'1' = "High", '2'="Low"))
+
+
+
+### and just for fun lets also create a histogram of reaction times.
+hist(df3$response.rt)
+
+### lets save the data file
+
+write_csv(df3, "wastedresources.csv")
+  
+```
+
+Now your turn
+
+## Exercise 10
+
+1. Load the file **"alcohol_qualtrics.csv"** to a data frame
+2. Drop all the variable after the column 17
+3. Make sure gender and smoke are factors
+4. Remove any participants below 100 and above 300
+5. Add a column that is the sums of Days1 to Days4
+6. Reverse code the variable Freq4
+7. Find the mean of Freq1, Freq2, Freq3, and the above reversed coded variable
+8. Save the final file using a file name of your choice.
+
+
+
+
+
