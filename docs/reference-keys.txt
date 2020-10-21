@@ -40,3 +40,10 @@ additional-exercises-spoiler-alert-if-you-get-stuck-the-answers-are-at-the-end-o
 solutions-spoiler-alert
 session1
 introduction
+session4
+learning-objectives-3
+thinking-ahead
+our-first-data-file
+correcting-variable-types
+recoding
+exercise-9

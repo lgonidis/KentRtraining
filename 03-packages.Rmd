@@ -42,7 +42,7 @@ ToothGrowth$dose
 
 So if I want to work with one of the variables in a dataset I can call it by typing the name of the dataset, then type the **$** symbol, and in after that type the name of the variable. 
 
-**Exercise 1**
+**Exercise 4**
 Try to create a histogram for the variable **len** of the dataset **ToothGrowth**. If you are not certain how to do this you can check the solution at the end of this pdf
 
 
@@ -103,19 +103,19 @@ As we progress through our course we will be using specific packages and functio
 
 Another dataset that comes build-in with R is called **iris**. iris dataset gives the measurements in centimeters of the variables sepal length, sepal width, petal length and petal width, respectively, for 50 flowers from each of 3 species of iris. The species are Iris setosa, versicolor, and virginica. The following exercises should be completed in one script and are in practice one exercise. They are broken down to smaller questions to make your work easier, as well as making it easier to refer to the solutions in the end.
 
-**Exercise 2**
-Create a new script and name it **week 4 iris**. Then type in and execute the right command in order to load the dataset **iris**
+**Exercise 5**
+Create a new script and name it **session3_iris**. Then type in and execute the right command in order to load the dataset **iris**
 
 
-**Exercise 3**
-Explore the data.frame called **iris** (you can find it in your **Environment**). You should be able to see that some of the included variables are **Sepal.Length**, **Sepal.Width**, **Petal.Length**, and **Petal.Width**. Write the right code that would create one histogram for each of the above variables. Do spend some time to observe each histogram and think about how the scores are distributed and whether we have **skewed** distributions. (CAUTION: In R upper case and lower case letter do matter, make sure to type them exactly as you see them)
+**Exercise 6**
+Explore the data frame called **iris** (you can find it in your **Environment**). You should be able to see that some of the included variables are **Sepal.Length**, **Sepal.Width**, **Petal.Length**, and **Petal.Width**. Write the right code that would create one histogram for each of the above variables. Do spend some time to observe each histogram and think about how the scores are distributed and whether we have **skewed** distributions. **(CAUTION: In R upper case and lower case letter do matter, make sure to type them exactly as you see them)**
 
 
-**Exercise 4**
+**Exercise 7**
 Type the right code in order to get the **mean** and the **median** for all the above variables.
 
 
-**Exercise 5**
+**Exercise 8**
 Type the right code in order to get the **mode** for all the above variables. (Hint: do not forget the **library** and remember the importance of upper case letters.)
 . 
   
@@ -140,17 +140,17 @@ Type the right code in order to get the **mode** for all the above variables. (H
 
 ## Solutions: SPOILER ALERT
 
-**Exercise 1**
+**Exercise 4**
 ```{r }
 hist(ToothGrowth$len)
 ```
 
-**Exercise 2**
+**Exercise 5**
 ```{r }
 data(iris)
 ```
 
-**Exercise 3**
+**Exercise 6**
 ```{r }
 hist(iris$Sepal.Length)
 hist(iris$Sepal.Width)
@@ -158,7 +158,7 @@ hist(iris$Petal.Length)
 hist(iris$Petal.Width)
 ```
 
-**Exercise 4**
+**Exercise 7**
 ```{r collapse=TRUE}
 mean(iris$Sepal.Length)
 mean(iris$Sepal.Width)
@@ -171,7 +171,7 @@ median(iris$Petal.Width)
 ```
 
 
-**Exercise 5**
+**Exercise 8**
 ```{r collapse=TRUE}
 library(DescTools)
 Mode(iris$Sepal.Length)
