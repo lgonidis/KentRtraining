@@ -114,5 +114,8 @@ df %>%
   
 ```
 
-This is much more useful from our perspective. Which brings to the point that we can pretty reshape a data frame in any way we want. So your work with R should be guided by your end goal, which is how you want your data file to look before your analysis.
+This is much more useful from our perspective. Which brings us to the point that we can pretty much reshape a data frame in any way we want. So your work with R should be guided by your end goal, which is how you want your data file to look before your analysis.
+
+
+## We will leave reshaping from long to wide format and vice-versa next week
 
