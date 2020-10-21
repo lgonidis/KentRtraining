@@ -17,7 +17,7 @@ R in its core installation has a number of useful functions. However, these func
 **If you are working on RStudio Cloud skip to step 1 below**  
 
 1. For this session you will need to create a new project in RStudio. Run RStudio and create a new project by clicking on File >> New Project ... .Then select New Directory and then New Project. Use **"packages"** as a Directory name. Click Browse and make sure you place that folder in your "R training" folder that you created on your Desktop.Click "Create Project" to finalise creating your new project.  
-2. Now create a new script from File >> New File >> R Script. Save your new script under the name **session3**.
+2. Now create a new script from File >> New File >> R Script. Save your new script under the name **session4**.
 
 One of the built-in datasets that R offers for free is called **ToothGrowth**. 
 The ToothGrowth data set contains the result from an experiment studying the effect of vitamin C on tooth growth in 60 Guinea pigs. Each animal received one of three dose levels of vitamin C (0.5, 1, and 2 mg/day) by one of two delivery methods, (orange juice (OJ) or ascorbic acid (a form of vitamin C and coded as VC).
