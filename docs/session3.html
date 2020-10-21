@@ -268,6 +268,7 @@ Now we have the necessary function to find the <strong>mode</strong> of <strong>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="session3.html#cb6-1"></a><span class="kw">library</span>(DescTools)</span>
 <span id="cb6-2"><a href="session3.html#cb6-2"></a><span class="kw">Mode</span>(ToothGrowth<span class="op">$</span>len)</span></code></pre></div>
 <p>You should get the following output:</p>
+<pre><code>## Warning: package &#39;DescTools&#39; was built under R version 4.0.3</code></pre>
 <pre><code>## [1] 26.4
 ## attr(,&quot;freq&quot;)
 ## [1] 4</code></pre>
@@ -281,9 +282,9 @@ Now we have the necessary function to find the <strong>mode</strong> of <strong>
 <h2><span class="header-section-number">4.7</span> Additional Exercises (spoiler alert: if you get stuck the answers are at the end of the pdf)</h2>
 <p>Another dataset that comes build-in with R is called <strong>iris</strong>. iris dataset gives the measurements in centimeters of the variables sepal length, sepal width, petal length and petal width, respectively, for 50 flowers from each of 3 species of iris. The species are Iris setosa, versicolor, and virginica. The following exercises should be completed in one script and are in practice one exercise. They are broken down to smaller questions to make your work easier, as well as making it easier to refer to the solutions in the end.</p>
 <p><strong>Exercise 5</strong>
-Create a new script and name it <strong>session3_iris</strong>. Then type in and execute the right command in order to load the dataset <strong>iris</strong></p>
+Create a new script and name it <strong>session4_iris</strong>. Then type in and execute the right command in order to load the dataset <strong>iris</strong></p>
 <p><strong>Exercise 6</strong>
-Explore the data frame called <strong>iris</strong> (you can find it in your <strong>Environment</strong>). You should be able to see that some of the included variables are <strong>Sepal.Length</strong>, <strong>Sepal.Width</strong>, <strong>Petal.Length</strong>, and <strong>Petal.Width</strong>. Write the right code that would create one histogram for each of the above variables. Do spend some time to observe each histogram and think about how the scores are distributed and whether we have <strong>skewed</strong> distributions. <strong>(CAUTION: In R upper case and lower case letter do matter, make sure to type them exactly as you see them)</strong></p>
+Explore the data frame called <strong>iris</strong> (you can find it in your <strong>Environment</strong>). You should be able to see that some of the included variables are <strong>Sepal.Length</strong>, <strong>Sepal.Width</strong>, <strong>Petal.Length</strong>, and <strong>Petal.Width</strong>. Write the right code that would create one histogram for each of the above variables. Do spend some time to observe each histogram and think about how the scores are distributed and whether we have <strong>skewed</strong> distributions. <strong>(CAUTION: In R upper case and lower case letters do matter, make sure to type them exactly as you see them)</strong></p>
 <p><strong>Exercise 7</strong>
 Type the right code in order to get the <strong>mean</strong> and the <strong>median</strong> for all the above variables.</p>
 <p><strong>Exercise 8</strong>
@@ -301,54 +302,54 @@ Type the right code in order to get the <strong>mode</strong> for all the above 
 <div id="solutions-spoiler-alert" class="section level2" number="4.8">
 <h2><span class="header-section-number">4.8</span> Solutions: SPOILER ALERT</h2>
 <p><strong>Exercise 4</strong></p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="session3.html#cb8-1"></a><span class="kw">hist</span>(ToothGrowth<span class="op">$</span>len)</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="session3.html#cb9-1"></a><span class="kw">hist</span>(ToothGrowth<span class="op">$</span>len)</span></code></pre></div>
 <p><img src="Kent-R-training_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
 <p><strong>Exercise 5</strong></p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="session3.html#cb9-1"></a><span class="kw">data</span>(iris)</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="session3.html#cb10-1"></a><span class="kw">data</span>(iris)</span></code></pre></div>
 <p><strong>Exercise 6</strong></p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="session3.html#cb10-1"></a><span class="kw">hist</span>(iris<span class="op">$</span>Sepal.Length)</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="session3.html#cb11-1"></a><span class="kw">hist</span>(iris<span class="op">$</span>Sepal.Length)</span></code></pre></div>
 <p><img src="Kent-R-training_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="session3.html#cb11-1"></a><span class="kw">hist</span>(iris<span class="op">$</span>Sepal.Width)</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="session3.html#cb12-1"></a><span class="kw">hist</span>(iris<span class="op">$</span>Sepal.Width)</span></code></pre></div>
 <p><img src="Kent-R-training_files/figure-html/unnamed-chunk-10-2.png" width="672" /></p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="session3.html#cb12-1"></a><span class="kw">hist</span>(iris<span class="op">$</span>Petal.Length)</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="session3.html#cb13-1"></a><span class="kw">hist</span>(iris<span class="op">$</span>Petal.Length)</span></code></pre></div>
 <p><img src="Kent-R-training_files/figure-html/unnamed-chunk-10-3.png" width="672" /></p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="session3.html#cb13-1"></a><span class="kw">hist</span>(iris<span class="op">$</span>Petal.Width)</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="session3.html#cb14-1"></a><span class="kw">hist</span>(iris<span class="op">$</span>Petal.Width)</span></code></pre></div>
 <p><img src="Kent-R-training_files/figure-html/unnamed-chunk-10-4.png" width="672" /></p>
 <p><strong>Exercise 7</strong></p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="session3.html#cb14-1"></a><span class="kw">mean</span>(iris<span class="op">$</span>Sepal.Length)</span>
-<span id="cb14-2"><a href="session3.html#cb14-2"></a><span class="co">## [1] 5.843333</span></span>
-<span id="cb14-3"><a href="session3.html#cb14-3"></a><span class="kw">mean</span>(iris<span class="op">$</span>Sepal.Width)</span>
-<span id="cb14-4"><a href="session3.html#cb14-4"></a><span class="co">## [1] 3.057333</span></span>
-<span id="cb14-5"><a href="session3.html#cb14-5"></a><span class="kw">mean</span>(iris<span class="op">$</span>Petal.Length)</span>
-<span id="cb14-6"><a href="session3.html#cb14-6"></a><span class="co">## [1] 3.758</span></span>
-<span id="cb14-7"><a href="session3.html#cb14-7"></a><span class="kw">mean</span>(iris<span class="op">$</span>Petal.Width)</span>
-<span id="cb14-8"><a href="session3.html#cb14-8"></a><span class="co">## [1] 1.199333</span></span>
-<span id="cb14-9"><a href="session3.html#cb14-9"></a><span class="kw">median</span>(iris<span class="op">$</span>Sepal.Length)</span>
-<span id="cb14-10"><a href="session3.html#cb14-10"></a><span class="co">## [1] 5.8</span></span>
-<span id="cb14-11"><a href="session3.html#cb14-11"></a><span class="kw">median</span>(iris<span class="op">$</span>Sepal.Width)</span>
-<span id="cb14-12"><a href="session3.html#cb14-12"></a><span class="co">## [1] 3</span></span>
-<span id="cb14-13"><a href="session3.html#cb14-13"></a><span class="kw">median</span>(iris<span class="op">$</span>Petal.Length)</span>
-<span id="cb14-14"><a href="session3.html#cb14-14"></a><span class="co">## [1] 4.35</span></span>
-<span id="cb14-15"><a href="session3.html#cb14-15"></a><span class="kw">median</span>(iris<span class="op">$</span>Petal.Width)</span>
-<span id="cb14-16"><a href="session3.html#cb14-16"></a><span class="co">## [1] 1.3</span></span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="session3.html#cb15-1"></a><span class="kw">mean</span>(iris<span class="op">$</span>Sepal.Length)</span>
+<span id="cb15-2"><a href="session3.html#cb15-2"></a><span class="co">## [1] 5.843333</span></span>
+<span id="cb15-3"><a href="session3.html#cb15-3"></a><span class="kw">mean</span>(iris<span class="op">$</span>Sepal.Width)</span>
+<span id="cb15-4"><a href="session3.html#cb15-4"></a><span class="co">## [1] 3.057333</span></span>
+<span id="cb15-5"><a href="session3.html#cb15-5"></a><span class="kw">mean</span>(iris<span class="op">$</span>Petal.Length)</span>
+<span id="cb15-6"><a href="session3.html#cb15-6"></a><span class="co">## [1] 3.758</span></span>
+<span id="cb15-7"><a href="session3.html#cb15-7"></a><span class="kw">mean</span>(iris<span class="op">$</span>Petal.Width)</span>
+<span id="cb15-8"><a href="session3.html#cb15-8"></a><span class="co">## [1] 1.199333</span></span>
+<span id="cb15-9"><a href="session3.html#cb15-9"></a><span class="kw">median</span>(iris<span class="op">$</span>Sepal.Length)</span>
+<span id="cb15-10"><a href="session3.html#cb15-10"></a><span class="co">## [1] 5.8</span></span>
+<span id="cb15-11"><a href="session3.html#cb15-11"></a><span class="kw">median</span>(iris<span class="op">$</span>Sepal.Width)</span>
+<span id="cb15-12"><a href="session3.html#cb15-12"></a><span class="co">## [1] 3</span></span>
+<span id="cb15-13"><a href="session3.html#cb15-13"></a><span class="kw">median</span>(iris<span class="op">$</span>Petal.Length)</span>
+<span id="cb15-14"><a href="session3.html#cb15-14"></a><span class="co">## [1] 4.35</span></span>
+<span id="cb15-15"><a href="session3.html#cb15-15"></a><span class="kw">median</span>(iris<span class="op">$</span>Petal.Width)</span>
+<span id="cb15-16"><a href="session3.html#cb15-16"></a><span class="co">## [1] 1.3</span></span></code></pre></div>
 <p><strong>Exercise 8</strong></p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="session3.html#cb15-1"></a><span class="kw">library</span>(DescTools)</span>
-<span id="cb15-2"><a href="session3.html#cb15-2"></a><span class="kw">Mode</span>(iris<span class="op">$</span>Sepal.Length)</span>
-<span id="cb15-3"><a href="session3.html#cb15-3"></a><span class="co">## [1] 5</span></span>
-<span id="cb15-4"><a href="session3.html#cb15-4"></a><span class="co">## attr(,&quot;freq&quot;)</span></span>
-<span id="cb15-5"><a href="session3.html#cb15-5"></a><span class="co">## [1] 10</span></span>
-<span id="cb15-6"><a href="session3.html#cb15-6"></a><span class="kw">Mode</span>(iris<span class="op">$</span>Sepal.Width)</span>
-<span id="cb15-7"><a href="session3.html#cb15-7"></a><span class="co">## [1] 3</span></span>
-<span id="cb15-8"><a href="session3.html#cb15-8"></a><span class="co">## attr(,&quot;freq&quot;)</span></span>
-<span id="cb15-9"><a href="session3.html#cb15-9"></a><span class="co">## [1] 26</span></span>
-<span id="cb15-10"><a href="session3.html#cb15-10"></a><span class="kw">Mode</span>(iris<span class="op">$</span>Petal.Length)</span>
-<span id="cb15-11"><a href="session3.html#cb15-11"></a><span class="co">## [1] 1.4 1.5</span></span>
-<span id="cb15-12"><a href="session3.html#cb15-12"></a><span class="co">## attr(,&quot;freq&quot;)</span></span>
-<span id="cb15-13"><a href="session3.html#cb15-13"></a><span class="co">## [1] 13</span></span>
-<span id="cb15-14"><a href="session3.html#cb15-14"></a><span class="kw">Mode</span>(iris<span class="op">$</span>Petal.Width)</span>
-<span id="cb15-15"><a href="session3.html#cb15-15"></a><span class="co">## [1] 0.2</span></span>
-<span id="cb15-16"><a href="session3.html#cb15-16"></a><span class="co">## attr(,&quot;freq&quot;)</span></span>
-<span id="cb15-17"><a href="session3.html#cb15-17"></a><span class="co">## [1] 29</span></span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="session3.html#cb16-1"></a><span class="kw">library</span>(DescTools)</span>
+<span id="cb16-2"><a href="session3.html#cb16-2"></a><span class="kw">Mode</span>(iris<span class="op">$</span>Sepal.Length)</span>
+<span id="cb16-3"><a href="session3.html#cb16-3"></a><span class="co">## [1] 5</span></span>
+<span id="cb16-4"><a href="session3.html#cb16-4"></a><span class="co">## attr(,&quot;freq&quot;)</span></span>
+<span id="cb16-5"><a href="session3.html#cb16-5"></a><span class="co">## [1] 10</span></span>
+<span id="cb16-6"><a href="session3.html#cb16-6"></a><span class="kw">Mode</span>(iris<span class="op">$</span>Sepal.Width)</span>
+<span id="cb16-7"><a href="session3.html#cb16-7"></a><span class="co">## [1] 3</span></span>
+<span id="cb16-8"><a href="session3.html#cb16-8"></a><span class="co">## attr(,&quot;freq&quot;)</span></span>
+<span id="cb16-9"><a href="session3.html#cb16-9"></a><span class="co">## [1] 26</span></span>
+<span id="cb16-10"><a href="session3.html#cb16-10"></a><span class="kw">Mode</span>(iris<span class="op">$</span>Petal.Length)</span>
+<span id="cb16-11"><a href="session3.html#cb16-11"></a><span class="co">## [1] 1.4 1.5</span></span>
+<span id="cb16-12"><a href="session3.html#cb16-12"></a><span class="co">## attr(,&quot;freq&quot;)</span></span>
+<span id="cb16-13"><a href="session3.html#cb16-13"></a><span class="co">## [1] 13</span></span>
+<span id="cb16-14"><a href="session3.html#cb16-14"></a><span class="kw">Mode</span>(iris<span class="op">$</span>Petal.Width)</span>
+<span id="cb16-15"><a href="session3.html#cb16-15"></a><span class="co">## [1] 0.2</span></span>
+<span id="cb16-16"><a href="session3.html#cb16-16"></a><span class="co">## attr(,&quot;freq&quot;)</span></span>
+<span id="cb16-17"><a href="session3.html#cb16-17"></a><span class="co">## [1] 29</span></span></code></pre></div>
 
 </div>
 </div>

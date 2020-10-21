@@ -104,11 +104,11 @@ As we progress through our course we will be using specific packages and functio
 Another dataset that comes build-in with R is called **iris**. iris dataset gives the measurements in centimeters of the variables sepal length, sepal width, petal length and petal width, respectively, for 50 flowers from each of 3 species of iris. The species are Iris setosa, versicolor, and virginica. The following exercises should be completed in one script and are in practice one exercise. They are broken down to smaller questions to make your work easier, as well as making it easier to refer to the solutions in the end.
 
 **Exercise 5**
-Create a new script and name it **session3_iris**. Then type in and execute the right command in order to load the dataset **iris**
+Create a new script and name it **session4_iris**. Then type in and execute the right command in order to load the dataset **iris**
 
 
 **Exercise 6**
-Explore the data frame called **iris** (you can find it in your **Environment**). You should be able to see that some of the included variables are **Sepal.Length**, **Sepal.Width**, **Petal.Length**, and **Petal.Width**. Write the right code that would create one histogram for each of the above variables. Do spend some time to observe each histogram and think about how the scores are distributed and whether we have **skewed** distributions. **(CAUTION: In R upper case and lower case letter do matter, make sure to type them exactly as you see them)**
+Explore the data frame called **iris** (you can find it in your **Environment**). You should be able to see that some of the included variables are **Sepal.Length**, **Sepal.Width**, **Petal.Length**, and **Petal.Width**. Write the right code that would create one histogram for each of the above variables. Do spend some time to observe each histogram and think about how the scores are distributed and whether we have **skewed** distributions. **(CAUTION: In R upper case and lower case letters do matter, make sure to type them exactly as you see them)**
 
 
 **Exercise 7**
