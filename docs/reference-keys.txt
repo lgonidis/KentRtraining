@@ -51,3 +51,4 @@ session5
 reflecting-on-the-last-session
 pipe-operator
 exercise-10
+grouping-spliting-and-summarizing-variables-across-out-data-frame

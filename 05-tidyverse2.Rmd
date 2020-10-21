@@ -61,15 +61,58 @@ Now your turn
 ## Exercise 10
 
 1. Load the file **"alcohol_qualtrics.csv"** to a data frame
-2. Drop all the variable after the column 17
+2. Drop all the variables after the column 17
 3. Make sure gender and smoke are factors
-4. Remove any participants below 100 and above 300
-5. Add a column that is the sums of Days1 to Days4
+4. Remove any participants with participant number below 100 and above 300
+5. Add a column that is the sum of Days1 to Days4
 6. Reverse code the variable Freq4
-7. Find the mean of Freq1, Freq2, Freq3, and the above reversed coded variable
+7. Add a column that is the mean of Freq1, Freq2, Freq3, and the above reversed coded variable
 8. Save the final file using a file name of your choice.
 
 
 
+## Grouping, spliting, and summarizing variables across out data frame
 
+Other jobs that we usually carry out when preparing out data files include aggregating variables, grouping by a variable, or splitting our file. This can also be done easily in R using the function **group_by()**. Let's see an example here:
+
+```{r eval=FALSE}
+library(tidyverse)
+df <- read_csv("alcohol_exp.csv")
+
+df %>% 
+  group_by(gender) %>% 
+  summarize(mean = mean(response.rt),
+            sd = sd(response.rt),
+            N = n()) %>% 
+  ungroup()
+  
+```
+
+
+I can also add a new column in my data frame that will include information on the mean per gender.  
+
+```{r eval=FALSE}
+
+df %>% 
+  group_by(gender) %>% 
+  mutate(mean = mean(response.rt)) %>% 
+  ungroup()
+  
+  
+```
+
+Not that meaningful to be honest. Lets try again but this time grouping by participant.  
+
+```{r eval=FALSE}
+
+df %>% 
+  group_by(participant) %>% 
+  mutate(mean = mean(response.rt)) %>% 
+  ungroup()
+
+ 
+  
+```
+
+This is much more useful from our perspective. Which brings to the point that we can pretty reshape a data frame in any way we want. So your work with R should be guided by your end goal, which is how you want your data file to look before your analysis.
 

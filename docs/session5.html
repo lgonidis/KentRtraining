@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="session4.html"/>
-<link rel="next" href="references.html"/>
+
 <script src="libs/header-attrs-2.4/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -185,8 +185,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.1" data-path="session5.html"><a href="session5.html#reflecting-on-the-last-session"><i class="fa fa-check"></i><b>6.1</b> Reflecting on the last session</a></li>
 <li class="chapter" data-level="6.2" data-path="session5.html"><a href="session5.html#pipe-operator"><i class="fa fa-check"></i><b>6.2</b> Pipe Operator %&lt;%</a></li>
 <li class="chapter" data-level="6.3" data-path="session5.html"><a href="session5.html#exercise-10"><i class="fa fa-check"></i><b>6.3</b> Exercise 10</a></li>
+<li class="chapter" data-level="6.4" data-path="session5.html"><a href="session5.html#grouping-spliting-and-summarizing-variables-across-out-data-frame"><i class="fa fa-check"></i><b>6.4</b> Grouping, spliting, and summarizing variables across out data frame</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -261,14 +261,38 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">6.3</span> Exercise 10</h2>
 <ol style="list-style-type: decimal">
 <li>Load the file <strong>“alcohol_qualtrics.csv”</strong> to a data frame</li>
-<li>Drop all the variable after the column 17</li>
+<li>Drop all the variables after the column 17</li>
 <li>Make sure gender and smoke are factors</li>
-<li>Remove any participants below 100 and above 300</li>
-<li>Add a column that is the sums of Days1 to Days4</li>
+<li>Remove any participants with participant number below 100 and above 300</li>
+<li>Add a column that is the sum of Days1 to Days4</li>
 <li>Reverse code the variable Freq4</li>
-<li>Find the mean of Freq1, Freq2, Freq3, and the above reversed coded variable</li>
+<li>Add a column that is the mean of Freq1, Freq2, Freq3, and the above reversed coded variable</li>
 <li>Save the final file using a file name of your choice.</li>
 </ol>
+</div>
+<div id="grouping-spliting-and-summarizing-variables-across-out-data-frame" class="section level2" number="6.4">
+<h2><span class="header-section-number">6.4</span> Grouping, spliting, and summarizing variables across out data frame</h2>
+<p>Other jobs that we usually carry out when preparing out data files include aggregating variables, grouping by a variable, or splitting our file. This can also be done easily in R using the function <strong>group_by()</strong>. Let’s see an example here:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="session5.html#cb2-1"></a><span class="kw">library</span>(tidyverse)</span>
+<span id="cb2-2"><a href="session5.html#cb2-2"></a>df &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;alcohol_exp.csv&quot;</span>)</span>
+<span id="cb2-3"><a href="session5.html#cb2-3"></a></span>
+<span id="cb2-4"><a href="session5.html#cb2-4"></a>df <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb2-5"><a href="session5.html#cb2-5"></a><span class="st">  </span><span class="kw">group_by</span>(gender) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb2-6"><a href="session5.html#cb2-6"></a><span class="st">  </span><span class="kw">summarize</span>(<span class="dt">mean =</span> <span class="kw">mean</span>(response.rt),</span>
+<span id="cb2-7"><a href="session5.html#cb2-7"></a>            <span class="dt">sd =</span> <span class="kw">sd</span>(response.rt),</span>
+<span id="cb2-8"><a href="session5.html#cb2-8"></a>            <span class="dt">N =</span> <span class="kw">n</span>()) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb2-9"><a href="session5.html#cb2-9"></a><span class="st">  </span><span class="kw">ungroup</span>()</span></code></pre></div>
+<p>I can also add a new column in my data frame that will include information on the mean per gender.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="session5.html#cb3-1"></a>df <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb3-2"><a href="session5.html#cb3-2"></a><span class="st">  </span><span class="kw">group_by</span>(gender) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb3-3"><a href="session5.html#cb3-3"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">mean =</span> <span class="kw">mean</span>(response.rt)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb3-4"><a href="session5.html#cb3-4"></a><span class="st">  </span><span class="kw">ungroup</span>()</span></code></pre></div>
+<p>Not that meaningful to be honest. Lets try again but this time grouping by participant.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="session5.html#cb4-1"></a>df <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb4-2"><a href="session5.html#cb4-2"></a><span class="st">  </span><span class="kw">group_by</span>(participant) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb4-3"><a href="session5.html#cb4-3"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">mean =</span> <span class="kw">mean</span>(response.rt)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb4-4"><a href="session5.html#cb4-4"></a><span class="st">  </span><span class="kw">ungroup</span>()</span></code></pre></div>
+<p>This is much more useful from our perspective. Which brings to the point that we can pretty reshape a data frame in any way we want. So your work with R should be guided by your end goal, which is how you want your data file to look before your analysis.</p>
 
 </div>
 </div>
@@ -277,8 +301,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="session4.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="session4.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
