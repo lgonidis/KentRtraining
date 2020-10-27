@@ -16,6 +16,10 @@ description: "This is a work in progress"
 
 ...regarding the structure of this course. Given that this course is tailored mainly for PhD students some minimal knowledge of statistics will be assumed. By minimal I do mean  minimal.  
 
+## A comment on the book structure
+
+**The first six chapters in Day 1 of the training event. From the seventh chapter (session) onwards we are focusing on Day 2 of the training.**
+
 1. We will first start by introducing R and RStudio together and I will frequently be saying just "R" or just "RStudio" but in reality I will be implying **"using RStudio to carry out R commands"**.  
 
 2. Once you are introduced to R and RStudio we will then move to get familiarised to **variables**, **vectors**, **dataframes**, **operations**, and **calculations**. Many argue that you cannot teach the use of R without teaching programming. I disagree, and we will be doing very minimal, almost no programming at all.  

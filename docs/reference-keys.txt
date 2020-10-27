@@ -53,3 +53,4 @@ pipe-operator
 exercise-10
 grouping-spliting-and-summarizing-variables-across-out-data-frame
 we-will-leave-reshaping-from-long-to-wide-format-and-vice-versa-next-week
+a-comment-on-the-book-structure
