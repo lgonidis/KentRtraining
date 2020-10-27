@@ -54,6 +54,69 @@
 <script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 
 
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -129,6 +192,7 @@
 <ul>
 <li class="chapter" data-level="7.1" data-path="session7.html"><a href="session7.html#reflecting-on-day-1"><i class="fa fa-check"></i><b>7.1</b> Reflecting on Day 1</a></li>
 <li class="chapter" data-level="7.2" data-path="session7.html"><a href="session7.html#learning-objectives-4"><i class="fa fa-check"></i><b>7.2</b> Learning Objectives</a></li>
+<li class="chapter" data-level="7.3" data-path="session7.html"><a href="session7.html#working-with-the-file"><i class="fa fa-check"></i><b>7.3</b> Working with the file</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -207,6 +271,35 @@ R operates in a different way, we have to have our dataset in the <strong>long</
 </li>
 <li>ungroup() (and possibly some others too)</li>
 </ol>
+<p><strong>Packages to be used</strong><br />
+1. tidyverse<br />
+2. rstatix</p>
+</div>
+<div id="working-with-the-file" class="section level2" number="7.3">
+<h2><span class="header-section-number">7.3</span> Working with the file</h2>
+<p>At this point it is best to start a new project and call it <strong>Day 2</strong>. Once you have that up and running then create our first script for the day, I suggest naming it <strong>4wANOVA</strong>.</p>
+<p>Let us start by loading the data file and checking that our variables are of the correct type.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="session7.html#cb1-1"></a><span class="kw">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="session7.html#cb1-2"></a><span class="kw">library</span>(rstatix)</span>
+<span id="cb1-3"><a href="session7.html#cb1-3"></a></span>
+<span id="cb1-4"><a href="session7.html#cb1-4"></a><span class="co">## load the data file to the dataframe called exp</span></span>
+<span id="cb1-5"><a href="session7.html#cb1-5"></a>exp &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;alcohol_exp.csv&quot;</span>) </span>
+<span id="cb1-6"><a href="session7.html#cb1-6"></a></span>
+<span id="cb1-7"><a href="session7.html#cb1-7"></a><span class="co">##inspect exp</span></span>
+<span id="cb1-8"><a href="session7.html#cb1-8"></a><span class="kw">head</span>(exp)</span>
+<span id="cb1-9"><a href="session7.html#cb1-9"></a></span>
+<span id="cb1-10"><a href="session7.html#cb1-10"></a><span class="co">## contrary to Day 1 approach we will not be constantly creating new dataframes</span></span>
+<span id="cb1-11"><a href="session7.html#cb1-11"></a><span class="co">## we will create only one new dataframe called exp2</span></span>
+<span id="cb1-12"><a href="session7.html#cb1-12"></a><span class="co">## lets begin by assigning correct variable types</span></span>
+<span id="cb1-13"><a href="session7.html#cb1-13"></a></span>
+<span id="cb1-14"><a href="session7.html#cb1-14"></a>exp2 &lt;-<span class="st"> </span>exp <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1-15"><a href="session7.html#cb1-15"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">group =</span> <span class="kw">as.factor</span>(group)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1-16"><a href="session7.html#cb1-16"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">session =</span> <span class="kw">as.factor</span>(session)) <span class="op">%&gt;%</span></span>
+<span id="cb1-17"><a href="session7.html#cb1-17"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">meditation =</span> <span class="kw">as.factor</span>(meditation)) <span class="op">%&gt;%</span></span>
+<span id="cb1-18"><a href="session7.html#cb1-18"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">gender =</span> <span class="kw">as.factor</span>(gender)) <span class="op">%&gt;%</span></span>
+<span id="cb1-19"><a href="session7.html#cb1-19"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">group =</span> <span class="kw">as.factor</span>(group))</span></code></pre></div>
+<p>Our variables should fine for now. Looking at the image provided, we want participant, meditation, and session to be the first three variables. Group seems to have been dropped. We will move <strong>meditation</strong> to the third column and <strong>group</strong> to the last one.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="session7.html#cb2-1"></a><span class="co">## we will continue working on the dataframe </span></span></code></pre></div>
 
 </div>
 </div>

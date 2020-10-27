@@ -50,4 +50,45 @@ Our dataset should look like this just before our analysis:
 7. summarise()   
 8. ungroup()   (and possibly some others too)   
 
+**Packages to be used**  
+1. tidyverse  
+2. rstatix  
+
+
+## Working with the file
+
+At this point it is best to start a new project and call it **Day 2**. Once you have that up and running then create our first script for the day, I suggest naming it **4wANOVA**.   
+
+Let us start by loading the data file and checking that our variables are of the correct type.
+
+```{r eval=FALSE}
+library(tidyverse)
+library(rstatix)
+
+## load the data file to the dataframe called exp
+exp <- read_csv("alcohol_exp.csv") 
+
+##inspect exp
+head(exp)
+
+## contrary to Day 1 approach we will not be constantly creating new dataframes
+## we will create only one new dataframe called exp2
+## lets begin by assigning correct variable types
+
+exp2 <- exp %>% 
+  mutate(group = as.factor(group)) %>% 
+  mutate(session = as.factor(session)) %>%
+  mutate(meditation = as.factor(meditation)) %>%
+  mutate(gender = as.factor(gender)) %>%
+  mutate(group = as.factor(group))
+```
+
+
+Our variables should fine for now. Looking at the image provided, we want participant, meditation, and session to be the first three variables. Group seems to have been dropped. We will move **meditation** to the third column and **group** to the last one.  
+
+```{r eval=FALSE}
+
+## we will continue working on the dataframe 
+
+```
 
