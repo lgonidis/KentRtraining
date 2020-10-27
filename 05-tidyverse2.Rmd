@@ -7,8 +7,8 @@ We have managed to do quite a few tasks already. However, we also managed to cre
 ##Learning objectives 
 1. Work more efficiently using tidyverse (dplyr and tidyr)
 2. manipulating data
-3. summarising data
-4. change from long to wide format and vice-versa
+3. summarising data (brief, we will start from this in Day 2)
+
 
 **Note:** In this session we will be focusing on describing a number of tasks and then discussing how we can best perform them. We have already introduced enough concepts to do really meaningful work. Now we have to put our progress to the test. 
 
@@ -117,5 +117,4 @@ df %>%
 This is much more useful from our perspective. Which brings us to the point that we can pretty much reshape a data frame in any way we want. So your work with R should be guided by your end goal, which is how you want your data file to look before your analysis.
 
 
-## We will leave reshaping from long to wide format and vice-versa next week
 
