@@ -24,11 +24,11 @@ Working with the datafile **"alcohol_exp.csv"** we want to bring the dataset to 
 **A few words on the design**  
 
 For the above, we can say that **participant**, **group**, **meditation**, are between-subjects variables. Whereas, **session**, **image**, **duration**, are within-subjects variables.  
-Our ultimate aim here is to carry out a four-way ANOVA with **meditation**, **session**, **image**, and **duration** as our IVs and **response** as our DV. Traditionally, you would need to have your file in the **wide** format to carry our this analysis in SPSS, where you would employ *repeated measures* and then declare your *between-subjects* variables.  
+Our ultimate aim here is to carry out a three-way ANOVA with **session**, **image**, and **duration** as our IVs and **response** as our DV. Traditionally, you would need to have your file in the **wide** format to carry our this analysis in SPSS, where you would employ *repeated measures* and then declare your *between-subjects* variables.  
 R operates in a different way, we have to have our dataset in the **long** format where our measurement in only in one column. We have to keep that in mind while we are working through the dataset. 
 
 Our dataset should look like this just before our analysis:
-![description](docs/4wANOVA.PNG)
+![description](docs/3wANOVA.PNG)
 
 
 **Steps to take**   
@@ -57,7 +57,7 @@ Our dataset should look like this just before our analysis:
 
 ## Working with the file
 
-At this point it is best to start a new project and call it **Day 2**. Once you have that up and running then create our first script for the day, I suggest naming it **4wANOVA**.   
+At this point it is best to start a new project and call it **Day 2**. Once you have that up and running then create our first script for the day, I suggest naming it **3wANOVA**.   
 
 Let us start by loading the data file and checking that our variables are of the correct type.
 
@@ -127,15 +127,72 @@ mutate(across(c(group , session, meditation, gender, group), as.factor))
 
 As you work more with tidyverse you can decide on the style and approach that suites you most. For the purposes of this training we will stick to the first approach so you can work out the steps that you followed.
 
-Our variables should fine for now. Looking at the image provided, we want participant, meditation, and session to be the first three variables. Group seems to have been dropped. We will move **meditation** to the third column and **group** to the last one.  
+Our variables should fine for now. Looking at the image provided, we want participant, meditation, and session to be the first three variables. Group seems to have been dropped. We will move **meditation** and **group** at the end of the dataframe  
 
 ```{r eval=FALSE}
 
 ## we will continue working on the dataframe exp2
 ## relocating meditation and group
 exp2 <- exp2 %>% 
-  relocate(meditation, .after = participant) %>% 
-  relocated(group, .after = last_col())
+  relocate(meditation, .after = last_col()) %>% 
+  relocate(group, .after = last_col())
 ```
+
+
+We now want to create a new variable called **salience**. We know that the third character of the image filename represents alcohol or neutral image. We will exract that information and then create a new variable called **salience**.
+```{r eval=FALSE}
+
+## we will use str_sub() to extract the third character
+## based on the value of that character we will assign a value 
+## in our salience variable. Note how we are using case_when()
+exp2 <- exp2 %>% 
+  mutate(type = str_sub(image,3,3)) %>% 
+  mutate(salience = case_when(
+    type == '2'~"Neutral",
+    type =='1'~"Alcohol"
+  ))
+```
+
+
+We will now proceed to recode the response from "s" and "l" to 0 and 1. We will also create a new variable for duration in ms and not in seconds.
+
+```{r eval=FALSE}
+
+## a simple mutate here would also do the job
+## each mutate is creating a new variable
+exp2 <- exp2 %>% 
+  mutate(durationms = duration*1000) %>% 
+  mutate(responsenum = case_when(
+    response == 'l'~ 1,
+    response == 's'~ 0
+  ))
+```
+
+
+We now have to deal with the fact that our DV is just trial responses. We want to aggregate these responses across participant, meditation, session, salience, and durationms. Here we will also create a new dataframe as our structure will change.
+
+```{r eval=FALSE}
+
+## we will group our data using the variables above
+## and then we will calculate the mean of the responses
+## these mean values will be assigned to the the new variable called ration
+## do not forget to ungroup at the end of your grouping work
+## we carried the variable meditation forward for your upcoming exercise
+## we will drop it from the grouping as we do not need it for this
+## three-way anova
+exp3 <- exp2 %>% 
+  group_by(participant, session, salience, durationms) %>% 
+  summarise(ratio = mean(responsenum)) %>% 
+  ungroup()
+
+## make sure to inspect the exp3 dataframe to check that everything is in order
+## you should be able to see that grouping and aggregating 
+## also dropped all other undeclared variables
+```
+
+Let's do a final check on variable types and correct any discrepancies.
+This is also a good point to take a short break.
+
+
 
 
