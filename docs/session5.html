@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="session4.html"/>
-
+<link rel="next" href="session7.html"/>
 <script src="libs/header-attrs-2.4/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -188,6 +188,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.3" data-path="session5.html"><a href="session5.html#exercise-10"><i class="fa fa-check"></i><b>6.3</b> Exercise 10</a></li>
 <li class="chapter" data-level="6.4" data-path="session5.html"><a href="session5.html#grouping-spliting-and-summarizing-variables-across-out-data-frame"><i class="fa fa-check"></i><b>6.4</b> Grouping, spliting, and summarizing variables across out data frame</a></li>
 </ul></li>
+<li class="chapter" data-level="7" data-path="session7.html"><a href="session7.html"><i class="fa fa-check"></i><b>7</b> Bringing Everything Together. Part I</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="session7.html"><a href="session7.html#reflecting-on-day-1"><i class="fa fa-check"></i><b>7.1</b> Reflecting on Day 1</a></li>
+<li class="chapter" data-level="7.2" data-path="session7.html"><a href="session7.html#learning-objectives-4"><i class="fa fa-check"></i><b>7.2</b> Learning Objectives</a></li>
+<li class="chapter" data-level="7.3" data-path="session7.html"><a href="session7.html#working-with-the-file"><i class="fa fa-check"></i><b>7.3</b> Working with the file</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -233,28 +239,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Keep only response.rt below 1.5</li>
 <li>save your final data frame into a file called <strong>“wastedresources.csv”</strong></li>
 </ol>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="session5.html#cb1-1"></a><span class="kw">library</span>(tidyverse)</span>
-<span id="cb1-2"><a href="session5.html#cb1-2"></a>df &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;alcohol_exp.csv&quot;</span>)</span>
-<span id="cb1-3"><a href="session5.html#cb1-3"></a></span>
-<span id="cb1-4"><a href="session5.html#cb1-4"></a>df3 &lt;-<span class="st"> </span>df <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb1-5"><a href="session5.html#cb1-5"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">group =</span> <span class="kw">as.factor</span>(group)) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb1-6"><a href="session5.html#cb1-6"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">session =</span> <span class="kw">as.factor</span>(session)) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb1-7"><a href="session5.html#cb1-7"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">meditation =</span> <span class="kw">as.factor</span>(meditation)) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb1-8"><a href="session5.html#cb1-8"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">gender =</span> <span class="kw">as.factor</span>(gender)) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb1-9"><a href="session5.html#cb1-9"></a><span class="st">  </span><span class="kw">select</span>(group, session, meditation, gender, response.rt) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb1-10"><a href="session5.html#cb1-10"></a><span class="st">  </span><span class="kw">filter</span>(gender <span class="op">==</span><span class="st"> </span><span class="dv">2</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb1-11"><a href="session5.html#cb1-11"></a><span class="st">  </span><span class="kw">filter</span>(response.rt <span class="op">&lt;</span><span class="st"> </span><span class="fl">1.5</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="co">### this could be done with the above</span></span>
-<span id="cb1-12"><a href="session5.html#cb1-12"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">gender =</span> <span class="kw">recode</span>(gender,<span class="st">&#39;1&#39;</span> =<span class="st"> &quot;Male&quot;</span>, <span class="st">&#39;2&#39;</span>=<span class="st">&quot;Female&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb1-13"><a href="session5.html#cb1-13"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">gender =</span> <span class="kw">recode</span>(group,<span class="st">&#39;1&#39;</span> =<span class="st"> &quot;High&quot;</span>, <span class="st">&#39;2&#39;</span>=<span class="st">&quot;Low&quot;</span>))</span>
-<span id="cb1-14"><a href="session5.html#cb1-14"></a></span>
-<span id="cb1-15"><a href="session5.html#cb1-15"></a></span>
-<span id="cb1-16"><a href="session5.html#cb1-16"></a></span>
-<span id="cb1-17"><a href="session5.html#cb1-17"></a><span class="co">### and just for fun lets also create a histogram of reaction times.</span></span>
-<span id="cb1-18"><a href="session5.html#cb1-18"></a><span class="kw">hist</span>(df3<span class="op">$</span>response.rt)</span>
-<span id="cb1-19"><a href="session5.html#cb1-19"></a></span>
-<span id="cb1-20"><a href="session5.html#cb1-20"></a><span class="co">### lets save the data file</span></span>
-<span id="cb1-21"><a href="session5.html#cb1-21"></a></span>
-<span id="cb1-22"><a href="session5.html#cb1-22"></a><span class="kw">write_csv</span>(df3, <span class="st">&quot;wastedresources.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="session5.html#cb48-1"></a><span class="kw">library</span>(tidyverse)</span>
+<span id="cb48-2"><a href="session5.html#cb48-2"></a>df &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;alcohol_exp.csv&quot;</span>)</span>
+<span id="cb48-3"><a href="session5.html#cb48-3"></a></span>
+<span id="cb48-4"><a href="session5.html#cb48-4"></a>df3 &lt;-<span class="st"> </span>df <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb48-5"><a href="session5.html#cb48-5"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">group =</span> <span class="kw">as.factor</span>(group)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb48-6"><a href="session5.html#cb48-6"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">session =</span> <span class="kw">as.factor</span>(session)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb48-7"><a href="session5.html#cb48-7"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">meditation =</span> <span class="kw">as.factor</span>(meditation)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb48-8"><a href="session5.html#cb48-8"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">gender =</span> <span class="kw">as.factor</span>(gender)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb48-9"><a href="session5.html#cb48-9"></a><span class="st">  </span><span class="kw">select</span>(group, session, meditation, gender, response.rt) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb48-10"><a href="session5.html#cb48-10"></a><span class="st">  </span><span class="kw">filter</span>(gender <span class="op">==</span><span class="st"> </span><span class="dv">2</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb48-11"><a href="session5.html#cb48-11"></a><span class="st">  </span><span class="kw">filter</span>(response.rt <span class="op">&lt;</span><span class="st"> </span><span class="fl">1.5</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="co">### this could be done with the above</span></span>
+<span id="cb48-12"><a href="session5.html#cb48-12"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">gender =</span> <span class="kw">recode</span>(gender,<span class="st">&#39;1&#39;</span> =<span class="st"> &quot;Male&quot;</span>, <span class="st">&#39;2&#39;</span>=<span class="st">&quot;Female&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb48-13"><a href="session5.html#cb48-13"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">gender =</span> <span class="kw">recode</span>(group,<span class="st">&#39;1&#39;</span> =<span class="st"> &quot;High&quot;</span>, <span class="st">&#39;2&#39;</span>=<span class="st">&quot;Low&quot;</span>))</span>
+<span id="cb48-14"><a href="session5.html#cb48-14"></a></span>
+<span id="cb48-15"><a href="session5.html#cb48-15"></a></span>
+<span id="cb48-16"><a href="session5.html#cb48-16"></a></span>
+<span id="cb48-17"><a href="session5.html#cb48-17"></a><span class="co">### and just for fun lets also create a histogram of reaction times.</span></span>
+<span id="cb48-18"><a href="session5.html#cb48-18"></a><span class="kw">hist</span>(df3<span class="op">$</span>response.rt)</span>
+<span id="cb48-19"><a href="session5.html#cb48-19"></a></span>
+<span id="cb48-20"><a href="session5.html#cb48-20"></a><span class="co">### lets save the data file</span></span>
+<span id="cb48-21"><a href="session5.html#cb48-21"></a></span>
+<span id="cb48-22"><a href="session5.html#cb48-22"></a><span class="kw">write_csv</span>(df3, <span class="st">&quot;wastedresources.csv&quot;</span>)</span></code></pre></div>
 <p>Now your turn</p>
 </div>
 <div id="exercise-10" class="section level2" number="6.3">
@@ -273,25 +279,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="grouping-spliting-and-summarizing-variables-across-out-data-frame" class="section level2" number="6.4">
 <h2><span class="header-section-number">6.4</span> Grouping, spliting, and summarizing variables across out data frame</h2>
 <p>Other jobs that we usually carry out when preparing out data files include aggregating variables, grouping by a variable, or splitting our file. This can also be done easily in R using the function <strong>group_by()</strong>. Let’s see an example here:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="session5.html#cb2-1"></a><span class="kw">library</span>(tidyverse)</span>
-<span id="cb2-2"><a href="session5.html#cb2-2"></a>df &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;alcohol_exp.csv&quot;</span>)</span>
-<span id="cb2-3"><a href="session5.html#cb2-3"></a></span>
-<span id="cb2-4"><a href="session5.html#cb2-4"></a>df <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb2-5"><a href="session5.html#cb2-5"></a><span class="st">  </span><span class="kw">group_by</span>(gender) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb2-6"><a href="session5.html#cb2-6"></a><span class="st">  </span><span class="kw">summarize</span>(<span class="dt">mean =</span> <span class="kw">mean</span>(response.rt),</span>
-<span id="cb2-7"><a href="session5.html#cb2-7"></a>            <span class="dt">sd =</span> <span class="kw">sd</span>(response.rt),</span>
-<span id="cb2-8"><a href="session5.html#cb2-8"></a>            <span class="dt">N =</span> <span class="kw">n</span>()) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb2-9"><a href="session5.html#cb2-9"></a><span class="st">  </span><span class="kw">ungroup</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="session5.html#cb49-1"></a><span class="kw">library</span>(tidyverse)</span>
+<span id="cb49-2"><a href="session5.html#cb49-2"></a>df &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;alcohol_exp.csv&quot;</span>)</span>
+<span id="cb49-3"><a href="session5.html#cb49-3"></a></span>
+<span id="cb49-4"><a href="session5.html#cb49-4"></a>df <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb49-5"><a href="session5.html#cb49-5"></a><span class="st">  </span><span class="kw">group_by</span>(gender) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb49-6"><a href="session5.html#cb49-6"></a><span class="st">  </span><span class="kw">summarize</span>(<span class="dt">mean =</span> <span class="kw">mean</span>(response.rt),</span>
+<span id="cb49-7"><a href="session5.html#cb49-7"></a>            <span class="dt">sd =</span> <span class="kw">sd</span>(response.rt),</span>
+<span id="cb49-8"><a href="session5.html#cb49-8"></a>            <span class="dt">N =</span> <span class="kw">n</span>()) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb49-9"><a href="session5.html#cb49-9"></a><span class="st">  </span><span class="kw">ungroup</span>()</span></code></pre></div>
 <p>I can also add a new column in my data frame that will include information on the mean per gender.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="session5.html#cb3-1"></a>df <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb3-2"><a href="session5.html#cb3-2"></a><span class="st">  </span><span class="kw">group_by</span>(gender) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb3-3"><a href="session5.html#cb3-3"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">mean =</span> <span class="kw">mean</span>(response.rt)) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb3-4"><a href="session5.html#cb3-4"></a><span class="st">  </span><span class="kw">ungroup</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="session5.html#cb50-1"></a>df <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb50-2"><a href="session5.html#cb50-2"></a><span class="st">  </span><span class="kw">group_by</span>(gender) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb50-3"><a href="session5.html#cb50-3"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">mean =</span> <span class="kw">mean</span>(response.rt)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb50-4"><a href="session5.html#cb50-4"></a><span class="st">  </span><span class="kw">ungroup</span>()</span></code></pre></div>
 <p>Not that meaningful to be honest. Lets try again but this time grouping by participant.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="session5.html#cb4-1"></a>df <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb4-2"><a href="session5.html#cb4-2"></a><span class="st">  </span><span class="kw">group_by</span>(participant) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb4-3"><a href="session5.html#cb4-3"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">mean =</span> <span class="kw">mean</span>(response.rt)) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb4-4"><a href="session5.html#cb4-4"></a><span class="st">  </span><span class="kw">ungroup</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="session5.html#cb51-1"></a>df <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb51-2"><a href="session5.html#cb51-2"></a><span class="st">  </span><span class="kw">group_by</span>(participant) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb51-3"><a href="session5.html#cb51-3"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">mean =</span> <span class="kw">mean</span>(response.rt)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb51-4"><a href="session5.html#cb51-4"></a><span class="st">  </span><span class="kw">ungroup</span>()</span></code></pre></div>
 <p>This is much more useful from our perspective. Which brings us to the point that we can pretty much reshape a data frame in any way we want. So your work with R should be guided by your end goal, which is how you want your data file to look before your analysis.</p>
 
 </div>
@@ -301,8 +307,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="session4.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="session4.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="session7.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

@@ -83,12 +83,59 @@ exp2 <- exp %>%
   mutate(group = as.factor(group))
 ```
 
+**Note** the above executed pipe block could be written as one **mutate**  
+
+```{r eval=FALSE}
+library(tidyverse)
+library(rstatix)
+
+## load the data file to the dataframe called exp
+exp <- read_csv("alcohol_exp.csv") 
+
+##inspect exp
+head(exp)
+
+## contrary to Day 1 approach we will not be constantly creating new dataframes
+## we will create only one new dataframe called exp2
+## lets begin by assigning correct variable types
+exp2 <- exp %>% 
+  mutate(group = as.factor(group), 
+  session = as.factor(session), 
+  meditation = as.factor(meditation),
+  gender = as.factor(gender),
+  group = as.factor(group))
+```
+
+And to be honest it could written in even simpler way:
+
+```{r eval=FALSE}
+library(tidyverse)
+library(rstatix)
+
+## load the data file to the dataframe called exp
+exp <- read_csv("alcohol_exp.csv") 
+
+##inspect exp
+head(exp)
+
+## contrary to Day 1 approach we will not be constantly creating new dataframes
+## we will create only one new dataframe called exp2
+## lets begin by assigning correct variable types
+exp2 <- exp %>% 
+mutate(across(c(group , session, meditation, gender, group), as.factor))
+```
+
+As you work more with tidyverse you can decide on the style and approach that suites you most. For the purposes of this training we will stick to the first approach so you can work out the steps that you followed.
 
 Our variables should fine for now. Looking at the image provided, we want participant, meditation, and session to be the first three variables. Group seems to have been dropped. We will move **meditation** to the third column and **group** to the last one.  
 
 ```{r eval=FALSE}
 
-## we will continue working on the dataframe 
-
+## we will continue working on the dataframe exp2
+## relocating meditation and group
+exp2 <- exp2 %>% 
+  relocate(meditation, .after = participant) %>% 
+  relocated(group, .after = last_col())
 ```
+
 

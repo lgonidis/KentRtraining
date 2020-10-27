@@ -279,27 +279,66 @@ R operates in a different way, we have to have our dataset in the <strong>long</
 <h2><span class="header-section-number">7.3</span> Working with the file</h2>
 <p>At this point it is best to start a new project and call it <strong>Day 2</strong>. Once you have that up and running then create our first script for the day, I suggest naming it <strong>4wANOVA</strong>.</p>
 <p>Let us start by loading the data file and checking that our variables are of the correct type.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="session7.html#cb1-1"></a><span class="kw">library</span>(tidyverse)</span>
-<span id="cb1-2"><a href="session7.html#cb1-2"></a><span class="kw">library</span>(rstatix)</span>
-<span id="cb1-3"><a href="session7.html#cb1-3"></a></span>
-<span id="cb1-4"><a href="session7.html#cb1-4"></a><span class="co">## load the data file to the dataframe called exp</span></span>
-<span id="cb1-5"><a href="session7.html#cb1-5"></a>exp &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;alcohol_exp.csv&quot;</span>) </span>
-<span id="cb1-6"><a href="session7.html#cb1-6"></a></span>
-<span id="cb1-7"><a href="session7.html#cb1-7"></a><span class="co">##inspect exp</span></span>
-<span id="cb1-8"><a href="session7.html#cb1-8"></a><span class="kw">head</span>(exp)</span>
-<span id="cb1-9"><a href="session7.html#cb1-9"></a></span>
-<span id="cb1-10"><a href="session7.html#cb1-10"></a><span class="co">## contrary to Day 1 approach we will not be constantly creating new dataframes</span></span>
-<span id="cb1-11"><a href="session7.html#cb1-11"></a><span class="co">## we will create only one new dataframe called exp2</span></span>
-<span id="cb1-12"><a href="session7.html#cb1-12"></a><span class="co">## lets begin by assigning correct variable types</span></span>
-<span id="cb1-13"><a href="session7.html#cb1-13"></a></span>
-<span id="cb1-14"><a href="session7.html#cb1-14"></a>exp2 &lt;-<span class="st"> </span>exp <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb1-15"><a href="session7.html#cb1-15"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">group =</span> <span class="kw">as.factor</span>(group)) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb1-16"><a href="session7.html#cb1-16"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">session =</span> <span class="kw">as.factor</span>(session)) <span class="op">%&gt;%</span></span>
-<span id="cb1-17"><a href="session7.html#cb1-17"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">meditation =</span> <span class="kw">as.factor</span>(meditation)) <span class="op">%&gt;%</span></span>
-<span id="cb1-18"><a href="session7.html#cb1-18"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">gender =</span> <span class="kw">as.factor</span>(gender)) <span class="op">%&gt;%</span></span>
-<span id="cb1-19"><a href="session7.html#cb1-19"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">group =</span> <span class="kw">as.factor</span>(group))</span></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="session7.html#cb52-1"></a><span class="kw">library</span>(tidyverse)</span>
+<span id="cb52-2"><a href="session7.html#cb52-2"></a><span class="kw">library</span>(rstatix)</span>
+<span id="cb52-3"><a href="session7.html#cb52-3"></a></span>
+<span id="cb52-4"><a href="session7.html#cb52-4"></a><span class="co">## load the data file to the dataframe called exp</span></span>
+<span id="cb52-5"><a href="session7.html#cb52-5"></a>exp &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;alcohol_exp.csv&quot;</span>) </span>
+<span id="cb52-6"><a href="session7.html#cb52-6"></a></span>
+<span id="cb52-7"><a href="session7.html#cb52-7"></a><span class="co">##inspect exp</span></span>
+<span id="cb52-8"><a href="session7.html#cb52-8"></a><span class="kw">head</span>(exp)</span>
+<span id="cb52-9"><a href="session7.html#cb52-9"></a></span>
+<span id="cb52-10"><a href="session7.html#cb52-10"></a><span class="co">## contrary to Day 1 approach we will not be constantly creating new dataframes</span></span>
+<span id="cb52-11"><a href="session7.html#cb52-11"></a><span class="co">## we will create only one new dataframe called exp2</span></span>
+<span id="cb52-12"><a href="session7.html#cb52-12"></a><span class="co">## lets begin by assigning correct variable types</span></span>
+<span id="cb52-13"><a href="session7.html#cb52-13"></a></span>
+<span id="cb52-14"><a href="session7.html#cb52-14"></a>exp2 &lt;-<span class="st"> </span>exp <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb52-15"><a href="session7.html#cb52-15"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">group =</span> <span class="kw">as.factor</span>(group)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb52-16"><a href="session7.html#cb52-16"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">session =</span> <span class="kw">as.factor</span>(session)) <span class="op">%&gt;%</span></span>
+<span id="cb52-17"><a href="session7.html#cb52-17"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">meditation =</span> <span class="kw">as.factor</span>(meditation)) <span class="op">%&gt;%</span></span>
+<span id="cb52-18"><a href="session7.html#cb52-18"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">gender =</span> <span class="kw">as.factor</span>(gender)) <span class="op">%&gt;%</span></span>
+<span id="cb52-19"><a href="session7.html#cb52-19"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">group =</span> <span class="kw">as.factor</span>(group))</span></code></pre></div>
+<p><strong>Note</strong> the above executed pipe block could be written as one <strong>mutate</strong></p>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="session7.html#cb53-1"></a><span class="kw">library</span>(tidyverse)</span>
+<span id="cb53-2"><a href="session7.html#cb53-2"></a><span class="kw">library</span>(rstatix)</span>
+<span id="cb53-3"><a href="session7.html#cb53-3"></a></span>
+<span id="cb53-4"><a href="session7.html#cb53-4"></a><span class="co">## load the data file to the dataframe called exp</span></span>
+<span id="cb53-5"><a href="session7.html#cb53-5"></a>exp &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;alcohol_exp.csv&quot;</span>) </span>
+<span id="cb53-6"><a href="session7.html#cb53-6"></a></span>
+<span id="cb53-7"><a href="session7.html#cb53-7"></a><span class="co">##inspect exp</span></span>
+<span id="cb53-8"><a href="session7.html#cb53-8"></a><span class="kw">head</span>(exp)</span>
+<span id="cb53-9"><a href="session7.html#cb53-9"></a></span>
+<span id="cb53-10"><a href="session7.html#cb53-10"></a><span class="co">## contrary to Day 1 approach we will not be constantly creating new dataframes</span></span>
+<span id="cb53-11"><a href="session7.html#cb53-11"></a><span class="co">## we will create only one new dataframe called exp2</span></span>
+<span id="cb53-12"><a href="session7.html#cb53-12"></a><span class="co">## lets begin by assigning correct variable types</span></span>
+<span id="cb53-13"><a href="session7.html#cb53-13"></a>exp2 &lt;-<span class="st"> </span>exp <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb53-14"><a href="session7.html#cb53-14"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">group =</span> <span class="kw">as.factor</span>(group), </span>
+<span id="cb53-15"><a href="session7.html#cb53-15"></a>  <span class="dt">session =</span> <span class="kw">as.factor</span>(session), </span>
+<span id="cb53-16"><a href="session7.html#cb53-16"></a>  <span class="dt">meditation =</span> <span class="kw">as.factor</span>(meditation),</span>
+<span id="cb53-17"><a href="session7.html#cb53-17"></a>  <span class="dt">gender =</span> <span class="kw">as.factor</span>(gender),</span>
+<span id="cb53-18"><a href="session7.html#cb53-18"></a>  <span class="dt">group =</span> <span class="kw">as.factor</span>(group))</span></code></pre></div>
+<p>And to be honest it could written in even simpler way:</p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="session7.html#cb54-1"></a><span class="kw">library</span>(tidyverse)</span>
+<span id="cb54-2"><a href="session7.html#cb54-2"></a><span class="kw">library</span>(rstatix)</span>
+<span id="cb54-3"><a href="session7.html#cb54-3"></a></span>
+<span id="cb54-4"><a href="session7.html#cb54-4"></a><span class="co">## load the data file to the dataframe called exp</span></span>
+<span id="cb54-5"><a href="session7.html#cb54-5"></a>exp &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;alcohol_exp.csv&quot;</span>) </span>
+<span id="cb54-6"><a href="session7.html#cb54-6"></a></span>
+<span id="cb54-7"><a href="session7.html#cb54-7"></a><span class="co">##inspect exp</span></span>
+<span id="cb54-8"><a href="session7.html#cb54-8"></a><span class="kw">head</span>(exp)</span>
+<span id="cb54-9"><a href="session7.html#cb54-9"></a></span>
+<span id="cb54-10"><a href="session7.html#cb54-10"></a><span class="co">## contrary to Day 1 approach we will not be constantly creating new dataframes</span></span>
+<span id="cb54-11"><a href="session7.html#cb54-11"></a><span class="co">## we will create only one new dataframe called exp2</span></span>
+<span id="cb54-12"><a href="session7.html#cb54-12"></a><span class="co">## lets begin by assigning correct variable types</span></span>
+<span id="cb54-13"><a href="session7.html#cb54-13"></a>exp2 &lt;-<span class="st"> </span>exp <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb54-14"><a href="session7.html#cb54-14"></a><span class="kw">mutate</span>(<span class="kw">across</span>(<span class="kw">c</span>(group , session, meditation, gender, group), as.factor))</span></code></pre></div>
+<p>As you work more with tidyverse you can decide on the style and approach that suites you most. For the purposes of this training we will stick to the first approach so you can work out the steps that you followed.</p>
 <p>Our variables should fine for now. Looking at the image provided, we want participant, meditation, and session to be the first three variables. Group seems to have been dropped. We will move <strong>meditation</strong> to the third column and <strong>group</strong> to the last one.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="session7.html#cb2-1"></a><span class="co">## we will continue working on the dataframe </span></span></code></pre></div>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="session7.html#cb55-1"></a><span class="co">## we will continue working on the dataframe exp2</span></span>
+<span id="cb55-2"><a href="session7.html#cb55-2"></a><span class="co">## relocating meditation and group</span></span>
+<span id="cb55-3"><a href="session7.html#cb55-3"></a>exp2 &lt;-<span class="st"> </span>exp2 <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb55-4"><a href="session7.html#cb55-4"></a><span class="st">  </span><span class="kw">relocate</span>(meditation, <span class="dt">.after =</span> participant) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb55-5"><a href="session7.html#cb55-5"></a><span class="st">  </span><span class="kw">relocated</span>(group, <span class="dt">.after =</span> <span class="kw">last_col</span>())</span></code></pre></div>
 
 </div>
 </div>
