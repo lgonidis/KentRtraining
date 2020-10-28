@@ -21,3 +21,83 @@ dflong <- read_csv("stroopfinal.csv")
 ```
 
 
+We will now convert our dataframe from long to wide format. We will do using two different ways. Spread() and gather() are being depreciated but we still use them as an example.
+
+```{r eval=FALSE}
+
+## we now want to bring the file to a form that will have two RTs columns
+## one for salience trials and one for neutral trials
+dfwide <- dflong %>% 
+  pivot_wider(names_from = salience, values_from = RT)
+
+## we could do the same with spread()
+dfwide2 <- dflong %>% 
+  spread(salience, RT)
+
+```
+
+
+Just for practice we can revert back from wide to long format.  
+
+```{r eval=FALSE}
+
+## Let us now try to convert the wide file back to long
+
+dflong2 <- dfwide %>% 
+  pivot_longer(cols = c(Gambling, Neutral), 
+               names_to = "Salience", 
+               values_to = "Reaction")
+### It would be very similar using gather
+
+dflong3 <- dfwide %>% 
+  gather(key = "Salience", value = "Reaction", Gambling, Neutral)
+
+## dflong2 and dflong3 look different as they are sorted by different variable
+## this is just a visual difference but we can fix it anyway
+
+dflong3 <- dflong3 %>% 
+  arrange(participant, group)
+```
+
+
+As I said we do not need to revert back to the long format. We will carry on working with the wide format and calculate our **diff** variable.  
+```{r}
+dfwide <- dfwide %>% 
+  mutate(diff = Gambling - Neutral)
+
+```
+
+
+It would be very interesting now to see whether this difference correlates with the frequency of games. Let's also load the questionnaire.csv and merge it with our widedf.  
+
+```{r}
+## load our datafile
+questionnaire <- read_csv("questionnaire.csv")
+
+## let's merge the two datasets dfwide and questionnaire
+## first lets do it the wrong way
+
+dfall <-left_join(dfwide, questionnaire)
+
+## this will generate an error as group in questionnaire is not a factor
+## also group in the questionnaire is 1 and 2 not the same as in dfwide
+## also left_join() is not the appropriate function for our case
+questionnaire <- questionnaire %>% 
+  mutate(group = recode(group,'1' = "gambling", '2'="control"),
+         group = as.factor(group))
+
+dfwide$group = as.factor(dfwide$group)
+
+
+## let's merge the two datasets dfwide and questionnaire
+
+dfall <-full_join(dfwide, questionnaire)
+```
+
+That worked fine, even though we have some missing values
+
+## Let's see now if we have any significant correlation
+## between the stroop difference and the frequency of games
+
+## But first lets do a simple scatterplot
+

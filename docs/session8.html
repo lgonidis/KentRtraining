@@ -237,109 +237,127 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Our dataframe should be all ready now. You might want to save it to a datafile.</p>
 <p>We will be going through a number of steps to check ANOVA assumptions and follow-up with any necessary post-hoc analysis. As we do that we will also be generating some graphs which will give us the opportunity to discuss <strong>ggplot2</strong> and an extension of it called <strong>ggpubr</strong>. Our main package for the anova will be the <strong>rstatix</strong> package.</p>
 <p>First, let’s check that you completed <strong>exercise 10</strong>.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="session8.html#cb1-1"></a><span class="kw">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="session8.html#cb1-2"></a></span>
+<span id="cb1-3"><a href="session8.html#cb1-3"></a>stroop &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;stroopy stroop.csv&quot;</span>)</span>
+<span id="cb1-4"><a href="session8.html#cb1-4"></a>stroop &lt;-<span class="st"> </span>stroop <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1-5"><a href="session8.html#cb1-5"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">RT =</span> stroop_resp.rt<span class="op">*</span><span class="dv">1000</span>,</span>
+<span id="cb1-6"><a href="session8.html#cb1-6"></a>        <span class="dt">group =</span> <span class="kw">case_when</span>(</span>
+<span id="cb1-7"><a href="session8.html#cb1-7"></a>        participant <span class="op">&lt;</span><span class="st"> </span><span class="dv">2000</span> <span class="op">~</span><span class="st"> &quot;control&quot;</span>,</span>
+<span id="cb1-8"><a href="session8.html#cb1-8"></a>        participant <span class="op">&gt;=</span><span class="st"> </span><span class="dv">2000</span> <span class="op">~</span><span class="st"> &quot;gambling&quot;</span>),</span>
+<span id="cb1-9"><a href="session8.html#cb1-9"></a>        <span class="dt">salience =</span> <span class="kw">case_when</span>(</span>
+<span id="cb1-10"><a href="session8.html#cb1-10"></a>          <span class="kw">str_sub</span>(Image,<span class="dv">1</span>,<span class="dv">1</span>) <span class="op">==</span><span class="st"> &#39;G&#39;</span><span class="op">~</span><span class="st">&quot;Gambling&quot;</span>,</span>
+<span id="cb1-11"><a href="session8.html#cb1-11"></a>          <span class="kw">str_sub</span>(Image,<span class="dv">1</span>,<span class="dv">1</span>) <span class="op">==</span><span class="st"> &#39;N&#39;</span><span class="op">~</span><span class="st">&quot;Neutral&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1-12"><a href="session8.html#cb1-12"></a><span class="st">  </span><span class="kw">filter</span>(stroop_resp.rt <span class="op">&gt;</span><span class="st"> </span><span class="fl">0.3</span> <span class="op">&amp;</span><span class="st"> </span>stroop_resp.rt <span class="op">&lt;</span><span class="st"> </span><span class="fl">3.0</span> </span>
+<span id="cb1-13"><a href="session8.html#cb1-13"></a>         <span class="op">&amp;</span><span class="st"> </span>stroop_trials.thisTrialN <span class="op">&gt;</span><span class="st"> </span><span class="dv">2</span>)</span>
+<span id="cb1-14"><a href="session8.html#cb1-14"></a>  </span>
+<span id="cb1-15"><a href="session8.html#cb1-15"></a>stroop2 &lt;-<span class="st"> </span>stroop <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1-16"><a href="session8.html#cb1-16"></a><span class="st">  </span><span class="kw">group_by</span>(participant, group, salience) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1-17"><a href="session8.html#cb1-17"></a><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">RT =</span> <span class="kw">mean</span>(RT)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1-18"><a href="session8.html#cb1-18"></a><span class="st">  </span><span class="kw">ungroup</span>() </span></code></pre></div>
 <p>We will now start working on our two-way analysis of variance. First we will load the necessary libraries and convert our IVs into factors.</p>
-<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="session8.html#cb59-1"></a><span class="kw">library</span>(tidyverse)</span>
-<span id="cb59-2"><a href="session8.html#cb59-2"></a><span class="kw">library</span>(ggpubr)</span>
-<span id="cb59-3"><a href="session8.html#cb59-3"></a><span class="kw">library</span>(rstatix)</span>
-<span id="cb59-4"><a href="session8.html#cb59-4"></a></span>
-<span id="cb59-5"><a href="session8.html#cb59-5"></a><span class="co">## make sure you have run the code above</span></span>
-<span id="cb59-6"><a href="session8.html#cb59-6"></a><span class="co">## converting group and salience to factors</span></span>
-<span id="cb59-7"><a href="session8.html#cb59-7"></a>stroop2 &lt;-<span class="st"> </span>stroop2 <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb59-8"><a href="session8.html#cb59-8"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">group =</span> <span class="kw">as.factor</span>(group),</span>
-<span id="cb59-9"><a href="session8.html#cb59-9"></a>         <span class="dt">salience =</span> <span class="kw">as.factor</span>(salience))</span>
-<span id="cb59-10"><a href="session8.html#cb59-10"></a></span>
-<span id="cb59-11"><a href="session8.html#cb59-11"></a><span class="co">## let&#39;s inspect our RT visually</span></span>
-<span id="cb59-12"><a href="session8.html#cb59-12"></a><span class="kw">ggboxplot</span>(stroop2, <span class="dt">x =</span> <span class="st">&quot;salience&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;RT&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;group&quot;</span>)</span>
-<span id="cb59-13"><a href="session8.html#cb59-13"></a></span>
-<span id="cb59-14"><a href="session8.html#cb59-14"></a><span class="co">##perhaps it would be more meaningful to also see boxplots per group</span></span>
-<span id="cb59-15"><a href="session8.html#cb59-15"></a><span class="co">## we will also assign it to a variable so we can use it later</span></span>
-<span id="cb59-16"><a href="session8.html#cb59-16"></a>box1 &lt;-<span class="st"> </span><span class="kw">ggboxplot</span>(stroop2, <span class="dt">x =</span> <span class="st">&quot;group&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;RT&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;salience&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="session8.html#cb2-1"></a><span class="kw">library</span>(tidyverse)</span>
+<span id="cb2-2"><a href="session8.html#cb2-2"></a><span class="kw">library</span>(ggpubr)</span>
+<span id="cb2-3"><a href="session8.html#cb2-3"></a><span class="kw">library</span>(rstatix)</span>
+<span id="cb2-4"><a href="session8.html#cb2-4"></a></span>
+<span id="cb2-5"><a href="session8.html#cb2-5"></a><span class="co">## make sure you have run the code above</span></span>
+<span id="cb2-6"><a href="session8.html#cb2-6"></a><span class="co">## converting group and salience to factors</span></span>
+<span id="cb2-7"><a href="session8.html#cb2-7"></a>stroop2 &lt;-<span class="st"> </span>stroop2 <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb2-8"><a href="session8.html#cb2-8"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">group =</span> <span class="kw">as.factor</span>(group),</span>
+<span id="cb2-9"><a href="session8.html#cb2-9"></a>         <span class="dt">salience =</span> <span class="kw">as.factor</span>(salience))</span>
+<span id="cb2-10"><a href="session8.html#cb2-10"></a></span>
+<span id="cb2-11"><a href="session8.html#cb2-11"></a><span class="co">## let&#39;s inspect our RT visually</span></span>
+<span id="cb2-12"><a href="session8.html#cb2-12"></a><span class="kw">ggboxplot</span>(stroop2, <span class="dt">x =</span> <span class="st">&quot;salience&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;RT&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;group&quot;</span>)</span>
+<span id="cb2-13"><a href="session8.html#cb2-13"></a></span>
+<span id="cb2-14"><a href="session8.html#cb2-14"></a><span class="co">##perhaps it would be more meaningful to also see boxplots per group</span></span>
+<span id="cb2-15"><a href="session8.html#cb2-15"></a><span class="co">## we will also assign it to a variable so we can use it later</span></span>
+<span id="cb2-16"><a href="session8.html#cb2-16"></a>box1 &lt;-<span class="st"> </span><span class="kw">ggboxplot</span>(stroop2, <span class="dt">x =</span> <span class="st">&quot;group&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;RT&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;salience&quot;</span>)</span></code></pre></div>
 <p>We will now proceed with checks for outliers and anova assumptions. As this is a 2x2 some of the following checks are not meaningful but we will include them for reference.</p>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="session8.html#cb60-1"></a><span class="co">## check for outliers</span></span>
-<span id="cb60-2"><a href="session8.html#cb60-2"></a></span>
-<span id="cb60-3"><a href="session8.html#cb60-3"></a>stroop2 <span class="op">%&gt;%</span></span>
-<span id="cb60-4"><a href="session8.html#cb60-4"></a><span class="st">  </span><span class="kw">group_by</span>(salience, group) <span class="op">%&gt;%</span></span>
-<span id="cb60-5"><a href="session8.html#cb60-5"></a><span class="st">  </span><span class="kw">identify_outliers</span>(RT)</span>
-<span id="cb60-6"><a href="session8.html#cb60-6"></a></span>
-<span id="cb60-7"><a href="session8.html#cb60-7"></a><span class="co">## Normality check</span></span>
-<span id="cb60-8"><a href="session8.html#cb60-8"></a>stroop2 <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb60-9"><a href="session8.html#cb60-9"></a><span class="st">  </span><span class="kw">group_by</span>(salience, group) <span class="op">%&gt;%</span></span>
-<span id="cb60-10"><a href="session8.html#cb60-10"></a><span class="st">  </span><span class="kw">shapiro_test</span>(RT)</span>
-<span id="cb60-11"><a href="session8.html#cb60-11"></a></span>
-<span id="cb60-12"><a href="session8.html#cb60-12"></a><span class="co">## you may also want to check this visually</span></span>
-<span id="cb60-13"><a href="session8.html#cb60-13"></a><span class="co">## using a QQplot</span></span>
-<span id="cb60-14"><a href="session8.html#cb60-14"></a></span>
-<span id="cb60-15"><a href="session8.html#cb60-15"></a><span class="kw">ggqqplot</span>(stroop2, <span class="st">&quot;RT&quot;</span>, <span class="dt">ggtheme =</span> <span class="kw">theme_bw</span>()) <span class="op">+</span></span>
-<span id="cb60-16"><a href="session8.html#cb60-16"></a><span class="st">  </span><span class="kw">facet_grid</span>(group <span class="op">~</span><span class="st"> </span>salience)</span>
-<span id="cb60-17"><a href="session8.html#cb60-17"></a></span>
-<span id="cb60-18"><a href="session8.html#cb60-18"></a><span class="co">## Homogeneity of variance assumption</span></span>
-<span id="cb60-19"><a href="session8.html#cb60-19"></a>stroop2 <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb60-20"><a href="session8.html#cb60-20"></a><span class="st">  </span><span class="kw">group_by</span>(salience) <span class="op">%&gt;%</span></span>
-<span id="cb60-21"><a href="session8.html#cb60-21"></a><span class="st">  </span><span class="kw">levene_test</span>(RT <span class="op">~</span><span class="st"> </span>group)</span>
-<span id="cb60-22"><a href="session8.html#cb60-22"></a></span>
-<span id="cb60-23"><a href="session8.html#cb60-23"></a><span class="co">## the assumption of sphericity will be checked during anova</span></span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="session8.html#cb3-1"></a><span class="co">## check for outliers</span></span>
+<span id="cb3-2"><a href="session8.html#cb3-2"></a></span>
+<span id="cb3-3"><a href="session8.html#cb3-3"></a>stroop2 <span class="op">%&gt;%</span></span>
+<span id="cb3-4"><a href="session8.html#cb3-4"></a><span class="st">  </span><span class="kw">group_by</span>(salience, group) <span class="op">%&gt;%</span></span>
+<span id="cb3-5"><a href="session8.html#cb3-5"></a><span class="st">  </span><span class="kw">identify_outliers</span>(RT)</span>
+<span id="cb3-6"><a href="session8.html#cb3-6"></a></span>
+<span id="cb3-7"><a href="session8.html#cb3-7"></a><span class="co">## Normality check</span></span>
+<span id="cb3-8"><a href="session8.html#cb3-8"></a>stroop2 <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb3-9"><a href="session8.html#cb3-9"></a><span class="st">  </span><span class="kw">group_by</span>(salience, group) <span class="op">%&gt;%</span></span>
+<span id="cb3-10"><a href="session8.html#cb3-10"></a><span class="st">  </span><span class="kw">shapiro_test</span>(RT)</span>
+<span id="cb3-11"><a href="session8.html#cb3-11"></a></span>
+<span id="cb3-12"><a href="session8.html#cb3-12"></a><span class="co">## you may also want to check this visually</span></span>
+<span id="cb3-13"><a href="session8.html#cb3-13"></a><span class="co">## using a QQplot</span></span>
+<span id="cb3-14"><a href="session8.html#cb3-14"></a></span>
+<span id="cb3-15"><a href="session8.html#cb3-15"></a><span class="kw">ggqqplot</span>(stroop2, <span class="st">&quot;RT&quot;</span>, <span class="dt">ggtheme =</span> <span class="kw">theme_bw</span>()) <span class="op">+</span></span>
+<span id="cb3-16"><a href="session8.html#cb3-16"></a><span class="st">  </span><span class="kw">facet_grid</span>(group <span class="op">~</span><span class="st"> </span>salience)</span>
+<span id="cb3-17"><a href="session8.html#cb3-17"></a></span>
+<span id="cb3-18"><a href="session8.html#cb3-18"></a><span class="co">## Homogeneity of variance assumption</span></span>
+<span id="cb3-19"><a href="session8.html#cb3-19"></a>stroop2 <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb3-20"><a href="session8.html#cb3-20"></a><span class="st">  </span><span class="kw">group_by</span>(salience) <span class="op">%&gt;%</span></span>
+<span id="cb3-21"><a href="session8.html#cb3-21"></a><span class="st">  </span><span class="kw">levene_test</span>(RT <span class="op">~</span><span class="st"> </span>group)</span>
+<span id="cb3-22"><a href="session8.html#cb3-22"></a></span>
+<span id="cb3-23"><a href="session8.html#cb3-23"></a><span class="co">## the assumption of sphericity will be checked during anova</span></span></code></pre></div>
 <p>Assuming everything is in order we can proceed to carrying out the anova.</p>
-<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="session8.html#cb61-1"></a><span class="co">## anova time</span></span>
-<span id="cb61-2"><a href="session8.html#cb61-2"></a><span class="co"># first describe the model</span></span>
-<span id="cb61-3"><a href="session8.html#cb61-3"></a>anova.model &lt;-<span class="st"> </span><span class="kw">anova_test</span>(</span>
-<span id="cb61-4"><a href="session8.html#cb61-4"></a>  <span class="dt">data =</span> stroop2, </span>
-<span id="cb61-5"><a href="session8.html#cb61-5"></a>  <span class="dt">dv =</span> RT, </span>
-<span id="cb61-6"><a href="session8.html#cb61-6"></a>  <span class="dt">wid =</span> participant,  <span class="co">## this is our participant id variable</span></span>
-<span id="cb61-7"><a href="session8.html#cb61-7"></a>  <span class="dt">between =</span> group, </span>
-<span id="cb61-8"><a href="session8.html#cb61-8"></a>  <span class="dt">within =</span> salience</span>
-<span id="cb61-9"><a href="session8.html#cb61-9"></a>)</span>
-<span id="cb61-10"><a href="session8.html#cb61-10"></a></span>
-<span id="cb61-11"><a href="session8.html#cb61-11"></a><span class="co"># then get the anova table</span></span>
-<span id="cb61-12"><a href="session8.html#cb61-12"></a><span class="kw">get_anova_table</span>(anova.model)</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="session8.html#cb4-1"></a><span class="co">## anova time</span></span>
+<span id="cb4-2"><a href="session8.html#cb4-2"></a><span class="co"># first describe the model</span></span>
+<span id="cb4-3"><a href="session8.html#cb4-3"></a>anova.model &lt;-<span class="st"> </span><span class="kw">anova_test</span>(</span>
+<span id="cb4-4"><a href="session8.html#cb4-4"></a>  <span class="dt">data =</span> stroop2, </span>
+<span id="cb4-5"><a href="session8.html#cb4-5"></a>  <span class="dt">dv =</span> RT, </span>
+<span id="cb4-6"><a href="session8.html#cb4-6"></a>  <span class="dt">wid =</span> participant,  <span class="co">## this is our participant id variable</span></span>
+<span id="cb4-7"><a href="session8.html#cb4-7"></a>  <span class="dt">between =</span> group, </span>
+<span id="cb4-8"><a href="session8.html#cb4-8"></a>  <span class="dt">within =</span> salience</span>
+<span id="cb4-9"><a href="session8.html#cb4-9"></a>)</span>
+<span id="cb4-10"><a href="session8.html#cb4-10"></a></span>
+<span id="cb4-11"><a href="session8.html#cb4-11"></a><span class="co"># then get the anova table</span></span>
+<span id="cb4-12"><a href="session8.html#cb4-12"></a><span class="kw">get_anova_table</span>(anova.model)</span></code></pre></div>
 <p>As we can see we have a significant interaction as well as a main effect.
 We have to follow up the interaction.</p>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="session8.html#cb62-1"></a><span class="co">## First, We will need to regroup our data</span></span>
-<span id="cb62-2"><a href="session8.html#cb62-2"></a></span>
-<span id="cb62-3"><a href="session8.html#cb62-3"></a>simple.model &lt;-<span class="st"> </span>stroop2 <span class="op">%&gt;%</span></span>
-<span id="cb62-4"><a href="session8.html#cb62-4"></a><span class="st">  </span><span class="kw">group_by</span>(group) <span class="op">%&gt;%</span></span>
-<span id="cb62-5"><a href="session8.html#cb62-5"></a><span class="st">  </span><span class="kw">anova_test</span>(<span class="dt">dv =</span> RT, <span class="dt">wid =</span> participant, <span class="dt">within =</span>  salience) <span class="op">%&gt;%</span></span>
-<span id="cb62-6"><a href="session8.html#cb62-6"></a><span class="st">  </span><span class="kw">get_anova_table</span>() <span class="op">%&gt;%</span></span>
-<span id="cb62-7"><a href="session8.html#cb62-7"></a><span class="st">  </span><span class="kw">adjust_pvalue</span>(<span class="dt">method =</span> <span class="st">&quot;bonferroni&quot;</span>)</span>
-<span id="cb62-8"><a href="session8.html#cb62-8"></a></span>
-<span id="cb62-9"><a href="session8.html#cb62-9"></a>simple.model</span>
-<span id="cb62-10"><a href="session8.html#cb62-10"></a></span>
-<span id="cb62-11"><a href="session8.html#cb62-11"></a></span>
-<span id="cb62-12"><a href="session8.html#cb62-12"></a><span class="co">## or we could run pairwise comparisons</span></span>
-<span id="cb62-13"><a href="session8.html#cb62-13"></a>pair.model &lt;-<span class="st"> </span>stroop2 <span class="op">%&gt;%</span></span>
-<span id="cb62-14"><a href="session8.html#cb62-14"></a><span class="st">  </span><span class="kw">group_by</span>(salience) <span class="op">%&gt;%</span></span>
-<span id="cb62-15"><a href="session8.html#cb62-15"></a><span class="st">  </span><span class="kw">pairwise_t_test</span>(RT <span class="op">~</span><span class="st"> </span>group, <span class="dt">p.adjust.method =</span> <span class="st">&quot;bonferroni&quot;</span>)</span>
-<span id="cb62-16"><a href="session8.html#cb62-16"></a></span>
-<span id="cb62-17"><a href="session8.html#cb62-17"></a>pair.model</span>
-<span id="cb62-18"><a href="session8.html#cb62-18"></a></span>
-<span id="cb62-19"><a href="session8.html#cb62-19"></a></span>
-<span id="cb62-20"><a href="session8.html#cb62-20"></a><span class="co">## it would also be useful to report means and sd</span></span>
-<span id="cb62-21"><a href="session8.html#cb62-21"></a>stroop2 <span class="op">%&gt;%</span></span>
-<span id="cb62-22"><a href="session8.html#cb62-22"></a><span class="st">  </span><span class="kw">group_by</span>(salience, group) <span class="op">%&gt;%</span></span>
-<span id="cb62-23"><a href="session8.html#cb62-23"></a><span class="st">  </span><span class="kw">get_summary_stats</span>(RT, <span class="dt">type =</span> <span class="st">&quot;mean_sd&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="session8.html#cb5-1"></a><span class="co">## First, We will need to regroup our data</span></span>
+<span id="cb5-2"><a href="session8.html#cb5-2"></a></span>
+<span id="cb5-3"><a href="session8.html#cb5-3"></a>simple.model &lt;-<span class="st"> </span>stroop2 <span class="op">%&gt;%</span></span>
+<span id="cb5-4"><a href="session8.html#cb5-4"></a><span class="st">  </span><span class="kw">group_by</span>(group) <span class="op">%&gt;%</span></span>
+<span id="cb5-5"><a href="session8.html#cb5-5"></a><span class="st">  </span><span class="kw">anova_test</span>(<span class="dt">dv =</span> RT, <span class="dt">wid =</span> participant, <span class="dt">within =</span>  salience) <span class="op">%&gt;%</span></span>
+<span id="cb5-6"><a href="session8.html#cb5-6"></a><span class="st">  </span><span class="kw">get_anova_table</span>() <span class="op">%&gt;%</span></span>
+<span id="cb5-7"><a href="session8.html#cb5-7"></a><span class="st">  </span><span class="kw">adjust_pvalue</span>(<span class="dt">method =</span> <span class="st">&quot;bonferroni&quot;</span>)</span>
+<span id="cb5-8"><a href="session8.html#cb5-8"></a></span>
+<span id="cb5-9"><a href="session8.html#cb5-9"></a>simple.model</span>
+<span id="cb5-10"><a href="session8.html#cb5-10"></a></span>
+<span id="cb5-11"><a href="session8.html#cb5-11"></a></span>
+<span id="cb5-12"><a href="session8.html#cb5-12"></a><span class="co">## or we could run pairwise comparisons</span></span>
+<span id="cb5-13"><a href="session8.html#cb5-13"></a>pair.model &lt;-<span class="st"> </span>stroop2 <span class="op">%&gt;%</span></span>
+<span id="cb5-14"><a href="session8.html#cb5-14"></a><span class="st">  </span><span class="kw">group_by</span>(salience) <span class="op">%&gt;%</span></span>
+<span id="cb5-15"><a href="session8.html#cb5-15"></a><span class="st">  </span><span class="kw">pairwise_t_test</span>(RT <span class="op">~</span><span class="st"> </span>group, <span class="dt">p.adjust.method =</span> <span class="st">&quot;bonferroni&quot;</span>)</span>
+<span id="cb5-16"><a href="session8.html#cb5-16"></a></span>
+<span id="cb5-17"><a href="session8.html#cb5-17"></a>pair.model</span>
+<span id="cb5-18"><a href="session8.html#cb5-18"></a></span>
+<span id="cb5-19"><a href="session8.html#cb5-19"></a></span>
+<span id="cb5-20"><a href="session8.html#cb5-20"></a><span class="co">## it would also be useful to report means and sd</span></span>
+<span id="cb5-21"><a href="session8.html#cb5-21"></a>stroop2 <span class="op">%&gt;%</span></span>
+<span id="cb5-22"><a href="session8.html#cb5-22"></a><span class="st">  </span><span class="kw">group_by</span>(salience, group) <span class="op">%&gt;%</span></span>
+<span id="cb5-23"><a href="session8.html#cb5-23"></a><span class="st">  </span><span class="kw">get_summary_stats</span>(RT, <span class="dt">type =</span> <span class="st">&quot;mean_sd&quot;</span>)</span></code></pre></div>
 <p>From here we can also generate plots if we want to as we already all the necessary stats figures.</p>
-<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="session8.html#cb63-1"></a>pair.model &lt;-<span class="st"> </span>pair.model <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">add_xy_position</span>(<span class="dt">x =</span> <span class="st">&quot;salience&quot;</span>)</span>
-<span id="cb63-2"><a href="session8.html#cb63-2"></a></span>
-<span id="cb63-3"><a href="session8.html#cb63-3"></a></span>
-<span id="cb63-4"><a href="session8.html#cb63-4"></a>box1 <span class="op">+</span><span class="st"> </span></span>
-<span id="cb63-5"><a href="session8.html#cb63-5"></a><span class="st">  </span><span class="kw">stat_pvalue_manual</span>(pair.model, <span class="dt">tip.length =</span> <span class="dv">0</span>, <span class="dt">hide.ns =</span> <span class="ot">TRUE</span>) <span class="op">+</span></span>
-<span id="cb63-6"><a href="session8.html#cb63-6"></a><span class="st">  </span><span class="kw">labs</span>(</span>
-<span id="cb63-7"><a href="session8.html#cb63-7"></a>    <span class="dt">subtitle =</span> <span class="kw">get_test_label</span>(anova.model, <span class="dt">detailed =</span> <span class="ot">TRUE</span>),</span>
-<span id="cb63-8"><a href="session8.html#cb63-8"></a>    <span class="dt">caption =</span> <span class="kw">get_pwc_label</span>(pair.model)</span>
-<span id="cb63-9"><a href="session8.html#cb63-9"></a>  )</span>
-<span id="cb63-10"><a href="session8.html#cb63-10"></a></span>
-<span id="cb63-11"><a href="session8.html#cb63-11"></a><span class="co">## or with a barchart</span></span>
-<span id="cb63-12"><a href="session8.html#cb63-12"></a>box2 &lt;-<span class="st"> </span><span class="kw">ggbarplot</span>(stroop2, <span class="dt">x =</span> <span class="st">&quot;group&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;RT&quot;</span>, <span class="dt">width =</span> <span class="fl">0.5</span>,</span>
-<span id="cb63-13"><a href="session8.html#cb63-13"></a>                  <span class="dt">color =</span> <span class="st">&quot;salience&quot;</span>,</span>
-<span id="cb63-14"><a href="session8.html#cb63-14"></a>                  <span class="dt">fill =</span> <span class="st">&quot;salience&quot;</span>,</span>
-<span id="cb63-15"><a href="session8.html#cb63-15"></a>                  <span class="dt">position =</span> <span class="kw">position_dodge</span>(<span class="fl">0.5</span>),</span>
-<span id="cb63-16"><a href="session8.html#cb63-16"></a>                  <span class="dt">add =</span> <span class="st">&quot;mean_se&quot;</span>, <span class="dt">add.params =</span> <span class="kw">list</span>(<span class="dt">color =</span> <span class="st">&quot;black&quot;</span>), </span>
-<span id="cb63-17"><a href="session8.html#cb63-17"></a>                  <span class="dt">label =</span> <span class="ot">TRUE</span>,</span>
-<span id="cb63-18"><a href="session8.html#cb63-18"></a>                  <span class="dt">lab.vjust =</span> <span class="dv">-2</span>, <span class="dt">lab.nb.digits =</span> <span class="dv">2</span>)</span>
-<span id="cb63-19"><a href="session8.html#cb63-19"></a>box2</span>
-<span id="cb63-20"><a href="session8.html#cb63-20"></a></span>
-<span id="cb63-21"><a href="session8.html#cb63-21"></a><span class="co">## Let us also save our final stroop2 dataframe</span></span>
-<span id="cb63-22"><a href="session8.html#cb63-22"></a></span>
-<span id="cb63-23"><a href="session8.html#cb63-23"></a><span class="kw">write_csv</span>(stroop2, <span class="st">&quot;stroopfinal.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="session8.html#cb6-1"></a>pair.model &lt;-<span class="st"> </span>pair.model <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">add_xy_position</span>(<span class="dt">x =</span> <span class="st">&quot;salience&quot;</span>)</span>
+<span id="cb6-2"><a href="session8.html#cb6-2"></a></span>
+<span id="cb6-3"><a href="session8.html#cb6-3"></a></span>
+<span id="cb6-4"><a href="session8.html#cb6-4"></a>box1 <span class="op">+</span><span class="st"> </span></span>
+<span id="cb6-5"><a href="session8.html#cb6-5"></a><span class="st">  </span><span class="kw">stat_pvalue_manual</span>(pair.model, <span class="dt">tip.length =</span> <span class="dv">0</span>, <span class="dt">hide.ns =</span> <span class="ot">TRUE</span>) <span class="op">+</span></span>
+<span id="cb6-6"><a href="session8.html#cb6-6"></a><span class="st">  </span><span class="kw">labs</span>(</span>
+<span id="cb6-7"><a href="session8.html#cb6-7"></a>    <span class="dt">subtitle =</span> <span class="kw">get_test_label</span>(anova.model, <span class="dt">detailed =</span> <span class="ot">TRUE</span>),</span>
+<span id="cb6-8"><a href="session8.html#cb6-8"></a>    <span class="dt">caption =</span> <span class="kw">get_pwc_label</span>(pair.model)</span>
+<span id="cb6-9"><a href="session8.html#cb6-9"></a>  )</span>
+<span id="cb6-10"><a href="session8.html#cb6-10"></a></span>
+<span id="cb6-11"><a href="session8.html#cb6-11"></a><span class="co">## or with a barchart</span></span>
+<span id="cb6-12"><a href="session8.html#cb6-12"></a>box2 &lt;-<span class="st"> </span><span class="kw">ggbarplot</span>(stroop2, <span class="dt">x =</span> <span class="st">&quot;group&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;RT&quot;</span>, <span class="dt">width =</span> <span class="fl">0.5</span>,</span>
+<span id="cb6-13"><a href="session8.html#cb6-13"></a>                  <span class="dt">color =</span> <span class="st">&quot;salience&quot;</span>,</span>
+<span id="cb6-14"><a href="session8.html#cb6-14"></a>                  <span class="dt">fill =</span> <span class="st">&quot;salience&quot;</span>,</span>
+<span id="cb6-15"><a href="session8.html#cb6-15"></a>                  <span class="dt">position =</span> <span class="kw">position_dodge</span>(<span class="fl">0.5</span>),</span>
+<span id="cb6-16"><a href="session8.html#cb6-16"></a>                  <span class="dt">add =</span> <span class="st">&quot;mean_se&quot;</span>, <span class="dt">add.params =</span> <span class="kw">list</span>(<span class="dt">color =</span> <span class="st">&quot;black&quot;</span>), </span>
+<span id="cb6-17"><a href="session8.html#cb6-17"></a>                  <span class="dt">label =</span> <span class="ot">TRUE</span>,</span>
+<span id="cb6-18"><a href="session8.html#cb6-18"></a>                  <span class="dt">lab.vjust =</span> <span class="dv">-2</span>, <span class="dt">lab.nb.digits =</span> <span class="dv">2</span>)</span>
+<span id="cb6-19"><a href="session8.html#cb6-19"></a>box2</span>
+<span id="cb6-20"><a href="session8.html#cb6-20"></a></span>
+<span id="cb6-21"><a href="session8.html#cb6-21"></a><span class="co">## Let us also save our final stroop2 dataframe</span></span>
+<span id="cb6-22"><a href="session8.html#cb6-22"></a></span>
+<span id="cb6-23"><a href="session8.html#cb6-23"></a><span class="kw">write_csv</span>(stroop2, <span class="st">&quot;stroopfinal.csv&quot;</span>)</span></code></pre></div>
 <p>As mentioned earlier <strong>ggpubr</strong> is a package that calls <strong>ggplot2</strong>. It is really versatile and can cover all our needs in terms of analysis and publications. However, ggplot2 offers many more features that you can try to explore on your own.</p>
 </div>
 <div id="exercise-11-1" class="section level2" number="8.3">

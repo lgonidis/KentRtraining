@@ -12,7 +12,7 @@ We will be going through a number of steps to check ANOVA assumptions and follow
 
 First, let's check that you completed **exercise 10**. 
 
-```{r eval=FALSE, include=FALSE}
+```{r eval=FALSE}
 library(tidyverse)
 
 stroop <- read_csv("stroopy stroop.csv")
