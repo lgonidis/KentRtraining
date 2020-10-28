@@ -162,6 +162,6 @@ write_csv(stroop2, "stroopfinal.csv")
 
 As mentioned earlier **ggpubr** is a package that calls **ggplot2**. It is really versatile and can cover all our needs in terms of analysis and publications. However, ggplot2 offers many more features that you can try to explore on your own.
 
-## Exercise 11
+## Exercise 12
 
 Now that you are familiar with the two-way anova you should attempt the three-way anova based on the data that we prepared in the previous session.
