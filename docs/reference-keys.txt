@@ -44,5 +44,9 @@ learning-objectives-4
 working-with-the-file
 exercise-10-1
 session8
+learning-objectives-5
 continuing-with-the-exercise-10-and-two-way-anova
 exercise-11
+session9
+learning-objectives-6
+restructuring-data

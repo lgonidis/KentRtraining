@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="session7.html"/>
-
+<link rel="next" href="session9.html"/>
 <script src="libs/header-attrs-2.4/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -197,8 +197,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="8" data-path="session8.html"><a href="session8.html"><i class="fa fa-check"></i><b>8</b> Bringing Everything Together. Part II</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="session8.html"><a href="session8.html#continuing-with-the-exercise-10-and-two-way-anova"><i class="fa fa-check"></i><b>8.1</b> Continuing with the exercise 10 and two-way ANOVA</a></li>
-<li class="chapter" data-level="8.2" data-path="session8.html"><a href="session8.html#exercise-11"><i class="fa fa-check"></i><b>8.2</b> Exercise 11</a></li>
+<li class="chapter" data-level="8.1" data-path="session8.html"><a href="session8.html#learning-objectives-5"><i class="fa fa-check"></i><b>8.1</b> Learning Objectives</a></li>
+<li class="chapter" data-level="8.2" data-path="session8.html"><a href="session8.html#continuing-with-the-exercise-10-and-two-way-anova"><i class="fa fa-check"></i><b>8.2</b> Continuing with the exercise 10 and two-way ANOVA</a></li>
+<li class="chapter" data-level="8.3" data-path="session8.html"><a href="session8.html#exercise-11"><i class="fa fa-check"></i><b>8.3</b> Exercise 11</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="session9.html"><a href="session9.html"><i class="fa fa-check"></i><b>9</b> Restructuring and Merging Data.</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="session9.html"><a href="session9.html#learning-objectives-6"><i class="fa fa-check"></i><b>9.1</b> Learning Objectives</a></li>
+<li class="chapter" data-level="9.2" data-path="session9.html"><a href="session9.html#restructuring-data"><i class="fa fa-check"></i><b>9.2</b> Restructuring Data</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -222,8 +228,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="session8" class="section level1" number="8">
 <h1><span class="header-section-number">Session 8</span> Bringing Everything Together. Part II</h1>
-<div id="continuing-with-the-exercise-10-and-two-way-anova" class="section level2" number="8.1">
-<h2><span class="header-section-number">8.1</span> Continuing with the exercise 10 and two-way ANOVA</h2>
+<div id="learning-objectives-5" class="section level2" number="8.1">
+<h2><span class="header-section-number">8.1</span> Learning Objectives</h2>
+<p>We will learn how to carry out a two-way mixed anova and produce useful descriptives and plots.</p>
+</div>
+<div id="continuing-with-the-exercise-10-and-two-way-anova" class="section level2" number="8.2">
+<h2><span class="header-section-number">8.2</span> Continuing with the exercise 10 and two-way ANOVA</h2>
 <p>Our dataframe should be all ready now. You might want to save it to a datafile.</p>
 <p>We will be going through a number of steps to check ANOVA assumptions and follow-up with any necessary post-hoc analysis. As we do that we will also be generating some graphs which will give us the opportunity to discuss <strong>ggplot2</strong> and an extension of it called <strong>ggpubr</strong>. Our main package for the anova will be the <strong>rstatix</strong> package.</p>
 <p>First, let’s check that you completed <strong>exercise 10</strong>.</p>
@@ -325,11 +335,15 @@ We have to follow up the interaction.</p>
 <span id="cb63-16"><a href="session8.html#cb63-16"></a>                  <span class="dt">add =</span> <span class="st">&quot;mean_se&quot;</span>, <span class="dt">add.params =</span> <span class="kw">list</span>(<span class="dt">color =</span> <span class="st">&quot;black&quot;</span>), </span>
 <span id="cb63-17"><a href="session8.html#cb63-17"></a>                  <span class="dt">label =</span> <span class="ot">TRUE</span>,</span>
 <span id="cb63-18"><a href="session8.html#cb63-18"></a>                  <span class="dt">lab.vjust =</span> <span class="dv">-2</span>, <span class="dt">lab.nb.digits =</span> <span class="dv">2</span>)</span>
-<span id="cb63-19"><a href="session8.html#cb63-19"></a>box2</span></code></pre></div>
+<span id="cb63-19"><a href="session8.html#cb63-19"></a>box2</span>
+<span id="cb63-20"><a href="session8.html#cb63-20"></a></span>
+<span id="cb63-21"><a href="session8.html#cb63-21"></a><span class="co">## Let us also save our final stroop2 dataframe</span></span>
+<span id="cb63-22"><a href="session8.html#cb63-22"></a></span>
+<span id="cb63-23"><a href="session8.html#cb63-23"></a><span class="kw">write_csv</span>(stroop2, <span class="st">&quot;stroopfinal.csv&quot;</span>)</span></code></pre></div>
 <p>As mentioned earlier <strong>ggpubr</strong> is a package that calls <strong>ggplot2</strong>. It is really versatile and can cover all our needs in terms of analysis and publications. However, ggplot2 offers many more features that you can try to explore on your own.</p>
 </div>
-<div id="exercise-11" class="section level2" number="8.2">
-<h2><span class="header-section-number">8.2</span> Exercise 11</h2>
+<div id="exercise-11" class="section level2" number="8.3">
+<h2><span class="header-section-number">8.3</span> Exercise 11</h2>
 <p>Now that you are familiar with the two-way anova you should attempt the three-way anova based on the data that we prepared in the previous session.</p>
 
 </div>
@@ -339,8 +353,8 @@ We have to follow up the interaction.</p>
           </div>
         </div>
       </div>
-<a href="session7.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="session7.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="session9.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

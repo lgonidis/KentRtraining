@@ -1,0 +1,23 @@
+# Restructuring and Merging Data. {#session9}  
+
+
+## Learning Objectives  
+In this session we will learn how to change from **wide** to **long** data and vice versa. We will also learn how to merge two different datasets and carry out a correlation analysis.  
+
+## Restructuring Data
+
+As we have seen so far we have been working with datasets in **long** format. Meaning we have different columns to denote our variables and our dependent variable only in one column. However, there will be cases where we will need to use what is called a **wide** format where we will need to have measures across different columns.  
+For example, in the previous stroop paradigm we may want to have one column for the **salient** reaction times and one column for the **neutral* reaction times. One reason why we may need this is because we may want to calculate a new variable that will be the difference between the two variables. That way we will end up having one row per participant which will make our dataset ideal for merging with another dataset that contains questionnaires responses. Our goal for this session will be to merge experimental and survey data in one file and carry out correlational analysis.
+
+For restructuring our data we will be using **pivot_wider()** and **pivot_longer()**. Both are part of tidyverse and specifically **tidyr**. They are new implementations and will probably replace **spread()** and **gather()**. Most tutorials on the web use spread and gather. We will use both the new and old approach.
+
+Let us continue our work from the previous session and work with the file "stroopfinal".
+
+```{r eval=FALSE}
+library(tidyverse)
+
+dflong <- read_csv("stroopfinal.csv")
+
+```
+
+

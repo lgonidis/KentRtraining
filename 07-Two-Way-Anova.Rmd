@@ -1,5 +1,9 @@
 # Bringing Everything Together. Part II {#session8}  
 
+## Learning Objectives  
+We will learn how to carry out a two-way mixed anova and produce useful descriptives and plots.
+
+
 ## Continuing with the exercise 10 and two-way ANOVA
 
 Our dataframe should be all ready now. You might want to save it to a datafile.
@@ -151,7 +155,9 @@ box2 <- ggbarplot(stroop2, x = "group", y = "RT", width = 0.5,
                   lab.vjust = -2, lab.nb.digits = 2)
 box2
 
+## Let us also save our final stroop2 dataframe
 
+write_csv(stroop2, "stroopfinal.csv")
 ```
 
 As mentioned earlier **ggpubr** is a package that calls **ggplot2**. It is really versatile and can cover all our needs in terms of analysis and publications. However, ggplot2 offers many more features that you can try to explore on your own.
