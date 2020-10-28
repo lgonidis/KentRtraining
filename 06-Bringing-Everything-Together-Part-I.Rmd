@@ -127,14 +127,14 @@ mutate(across(c(group , session, meditation, gender, group), as.factor))
 
 As you work more with tidyverse you can decide on the style and approach that suites you most. For the purposes of this training we will stick to the first approach so you can work out the steps that you followed.
 
-Our variables should fine for now. Looking at the image provided, we want participant, meditation, and session to be the first three variables. Group seems to have been dropped. We will move **meditation** and **group** at the end of the dataframe  
+Our variables should fine for now. Looking at the image provided, we want participant, meditation, and session to be the first three variables. Group seems to have been dropped. We will move **meditation** after participant and **group** at the end of the dataframe  
 
 ```{r eval=FALSE}
 
 ## we will continue working on the dataframe exp2
 ## relocating meditation and group
 exp2 <- exp2 %>% 
-  relocate(meditation, .after = last_col()) %>% 
+  relocate(meditation, .after = participant) %>% 
   relocate(group, .after = last_col())
 ```
 
@@ -177,11 +177,11 @@ We now have to deal with the fact that our DV is just trial responses. We want t
 ## and then we will calculate the mean of the responses
 ## these mean values will be assigned to the the new variable called ration
 ## do not forget to ungroup at the end of your grouping work
-## we carried the variable meditation forward for your upcoming exercise
+## we carried the variable session forward for your upcoming exercise
 ## we will drop it from the grouping as we do not need it for this
 ## three-way anova
 exp3 <- exp2 %>% 
-  group_by(participant, session, salience, durationms) %>% 
+  group_by(participant, meditation, salience, durationms) %>% 
   summarise(ratio = mean(responsenum)) %>% 
   ungroup()
 
@@ -191,8 +191,17 @@ exp3 <- exp2 %>%
 ```
 
 Let's do a final check on variable types and correct any discrepancies.
-This is also a good point to take a short break.
+This is also a good point to take a short break before we continue with the exrcise.
 
 
+## Exercise 10  
+Load the datafile **stroopy stroop.csv** and assign it to a dataframe called **stroop**. This contains the data from a Stroop experiment and you should go through the process of preparing it for a two-way ANOVA. You should complete the following steps, which are not given necessarily in the correct order.  
 
+1. Create a **group** variable by recoding the **participant** variable. Participants with value below 2000 should be in the **control** group. Participants with value above 2000 should be in the **gambling** group.  
+2. Create a variable that will denote the type of stimulus (call it **salience**). This information is included in the **Image** variable. If an image starts with **G** then it is a **gambling** image, if it starts with **N** then it is a **neutral** image.  
+3. Keep only the correct responses, this information is in the  **stroop_resp.corr** variable. Correct responses are recorded with **1**.  
+4. Discard the first two trials per participant. This information is in the **stroop_trials.thisTrialN** variable.  
+5. Keep only the responses with a reaction time between 300 and 3000ms. This information is in the **stroop_resp.rt** (which is in seconds though).  
+6. A variable with response times in ms would make more sense. Call it **RT**.  
+7. Aggregate your **RT** by **participant**, **group**, and **salience**.  
 

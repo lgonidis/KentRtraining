@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Session 8 Bringing Everything Together. Part II | Kent R training</title>
+  <meta name="description" content="This is a work in progress" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Session 8 Bringing Everything Together. Part II | Kent R training" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a work in progress" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Session 8 Bringing Everything Together. Part II | Kent R training" />
+  
+  <meta name="twitter:description" content="This is a work in progress" />
+  
+
+<meta name="author" content="Lazaros Gonidis" />
+
+
+<meta name="date" content="2020-10-28" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="session7.html"/>
+
+<script src="libs/header-attrs-2.4/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Kent R training</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prelude</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#a-few-words"><i class="fa fa-check"></i><b>1.1</b> A few words…</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#a-comment-on-the-book-structure"><i class="fa fa-check"></i><b>1.2</b> A comment on the book structure</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>2</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="introduction.html"><a href="introduction.html#learning-objectives"><i class="fa fa-check"></i><b>2.1</b> Learning Objectives</a></li>
+<li class="chapter" data-level="2.2" data-path="introduction.html"><a href="introduction.html#getting-things-ready"><i class="fa fa-check"></i><b>2.2</b> Getting Things Ready</a></li>
+<li class="chapter" data-level="2.3" data-path="introduction.html"><a href="introduction.html#starting-with-rstudio"><i class="fa fa-check"></i><b>2.3</b> Starting with RStudio</a></li>
+<li class="chapter" data-level="2.4" data-path="introduction.html"><a href="introduction.html#console"><i class="fa fa-check"></i><b>2.4</b> Console</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="introduction.html"><a href="introduction.html#exercise-1"><i class="fa fa-check"></i><b>2.4.1</b> Exercise 1</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="introduction.html"><a href="introduction.html#environment"><i class="fa fa-check"></i><b>2.5</b> Environment</a></li>
+<li class="chapter" data-level="2.6" data-path="introduction.html"><a href="introduction.html#files"><i class="fa fa-check"></i><b>2.6</b> Files</a></li>
+<li class="chapter" data-level="2.7" data-path="introduction.html"><a href="introduction.html#scripts"><i class="fa fa-check"></i><b>2.7</b> Scripts</a></li>
+<li class="chapter" data-level="2.8" data-path="introduction.html"><a href="introduction.html#exercise-2"><i class="fa fa-check"></i><b>2.8</b> Exercise 2</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="session2.html"><a href="session2.html"><i class="fa fa-check"></i><b>3</b> Using Vectors and Functions</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="session2.html"><a href="session2.html#learning-objectives-1"><i class="fa fa-check"></i><b>3.1</b> Learning Objectives</a></li>
+<li class="chapter" data-level="3.2" data-path="session2.html"><a href="session2.html#vectors"><i class="fa fa-check"></i><b>3.2</b> Vectors</a></li>
+<li class="chapter" data-level="3.3" data-path="session2.html"><a href="session2.html#creating-vectors-with-random-numbers"><i class="fa fa-check"></i><b>3.3</b> Creating vectors with random numbers</a></li>
+<li class="chapter" data-level="3.4" data-path="session2.html"><a href="session2.html#frequency-tables-in-r-and-histograms"><i class="fa fa-check"></i><b>3.4</b> Frequency tables in R and Histograms</a></li>
+<li class="chapter" data-level="3.5" data-path="session2.html"><a href="session2.html#exercise-3"><i class="fa fa-check"></i><b>3.5</b> Exercise 3</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="session3.html"><a href="session3.html"><i class="fa fa-check"></i><b>4</b> Packages</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="session3.html"><a href="session3.html#what-we-have-learnt-so-far"><i class="fa fa-check"></i><b>4.1</b> What we have learnt so far</a></li>
+<li class="chapter" data-level="4.2" data-path="session3.html"><a href="session3.html#learning-objectives-2"><i class="fa fa-check"></i><b>4.2</b> Learning objectives</a></li>
+<li class="chapter" data-level="4.3" data-path="session3.html"><a href="session3.html#lets-get-started"><i class="fa fa-check"></i><b>4.3</b> Let’s get started</a></li>
+<li class="chapter" data-level="4.4" data-path="session3.html"><a href="session3.html#measures-of-central-tendency"><i class="fa fa-check"></i><b>4.4</b> Measures of Central Tendency</a></li>
+<li class="chapter" data-level="4.5" data-path="session3.html"><a href="session3.html#adding-a-new-package"><i class="fa fa-check"></i><b>4.5</b> Adding a new package</a></li>
+<li class="chapter" data-level="4.6" data-path="session3.html"><a href="session3.html#to-sum-up"><i class="fa fa-check"></i><b>4.6</b> To sum up</a></li>
+<li class="chapter" data-level="4.7" data-path="session3.html"><a href="session3.html#additional-exercises-spoiler-alert-if-you-get-stuck-the-answers-are-at-the-end-of-the-pdf"><i class="fa fa-check"></i><b>4.7</b> Additional Exercises (spoiler alert: if you get stuck the answers are at the end of the pdf)</a></li>
+<li class="chapter" data-level="4.8" data-path="session3.html"><a href="session3.html#solutions-spoiler-alert"><i class="fa fa-check"></i><b>4.8</b> Solutions: SPOILER ALERT</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="session4.html"><a href="session4.html"><i class="fa fa-check"></i><b>5</b> Tidyverse 1</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="session4.html"><a href="session4.html#thinking-ahead"><i class="fa fa-check"></i><b>5.1</b> Thinking ahead</a></li>
+<li class="chapter" data-level="5.2" data-path="session4.html"><a href="session4.html#learning-objectives-3"><i class="fa fa-check"></i><b>5.2</b> Learning objectives</a></li>
+<li class="chapter" data-level="5.3" data-path="session4.html"><a href="session4.html#our-first-data-file"><i class="fa fa-check"></i><b>5.3</b> Our first data file</a></li>
+<li class="chapter" data-level="5.4" data-path="session4.html"><a href="session4.html#correcting-variable-types"><i class="fa fa-check"></i><b>5.4</b> Correcting Variable Types</a></li>
+<li class="chapter" data-level="5.5" data-path="session4.html"><a href="session4.html#recoding"><i class="fa fa-check"></i><b>5.5</b> Recoding</a></li>
+<li class="chapter" data-level="5.6" data-path="session4.html"><a href="session4.html#exercise-9"><i class="fa fa-check"></i><b>5.6</b> Exercise 9</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="session5.html"><a href="session5.html"><i class="fa fa-check"></i><b>6</b> Tidyverse 2</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="session5.html"><a href="session5.html#reflecting-on-the-last-session"><i class="fa fa-check"></i><b>6.1</b> Reflecting on the last session</a></li>
+<li class="chapter" data-level="6.2" data-path="session5.html"><a href="session5.html#pipe-operator"><i class="fa fa-check"></i><b>6.2</b> Pipe Operator %&lt;%</a></li>
+<li class="chapter" data-level="6.3" data-path="session5.html"><a href="session5.html#exercise-10"><i class="fa fa-check"></i><b>6.3</b> Exercise 10</a></li>
+<li class="chapter" data-level="6.4" data-path="session5.html"><a href="session5.html#grouping-spliting-and-summarizing-variables-across-out-data-frame"><i class="fa fa-check"></i><b>6.4</b> Grouping, spliting, and summarizing variables across out data frame</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="session7.html"><a href="session7.html"><i class="fa fa-check"></i><b>7</b> Bringing Everything Together. Part I</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="session7.html"><a href="session7.html#reflecting-on-day-1"><i class="fa fa-check"></i><b>7.1</b> Reflecting on Day 1</a></li>
+<li class="chapter" data-level="7.2" data-path="session7.html"><a href="session7.html#learning-objectives-4"><i class="fa fa-check"></i><b>7.2</b> Learning Objectives</a></li>
+<li class="chapter" data-level="7.3" data-path="session7.html"><a href="session7.html#working-with-the-file"><i class="fa fa-check"></i><b>7.3</b> Working with the file</a></li>
+<li class="chapter" data-level="7.4" data-path="session7.html"><a href="session7.html#exercise-10-1"><i class="fa fa-check"></i><b>7.4</b> Exercise 10</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="session8.html"><a href="session8.html"><i class="fa fa-check"></i><b>8</b> Bringing Everything Together. Part II</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="session8.html"><a href="session8.html#continuing-with-the-exercise-10-and-two-way-anova"><i class="fa fa-check"></i><b>8.1</b> Continuing with the exercise 10 and two-way ANOVA</a></li>
+<li class="chapter" data-level="8.2" data-path="session8.html"><a href="session8.html#exercise-11"><i class="fa fa-check"></i><b>8.2</b> Exercise 11</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Kent R training</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="session8" class="section level1" number="8">
+<h1><span class="header-section-number">Session 8</span> Bringing Everything Together. Part II</h1>
+<div id="continuing-with-the-exercise-10-and-two-way-anova" class="section level2" number="8.1">
+<h2><span class="header-section-number">8.1</span> Continuing with the exercise 10 and two-way ANOVA</h2>
+<p>Our dataframe should be all ready now. You might want to save it to a datafile.</p>
+<p>We will be going through a number of steps to check ANOVA assumptions and follow-up with any necessary post-hoc analysis. As we do that we will also be generating some graphs which will give us the opportunity to discuss <strong>ggplot2</strong> and an extension of it called <strong>ggpubr</strong>. Our main package for the anova will be the <strong>rstatix</strong> package.</p>
+<p>First, let’s check that you completed <strong>exercise 10</strong>.</p>
+<p>We will now start working on our two-way analysis of variance. First we will load the necessary libraries and convert our IVs into factors.</p>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="session8.html#cb59-1"></a><span class="kw">library</span>(tidyverse)</span>
+<span id="cb59-2"><a href="session8.html#cb59-2"></a><span class="kw">library</span>(ggpubr)</span>
+<span id="cb59-3"><a href="session8.html#cb59-3"></a><span class="kw">library</span>(rstatix)</span>
+<span id="cb59-4"><a href="session8.html#cb59-4"></a></span>
+<span id="cb59-5"><a href="session8.html#cb59-5"></a><span class="co">## make sure you have run the code above</span></span>
+<span id="cb59-6"><a href="session8.html#cb59-6"></a><span class="co">## converting group and salience to factors</span></span>
+<span id="cb59-7"><a href="session8.html#cb59-7"></a>stroop2 &lt;-<span class="st"> </span>stroop2 <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb59-8"><a href="session8.html#cb59-8"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">group =</span> <span class="kw">as.factor</span>(group),</span>
+<span id="cb59-9"><a href="session8.html#cb59-9"></a>         <span class="dt">salience =</span> <span class="kw">as.factor</span>(salience))</span>
+<span id="cb59-10"><a href="session8.html#cb59-10"></a></span>
+<span id="cb59-11"><a href="session8.html#cb59-11"></a><span class="co">## let&#39;s inspect our RT visually</span></span>
+<span id="cb59-12"><a href="session8.html#cb59-12"></a><span class="kw">ggboxplot</span>(stroop2, <span class="dt">x =</span> <span class="st">&quot;salience&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;RT&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;group&quot;</span>)</span>
+<span id="cb59-13"><a href="session8.html#cb59-13"></a></span>
+<span id="cb59-14"><a href="session8.html#cb59-14"></a><span class="co">##perhaps it would be more meaningful to also see boxplots per group</span></span>
+<span id="cb59-15"><a href="session8.html#cb59-15"></a><span class="co">## we will also assign it to a variable so we can use it later</span></span>
+<span id="cb59-16"><a href="session8.html#cb59-16"></a>box1 &lt;-<span class="st"> </span><span class="kw">ggboxplot</span>(stroop2, <span class="dt">x =</span> <span class="st">&quot;group&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;RT&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;salience&quot;</span>)</span></code></pre></div>
+<p>We will now proceed with checks for outliers and anova assumptions. As this is a 2x2 some of the following checks are not meaningful but we will include them for reference.</p>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="session8.html#cb60-1"></a><span class="co">## check for outliers</span></span>
+<span id="cb60-2"><a href="session8.html#cb60-2"></a></span>
+<span id="cb60-3"><a href="session8.html#cb60-3"></a>stroop2 <span class="op">%&gt;%</span></span>
+<span id="cb60-4"><a href="session8.html#cb60-4"></a><span class="st">  </span><span class="kw">group_by</span>(salience, group) <span class="op">%&gt;%</span></span>
+<span id="cb60-5"><a href="session8.html#cb60-5"></a><span class="st">  </span><span class="kw">identify_outliers</span>(RT)</span>
+<span id="cb60-6"><a href="session8.html#cb60-6"></a></span>
+<span id="cb60-7"><a href="session8.html#cb60-7"></a><span class="co">## Normality check</span></span>
+<span id="cb60-8"><a href="session8.html#cb60-8"></a>stroop2 <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb60-9"><a href="session8.html#cb60-9"></a><span class="st">  </span><span class="kw">group_by</span>(salience, group) <span class="op">%&gt;%</span></span>
+<span id="cb60-10"><a href="session8.html#cb60-10"></a><span class="st">  </span><span class="kw">shapiro_test</span>(RT)</span>
+<span id="cb60-11"><a href="session8.html#cb60-11"></a></span>
+<span id="cb60-12"><a href="session8.html#cb60-12"></a><span class="co">## you may also want to check this visually</span></span>
+<span id="cb60-13"><a href="session8.html#cb60-13"></a><span class="co">## using a QQplot</span></span>
+<span id="cb60-14"><a href="session8.html#cb60-14"></a></span>
+<span id="cb60-15"><a href="session8.html#cb60-15"></a><span class="kw">ggqqplot</span>(stroop2, <span class="st">&quot;RT&quot;</span>, <span class="dt">ggtheme =</span> <span class="kw">theme_bw</span>()) <span class="op">+</span></span>
+<span id="cb60-16"><a href="session8.html#cb60-16"></a><span class="st">  </span><span class="kw">facet_grid</span>(group <span class="op">~</span><span class="st"> </span>salience)</span>
+<span id="cb60-17"><a href="session8.html#cb60-17"></a></span>
+<span id="cb60-18"><a href="session8.html#cb60-18"></a><span class="co">## Homogeneity of variance assumption</span></span>
+<span id="cb60-19"><a href="session8.html#cb60-19"></a>stroop2 <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb60-20"><a href="session8.html#cb60-20"></a><span class="st">  </span><span class="kw">group_by</span>(salience) <span class="op">%&gt;%</span></span>
+<span id="cb60-21"><a href="session8.html#cb60-21"></a><span class="st">  </span><span class="kw">levene_test</span>(RT <span class="op">~</span><span class="st"> </span>group)</span>
+<span id="cb60-22"><a href="session8.html#cb60-22"></a></span>
+<span id="cb60-23"><a href="session8.html#cb60-23"></a><span class="co">## the assumption of sphericity will be checked during anova</span></span></code></pre></div>
+<p>Assuming everything is in order we can proceed to carrying out the anova.</p>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="session8.html#cb61-1"></a><span class="co">## anova time</span></span>
+<span id="cb61-2"><a href="session8.html#cb61-2"></a><span class="co"># first describe the model</span></span>
+<span id="cb61-3"><a href="session8.html#cb61-3"></a>anova.model &lt;-<span class="st"> </span><span class="kw">anova_test</span>(</span>
+<span id="cb61-4"><a href="session8.html#cb61-4"></a>  <span class="dt">data =</span> stroop2, </span>
+<span id="cb61-5"><a href="session8.html#cb61-5"></a>  <span class="dt">dv =</span> RT, </span>
+<span id="cb61-6"><a href="session8.html#cb61-6"></a>  <span class="dt">wid =</span> participant,  <span class="co">## this is our participant id variable</span></span>
+<span id="cb61-7"><a href="session8.html#cb61-7"></a>  <span class="dt">between =</span> group, </span>
+<span id="cb61-8"><a href="session8.html#cb61-8"></a>  <span class="dt">within =</span> salience</span>
+<span id="cb61-9"><a href="session8.html#cb61-9"></a>)</span>
+<span id="cb61-10"><a href="session8.html#cb61-10"></a></span>
+<span id="cb61-11"><a href="session8.html#cb61-11"></a><span class="co"># then get the anova table</span></span>
+<span id="cb61-12"><a href="session8.html#cb61-12"></a><span class="kw">get_anova_table</span>(anova.model)</span></code></pre></div>
+<p>As we can see we have a significant interaction as well as a main effect.
+We have to follow up the interaction.</p>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="session8.html#cb62-1"></a><span class="co">## First, We will need to regroup our data</span></span>
+<span id="cb62-2"><a href="session8.html#cb62-2"></a></span>
+<span id="cb62-3"><a href="session8.html#cb62-3"></a>simple.model &lt;-<span class="st"> </span>stroop2 <span class="op">%&gt;%</span></span>
+<span id="cb62-4"><a href="session8.html#cb62-4"></a><span class="st">  </span><span class="kw">group_by</span>(group) <span class="op">%&gt;%</span></span>
+<span id="cb62-5"><a href="session8.html#cb62-5"></a><span class="st">  </span><span class="kw">anova_test</span>(<span class="dt">dv =</span> RT, <span class="dt">wid =</span> participant, <span class="dt">within =</span>  salience) <span class="op">%&gt;%</span></span>
+<span id="cb62-6"><a href="session8.html#cb62-6"></a><span class="st">  </span><span class="kw">get_anova_table</span>() <span class="op">%&gt;%</span></span>
+<span id="cb62-7"><a href="session8.html#cb62-7"></a><span class="st">  </span><span class="kw">adjust_pvalue</span>(<span class="dt">method =</span> <span class="st">&quot;bonferroni&quot;</span>)</span>
+<span id="cb62-8"><a href="session8.html#cb62-8"></a></span>
+<span id="cb62-9"><a href="session8.html#cb62-9"></a>simple.model</span>
+<span id="cb62-10"><a href="session8.html#cb62-10"></a></span>
+<span id="cb62-11"><a href="session8.html#cb62-11"></a></span>
+<span id="cb62-12"><a href="session8.html#cb62-12"></a><span class="co">## or we could run pairwise comparisons</span></span>
+<span id="cb62-13"><a href="session8.html#cb62-13"></a>pair.model &lt;-<span class="st"> </span>stroop2 <span class="op">%&gt;%</span></span>
+<span id="cb62-14"><a href="session8.html#cb62-14"></a><span class="st">  </span><span class="kw">group_by</span>(salience) <span class="op">%&gt;%</span></span>
+<span id="cb62-15"><a href="session8.html#cb62-15"></a><span class="st">  </span><span class="kw">pairwise_t_test</span>(RT <span class="op">~</span><span class="st"> </span>group, <span class="dt">p.adjust.method =</span> <span class="st">&quot;bonferroni&quot;</span>)</span>
+<span id="cb62-16"><a href="session8.html#cb62-16"></a></span>
+<span id="cb62-17"><a href="session8.html#cb62-17"></a>pair.model</span>
+<span id="cb62-18"><a href="session8.html#cb62-18"></a></span>
+<span id="cb62-19"><a href="session8.html#cb62-19"></a></span>
+<span id="cb62-20"><a href="session8.html#cb62-20"></a><span class="co">## it would also be useful to report means and sd</span></span>
+<span id="cb62-21"><a href="session8.html#cb62-21"></a>stroop2 <span class="op">%&gt;%</span></span>
+<span id="cb62-22"><a href="session8.html#cb62-22"></a><span class="st">  </span><span class="kw">group_by</span>(salience, group) <span class="op">%&gt;%</span></span>
+<span id="cb62-23"><a href="session8.html#cb62-23"></a><span class="st">  </span><span class="kw">get_summary_stats</span>(RT, <span class="dt">type =</span> <span class="st">&quot;mean_sd&quot;</span>)</span></code></pre></div>
+<p>From here we can also generate plots if we want to as we already all the necessary stats figures.</p>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="session8.html#cb63-1"></a>pair.model &lt;-<span class="st"> </span>pair.model <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">add_xy_position</span>(<span class="dt">x =</span> <span class="st">&quot;salience&quot;</span>)</span>
+<span id="cb63-2"><a href="session8.html#cb63-2"></a></span>
+<span id="cb63-3"><a href="session8.html#cb63-3"></a></span>
+<span id="cb63-4"><a href="session8.html#cb63-4"></a>box1 <span class="op">+</span><span class="st"> </span></span>
+<span id="cb63-5"><a href="session8.html#cb63-5"></a><span class="st">  </span><span class="kw">stat_pvalue_manual</span>(pair.model, <span class="dt">tip.length =</span> <span class="dv">0</span>, <span class="dt">hide.ns =</span> <span class="ot">TRUE</span>) <span class="op">+</span></span>
+<span id="cb63-6"><a href="session8.html#cb63-6"></a><span class="st">  </span><span class="kw">labs</span>(</span>
+<span id="cb63-7"><a href="session8.html#cb63-7"></a>    <span class="dt">subtitle =</span> <span class="kw">get_test_label</span>(anova.model, <span class="dt">detailed =</span> <span class="ot">TRUE</span>),</span>
+<span id="cb63-8"><a href="session8.html#cb63-8"></a>    <span class="dt">caption =</span> <span class="kw">get_pwc_label</span>(pair.model)</span>
+<span id="cb63-9"><a href="session8.html#cb63-9"></a>  )</span>
+<span id="cb63-10"><a href="session8.html#cb63-10"></a></span>
+<span id="cb63-11"><a href="session8.html#cb63-11"></a><span class="co">## or with a barchart</span></span>
+<span id="cb63-12"><a href="session8.html#cb63-12"></a>box2 &lt;-<span class="st"> </span><span class="kw">ggbarplot</span>(stroop2, <span class="dt">x =</span> <span class="st">&quot;group&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;RT&quot;</span>, <span class="dt">width =</span> <span class="fl">0.5</span>,</span>
+<span id="cb63-13"><a href="session8.html#cb63-13"></a>                  <span class="dt">color =</span> <span class="st">&quot;salience&quot;</span>,</span>
+<span id="cb63-14"><a href="session8.html#cb63-14"></a>                  <span class="dt">fill =</span> <span class="st">&quot;salience&quot;</span>,</span>
+<span id="cb63-15"><a href="session8.html#cb63-15"></a>                  <span class="dt">position =</span> <span class="kw">position_dodge</span>(<span class="fl">0.5</span>),</span>
+<span id="cb63-16"><a href="session8.html#cb63-16"></a>                  <span class="dt">add =</span> <span class="st">&quot;mean_se&quot;</span>, <span class="dt">add.params =</span> <span class="kw">list</span>(<span class="dt">color =</span> <span class="st">&quot;black&quot;</span>), </span>
+<span id="cb63-17"><a href="session8.html#cb63-17"></a>                  <span class="dt">label =</span> <span class="ot">TRUE</span>,</span>
+<span id="cb63-18"><a href="session8.html#cb63-18"></a>                  <span class="dt">lab.vjust =</span> <span class="dv">-2</span>, <span class="dt">lab.nb.digits =</span> <span class="dv">2</span>)</span>
+<span id="cb63-19"><a href="session8.html#cb63-19"></a>box2</span></code></pre></div>
+<p>As mentioned earlier <strong>ggpubr</strong> is a package that calls <strong>ggplot2</strong>. It is really versatile and can cover all our needs in terms of analysis and publications. However, ggplot2 offers many more features that you can try to explore on your own.</p>
+</div>
+<div id="exercise-11" class="section level2" number="8.2">
+<h2><span class="header-section-number">8.2</span> Exercise 11</h2>
+<p>Now that you are familiar with the two-way anova you should attempt the three-way anova based on the data that we prepared in the previous session.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="session7.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["Kent R training.pdf", "Kent R training.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

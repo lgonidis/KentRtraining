@@ -1,0 +1,161 @@
+# Bringing Everything Together. Part II {#session8}  
+
+## Continuing with the exercise 10 and two-way ANOVA
+
+Our dataframe should be all ready now. You might want to save it to a datafile.
+
+We will be going through a number of steps to check ANOVA assumptions and follow-up with any necessary post-hoc analysis. As we do that we will also be generating some graphs which will give us the opportunity to discuss **ggplot2** and an extension of it called **ggpubr**. Our main package for the anova will be the **rstatix** package.
+
+First, let's check that you completed **exercise 10**. 
+
+```{r eval=FALSE, include=FALSE}
+library(tidyverse)
+
+stroop <- read_csv("stroopy stroop.csv")
+stroop <- stroop %>% 
+  mutate(RT = stroop_resp.rt*1000,
+        group = case_when(
+        participant < 2000 ~ "control",
+        participant >= 2000 ~ "gambling"),
+        salience = case_when(
+          str_sub(Image,1,1) == 'G'~"Gambling",
+          str_sub(Image,1,1) == 'N'~"Neutral")) %>% 
+  filter(stroop_resp.rt > 0.3 & stroop_resp.rt < 3.0 
+         & stroop_trials.thisTrialN > 2)
+  
+stroop2 <- stroop %>% 
+  group_by(participant, group, salience) %>% 
+  summarise(RT = mean(RT)) %>% 
+  ungroup() 
+```
+
+We will now start working on our two-way analysis of variance. First we will load the necessary libraries and convert our IVs into factors.
+
+```{r two-way-anova, eval=FALSE}
+library(tidyverse)
+library(ggpubr)
+library(rstatix)
+
+## make sure you have run the code above
+## converting group and salience to factors
+stroop2 <- stroop2 %>% 
+  mutate(group = as.factor(group),
+         salience = as.factor(salience))
+
+## let's inspect our RT visually
+ggboxplot(stroop2, x = "salience", y = "RT", color = "group")
+
+##perhaps it would be more meaningful to also see boxplots per group
+## we will also assign it to a variable so we can use it later
+box1 <- ggboxplot(stroop2, x = "group", y = "RT", color = "salience")
+
+```
+
+
+We will now proceed with checks for outliers and anova assumptions. As this is a 2x2 some of the following checks are not meaningful but we will include them for reference.
+
+```{r eval=FALSE}
+## check for outliers
+
+stroop2 %>%
+  group_by(salience, group) %>%
+  identify_outliers(RT)
+
+## Normality check
+stroop2 %>% 
+  group_by(salience, group) %>%
+  shapiro_test(RT)
+
+## you may also want to check this visually
+## using a QQplot
+
+ggqqplot(stroop2, "RT", ggtheme = theme_bw()) +
+  facet_grid(group ~ salience)
+
+## Homogeneity of variance assumption
+stroop2 %>% 
+  group_by(salience) %>%
+  levene_test(RT ~ group)
+
+## the assumption of sphericity will be checked during anova
+
+```
+
+Assuming everything is in order we can proceed to carrying out the anova.
+
+```{r eval=FALSE}
+## anova time
+# first describe the model
+anova.model <- anova_test(
+  data = stroop2, 
+  dv = RT, 
+  wid = participant,  ## this is our participant id variable
+  between = group, 
+  within = salience
+)
+
+# then get the anova table
+get_anova_table(anova.model)
+
+```
+
+As we can see we have a significant interaction as well as a main effect.
+We have to follow up the interaction. 
+
+```{r eval=FALSE}
+## First, We will need to regroup our data
+
+simple.model <- stroop2 %>%
+  group_by(group) %>%
+  anova_test(dv = RT, wid = participant, within =  salience) %>%
+  get_anova_table() %>%
+  adjust_pvalue(method = "bonferroni")
+
+simple.model
+
+
+## or we could run pairwise comparisons
+pair.model <- stroop2 %>%
+  group_by(salience) %>%
+  pairwise_t_test(RT ~ group, p.adjust.method = "bonferroni")
+
+pair.model
+
+
+## it would also be useful to report means and sd
+stroop2 %>%
+  group_by(salience, group) %>%
+  get_summary_stats(RT, type = "mean_sd")
+```
+
+From here we can also generate plots if we want to as we already all the necessary stats figures.
+
+```{r eval = FALSE}
+pair.model <- pair.model %>% add_xy_position(x = "salience")
+
+
+box1 + 
+  stat_pvalue_manual(pair.model, tip.length = 0, hide.ns = TRUE) +
+  labs(
+    subtitle = get_test_label(anova.model, detailed = TRUE),
+    caption = get_pwc_label(pair.model)
+  )
+
+## or with a barchart
+box2 <- ggbarplot(stroop2, x = "group", y = "RT", width = 0.5,
+                  color = "salience",
+                  fill = "salience",
+                  position = position_dodge(0.5),
+                  add = "mean_se", add.params = list(color = "black"), 
+                  label = TRUE,
+                  lab.vjust = -2, lab.nb.digits = 2)
+box2
+
+
+```
+
+As mentioned earlier **ggpubr** is a package that calls **ggplot2**. It is really versatile and can cover all our needs in terms of analysis and publications. However, ggplot2 offers many more features that you can try to explore on your own.
+
+## Exercise 11
+
+Now that you are familiar with the two-way anova you should attempt the three-way anova based on the data that we prepared in the previous session.

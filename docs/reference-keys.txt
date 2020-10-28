@@ -42,3 +42,7 @@ session7
 reflecting-on-day-1
 learning-objectives-4
 working-with-the-file
+exercise-10-1
+session8
+continuing-with-the-exercise-10-and-two-way-anova
+exercise-11

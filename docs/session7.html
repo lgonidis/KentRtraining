@@ -24,7 +24,7 @@
 <meta name="author" content="Lazaros Gonidis" />
 
 
-<meta name="date" content="2020-10-27" />
+<meta name="date" content="2020-10-28" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="session5.html"/>
-
+<link rel="next" href="session8.html"/>
 <script src="libs/header-attrs-2.4/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -193,6 +193,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.1" data-path="session7.html"><a href="session7.html#reflecting-on-day-1"><i class="fa fa-check"></i><b>7.1</b> Reflecting on Day 1</a></li>
 <li class="chapter" data-level="7.2" data-path="session7.html"><a href="session7.html#learning-objectives-4"><i class="fa fa-check"></i><b>7.2</b> Learning Objectives</a></li>
 <li class="chapter" data-level="7.3" data-path="session7.html"><a href="session7.html#working-with-the-file"><i class="fa fa-check"></i><b>7.3</b> Working with the file</a></li>
+<li class="chapter" data-level="7.4" data-path="session7.html"><a href="session7.html#exercise-10-1"><i class="fa fa-check"></i><b>7.4</b> Exercise 10</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="session8.html"><a href="session8.html"><i class="fa fa-check"></i><b>8</b> Bringing Everything Together. Part II</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="session8.html"><a href="session8.html#continuing-with-the-exercise-10-and-two-way-anova"><i class="fa fa-check"></i><b>8.1</b> Continuing with the exercise 10 and two-way ANOVA</a></li>
+<li class="chapter" data-level="8.2" data-path="session8.html"><a href="session8.html#exercise-11"><i class="fa fa-check"></i><b>8.2</b> Exercise 11</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -240,10 +246,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ol>
 <p><strong>A few words on the design</strong></p>
 <p>For the above, we can say that <strong>participant</strong>, <strong>group</strong>, <strong>meditation</strong>, are between-subjects variables. Whereas, <strong>session</strong>, <strong>image</strong>, <strong>duration</strong>, are within-subjects variables.<br />
-Our ultimate aim here is to carry out a four-way ANOVA with <strong>meditation</strong>, <strong>session</strong>, <strong>image</strong>, and <strong>duration</strong> as our IVs and <strong>response</strong> as our DV. Traditionally, you would need to have your file in the <strong>wide</strong> format to carry our this analysis in SPSS, where you would employ <em>repeated measures</em> and then declare your <em>between-subjects</em> variables.<br />
+Our ultimate aim here is to carry out a three-way ANOVA with <strong>session</strong>, <strong>image</strong>, and <strong>duration</strong> as our IVs and <strong>response</strong> as our DV. Traditionally, you would need to have your file in the <strong>wide</strong> format to carry our this analysis in SPSS, where you would employ <em>repeated measures</em> and then declare your <em>between-subjects</em> variables.<br />
 R operates in a different way, we have to have our dataset in the <strong>long</strong> format where our measurement in only in one column. We have to keep that in mind while we are working through the dataset.</p>
 <p>Our dataset should look like this just before our analysis:
-<img src="docs/4wANOVA.PNG" alt="description" /></p>
+<img src="docs/3wANOVA.PNG" alt="description" /></p>
 <p><strong>Steps to take</strong></p>
 <ol style="list-style-type: decimal">
 <li>We are keeping variables <strong>participant</strong>, <strong>meditation</strong>, and <strong>session</strong>. Although we changed their location in the dataset (we will use the function <strong>relocate()</strong>).<br />
@@ -277,7 +283,7 @@ R operates in a different way, we have to have our dataset in the <strong>long</
 </div>
 <div id="working-with-the-file" class="section level2" number="7.3">
 <h2><span class="header-section-number">7.3</span> Working with the file</h2>
-<p>At this point it is best to start a new project and call it <strong>Day 2</strong>. Once you have that up and running then create our first script for the day, I suggest naming it <strong>4wANOVA</strong>.</p>
+<p>At this point it is best to start a new project and call it <strong>Day 2</strong>. Once you have that up and running then create our first script for the day, I suggest naming it <strong>3wANOVA</strong>.</p>
 <p>Let us start by loading the data file and checking that our variables are of the correct type.</p>
 <div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="session7.html#cb52-1"></a><span class="kw">library</span>(tidyverse)</span>
 <span id="cb52-2"><a href="session7.html#cb52-2"></a><span class="kw">library</span>(rstatix)</span>
@@ -333,12 +339,68 @@ R operates in a different way, we have to have our dataset in the <strong>long</
 <span id="cb54-13"><a href="session7.html#cb54-13"></a>exp2 &lt;-<span class="st"> </span>exp <span class="op">%&gt;%</span><span class="st"> </span></span>
 <span id="cb54-14"><a href="session7.html#cb54-14"></a><span class="kw">mutate</span>(<span class="kw">across</span>(<span class="kw">c</span>(group , session, meditation, gender, group), as.factor))</span></code></pre></div>
 <p>As you work more with tidyverse you can decide on the style and approach that suites you most. For the purposes of this training we will stick to the first approach so you can work out the steps that you followed.</p>
-<p>Our variables should fine for now. Looking at the image provided, we want participant, meditation, and session to be the first three variables. Group seems to have been dropped. We will move <strong>meditation</strong> to the third column and <strong>group</strong> to the last one.</p>
+<p>Our variables should fine for now. Looking at the image provided, we want participant, meditation, and session to be the first three variables. Group seems to have been dropped. We will move <strong>meditation</strong> after participant and <strong>group</strong> at the end of the dataframe</p>
 <div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="session7.html#cb55-1"></a><span class="co">## we will continue working on the dataframe exp2</span></span>
 <span id="cb55-2"><a href="session7.html#cb55-2"></a><span class="co">## relocating meditation and group</span></span>
 <span id="cb55-3"><a href="session7.html#cb55-3"></a>exp2 &lt;-<span class="st"> </span>exp2 <span class="op">%&gt;%</span><span class="st"> </span></span>
 <span id="cb55-4"><a href="session7.html#cb55-4"></a><span class="st">  </span><span class="kw">relocate</span>(meditation, <span class="dt">.after =</span> participant) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb55-5"><a href="session7.html#cb55-5"></a><span class="st">  </span><span class="kw">relocated</span>(group, <span class="dt">.after =</span> <span class="kw">last_col</span>())</span></code></pre></div>
+<span id="cb55-5"><a href="session7.html#cb55-5"></a><span class="st">  </span><span class="kw">relocate</span>(group, <span class="dt">.after =</span> <span class="kw">last_col</span>())</span></code></pre></div>
+<p>We now want to create a new variable called <strong>salience</strong>. We know that the third character of the image filename represents alcohol or neutral image. We will exract that information and then create a new variable called <strong>salience</strong>.</p>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="session7.html#cb56-1"></a><span class="co">## we will use str_sub() to extract the third character</span></span>
+<span id="cb56-2"><a href="session7.html#cb56-2"></a><span class="co">## based on the value of that character we will assign a value </span></span>
+<span id="cb56-3"><a href="session7.html#cb56-3"></a><span class="co">## in our salience variable. Note how we are using case_when()</span></span>
+<span id="cb56-4"><a href="session7.html#cb56-4"></a>exp2 &lt;-<span class="st"> </span>exp2 <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb56-5"><a href="session7.html#cb56-5"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">type =</span> <span class="kw">str_sub</span>(image,<span class="dv">3</span>,<span class="dv">3</span>)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb56-6"><a href="session7.html#cb56-6"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">salience =</span> <span class="kw">case_when</span>(</span>
+<span id="cb56-7"><a href="session7.html#cb56-7"></a>    type <span class="op">==</span><span class="st"> &#39;2&#39;</span><span class="op">~</span><span class="st">&quot;Neutral&quot;</span>,</span>
+<span id="cb56-8"><a href="session7.html#cb56-8"></a>    type <span class="op">==</span><span class="st">&#39;1&#39;</span><span class="op">~</span><span class="st">&quot;Alcohol&quot;</span></span>
+<span id="cb56-9"><a href="session7.html#cb56-9"></a>  ))</span></code></pre></div>
+<p>We will now proceed to recode the response from “s” and “l” to 0 and 1. We will also create a new variable for duration in ms and not in seconds.</p>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="session7.html#cb57-1"></a><span class="co">## a simple mutate here would also do the job</span></span>
+<span id="cb57-2"><a href="session7.html#cb57-2"></a><span class="co">## each mutate is creating a new variable</span></span>
+<span id="cb57-3"><a href="session7.html#cb57-3"></a>exp2 &lt;-<span class="st"> </span>exp2 <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb57-4"><a href="session7.html#cb57-4"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">durationms =</span> duration<span class="op">*</span><span class="dv">1000</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb57-5"><a href="session7.html#cb57-5"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">responsenum =</span> <span class="kw">case_when</span>(</span>
+<span id="cb57-6"><a href="session7.html#cb57-6"></a>    response <span class="op">==</span><span class="st"> &#39;l&#39;</span><span class="op">~</span><span class="st"> </span><span class="dv">1</span>,</span>
+<span id="cb57-7"><a href="session7.html#cb57-7"></a>    response <span class="op">==</span><span class="st"> &#39;s&#39;</span><span class="op">~</span><span class="st"> </span><span class="dv">0</span></span>
+<span id="cb57-8"><a href="session7.html#cb57-8"></a>  ))</span></code></pre></div>
+<p>We now have to deal with the fact that our DV is just trial responses. We want to aggregate these responses across participant, meditation, session, salience, and durationms. Here we will also create a new dataframe as our structure will change.</p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="session7.html#cb58-1"></a><span class="co">## we will group our data using the variables above</span></span>
+<span id="cb58-2"><a href="session7.html#cb58-2"></a><span class="co">## and then we will calculate the mean of the responses</span></span>
+<span id="cb58-3"><a href="session7.html#cb58-3"></a><span class="co">## these mean values will be assigned to the the new variable called ration</span></span>
+<span id="cb58-4"><a href="session7.html#cb58-4"></a><span class="co">## do not forget to ungroup at the end of your grouping work</span></span>
+<span id="cb58-5"><a href="session7.html#cb58-5"></a><span class="co">## we carried the variable session forward for your upcoming exercise</span></span>
+<span id="cb58-6"><a href="session7.html#cb58-6"></a><span class="co">## we will drop it from the grouping as we do not need it for this</span></span>
+<span id="cb58-7"><a href="session7.html#cb58-7"></a><span class="co">## three-way anova</span></span>
+<span id="cb58-8"><a href="session7.html#cb58-8"></a>exp3 &lt;-<span class="st"> </span>exp2 <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb58-9"><a href="session7.html#cb58-9"></a><span class="st">  </span><span class="kw">group_by</span>(participant, meditation, salience, durationms) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb58-10"><a href="session7.html#cb58-10"></a><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">ratio =</span> <span class="kw">mean</span>(responsenum)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb58-11"><a href="session7.html#cb58-11"></a><span class="st">  </span><span class="kw">ungroup</span>()</span>
+<span id="cb58-12"><a href="session7.html#cb58-12"></a></span>
+<span id="cb58-13"><a href="session7.html#cb58-13"></a><span class="co">## make sure to inspect the exp3 dataframe to check that everything is in order</span></span>
+<span id="cb58-14"><a href="session7.html#cb58-14"></a><span class="co">## you should be able to see that grouping and aggregating </span></span>
+<span id="cb58-15"><a href="session7.html#cb58-15"></a><span class="co">## also dropped all other undeclared variables</span></span></code></pre></div>
+<p>Let’s do a final check on variable types and correct any discrepancies.
+This is also a good point to take a short break before we continue with the exrcise.</p>
+</div>
+<div id="exercise-10-1" class="section level2" number="7.4">
+<h2><span class="header-section-number">7.4</span> Exercise 10</h2>
+<p>Load the datafile <strong>stroopy stroop.csv</strong> and assign it to a dataframe called <strong>stroop</strong>. This contains the data from a Stroop experiment and you should go through the process of preparing it for a two-way ANOVA. You should complete the following steps, which are not given necessarily in the correct order.</p>
+<ol style="list-style-type: decimal">
+<li>Create a <strong>group</strong> variable by recoding the <strong>participant</strong> variable. Participants with value below 2000 should be in the <strong>control</strong> group. Participants with value above 2000 should be in the <strong>gambling</strong> group.<br />
+</li>
+<li>Create a variable that will denote the type of stimulus (call it <strong>salience</strong>). This information is included in the <strong>Image</strong> variable. If an image starts with <strong>G</strong> then it is a <strong>gambling</strong> image, if it starts with <strong>N</strong> then it is a <strong>neutral</strong> image.<br />
+</li>
+<li>Keep only the correct responses, this information is in the <strong>stroop_resp.corr</strong> variable. Correct responses are recorded with <strong>1</strong>.<br />
+</li>
+<li>Discard the first two trials per participant. This information is in the <strong>stroop_trials.thisTrialN</strong> variable.<br />
+</li>
+<li>Keep only the responses with a reaction time between 300 and 3000ms. This information is in the <strong>stroop_resp.rt</strong> (which is in seconds though).<br />
+</li>
+<li>A variable with response times in ms would make more sense. Call it <strong>RT</strong>.<br />
+</li>
+<li>Aggregate your <strong>RT</strong> by <strong>participant</strong>, <strong>group</strong>, and <strong>salience</strong>.</li>
+</ol>
 
 </div>
 </div>
@@ -347,8 +409,8 @@ R operates in a different way, we have to have our dataset in the <strong>long</
           </div>
         </div>
       </div>
-<a href="session5.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="session5.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="session8.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
