@@ -42,11 +42,11 @@ session7
 reflecting-on-day-1
 learning-objectives-4
 working-with-the-file
-exercise-10-1
+exercise-11
 session8
 learning-objectives-5
 continuing-with-the-exercise-10-and-two-way-anova
-exercise-11
+exercise-11-1
 session9
 learning-objectives-6
 restructuring-data

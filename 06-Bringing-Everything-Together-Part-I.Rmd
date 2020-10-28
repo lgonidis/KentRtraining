@@ -194,7 +194,7 @@ Let's do a final check on variable types and correct any discrepancies.
 This is also a good point to take a short break before we continue with the exrcise.
 
 
-## Exercise 10  
+## Exercise 11  
 Load the datafile **stroopy stroop.csv** and assign it to a dataframe called **stroop**. This contains the data from a Stroop experiment and you should go through the process of preparing it for a two-way ANOVA. You should complete the following steps, which are not given necessarily in the correct order.  
 
 1. Create a **group** variable by recoding the **participant** variable. Participants with value below 2000 should be in the **control** group. Participants with value above 2000 should be in the **gambling** group.  
