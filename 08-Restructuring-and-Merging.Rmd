@@ -61,7 +61,7 @@ dflong3 <- dflong3 %>%
 
 
 As I said we do not need to revert back to the long format. We will carry on working with the wide format and calculate our **diff** variable.  
-```{r}
+```{r eval=FALSE}
 dfwide <- dfwide %>% 
   mutate(diff = Gambling - Neutral)
 
@@ -70,7 +70,7 @@ dfwide <- dfwide %>%
 
 It would be very interesting now to see whether this difference correlates with the frequency of games. Let's also load the questionnaire.csv and merge it with our widedf.  
 
-```{r}
+```{r eval=FALSE}
 ## load our datafile
 questionnaire <- read_csv("questionnaire.csv")
 
@@ -94,10 +94,35 @@ dfwide$group = as.factor(dfwide$group)
 dfall <-full_join(dfwide, questionnaire)
 ```
 
-That worked fine, even though we have some missing values
+That worked fine, even though we have some missing values. Let's see now if we have any significant correlation between the stroop difference and the frequency of games.  
 
-## Let's see now if we have any significant correlation
-## between the stroop difference and the frequency of games
+Let' s start with a simple scatterplot.
 
-## But first lets do a simple scatterplot
+```{r eval=FALSE}
+scatter <- ggplot(dfall, aes(x = games, y = diff)) +
+  geom_point() 
+
+scatter
+```
+
+
+This looks rather unexciting, perhaps group can make things more interesting. 
+
+```{r eval=FALSE}
+scatter <- ggplot(dfall, aes(x = games, y = diff, color = group)) +
+  geom_point() 
+
+scatter
+
+```
+
+Let's carry out the correlational analysis next. 
+
+```{r eval=FALSE}
+library(Hmisc)
+dfgambling <- dfall %>% 
+  filter(group == "gambling")
+rcorr(dfgambling$games, dfgambling$diff)
+
+```
 
