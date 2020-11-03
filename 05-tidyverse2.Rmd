@@ -2,7 +2,7 @@
 
 ## Reflecting on the last session
 
-We have managed to do quite a few tasks already. However, we also managed to create a proper in the process. Our **environment**  must be full of objects that I will not be using. And even though I could remove them it is best if I actually do not create them in the first place. That can be achieved with the use of the **pipe operator** or else **%<%** (ctrl+shift+m).
+We have managed to do quite a few tasks already. However, we also managed to create a proper in the process. Our **environment**  must be full of objects that I will not be using. And even though I could remove them it is best if I actually do not create them in the first place. That can be achieved with the use of the **pipe operator** or else `**%>%**` (**ctrl+shift+m**).
 
 ##Learning objectives 
 1. Work more efficiently using tidyverse (dplyr and tidyr)
@@ -13,9 +13,9 @@ We have managed to do quite a few tasks already. However, we also managed to cre
 **Note:** In this session we will be focusing on describing a number of tasks and then discussing how we can best perform them. We have already introduced enough concepts to do really meaningful work. Now we have to put our progress to the test. 
 
 
-## Pipe Operator %<%  
+## Pipe Operator `%>%`  
 
-Lets start with seeing how the **pipe operator** works. If you think about the last exercise in the previous session you can remember that it took a number of steps where we kept assigning our work to a new data frame. With the use of **%<%** we can write all these steps one under the other in one chunk of code.
+Lets start with seeing how the **pipe operator** works. If you think about the last exercise in the previous session you can remember that it took a number of steps where we kept assigning our work to a new data frame. With the use of `**%>%**` we can write all these steps one under the other in one chunk of code.
 
 **Exercise 9**
 

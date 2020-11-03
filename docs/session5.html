@@ -24,7 +24,7 @@
 <meta name="author" content="Lazaros Gonidis" />
 
 
-<meta name="date" content="2020-10-28" />
+<meta name="date" content="2020-11-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -184,7 +184,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6" data-path="session5.html"><a href="session5.html"><i class="fa fa-check"></i><b>6</b> Tidyverse 2</a>
 <ul>
 <li class="chapter" data-level="6.1" data-path="session5.html"><a href="session5.html#reflecting-on-the-last-session"><i class="fa fa-check"></i><b>6.1</b> Reflecting on the last session</a></li>
-<li class="chapter" data-level="6.2" data-path="session5.html"><a href="session5.html#pipe-operator"><i class="fa fa-check"></i><b>6.2</b> Pipe Operator %&lt;%</a></li>
+<li class="chapter" data-level="6.2" data-path="session5.html"><a href="session5.html#pipe-operator"><i class="fa fa-check"></i><b>6.2</b> Pipe Operator <code>%&gt;%</code></a></li>
 <li class="chapter" data-level="6.3" data-path="session5.html"><a href="session5.html#exercise-10"><i class="fa fa-check"></i><b>6.3</b> Exercise 10</a></li>
 <li class="chapter" data-level="6.4" data-path="session5.html"><a href="session5.html#grouping-spliting-and-summarizing-variables-across-out-data-frame"><i class="fa fa-check"></i><b>6.4</b> Grouping, spliting, and summarizing variables across out data frame</a></li>
 </ul></li>
@@ -230,7 +230,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">Session 6</span> Tidyverse 2</h1>
 <div id="reflecting-on-the-last-session" class="section level2" number="6.1">
 <h2><span class="header-section-number">6.1</span> Reflecting on the last session</h2>
-<p>We have managed to do quite a few tasks already. However, we also managed to create a proper in the process. Our <strong>environment</strong> must be full of objects that I will not be using. And even though I could remove them it is best if I actually do not create them in the first place. That can be achieved with the use of the <strong>pipe operator</strong> or else <strong>%&lt;%</strong> (ctrl+shift+m).</p>
+<p>We have managed to do quite a few tasks already. However, we also managed to create a proper in the process. Our <strong>environment</strong> must be full of objects that I will not be using. And even though I could remove them it is best if I actually do not create them in the first place. That can be achieved with the use of the <strong>pipe operator</strong> or else <code>**%&gt;%**</code> (<strong>ctrl+shift+m</strong>).</p>
 <p>##Learning objectives
 1. Work more efficiently using tidyverse (dplyr and tidyr)
 2. manipulating data
@@ -238,8 +238,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><strong>Note:</strong> In this session we will be focusing on describing a number of tasks and then discussing how we can best perform them. We have already introduced enough concepts to do really meaningful work. Now we have to put our progress to the test.</p>
 </div>
 <div id="pipe-operator" class="section level2" number="6.2">
-<h2><span class="header-section-number">6.2</span> Pipe Operator %&lt;%</h2>
-<p>Lets start with seeing how the <strong>pipe operator</strong> works. If you think about the last exercise in the previous session you can remember that it took a number of steps where we kept assigning our work to a new data frame. With the use of <strong>%&lt;%</strong> we can write all these steps one under the other in one chunk of code.</p>
+<h2><span class="header-section-number">6.2</span> Pipe Operator <code>%&gt;%</code></h2>
+<p>Lets start with seeing how the <strong>pipe operator</strong> works. If you think about the last exercise in the previous session you can remember that it took a number of steps where we kept assigning our work to a new data frame. With the use of <code>**%&gt;%**</code> we can write all these steps one under the other in one chunk of code.</p>
 <p><strong>Exercise 9</strong></p>
 <p>Load the file <strong>alcohol_exp</strong> to a data frame called <strong>df</strong>. Then write the appropriate commands to complete the following steps:</p>
 <ol style="list-style-type: decimal">
