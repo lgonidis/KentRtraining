@@ -4,19 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Session 7 Bringing Everything Together. Part I | Kent R training</title>
+  <title>Chapter7 Bringing Everything Together. Part I | Kent R training</title>
   <meta name="description" content="This is a work in progress" />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Session 7 Bringing Everything Together. Part I | Kent R training" />
+  <meta property="og:title" content="Chapter7 Bringing Everything Together. Part I | Kent R training" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="This is a work in progress" />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Session 7 Bringing Everything Together. Part I | Kent R training" />
+  <meta name="twitter:title" content="Chapter7 Bringing Everything Together. Part I | Kent R training" />
   
   <meta name="twitter:description" content="This is a work in progress" />
   
@@ -24,7 +23,7 @@
 <meta name="author" content="Lazaros Gonidis" />
 
 
-<meta name="date" content="2020-11-03" />
+<meta name="date" content="2022-04-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,8 +32,8 @@
   
 <link rel="prev" href="session5.html"/>
 <link rel="next" href="session8.html"/>
-<script src="libs/header-attrs-2.4/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -50,14 +49,16 @@
 
 
 
-
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -118,6 +119,7 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 
@@ -137,7 +139,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prelude</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#a-few-words"><i class="fa fa-check"></i><b>1.1</b> A few words…</a></li>
-<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#a-comment-on-the-book-structure"><i class="fa fa-check"></i><b>1.2</b> A comment on the book structure</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#a-comment-on-the-course-structure"><i class="fa fa-check"></i><b>1.2</b> A comment on the course structure</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>2</b> Introduction</a>
 <ul>
@@ -146,20 +148,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.3" data-path="introduction.html"><a href="introduction.html#starting-with-rstudio"><i class="fa fa-check"></i><b>2.3</b> Starting with RStudio</a></li>
 <li class="chapter" data-level="2.4" data-path="introduction.html"><a href="introduction.html#console"><i class="fa fa-check"></i><b>2.4</b> Console</a>
 <ul>
-<li class="chapter" data-level="2.4.1" data-path="introduction.html"><a href="introduction.html#exercise-1"><i class="fa fa-check"></i><b>2.4.1</b> Exercise 1</a></li>
+<li class="chapter" data-level="2.4.1" data-path="introduction.html"><a href="introduction.html#exercise-1.1"><i class="fa fa-check"></i><b>2.4.1</b> Exercise 1.1</a></li>
 </ul></li>
 <li class="chapter" data-level="2.5" data-path="introduction.html"><a href="introduction.html#environment"><i class="fa fa-check"></i><b>2.5</b> Environment</a></li>
 <li class="chapter" data-level="2.6" data-path="introduction.html"><a href="introduction.html#files"><i class="fa fa-check"></i><b>2.6</b> Files</a></li>
 <li class="chapter" data-level="2.7" data-path="introduction.html"><a href="introduction.html#scripts"><i class="fa fa-check"></i><b>2.7</b> Scripts</a></li>
-<li class="chapter" data-level="2.8" data-path="introduction.html"><a href="introduction.html#exercise-2"><i class="fa fa-check"></i><b>2.8</b> Exercise 2</a></li>
+<li class="chapter" data-level="2.8" data-path="introduction.html"><a href="introduction.html#exercise-1.2"><i class="fa fa-check"></i><b>2.8</b> Exercise 1.2</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="session2.html"><a href="session2.html"><i class="fa fa-check"></i><b>3</b> Using Vectors and Functions</a>
 <ul>
 <li class="chapter" data-level="3.1" data-path="session2.html"><a href="session2.html#learning-objectives-1"><i class="fa fa-check"></i><b>3.1</b> Learning Objectives</a></li>
-<li class="chapter" data-level="3.2" data-path="session2.html"><a href="session2.html#vectors"><i class="fa fa-check"></i><b>3.2</b> Vectors</a></li>
-<li class="chapter" data-level="3.3" data-path="session2.html"><a href="session2.html#creating-vectors-with-random-numbers"><i class="fa fa-check"></i><b>3.3</b> Creating vectors with random numbers</a></li>
-<li class="chapter" data-level="3.4" data-path="session2.html"><a href="session2.html#frequency-tables-in-r-and-histograms"><i class="fa fa-check"></i><b>3.4</b> Frequency tables in R and Histograms</a></li>
-<li class="chapter" data-level="3.5" data-path="session2.html"><a href="session2.html#exercise-3"><i class="fa fa-check"></i><b>3.5</b> Exercise 3</a></li>
+<li class="chapter" data-level="3.2" data-path="session2.html"><a href="session2.html#r-objects-vectors"><i class="fa fa-check"></i><b>3.2</b> R-objects: Vectors</a></li>
+<li class="chapter" data-level="3.3" data-path="session2.html"><a href="session2.html#r-objects-lists"><i class="fa fa-check"></i><b>3.3</b> R-objects: Lists</a></li>
+<li class="chapter" data-level="3.4" data-path="session2.html"><a href="session2.html#r-objects-dataframes"><i class="fa fa-check"></i><b>3.4</b> R-objects: Dataframes</a></li>
+<li class="chapter" data-level="3.5" data-path="session2.html"><a href="session2.html#r-objects-factors"><i class="fa fa-check"></i><b>3.5</b> R-objects: Factors</a></li>
+<li class="chapter" data-level="3.6" data-path="session2.html"><a href="session2.html#exercise-2.1"><i class="fa fa-check"></i><b>3.6</b> Exercise 2.1</a></li>
+<li class="chapter" data-level="3.7" data-path="session2.html"><a href="session2.html#creating-vectors-with-random-numbers"><i class="fa fa-check"></i><b>3.7</b> Creating vectors with random numbers</a></li>
+<li class="chapter" data-level="3.8" data-path="session2.html"><a href="session2.html#frequency-tables-in-r-and-histograms"><i class="fa fa-check"></i><b>3.8</b> Frequency tables in R and Histograms</a></li>
+<li class="chapter" data-level="3.9" data-path="session2.html"><a href="session2.html#exercise-2.2"><i class="fa fa-check"></i><b>3.9</b> Exercise 2.2</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="session3.html"><a href="session3.html"><i class="fa fa-check"></i><b>4</b> Packages</a>
 <ul>
@@ -172,38 +178,42 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.7" data-path="session3.html"><a href="session3.html#additional-exercises-spoiler-alert-if-you-get-stuck-the-answers-are-at-the-end-of-the-pdf"><i class="fa fa-check"></i><b>4.7</b> Additional Exercises (spoiler alert: if you get stuck the answers are at the end of the pdf)</a></li>
 <li class="chapter" data-level="4.8" data-path="session3.html"><a href="session3.html#solutions-spoiler-alert"><i class="fa fa-check"></i><b>4.8</b> Solutions: SPOILER ALERT</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="session4.html"><a href="session4.html"><i class="fa fa-check"></i><b>5</b> Tidyverse 1</a>
+<li class="chapter" data-level="5" data-path="session4.html"><a href="session4.html"><i class="fa fa-check"></i><b>5</b> Starting to work with datafiles using Tidyverse</a>
 <ul>
 <li class="chapter" data-level="5.1" data-path="session4.html"><a href="session4.html#thinking-ahead"><i class="fa fa-check"></i><b>5.1</b> Thinking ahead</a></li>
 <li class="chapter" data-level="5.2" data-path="session4.html"><a href="session4.html#learning-objectives-3"><i class="fa fa-check"></i><b>5.2</b> Learning objectives</a></li>
 <li class="chapter" data-level="5.3" data-path="session4.html"><a href="session4.html#our-first-data-file"><i class="fa fa-check"></i><b>5.3</b> Our first data file</a></li>
 <li class="chapter" data-level="5.4" data-path="session4.html"><a href="session4.html#correcting-variable-types"><i class="fa fa-check"></i><b>5.4</b> Correcting Variable Types</a></li>
-<li class="chapter" data-level="5.5" data-path="session4.html"><a href="session4.html#recoding"><i class="fa fa-check"></i><b>5.5</b> Recoding</a></li>
-<li class="chapter" data-level="5.6" data-path="session4.html"><a href="session4.html#exercise-9"><i class="fa fa-check"></i><b>5.6</b> Exercise 9</a></li>
+<li class="chapter" data-level="5.5" data-path="session4.html"><a href="session4.html#exercise-4.1"><i class="fa fa-check"></i><b>5.5</b> Exercise 4.1</a></li>
+<li class="chapter" data-level="5.6" data-path="session4.html"><a href="session4.html#dropping-columns-and-rows"><i class="fa fa-check"></i><b>5.6</b> Dropping columns and rows</a></li>
+<li class="chapter" data-level="5.7" data-path="session4.html"><a href="session4.html#exercise-4.2"><i class="fa fa-check"></i><b>5.7</b> Exercise 4.2</a></li>
+<li class="chapter" data-level="5.8" data-path="session4.html"><a href="session4.html#recoding"><i class="fa fa-check"></i><b>5.8</b> Recoding</a></li>
+<li class="chapter" data-level="5.9" data-path="session4.html"><a href="session4.html#exercise-4.3"><i class="fa fa-check"></i><b>5.9</b> Exercise 4.3</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="session5.html"><a href="session5.html"><i class="fa fa-check"></i><b>6</b> Tidyverse 2</a>
 <ul>
 <li class="chapter" data-level="6.1" data-path="session5.html"><a href="session5.html#reflecting-on-the-last-session"><i class="fa fa-check"></i><b>6.1</b> Reflecting on the last session</a></li>
-<li class="chapter" data-level="6.2" data-path="session5.html"><a href="session5.html#pipe-operator"><i class="fa fa-check"></i><b>6.2</b> Pipe Operator <code>%&gt;%</code></a></li>
-<li class="chapter" data-level="6.3" data-path="session5.html"><a href="session5.html#exercise-10"><i class="fa fa-check"></i><b>6.3</b> Exercise 10</a></li>
-<li class="chapter" data-level="6.4" data-path="session5.html"><a href="session5.html#grouping-spliting-and-summarizing-variables-across-out-data-frame"><i class="fa fa-check"></i><b>6.4</b> Grouping, spliting, and summarizing variables across out data frame</a></li>
+<li class="chapter" data-level="6.2" data-path="session5.html"><a href="session5.html#learning-objectives-4"><i class="fa fa-check"></i><b>6.2</b> Learning objectives</a></li>
+<li class="chapter" data-level="6.3" data-path="session5.html"><a href="session5.html#pipe-operator"><i class="fa fa-check"></i><b>6.3</b> Pipe Operator <code>%&gt;%</code></a></li>
+<li class="chapter" data-level="6.4" data-path="session5.html"><a href="session5.html#exercise-6.1"><i class="fa fa-check"></i><b>6.4</b> Exercise 6.1</a></li>
+<li class="chapter" data-level="6.5" data-path="session5.html"><a href="session5.html#grouping-spliting-and-summarizing-variables-across-out-data-frame"><i class="fa fa-check"></i><b>6.5</b> Grouping, spliting, and summarizing variables across out data frame</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="session7.html"><a href="session7.html"><i class="fa fa-check"></i><b>7</b> Bringing Everything Together. Part I</a>
 <ul>
 <li class="chapter" data-level="7.1" data-path="session7.html"><a href="session7.html#reflecting-on-day-1"><i class="fa fa-check"></i><b>7.1</b> Reflecting on Day 1</a></li>
-<li class="chapter" data-level="7.2" data-path="session7.html"><a href="session7.html#learning-objectives-4"><i class="fa fa-check"></i><b>7.2</b> Learning Objectives</a></li>
+<li class="chapter" data-level="7.2" data-path="session7.html"><a href="session7.html#learning-objectives-5"><i class="fa fa-check"></i><b>7.2</b> Learning Objectives</a></li>
 <li class="chapter" data-level="7.3" data-path="session7.html"><a href="session7.html#working-with-the-file"><i class="fa fa-check"></i><b>7.3</b> Working with the file</a></li>
 <li class="chapter" data-level="7.4" data-path="session7.html"><a href="session7.html#exercise-11"><i class="fa fa-check"></i><b>7.4</b> Exercise 11</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="session8.html"><a href="session8.html"><i class="fa fa-check"></i><b>8</b> Bringing Everything Together. Part II</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="session8.html"><a href="session8.html#learning-objectives-5"><i class="fa fa-check"></i><b>8.1</b> Learning Objectives</a></li>
+<li class="chapter" data-level="8.1" data-path="session8.html"><a href="session8.html#learning-objectives-6"><i class="fa fa-check"></i><b>8.1</b> Learning Objectives</a></li>
 <li class="chapter" data-level="8.2" data-path="session8.html"><a href="session8.html#continuing-with-the-exercise-10-and-two-way-anova"><i class="fa fa-check"></i><b>8.2</b> Continuing with the exercise 10 and two-way ANOVA</a></li>
 <li class="chapter" data-level="8.3" data-path="session8.html"><a href="session8.html#exercise-12"><i class="fa fa-check"></i><b>8.3</b> Exercise 12</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="session9.html"><a href="session9.html"><i class="fa fa-check"></i><b>9</b> Restructuring and Merging Data.</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="session9.html"><a href="session9.html#learning-objectives-6"><i class="fa fa-check"></i><b>9.1</b> Learning Objectives</a></li>
+<li class="chapter" data-level="9.1" data-path="session9.html"><a href="session9.html#learning-objectives-7"><i class="fa fa-check"></i><b>9.1</b> Learning Objectives</a></li>
 <li class="chapter" data-level="9.2" data-path="session9.html"><a href="session9.html#restructuring-data"><i class="fa fa-check"></i><b>9.2</b> Restructuring Data</a></li>
 </ul></li>
 <li class="divider"></li>
@@ -226,14 +236,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="session7" class="section level1" number="7">
-<h1><span class="header-section-number">Session 7</span> Bringing Everything Together. Part I</h1>
-<div id="reflecting-on-day-1" class="section level2" number="7.1">
-<h2><span class="header-section-number">7.1</span> Reflecting on Day 1</h2>
+<div id="session7" class="section level1 hasAnchor" number="7">
+<h1><span class="header-section-number">Chapter7</span> Bringing Everything Together. Part I<a href="session7.html#session7" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="reflecting-on-day-1" class="section level2 hasAnchor" number="7.1">
+<h2><span class="header-section-number">7.1</span> Reflecting on Day 1<a href="session7.html#reflecting-on-day-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In <strong>Day 1</strong>, we generally introduced individual packages and functions. We also introduced Tidyverse, or to be fair, some aspects of it. In Day 2, the approach will be different. Our work will be aim driven and in each of the following <strong>sessions</strong> we will have a driving aim.</p>
 </div>
-<div id="learning-objectives-4" class="section level2" number="7.2">
-<h2><span class="header-section-number">7.2</span> Learning Objectives</h2>
+<div id="learning-objectives-5" class="section level2 hasAnchor" number="7.2">
+<h2><span class="header-section-number">7.2</span> Learning Objectives<a href="session7.html#learning-objectives-5" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Working with the datafile <strong>“alcohol_exp.csv”</strong> we want to bring the dataset to a form where we could carry out analysis of variance (analyses if we want to be precise). This dataset includes a number of variables. Below we will discuss those of interest. We will exclude some of the variables as they were generated by Psychopy and are actual psychological variables.</p>
 <p><strong>A few words on the dataset variables</strong></p>
 <ol style="list-style-type: decimal">
@@ -287,110 +297,110 @@ R operates in a different way, we have to have our dataset in the <strong>long</
 1. tidyverse<br />
 2. rstatix</p>
 </div>
-<div id="working-with-the-file" class="section level2" number="7.3">
-<h2><span class="header-section-number">7.3</span> Working with the file</h2>
+<div id="working-with-the-file" class="section level2 hasAnchor" number="7.3">
+<h2><span class="header-section-number">7.3</span> Working with the file<a href="session7.html#working-with-the-file" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>At this point it is best to start a new project and call it <strong>Day 2</strong>. Once you have that up and running then create our first script for the day, I suggest naming it <strong>3wANOVA</strong>.</p>
 <p>Let us start by loading the data file and checking that our variables are of the correct type.</p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="session7.html#cb52-1"></a><span class="kw">library</span>(tidyverse)</span>
-<span id="cb52-2"><a href="session7.html#cb52-2"></a><span class="kw">library</span>(rstatix)</span>
-<span id="cb52-3"><a href="session7.html#cb52-3"></a></span>
-<span id="cb52-4"><a href="session7.html#cb52-4"></a><span class="co">## load the data file to the dataframe called exp</span></span>
-<span id="cb52-5"><a href="session7.html#cb52-5"></a>exp &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;alcohol_exp.csv&quot;</span>) </span>
-<span id="cb52-6"><a href="session7.html#cb52-6"></a></span>
-<span id="cb52-7"><a href="session7.html#cb52-7"></a><span class="co">##inspect exp</span></span>
-<span id="cb52-8"><a href="session7.html#cb52-8"></a><span class="kw">head</span>(exp)</span>
-<span id="cb52-9"><a href="session7.html#cb52-9"></a></span>
-<span id="cb52-10"><a href="session7.html#cb52-10"></a><span class="co">## contrary to Day 1 approach we will not be constantly creating new dataframes</span></span>
-<span id="cb52-11"><a href="session7.html#cb52-11"></a><span class="co">## we will create only one new dataframe called exp2</span></span>
-<span id="cb52-12"><a href="session7.html#cb52-12"></a><span class="co">## lets begin by assigning correct variable types</span></span>
-<span id="cb52-13"><a href="session7.html#cb52-13"></a></span>
-<span id="cb52-14"><a href="session7.html#cb52-14"></a>exp2 &lt;-<span class="st"> </span>exp <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb52-15"><a href="session7.html#cb52-15"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">group =</span> <span class="kw">as.factor</span>(group)) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb52-16"><a href="session7.html#cb52-16"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">session =</span> <span class="kw">as.factor</span>(session)) <span class="op">%&gt;%</span></span>
-<span id="cb52-17"><a href="session7.html#cb52-17"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">meditation =</span> <span class="kw">as.factor</span>(meditation)) <span class="op">%&gt;%</span></span>
-<span id="cb52-18"><a href="session7.html#cb52-18"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">gender =</span> <span class="kw">as.factor</span>(gender)) <span class="op">%&gt;%</span></span>
-<span id="cb52-19"><a href="session7.html#cb52-19"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">group =</span> <span class="kw">as.factor</span>(group))</span></code></pre></div>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="session7.html#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb77-2"><a href="session7.html#cb77-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rstatix)</span>
+<span id="cb77-3"><a href="session7.html#cb77-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-4"><a href="session7.html#cb77-4" aria-hidden="true" tabindex="-1"></a><span class="do">## load the data file to the dataframe called exp</span></span>
+<span id="cb77-5"><a href="session7.html#cb77-5" aria-hidden="true" tabindex="-1"></a>exp <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;alcohol_exp.csv&quot;</span>) </span>
+<span id="cb77-6"><a href="session7.html#cb77-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-7"><a href="session7.html#cb77-7" aria-hidden="true" tabindex="-1"></a><span class="do">##inspect exp</span></span>
+<span id="cb77-8"><a href="session7.html#cb77-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(exp)</span>
+<span id="cb77-9"><a href="session7.html#cb77-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-10"><a href="session7.html#cb77-10" aria-hidden="true" tabindex="-1"></a><span class="do">## contrary to Day 1 approach we will not be constantly creating new dataframes</span></span>
+<span id="cb77-11"><a href="session7.html#cb77-11" aria-hidden="true" tabindex="-1"></a><span class="do">## we will create only one new dataframe called exp2</span></span>
+<span id="cb77-12"><a href="session7.html#cb77-12" aria-hidden="true" tabindex="-1"></a><span class="do">## lets begin by assigning correct variable types</span></span>
+<span id="cb77-13"><a href="session7.html#cb77-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-14"><a href="session7.html#cb77-14" aria-hidden="true" tabindex="-1"></a>exp2 <span class="ot">&lt;-</span> exp <span class="sc">%&gt;%</span> </span>
+<span id="cb77-15"><a href="session7.html#cb77-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">group =</span> <span class="fu">as.factor</span>(group)) <span class="sc">%&gt;%</span> </span>
+<span id="cb77-16"><a href="session7.html#cb77-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">session =</span> <span class="fu">as.factor</span>(session)) <span class="sc">%&gt;%</span></span>
+<span id="cb77-17"><a href="session7.html#cb77-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">meditation =</span> <span class="fu">as.factor</span>(meditation)) <span class="sc">%&gt;%</span></span>
+<span id="cb77-18"><a href="session7.html#cb77-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">gender =</span> <span class="fu">as.factor</span>(gender)) <span class="sc">%&gt;%</span></span>
+<span id="cb77-19"><a href="session7.html#cb77-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">group =</span> <span class="fu">as.factor</span>(group))</span></code></pre></div>
 <p><strong>Note</strong> the above executed pipe block could be written as one <strong>mutate</strong></p>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="session7.html#cb53-1"></a><span class="kw">library</span>(tidyverse)</span>
-<span id="cb53-2"><a href="session7.html#cb53-2"></a><span class="kw">library</span>(rstatix)</span>
-<span id="cb53-3"><a href="session7.html#cb53-3"></a></span>
-<span id="cb53-4"><a href="session7.html#cb53-4"></a><span class="co">## load the data file to the dataframe called exp</span></span>
-<span id="cb53-5"><a href="session7.html#cb53-5"></a>exp &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;alcohol_exp.csv&quot;</span>) </span>
-<span id="cb53-6"><a href="session7.html#cb53-6"></a></span>
-<span id="cb53-7"><a href="session7.html#cb53-7"></a><span class="co">##inspect exp</span></span>
-<span id="cb53-8"><a href="session7.html#cb53-8"></a><span class="kw">head</span>(exp)</span>
-<span id="cb53-9"><a href="session7.html#cb53-9"></a></span>
-<span id="cb53-10"><a href="session7.html#cb53-10"></a><span class="co">## contrary to Day 1 approach we will not be constantly creating new dataframes</span></span>
-<span id="cb53-11"><a href="session7.html#cb53-11"></a><span class="co">## we will create only one new dataframe called exp2</span></span>
-<span id="cb53-12"><a href="session7.html#cb53-12"></a><span class="co">## lets begin by assigning correct variable types</span></span>
-<span id="cb53-13"><a href="session7.html#cb53-13"></a>exp2 &lt;-<span class="st"> </span>exp <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb53-14"><a href="session7.html#cb53-14"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">group =</span> <span class="kw">as.factor</span>(group), </span>
-<span id="cb53-15"><a href="session7.html#cb53-15"></a>  <span class="dt">session =</span> <span class="kw">as.factor</span>(session), </span>
-<span id="cb53-16"><a href="session7.html#cb53-16"></a>  <span class="dt">meditation =</span> <span class="kw">as.factor</span>(meditation),</span>
-<span id="cb53-17"><a href="session7.html#cb53-17"></a>  <span class="dt">gender =</span> <span class="kw">as.factor</span>(gender),</span>
-<span id="cb53-18"><a href="session7.html#cb53-18"></a>  <span class="dt">group =</span> <span class="kw">as.factor</span>(group))</span></code></pre></div>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="session7.html#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb78-2"><a href="session7.html#cb78-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rstatix)</span>
+<span id="cb78-3"><a href="session7.html#cb78-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-4"><a href="session7.html#cb78-4" aria-hidden="true" tabindex="-1"></a><span class="do">## load the data file to the dataframe called exp</span></span>
+<span id="cb78-5"><a href="session7.html#cb78-5" aria-hidden="true" tabindex="-1"></a>exp <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;alcohol_exp.csv&quot;</span>) </span>
+<span id="cb78-6"><a href="session7.html#cb78-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-7"><a href="session7.html#cb78-7" aria-hidden="true" tabindex="-1"></a><span class="do">##inspect exp</span></span>
+<span id="cb78-8"><a href="session7.html#cb78-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(exp)</span>
+<span id="cb78-9"><a href="session7.html#cb78-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-10"><a href="session7.html#cb78-10" aria-hidden="true" tabindex="-1"></a><span class="do">## contrary to Day 1 approach we will not be constantly creating new dataframes</span></span>
+<span id="cb78-11"><a href="session7.html#cb78-11" aria-hidden="true" tabindex="-1"></a><span class="do">## we will create only one new dataframe called exp2</span></span>
+<span id="cb78-12"><a href="session7.html#cb78-12" aria-hidden="true" tabindex="-1"></a><span class="do">## lets begin by assigning correct variable types</span></span>
+<span id="cb78-13"><a href="session7.html#cb78-13" aria-hidden="true" tabindex="-1"></a>exp2 <span class="ot">&lt;-</span> exp <span class="sc">%&gt;%</span> </span>
+<span id="cb78-14"><a href="session7.html#cb78-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">group =</span> <span class="fu">as.factor</span>(group), </span>
+<span id="cb78-15"><a href="session7.html#cb78-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">session =</span> <span class="fu">as.factor</span>(session), </span>
+<span id="cb78-16"><a href="session7.html#cb78-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">meditation =</span> <span class="fu">as.factor</span>(meditation),</span>
+<span id="cb78-17"><a href="session7.html#cb78-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">gender =</span> <span class="fu">as.factor</span>(gender),</span>
+<span id="cb78-18"><a href="session7.html#cb78-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">group =</span> <span class="fu">as.factor</span>(group))</span></code></pre></div>
 <p>And to be honest it could written in even simpler way:</p>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="session7.html#cb54-1"></a><span class="kw">library</span>(tidyverse)</span>
-<span id="cb54-2"><a href="session7.html#cb54-2"></a><span class="kw">library</span>(rstatix)</span>
-<span id="cb54-3"><a href="session7.html#cb54-3"></a></span>
-<span id="cb54-4"><a href="session7.html#cb54-4"></a><span class="co">## load the data file to the dataframe called exp</span></span>
-<span id="cb54-5"><a href="session7.html#cb54-5"></a>exp &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;alcohol_exp.csv&quot;</span>) </span>
-<span id="cb54-6"><a href="session7.html#cb54-6"></a></span>
-<span id="cb54-7"><a href="session7.html#cb54-7"></a><span class="co">##inspect exp</span></span>
-<span id="cb54-8"><a href="session7.html#cb54-8"></a><span class="kw">head</span>(exp)</span>
-<span id="cb54-9"><a href="session7.html#cb54-9"></a></span>
-<span id="cb54-10"><a href="session7.html#cb54-10"></a><span class="co">## contrary to Day 1 approach we will not be constantly creating new dataframes</span></span>
-<span id="cb54-11"><a href="session7.html#cb54-11"></a><span class="co">## we will create only one new dataframe called exp2</span></span>
-<span id="cb54-12"><a href="session7.html#cb54-12"></a><span class="co">## lets begin by assigning correct variable types</span></span>
-<span id="cb54-13"><a href="session7.html#cb54-13"></a>exp2 &lt;-<span class="st"> </span>exp <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb54-14"><a href="session7.html#cb54-14"></a><span class="kw">mutate</span>(<span class="kw">across</span>(<span class="kw">c</span>(group , session, meditation, gender, group), as.factor))</span></code></pre></div>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="session7.html#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb79-2"><a href="session7.html#cb79-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rstatix)</span>
+<span id="cb79-3"><a href="session7.html#cb79-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb79-4"><a href="session7.html#cb79-4" aria-hidden="true" tabindex="-1"></a><span class="do">## load the data file to the dataframe called exp</span></span>
+<span id="cb79-5"><a href="session7.html#cb79-5" aria-hidden="true" tabindex="-1"></a>exp <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;alcohol_exp.csv&quot;</span>) </span>
+<span id="cb79-6"><a href="session7.html#cb79-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb79-7"><a href="session7.html#cb79-7" aria-hidden="true" tabindex="-1"></a><span class="do">##inspect exp</span></span>
+<span id="cb79-8"><a href="session7.html#cb79-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(exp)</span>
+<span id="cb79-9"><a href="session7.html#cb79-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb79-10"><a href="session7.html#cb79-10" aria-hidden="true" tabindex="-1"></a><span class="do">## contrary to Day 1 approach we will not be constantly creating new dataframes</span></span>
+<span id="cb79-11"><a href="session7.html#cb79-11" aria-hidden="true" tabindex="-1"></a><span class="do">## we will create only one new dataframe called exp2</span></span>
+<span id="cb79-12"><a href="session7.html#cb79-12" aria-hidden="true" tabindex="-1"></a><span class="do">## lets begin by assigning correct variable types</span></span>
+<span id="cb79-13"><a href="session7.html#cb79-13" aria-hidden="true" tabindex="-1"></a>exp2 <span class="ot">&lt;-</span> exp <span class="sc">%&gt;%</span> </span>
+<span id="cb79-14"><a href="session7.html#cb79-14" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">c</span>(group , session, meditation, gender, group), as.factor))</span></code></pre></div>
 <p>As you work more with tidyverse you can decide on the style and approach that suites you most. For the purposes of this training we will stick to the first approach so you can work out the steps that you followed.</p>
 <p>Our variables should fine for now. Looking at the image provided, we want participant, meditation, and session to be the first three variables. Group seems to have been dropped. We will move <strong>meditation</strong> after participant and <strong>group</strong> at the end of the dataframe</p>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="session7.html#cb55-1"></a><span class="co">## we will continue working on the dataframe exp2</span></span>
-<span id="cb55-2"><a href="session7.html#cb55-2"></a><span class="co">## relocating meditation and group</span></span>
-<span id="cb55-3"><a href="session7.html#cb55-3"></a>exp2 &lt;-<span class="st"> </span>exp2 <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb55-4"><a href="session7.html#cb55-4"></a><span class="st">  </span><span class="kw">relocate</span>(meditation, <span class="dt">.after =</span> participant) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb55-5"><a href="session7.html#cb55-5"></a><span class="st">  </span><span class="kw">relocate</span>(group, <span class="dt">.after =</span> <span class="kw">last_col</span>())</span></code></pre></div>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="session7.html#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="do">## we will continue working on the dataframe exp2</span></span>
+<span id="cb80-2"><a href="session7.html#cb80-2" aria-hidden="true" tabindex="-1"></a><span class="do">## relocating meditation and group</span></span>
+<span id="cb80-3"><a href="session7.html#cb80-3" aria-hidden="true" tabindex="-1"></a>exp2 <span class="ot">&lt;-</span> exp2 <span class="sc">%&gt;%</span> </span>
+<span id="cb80-4"><a href="session7.html#cb80-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">relocate</span>(meditation, <span class="at">.after =</span> participant) <span class="sc">%&gt;%</span> </span>
+<span id="cb80-5"><a href="session7.html#cb80-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">relocate</span>(group, <span class="at">.after =</span> <span class="fu">last_col</span>())</span></code></pre></div>
 <p>We now want to create a new variable called <strong>salience</strong>. We know that the third character of the image filename represents alcohol or neutral image. We will exract that information and then create a new variable called <strong>salience</strong>.</p>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="session7.html#cb56-1"></a><span class="co">## we will use str_sub() to extract the third character</span></span>
-<span id="cb56-2"><a href="session7.html#cb56-2"></a><span class="co">## based on the value of that character we will assign a value </span></span>
-<span id="cb56-3"><a href="session7.html#cb56-3"></a><span class="co">## in our salience variable. Note how we are using case_when()</span></span>
-<span id="cb56-4"><a href="session7.html#cb56-4"></a>exp2 &lt;-<span class="st"> </span>exp2 <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb56-5"><a href="session7.html#cb56-5"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">type =</span> <span class="kw">str_sub</span>(image,<span class="dv">3</span>,<span class="dv">3</span>)) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb56-6"><a href="session7.html#cb56-6"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">salience =</span> <span class="kw">case_when</span>(</span>
-<span id="cb56-7"><a href="session7.html#cb56-7"></a>    type <span class="op">==</span><span class="st"> &#39;2&#39;</span><span class="op">~</span><span class="st">&quot;Neutral&quot;</span>,</span>
-<span id="cb56-8"><a href="session7.html#cb56-8"></a>    type <span class="op">==</span><span class="st">&#39;1&#39;</span><span class="op">~</span><span class="st">&quot;Alcohol&quot;</span></span>
-<span id="cb56-9"><a href="session7.html#cb56-9"></a>  ))</span></code></pre></div>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="session7.html#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="do">## we will use str_sub() to extract the third character</span></span>
+<span id="cb81-2"><a href="session7.html#cb81-2" aria-hidden="true" tabindex="-1"></a><span class="do">## based on the value of that character we will assign a value </span></span>
+<span id="cb81-3"><a href="session7.html#cb81-3" aria-hidden="true" tabindex="-1"></a><span class="do">## in our salience variable. Note how we are using case_when()</span></span>
+<span id="cb81-4"><a href="session7.html#cb81-4" aria-hidden="true" tabindex="-1"></a>exp2 <span class="ot">&lt;-</span> exp2 <span class="sc">%&gt;%</span> </span>
+<span id="cb81-5"><a href="session7.html#cb81-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">type =</span> <span class="fu">str_sub</span>(image,<span class="dv">3</span>,<span class="dv">3</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb81-6"><a href="session7.html#cb81-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">salience =</span> <span class="fu">case_when</span>(</span>
+<span id="cb81-7"><a href="session7.html#cb81-7" aria-hidden="true" tabindex="-1"></a>    type <span class="sc">==</span> <span class="st">&#39;2&#39;</span><span class="sc">~</span><span class="st">&quot;Neutral&quot;</span>,</span>
+<span id="cb81-8"><a href="session7.html#cb81-8" aria-hidden="true" tabindex="-1"></a>    type <span class="sc">==</span><span class="st">&#39;1&#39;</span><span class="sc">~</span><span class="st">&quot;Alcohol&quot;</span></span>
+<span id="cb81-9"><a href="session7.html#cb81-9" aria-hidden="true" tabindex="-1"></a>  ))</span></code></pre></div>
 <p>We will now proceed to recode the response from “s” and “l” to 0 and 1. We will also create a new variable for duration in ms and not in seconds.</p>
-<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="session7.html#cb57-1"></a><span class="co">## a simple mutate here would also do the job</span></span>
-<span id="cb57-2"><a href="session7.html#cb57-2"></a><span class="co">## each mutate is creating a new variable</span></span>
-<span id="cb57-3"><a href="session7.html#cb57-3"></a>exp2 &lt;-<span class="st"> </span>exp2 <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb57-4"><a href="session7.html#cb57-4"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">durationms =</span> duration<span class="op">*</span><span class="dv">1000</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb57-5"><a href="session7.html#cb57-5"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">responsenum =</span> <span class="kw">case_when</span>(</span>
-<span id="cb57-6"><a href="session7.html#cb57-6"></a>    response <span class="op">==</span><span class="st"> &#39;l&#39;</span><span class="op">~</span><span class="st"> </span><span class="dv">1</span>,</span>
-<span id="cb57-7"><a href="session7.html#cb57-7"></a>    response <span class="op">==</span><span class="st"> &#39;s&#39;</span><span class="op">~</span><span class="st"> </span><span class="dv">0</span></span>
-<span id="cb57-8"><a href="session7.html#cb57-8"></a>  ))</span></code></pre></div>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="session7.html#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="do">## a simple mutate here would also do the job</span></span>
+<span id="cb82-2"><a href="session7.html#cb82-2" aria-hidden="true" tabindex="-1"></a><span class="do">## each mutate is creating a new variable</span></span>
+<span id="cb82-3"><a href="session7.html#cb82-3" aria-hidden="true" tabindex="-1"></a>exp2 <span class="ot">&lt;-</span> exp2 <span class="sc">%&gt;%</span> </span>
+<span id="cb82-4"><a href="session7.html#cb82-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">durationms =</span> duration<span class="sc">*</span><span class="dv">1000</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb82-5"><a href="session7.html#cb82-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">responsenum =</span> <span class="fu">case_when</span>(</span>
+<span id="cb82-6"><a href="session7.html#cb82-6" aria-hidden="true" tabindex="-1"></a>    response <span class="sc">==</span> <span class="st">&#39;l&#39;</span><span class="sc">~</span> <span class="dv">1</span>,</span>
+<span id="cb82-7"><a href="session7.html#cb82-7" aria-hidden="true" tabindex="-1"></a>    response <span class="sc">==</span> <span class="st">&#39;s&#39;</span><span class="sc">~</span> <span class="dv">0</span></span>
+<span id="cb82-8"><a href="session7.html#cb82-8" aria-hidden="true" tabindex="-1"></a>  ))</span></code></pre></div>
 <p>We now have to deal with the fact that our DV is just trial responses. We want to aggregate these responses across participant, meditation, session, salience, and durationms. Here we will also create a new dataframe as our structure will change.</p>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="session7.html#cb58-1"></a><span class="co">## we will group our data using the variables above</span></span>
-<span id="cb58-2"><a href="session7.html#cb58-2"></a><span class="co">## and then we will calculate the mean of the responses</span></span>
-<span id="cb58-3"><a href="session7.html#cb58-3"></a><span class="co">## these mean values will be assigned to the the new variable called ration</span></span>
-<span id="cb58-4"><a href="session7.html#cb58-4"></a><span class="co">## do not forget to ungroup at the end of your grouping work</span></span>
-<span id="cb58-5"><a href="session7.html#cb58-5"></a><span class="co">## we carried the variable session forward for your upcoming exercise</span></span>
-<span id="cb58-6"><a href="session7.html#cb58-6"></a><span class="co">## we will drop it from the grouping as we do not need it for this</span></span>
-<span id="cb58-7"><a href="session7.html#cb58-7"></a><span class="co">## three-way anova</span></span>
-<span id="cb58-8"><a href="session7.html#cb58-8"></a>exp3 &lt;-<span class="st"> </span>exp2 <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb58-9"><a href="session7.html#cb58-9"></a><span class="st">  </span><span class="kw">group_by</span>(participant, meditation, salience, durationms) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb58-10"><a href="session7.html#cb58-10"></a><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">ratio =</span> <span class="kw">mean</span>(responsenum)) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb58-11"><a href="session7.html#cb58-11"></a><span class="st">  </span><span class="kw">ungroup</span>()</span>
-<span id="cb58-12"><a href="session7.html#cb58-12"></a></span>
-<span id="cb58-13"><a href="session7.html#cb58-13"></a><span class="co">## make sure to inspect the exp3 dataframe to check that everything is in order</span></span>
-<span id="cb58-14"><a href="session7.html#cb58-14"></a><span class="co">## you should be able to see that grouping and aggregating </span></span>
-<span id="cb58-15"><a href="session7.html#cb58-15"></a><span class="co">## also dropped all other undeclared variables</span></span></code></pre></div>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="session7.html#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="do">## we will group our data using the variables above</span></span>
+<span id="cb83-2"><a href="session7.html#cb83-2" aria-hidden="true" tabindex="-1"></a><span class="do">## and then we will calculate the mean of the responses</span></span>
+<span id="cb83-3"><a href="session7.html#cb83-3" aria-hidden="true" tabindex="-1"></a><span class="do">## these mean values will be assigned to the the new variable called ration</span></span>
+<span id="cb83-4"><a href="session7.html#cb83-4" aria-hidden="true" tabindex="-1"></a><span class="do">## do not forget to ungroup at the end of your grouping work</span></span>
+<span id="cb83-5"><a href="session7.html#cb83-5" aria-hidden="true" tabindex="-1"></a><span class="do">## we carried the variable session forward for your upcoming exercise</span></span>
+<span id="cb83-6"><a href="session7.html#cb83-6" aria-hidden="true" tabindex="-1"></a><span class="do">## we will drop it from the grouping as we do not need it for this</span></span>
+<span id="cb83-7"><a href="session7.html#cb83-7" aria-hidden="true" tabindex="-1"></a><span class="do">## three-way anova</span></span>
+<span id="cb83-8"><a href="session7.html#cb83-8" aria-hidden="true" tabindex="-1"></a>exp3 <span class="ot">&lt;-</span> exp2 <span class="sc">%&gt;%</span> </span>
+<span id="cb83-9"><a href="session7.html#cb83-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(participant, meditation, salience, durationms) <span class="sc">%&gt;%</span> </span>
+<span id="cb83-10"><a href="session7.html#cb83-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">ratio =</span> <span class="fu">mean</span>(responsenum)) <span class="sc">%&gt;%</span> </span>
+<span id="cb83-11"><a href="session7.html#cb83-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb83-12"><a href="session7.html#cb83-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb83-13"><a href="session7.html#cb83-13" aria-hidden="true" tabindex="-1"></a><span class="do">## make sure to inspect the exp3 dataframe to check that everything is in order</span></span>
+<span id="cb83-14"><a href="session7.html#cb83-14" aria-hidden="true" tabindex="-1"></a><span class="do">## you should be able to see that grouping and aggregating </span></span>
+<span id="cb83-15"><a href="session7.html#cb83-15" aria-hidden="true" tabindex="-1"></a><span class="do">## also dropped all other undeclared variables</span></span></code></pre></div>
 <p>Let’s do a final check on variable types and correct any discrepancies.
 This is also a good point to take a short break before we continue with the exrcise.</p>
 </div>
-<div id="exercise-11" class="section level2" number="7.4">
-<h2><span class="header-section-number">7.4</span> Exercise 11</h2>
+<div id="exercise-11" class="section level2 hasAnchor" number="7.4">
+<h2><span class="header-section-number">7.4</span> Exercise 11<a href="session7.html#exercise-11" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Load the datafile <strong>stroopy stroop.csv</strong> and assign it to a dataframe called <strong>stroop</strong>. This contains the data from a Stroop experiment and you should go through the process of preparing it for a two-way ANOVA. You should complete the following steps, which are not given necessarily in the correct order.</p>
 <ol style="list-style-type: decimal">
 <li>Create a <strong>group</strong> variable by recoding the <strong>participant</strong> variable. Participants with value below 2000 should be in the <strong>control</strong> group. Participants with value above 2000 should be in the <strong>gambling</strong> group.<br />
@@ -420,7 +430,6 @@ This is also a good point to take a short break before we continue with the exrc
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -439,6 +448,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -459,6 +469,10 @@ gitbook.start({
 "text": null
 },
 "download": ["Kent R training.pdf", "Kent R training.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }

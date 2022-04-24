@@ -1,4 +1,4 @@
-# Tidyverse 1 {#session4}
+# Starting to work with datafiles using Tidyverse {#session4}
 
 ## Thinking ahead  
 
@@ -8,7 +8,7 @@ In this session we will start putting together everything we covered so far and 
 2. inspect the data file
 3. maybe create some basic graphs to see how things look
 4. or even calculate some basic descriptive statistics
-5. go through a process of "cleaning" (e.g., recoding, reverse scoring etc)
+5. go through a process of "cleaning" (e.g., re-coding, reverse scoring etc)
 6. restructuring the data file for the purposes of our analysis
 7. more graphs
 8. planned analysis
@@ -19,7 +19,7 @@ It is crucial to keep this process in mind as it will guide through the next two
 ## Learning objectives
 
 * **Loading our data into R**
-* **Inspect our Data frames**
+* **Inspect our Data **
 * **Visually exploring our data**
 * **Selecting and filtering our data**
 * **Saving our data frames into files**
@@ -28,11 +28,11 @@ It is crucial to keep this process in mind as it will guide through the next two
 ## Our first data file
 
 First, create a new project in our usual **"R training"** folder. Name the new folder and the new project **session4**. 
-In our **Files** tab in our **R training team** you should be able to see a data file called **"alco_exp"**. This a data file from one of my experiments and I will provide some more detail as we go along. Download this file and place it in your **session4** folder in the **R Training** folder. By doing so we can load into our scripts without having to specify the full path of the file.  
+In our **Files** tab in our **R training team** you should be able to see a data file called **"alcohol_exp.csv"**. This a data file from one of my experiments and I will provide some more detail as we go along. Download this file and place it in your **session4** folder in the **R Training** folder. By doing so we can load into our scripts without having to specify the full path of the file.  
 
 Now create a new script, also called **session4**. Type the following commands and run them one line at a time: 
 
-```{r eval=FALSE}
+```{r eval=TRUE}
 library(tidyverse)
 
 ### load our "alcohol_exp,csv" into a df called "alc_df"
@@ -41,11 +41,14 @@ alc_df <- read_csv("alcohol_exp.csv")
 
 You should be able to see the following output in your console, or at least parts of it:  
 
-```{r echo=FALSE}
+```{r echo=TRUE}
 library(tidyverse)
 
 ### load our "alcohol_exp,csv" into a df called "alc_df"
-alc_df <- read_csv("alcohol_exp.csv")
+alc_df <- read_csv("alcohol_exp.csv") 
+
+head(alc_df)
+
 ```
 
 You can also click on the "alc_df" object in your **Environment**, this will open the data frame in a tab where you can inspect it. If you hover your mouse pointer at the top of each column you should see information about each variable. Another way to get that information is by running the **function** **str()** and using the name of your data frame as an argument. Try this out and see what you get. Also, experiment with the following **functions** and try to guess what they produce:
@@ -59,9 +62,11 @@ You can also click on the "alc_df" object in your **Environment**, this will ope
 
 ## Correcting Variable Types
 
-From exploring this data frame I can see that we need to adjust the type of some variables. This can be crucial for future sessions where the type of a variable can drastically affect the analysis output. For example, the variable **meditation** is showing as **character**, meaning that its content is characters. In reality this is actually a **factor** with two levels and R should be notified for this. Going through your variables and checking that that are assigned the right type is an important step that will also make you more skilful in the use of R. Add the following commands in your existing scripts:
+From exploring this data frame I can see that we need to adjust the type of some variables. This can be crucial for future sessions where the type of a variable can drastically affect the analysis output. For example, the variable **meditation** is showing as **character**, meaning that its content is characters. In reality this is actually a **factor** with two levels and R should be notified for this. Going through your variables and checking that that are assigned the right type is an important step that will also make you more skillful in the use of R. Add the following commands in your existing scripts:
 
-```{r eval=FALSE}
+
+
+```{r echo=TRUE}
 ### changing meditation to a factor variable
 alc_df$meditation = as.factor(alc_df$meditation)
 
@@ -69,13 +74,61 @@ alc_df$meditation = as.factor(alc_df$meditation)
 
 levels(alc_df$meditation)
 nlevels(alc_df$meditation)
+
+### changing group to factor variable
+alc_df$group = factor(alc_df$group, levels = c(1,2), labels = c("control", "intervention"))
+
+summary(alc_df)
 ```
 
-Which other variables in the data frame you would say need to be changed to factors? Go ahead and change them.
+## Exercise 4.1   
+Which other variables in the data frame you would say need to be changed to factors? Go ahead and change them. 
+
+
+
+
+
+## Dropping columns and rows   
+
+Once we are done with loading our datafile, having an initial look and stating correct variable types, we may also need to clear our dataset. Two typical practices that take place during data cleaning are dropping columns and rows, or else dropping variables and observations. Even though there are many ways to achieve this in R, we usually instruct our students to do so by using **select()** (for selecting columns) and **filter()** (for selecting rows). Both functions are part of the **tidyverse** collection of packages.   
+For example, in our dataset I only want to keep the observations that have **thisTrialN** value between 0 and 111, I want to drop all other rows. Secondly, I want to drop the columns **thisRepN**,	**thisTrialN**,	**thisN**,	**thisIndex**,	**response.rt**.
+
+
+```{r echo=TRUE}
+### first lets see different values of thisTrialN
+
+summary(alc_df$thisTrialN)
+
+### changing meditation to a factor variable
+df1 <- filter(alc_df, thisTrialN >=0 & thisTrialN <=111)
+summary(df1)
+
+### dropping columns by selecting the columns I want to keep by name
+df2 <- select(alc_df, c(participant,group,session,image,duration,response,meditation,gender,age))
+summary(df2)
+
+
+### dropping columns by selecting the columns I want to keep by number of column
+df2 <- select(alc_df, c(1:6, 12:14))
+summary(df2)
+
+### dropping columns by selecting the columns I want to drop by name
+df2 <- select(alc_df, !c(thisRepN,thisTrialN,	thisN,	thisIndex,	response.rt))
+summary(df2)
+
+
+```  
+
+
+## Exercise 4.2   
+
+From the original **alc_df** dataframe keep only the first four columns and only the **first session** observations. Store the final data in a dataframe called df4.2   
+
+
 
 ## Recoding 
 
-Another process that takes place while preparing data file is **recoding**. As a good practice we tend to recode a variable into a new variable and preserving the original variable. Tidyverse has a function for this called **recode()**. However, what we also have to start thinking now is that we want to recode an entire column (vector) of data. Traditionally in R we would need a programming technique called **loop**. But I promised you that we would keep programming to a minimum. Luckily, tidyverse (actually **dplyr**) comes to the rescue again with a function called **mutate**. Let's see an example below:  
+Another process that could take place while preparing data file is **recoding**. As a good practice we tend to recode a variable into a new variable and preserving the original variable. Tidyverse has a function for this called **recode()**. However, what we also have to start thinking now is that we want to recode an entire column (vector) of data. Traditionally in R we would need a programming technique called **loop**. But I promised you that we would keep programming to a minimum. Luckily, tidyverse (actually **dplyr**) comes to the rescue again with a function called **mutate**. Let's see an example below:  
 
 ```{r eval=FALSE}
 ### creating a new data frame named Gender that contains the recoded gender variable
@@ -85,8 +138,12 @@ alc_df2 <- mutate(alc_df, Gender = recode(gender,
                              '2' = "Female"))
 ```
 
+Let's explain what took place here. We are running a function called **mutate()** which will create a new column called **Gender** in the dataframe **alc_df**. This new column **Gender** will be a result of a second function called **recode()** which will generate new values based on the old **gender** column values. Keep in mind here that in R upper case and lower case letters are different, hence Gender and gender columns are different. This is actually a bad to use two different columns that are so similar but we do so here to make a point. Also, in tomorrow's session we will use **mutate()** even more efficiently by utilising **%>%**. 
 
-Upon inspecting the new dataframe called **alc_df2** I see that the variable Gender is not a factor but a character. I can change that to using the **as.factor** function:  
+
+
+Upon inspecting the new dataframe called **alc_df2** I see that the variable Gender is not a factor but a character. I can change that to using the **as.factor** function. **as.factor** is a simplified version of **factor()** and we can use it when our variable already has information that is text.   
+
 ```{r eval=FALSE}
 ### creating a new data frame named Gender that contains the recoded gender variable
 
@@ -126,7 +183,7 @@ alc_df6 <- filter(alc_df5, participant < 200)
 ```
 
 
-Now that we have a data frame with the data as I want it I can save it to file. All the work we have done so far is with data frames. Data frames are stored in memory so remember to store them to actual files before you exit RStudio (although I am kind of lying to you, but lets pretend you believe me for now).
+Now that we have a data frame with the data as I want it I can save it to a file. All the work we have done so far is with data frames. Data frames are stored in the computer memory and and not in a file, so remember to store them to actual files before you exit RStudio (although I am kind of lying to you, but lets pretend you believe me for now).
 
 ```{r eval=FALSE}
 ### creating a new data frame named Gender that contains the recoded gender variable
@@ -136,7 +193,7 @@ write_csv(alc_df6, "finalfile.csv")
 
 **NOTE** I have actually been horrible to you and we could have done all the above work in a much better way using what is called **pipe operator**. But for the time being, we need the practice so we will introduce the piper operator in the next session.
 
-## Exercise 9
+## Exercise 4.3
 
 Load the file **alcohol_exp** to a data frame called **df**. Then write the appropriate commands to complete the following steps:
 

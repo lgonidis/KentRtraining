@@ -2,9 +2,10 @@
 
 ## Reflecting on the last session
 
-We have managed to do quite a few tasks already. However, we also managed to create a proper in the process. Our **environment**  must be full of objects that I will not be using. And even though I could remove them it is best if I actually do not create them in the first place. That can be achieved with the use of the **pipe operator** or else `%>%` (**ctrl+shift+m**).
+We have managed to do quite a few tasks already. However, we also managed to create a proper mess in the process. Our **environment**  must be full of objects that we will not be using. And even though we could remove them it is best if we actually do not create them in the first place. That can be achieved with the use of the **pipe operator** or else `%>%` (**ctrl+shift+m**).
 
-##Learning objectives 
+## Learning objectives   
+
 1. Work more efficiently using tidyverse (dplyr and tidyr)
 2. manipulating data
 3. summarising data (brief, we will start from this in Day 2)
@@ -58,7 +59,7 @@ write_csv(df3, "wastedresources.csv")
 
 Now your turn
 
-## Exercise 10
+## Exercise 6.1
 
 1. Load the file **"alcohol_qualtrics.csv"** to a data frame
 2. Drop all the variables after the column 17

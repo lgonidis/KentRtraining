@@ -4,19 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Session 6 Tidyverse 2 | Kent R training</title>
+  <title>Chapter6 Tidyverse 2 | Kent R training</title>
   <meta name="description" content="This is a work in progress" />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Session 6 Tidyverse 2 | Kent R training" />
+  <meta property="og:title" content="Chapter6 Tidyverse 2 | Kent R training" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="This is a work in progress" />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Session 6 Tidyverse 2 | Kent R training" />
+  <meta name="twitter:title" content="Chapter6 Tidyverse 2 | Kent R training" />
   
   <meta name="twitter:description" content="This is a work in progress" />
   
@@ -24,7 +23,7 @@
 <meta name="author" content="Lazaros Gonidis" />
 
 
-<meta name="date" content="2020-11-03" />
+<meta name="date" content="2022-04-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,8 +32,8 @@
   
 <link rel="prev" href="session4.html"/>
 <link rel="next" href="session7.html"/>
-<script src="libs/header-attrs-2.4/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -50,14 +49,16 @@
 
 
 
-
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -118,6 +119,7 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 
@@ -137,7 +139,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prelude</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#a-few-words"><i class="fa fa-check"></i><b>1.1</b> A few words…</a></li>
-<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#a-comment-on-the-book-structure"><i class="fa fa-check"></i><b>1.2</b> A comment on the book structure</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#a-comment-on-the-course-structure"><i class="fa fa-check"></i><b>1.2</b> A comment on the course structure</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>2</b> Introduction</a>
 <ul>
@@ -146,20 +148,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.3" data-path="introduction.html"><a href="introduction.html#starting-with-rstudio"><i class="fa fa-check"></i><b>2.3</b> Starting with RStudio</a></li>
 <li class="chapter" data-level="2.4" data-path="introduction.html"><a href="introduction.html#console"><i class="fa fa-check"></i><b>2.4</b> Console</a>
 <ul>
-<li class="chapter" data-level="2.4.1" data-path="introduction.html"><a href="introduction.html#exercise-1"><i class="fa fa-check"></i><b>2.4.1</b> Exercise 1</a></li>
+<li class="chapter" data-level="2.4.1" data-path="introduction.html"><a href="introduction.html#exercise-1.1"><i class="fa fa-check"></i><b>2.4.1</b> Exercise 1.1</a></li>
 </ul></li>
 <li class="chapter" data-level="2.5" data-path="introduction.html"><a href="introduction.html#environment"><i class="fa fa-check"></i><b>2.5</b> Environment</a></li>
 <li class="chapter" data-level="2.6" data-path="introduction.html"><a href="introduction.html#files"><i class="fa fa-check"></i><b>2.6</b> Files</a></li>
 <li class="chapter" data-level="2.7" data-path="introduction.html"><a href="introduction.html#scripts"><i class="fa fa-check"></i><b>2.7</b> Scripts</a></li>
-<li class="chapter" data-level="2.8" data-path="introduction.html"><a href="introduction.html#exercise-2"><i class="fa fa-check"></i><b>2.8</b> Exercise 2</a></li>
+<li class="chapter" data-level="2.8" data-path="introduction.html"><a href="introduction.html#exercise-1.2"><i class="fa fa-check"></i><b>2.8</b> Exercise 1.2</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="session2.html"><a href="session2.html"><i class="fa fa-check"></i><b>3</b> Using Vectors and Functions</a>
 <ul>
 <li class="chapter" data-level="3.1" data-path="session2.html"><a href="session2.html#learning-objectives-1"><i class="fa fa-check"></i><b>3.1</b> Learning Objectives</a></li>
-<li class="chapter" data-level="3.2" data-path="session2.html"><a href="session2.html#vectors"><i class="fa fa-check"></i><b>3.2</b> Vectors</a></li>
-<li class="chapter" data-level="3.3" data-path="session2.html"><a href="session2.html#creating-vectors-with-random-numbers"><i class="fa fa-check"></i><b>3.3</b> Creating vectors with random numbers</a></li>
-<li class="chapter" data-level="3.4" data-path="session2.html"><a href="session2.html#frequency-tables-in-r-and-histograms"><i class="fa fa-check"></i><b>3.4</b> Frequency tables in R and Histograms</a></li>
-<li class="chapter" data-level="3.5" data-path="session2.html"><a href="session2.html#exercise-3"><i class="fa fa-check"></i><b>3.5</b> Exercise 3</a></li>
+<li class="chapter" data-level="3.2" data-path="session2.html"><a href="session2.html#r-objects-vectors"><i class="fa fa-check"></i><b>3.2</b> R-objects: Vectors</a></li>
+<li class="chapter" data-level="3.3" data-path="session2.html"><a href="session2.html#r-objects-lists"><i class="fa fa-check"></i><b>3.3</b> R-objects: Lists</a></li>
+<li class="chapter" data-level="3.4" data-path="session2.html"><a href="session2.html#r-objects-dataframes"><i class="fa fa-check"></i><b>3.4</b> R-objects: Dataframes</a></li>
+<li class="chapter" data-level="3.5" data-path="session2.html"><a href="session2.html#r-objects-factors"><i class="fa fa-check"></i><b>3.5</b> R-objects: Factors</a></li>
+<li class="chapter" data-level="3.6" data-path="session2.html"><a href="session2.html#exercise-2.1"><i class="fa fa-check"></i><b>3.6</b> Exercise 2.1</a></li>
+<li class="chapter" data-level="3.7" data-path="session2.html"><a href="session2.html#creating-vectors-with-random-numbers"><i class="fa fa-check"></i><b>3.7</b> Creating vectors with random numbers</a></li>
+<li class="chapter" data-level="3.8" data-path="session2.html"><a href="session2.html#frequency-tables-in-r-and-histograms"><i class="fa fa-check"></i><b>3.8</b> Frequency tables in R and Histograms</a></li>
+<li class="chapter" data-level="3.9" data-path="session2.html"><a href="session2.html#exercise-2.2"><i class="fa fa-check"></i><b>3.9</b> Exercise 2.2</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="session3.html"><a href="session3.html"><i class="fa fa-check"></i><b>4</b> Packages</a>
 <ul>
@@ -172,38 +178,42 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.7" data-path="session3.html"><a href="session3.html#additional-exercises-spoiler-alert-if-you-get-stuck-the-answers-are-at-the-end-of-the-pdf"><i class="fa fa-check"></i><b>4.7</b> Additional Exercises (spoiler alert: if you get stuck the answers are at the end of the pdf)</a></li>
 <li class="chapter" data-level="4.8" data-path="session3.html"><a href="session3.html#solutions-spoiler-alert"><i class="fa fa-check"></i><b>4.8</b> Solutions: SPOILER ALERT</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="session4.html"><a href="session4.html"><i class="fa fa-check"></i><b>5</b> Tidyverse 1</a>
+<li class="chapter" data-level="5" data-path="session4.html"><a href="session4.html"><i class="fa fa-check"></i><b>5</b> Starting to work with datafiles using Tidyverse</a>
 <ul>
 <li class="chapter" data-level="5.1" data-path="session4.html"><a href="session4.html#thinking-ahead"><i class="fa fa-check"></i><b>5.1</b> Thinking ahead</a></li>
 <li class="chapter" data-level="5.2" data-path="session4.html"><a href="session4.html#learning-objectives-3"><i class="fa fa-check"></i><b>5.2</b> Learning objectives</a></li>
 <li class="chapter" data-level="5.3" data-path="session4.html"><a href="session4.html#our-first-data-file"><i class="fa fa-check"></i><b>5.3</b> Our first data file</a></li>
 <li class="chapter" data-level="5.4" data-path="session4.html"><a href="session4.html#correcting-variable-types"><i class="fa fa-check"></i><b>5.4</b> Correcting Variable Types</a></li>
-<li class="chapter" data-level="5.5" data-path="session4.html"><a href="session4.html#recoding"><i class="fa fa-check"></i><b>5.5</b> Recoding</a></li>
-<li class="chapter" data-level="5.6" data-path="session4.html"><a href="session4.html#exercise-9"><i class="fa fa-check"></i><b>5.6</b> Exercise 9</a></li>
+<li class="chapter" data-level="5.5" data-path="session4.html"><a href="session4.html#exercise-4.1"><i class="fa fa-check"></i><b>5.5</b> Exercise 4.1</a></li>
+<li class="chapter" data-level="5.6" data-path="session4.html"><a href="session4.html#dropping-columns-and-rows"><i class="fa fa-check"></i><b>5.6</b> Dropping columns and rows</a></li>
+<li class="chapter" data-level="5.7" data-path="session4.html"><a href="session4.html#exercise-4.2"><i class="fa fa-check"></i><b>5.7</b> Exercise 4.2</a></li>
+<li class="chapter" data-level="5.8" data-path="session4.html"><a href="session4.html#recoding"><i class="fa fa-check"></i><b>5.8</b> Recoding</a></li>
+<li class="chapter" data-level="5.9" data-path="session4.html"><a href="session4.html#exercise-4.3"><i class="fa fa-check"></i><b>5.9</b> Exercise 4.3</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="session5.html"><a href="session5.html"><i class="fa fa-check"></i><b>6</b> Tidyverse 2</a>
 <ul>
 <li class="chapter" data-level="6.1" data-path="session5.html"><a href="session5.html#reflecting-on-the-last-session"><i class="fa fa-check"></i><b>6.1</b> Reflecting on the last session</a></li>
-<li class="chapter" data-level="6.2" data-path="session5.html"><a href="session5.html#pipe-operator"><i class="fa fa-check"></i><b>6.2</b> Pipe Operator <code>%&gt;%</code></a></li>
-<li class="chapter" data-level="6.3" data-path="session5.html"><a href="session5.html#exercise-10"><i class="fa fa-check"></i><b>6.3</b> Exercise 10</a></li>
-<li class="chapter" data-level="6.4" data-path="session5.html"><a href="session5.html#grouping-spliting-and-summarizing-variables-across-out-data-frame"><i class="fa fa-check"></i><b>6.4</b> Grouping, spliting, and summarizing variables across out data frame</a></li>
+<li class="chapter" data-level="6.2" data-path="session5.html"><a href="session5.html#learning-objectives-4"><i class="fa fa-check"></i><b>6.2</b> Learning objectives</a></li>
+<li class="chapter" data-level="6.3" data-path="session5.html"><a href="session5.html#pipe-operator"><i class="fa fa-check"></i><b>6.3</b> Pipe Operator <code>%&gt;%</code></a></li>
+<li class="chapter" data-level="6.4" data-path="session5.html"><a href="session5.html#exercise-6.1"><i class="fa fa-check"></i><b>6.4</b> Exercise 6.1</a></li>
+<li class="chapter" data-level="6.5" data-path="session5.html"><a href="session5.html#grouping-spliting-and-summarizing-variables-across-out-data-frame"><i class="fa fa-check"></i><b>6.5</b> Grouping, spliting, and summarizing variables across out data frame</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="session7.html"><a href="session7.html"><i class="fa fa-check"></i><b>7</b> Bringing Everything Together. Part I</a>
 <ul>
 <li class="chapter" data-level="7.1" data-path="session7.html"><a href="session7.html#reflecting-on-day-1"><i class="fa fa-check"></i><b>7.1</b> Reflecting on Day 1</a></li>
-<li class="chapter" data-level="7.2" data-path="session7.html"><a href="session7.html#learning-objectives-4"><i class="fa fa-check"></i><b>7.2</b> Learning Objectives</a></li>
+<li class="chapter" data-level="7.2" data-path="session7.html"><a href="session7.html#learning-objectives-5"><i class="fa fa-check"></i><b>7.2</b> Learning Objectives</a></li>
 <li class="chapter" data-level="7.3" data-path="session7.html"><a href="session7.html#working-with-the-file"><i class="fa fa-check"></i><b>7.3</b> Working with the file</a></li>
 <li class="chapter" data-level="7.4" data-path="session7.html"><a href="session7.html#exercise-11"><i class="fa fa-check"></i><b>7.4</b> Exercise 11</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="session8.html"><a href="session8.html"><i class="fa fa-check"></i><b>8</b> Bringing Everything Together. Part II</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="session8.html"><a href="session8.html#learning-objectives-5"><i class="fa fa-check"></i><b>8.1</b> Learning Objectives</a></li>
+<li class="chapter" data-level="8.1" data-path="session8.html"><a href="session8.html#learning-objectives-6"><i class="fa fa-check"></i><b>8.1</b> Learning Objectives</a></li>
 <li class="chapter" data-level="8.2" data-path="session8.html"><a href="session8.html#continuing-with-the-exercise-10-and-two-way-anova"><i class="fa fa-check"></i><b>8.2</b> Continuing with the exercise 10 and two-way ANOVA</a></li>
 <li class="chapter" data-level="8.3" data-path="session8.html"><a href="session8.html#exercise-12"><i class="fa fa-check"></i><b>8.3</b> Exercise 12</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="session9.html"><a href="session9.html"><i class="fa fa-check"></i><b>9</b> Restructuring and Merging Data.</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="session9.html"><a href="session9.html#learning-objectives-6"><i class="fa fa-check"></i><b>9.1</b> Learning Objectives</a></li>
+<li class="chapter" data-level="9.1" data-path="session9.html"><a href="session9.html#learning-objectives-7"><i class="fa fa-check"></i><b>9.1</b> Learning Objectives</a></li>
 <li class="chapter" data-level="9.2" data-path="session9.html"><a href="session9.html#restructuring-data"><i class="fa fa-check"></i><b>9.2</b> Restructuring Data</a></li>
 </ul></li>
 <li class="divider"></li>
@@ -226,19 +236,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="session5" class="section level1" number="6">
-<h1><span class="header-section-number">Session 6</span> Tidyverse 2</h1>
-<div id="reflecting-on-the-last-session" class="section level2" number="6.1">
-<h2><span class="header-section-number">6.1</span> Reflecting on the last session</h2>
-<p>We have managed to do quite a few tasks already. However, we also managed to create a proper in the process. Our <strong>environment</strong> must be full of objects that I will not be using. And even though I could remove them it is best if I actually do not create them in the first place. That can be achieved with the use of the <strong>pipe operator</strong> or else <code>%&gt;%</code> (<strong>ctrl+shift+m</strong>).</p>
-<p>##Learning objectives
-1. Work more efficiently using tidyverse (dplyr and tidyr)
-2. manipulating data
-3. summarising data (brief, we will start from this in Day 2)</p>
+<div id="session5" class="section level1 hasAnchor" number="6">
+<h1><span class="header-section-number">Chapter6</span> Tidyverse 2<a href="session5.html#session5" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="reflecting-on-the-last-session" class="section level2 hasAnchor" number="6.1">
+<h2><span class="header-section-number">6.1</span> Reflecting on the last session<a href="session5.html#reflecting-on-the-last-session" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We have managed to do quite a few tasks already. However, we also managed to create a proper mess in the process. Our <strong>environment</strong> must be full of objects that we will not be using. And even though we could remove them it is best if we actually do not create them in the first place. That can be achieved with the use of the <strong>pipe operator</strong> or else <code>%&gt;%</code> (<strong>ctrl+shift+m</strong>).</p>
+</div>
+<div id="learning-objectives-4" class="section level2 hasAnchor" number="6.2">
+<h2><span class="header-section-number">6.2</span> Learning objectives<a href="session5.html#learning-objectives-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ol style="list-style-type: decimal">
+<li>Work more efficiently using tidyverse (dplyr and tidyr)</li>
+<li>manipulating data</li>
+<li>summarising data (brief, we will start from this in Day 2)</li>
+</ol>
 <p><strong>Note:</strong> In this session we will be focusing on describing a number of tasks and then discussing how we can best perform them. We have already introduced enough concepts to do really meaningful work. Now we have to put our progress to the test.</p>
 </div>
-<div id="pipe-operator" class="section level2" number="6.2">
-<h2><span class="header-section-number">6.2</span> Pipe Operator <code>%&gt;%</code></h2>
+<div id="pipe-operator" class="section level2 hasAnchor" number="6.3">
+<h2><span class="header-section-number">6.3</span> Pipe Operator <code>%&gt;%</code><a href="session5.html#pipe-operator" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Lets start with seeing how the <strong>pipe operator</strong> works. If you think about the last exercise in the previous session you can remember that it took a number of steps where we kept assigning our work to a new data frame. With the use of <code>%&gt;%</code> we can write all these steps one under the other in one chunk of code.</p>
 <p><strong>Exercise 9</strong></p>
 <p>Load the file <strong>alcohol_exp</strong> to a data frame called <strong>df</strong>. Then write the appropriate commands to complete the following steps:</p>
@@ -251,32 +265,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Keep only response.rt below 1.5</li>
 <li>save your final data frame into a file called <strong>“wastedresources.csv”</strong></li>
 </ol>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="session5.html#cb48-1"></a><span class="kw">library</span>(tidyverse)</span>
-<span id="cb48-2"><a href="session5.html#cb48-2"></a>df &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;alcohol_exp.csv&quot;</span>)</span>
-<span id="cb48-3"><a href="session5.html#cb48-3"></a></span>
-<span id="cb48-4"><a href="session5.html#cb48-4"></a>df3 &lt;-<span class="st"> </span>df <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb48-5"><a href="session5.html#cb48-5"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">group =</span> <span class="kw">as.factor</span>(group)) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb48-6"><a href="session5.html#cb48-6"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">session =</span> <span class="kw">as.factor</span>(session)) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb48-7"><a href="session5.html#cb48-7"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">meditation =</span> <span class="kw">as.factor</span>(meditation)) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb48-8"><a href="session5.html#cb48-8"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">gender =</span> <span class="kw">as.factor</span>(gender)) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb48-9"><a href="session5.html#cb48-9"></a><span class="st">  </span><span class="kw">select</span>(group, session, meditation, gender, response.rt) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb48-10"><a href="session5.html#cb48-10"></a><span class="st">  </span><span class="kw">filter</span>(gender <span class="op">==</span><span class="st"> </span><span class="dv">2</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb48-11"><a href="session5.html#cb48-11"></a><span class="st">  </span><span class="kw">filter</span>(response.rt <span class="op">&lt;</span><span class="st"> </span><span class="fl">1.5</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="co">### this could be done with the above</span></span>
-<span id="cb48-12"><a href="session5.html#cb48-12"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">gender =</span> <span class="kw">recode</span>(gender,<span class="st">&#39;1&#39;</span> =<span class="st"> &quot;Male&quot;</span>, <span class="st">&#39;2&#39;</span>=<span class="st">&quot;Female&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb48-13"><a href="session5.html#cb48-13"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">gender =</span> <span class="kw">recode</span>(group,<span class="st">&#39;1&#39;</span> =<span class="st"> &quot;High&quot;</span>, <span class="st">&#39;2&#39;</span>=<span class="st">&quot;Low&quot;</span>))</span>
-<span id="cb48-14"><a href="session5.html#cb48-14"></a></span>
-<span id="cb48-15"><a href="session5.html#cb48-15"></a></span>
-<span id="cb48-16"><a href="session5.html#cb48-16"></a></span>
-<span id="cb48-17"><a href="session5.html#cb48-17"></a><span class="co">### and just for fun lets also create a histogram of reaction times.</span></span>
-<span id="cb48-18"><a href="session5.html#cb48-18"></a><span class="kw">hist</span>(df3<span class="op">$</span>response.rt)</span>
-<span id="cb48-19"><a href="session5.html#cb48-19"></a></span>
-<span id="cb48-20"><a href="session5.html#cb48-20"></a><span class="co">### lets save the data file</span></span>
-<span id="cb48-21"><a href="session5.html#cb48-21"></a></span>
-<span id="cb48-22"><a href="session5.html#cb48-22"></a><span class="kw">write_csv</span>(df3, <span class="st">&quot;wastedresources.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="session5.html#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb73-2"><a href="session5.html#cb73-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;alcohol_exp.csv&quot;</span>)</span>
+<span id="cb73-3"><a href="session5.html#cb73-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-4"><a href="session5.html#cb73-4" aria-hidden="true" tabindex="-1"></a>df3 <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> </span>
+<span id="cb73-5"><a href="session5.html#cb73-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">group =</span> <span class="fu">as.factor</span>(group)) <span class="sc">%&gt;%</span> </span>
+<span id="cb73-6"><a href="session5.html#cb73-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">session =</span> <span class="fu">as.factor</span>(session)) <span class="sc">%&gt;%</span> </span>
+<span id="cb73-7"><a href="session5.html#cb73-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">meditation =</span> <span class="fu">as.factor</span>(meditation)) <span class="sc">%&gt;%</span> </span>
+<span id="cb73-8"><a href="session5.html#cb73-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">gender =</span> <span class="fu">as.factor</span>(gender)) <span class="sc">%&gt;%</span> </span>
+<span id="cb73-9"><a href="session5.html#cb73-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(group, session, meditation, gender, response.rt) <span class="sc">%&gt;%</span> </span>
+<span id="cb73-10"><a href="session5.html#cb73-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(gender <span class="sc">==</span> <span class="dv">2</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb73-11"><a href="session5.html#cb73-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(response.rt <span class="sc">&lt;</span> <span class="fl">1.5</span>) <span class="sc">%&gt;%</span> <span class="do">### this could be done with the above</span></span>
+<span id="cb73-12"><a href="session5.html#cb73-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">gender =</span> <span class="fu">recode</span>(gender,<span class="st">&#39;1&#39;</span> <span class="ot">=</span> <span class="st">&quot;Male&quot;</span>, <span class="st">&#39;2&#39;</span><span class="ot">=</span><span class="st">&quot;Female&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb73-13"><a href="session5.html#cb73-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">gender =</span> <span class="fu">recode</span>(group,<span class="st">&#39;1&#39;</span> <span class="ot">=</span> <span class="st">&quot;High&quot;</span>, <span class="st">&#39;2&#39;</span><span class="ot">=</span><span class="st">&quot;Low&quot;</span>))</span>
+<span id="cb73-14"><a href="session5.html#cb73-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-15"><a href="session5.html#cb73-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-16"><a href="session5.html#cb73-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-17"><a href="session5.html#cb73-17" aria-hidden="true" tabindex="-1"></a><span class="do">### and just for fun lets also create a histogram of reaction times.</span></span>
+<span id="cb73-18"><a href="session5.html#cb73-18" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(df3<span class="sc">$</span>response.rt)</span>
+<span id="cb73-19"><a href="session5.html#cb73-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-20"><a href="session5.html#cb73-20" aria-hidden="true" tabindex="-1"></a><span class="do">### lets save the data file</span></span>
+<span id="cb73-21"><a href="session5.html#cb73-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-22"><a href="session5.html#cb73-22" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(df3, <span class="st">&quot;wastedresources.csv&quot;</span>)</span></code></pre></div>
 <p>Now your turn</p>
 </div>
-<div id="exercise-10" class="section level2" number="6.3">
-<h2><span class="header-section-number">6.3</span> Exercise 10</h2>
+<div id="exercise-6.1" class="section level2 hasAnchor" number="6.4">
+<h2><span class="header-section-number">6.4</span> Exercise 6.1<a href="session5.html#exercise-6.1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ol style="list-style-type: decimal">
 <li>Load the file <strong>“alcohol_qualtrics.csv”</strong> to a data frame</li>
 <li>Drop all the variables after the column 17</li>
@@ -288,28 +302,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Save the final file using a file name of your choice.</li>
 </ol>
 </div>
-<div id="grouping-spliting-and-summarizing-variables-across-out-data-frame" class="section level2" number="6.4">
-<h2><span class="header-section-number">6.4</span> Grouping, spliting, and summarizing variables across out data frame</h2>
+<div id="grouping-spliting-and-summarizing-variables-across-out-data-frame" class="section level2 hasAnchor" number="6.5">
+<h2><span class="header-section-number">6.5</span> Grouping, spliting, and summarizing variables across out data frame<a href="session5.html#grouping-spliting-and-summarizing-variables-across-out-data-frame" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Other jobs that we usually carry out when preparing out data files include aggregating variables, grouping by a variable, or splitting our file. This can also be done easily in R using the function <strong>group_by()</strong>. Let’s see an example here:</p>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="session5.html#cb49-1"></a><span class="kw">library</span>(tidyverse)</span>
-<span id="cb49-2"><a href="session5.html#cb49-2"></a>df &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;alcohol_exp.csv&quot;</span>)</span>
-<span id="cb49-3"><a href="session5.html#cb49-3"></a></span>
-<span id="cb49-4"><a href="session5.html#cb49-4"></a>df <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb49-5"><a href="session5.html#cb49-5"></a><span class="st">  </span><span class="kw">group_by</span>(gender) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb49-6"><a href="session5.html#cb49-6"></a><span class="st">  </span><span class="kw">summarize</span>(<span class="dt">mean =</span> <span class="kw">mean</span>(response.rt),</span>
-<span id="cb49-7"><a href="session5.html#cb49-7"></a>            <span class="dt">sd =</span> <span class="kw">sd</span>(response.rt),</span>
-<span id="cb49-8"><a href="session5.html#cb49-8"></a>            <span class="dt">N =</span> <span class="kw">n</span>()) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb49-9"><a href="session5.html#cb49-9"></a><span class="st">  </span><span class="kw">ungroup</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="session5.html#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb74-2"><a href="session5.html#cb74-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;alcohol_exp.csv&quot;</span>)</span>
+<span id="cb74-3"><a href="session5.html#cb74-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb74-4"><a href="session5.html#cb74-4" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
+<span id="cb74-5"><a href="session5.html#cb74-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(gender) <span class="sc">%&gt;%</span> </span>
+<span id="cb74-6"><a href="session5.html#cb74-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean =</span> <span class="fu">mean</span>(response.rt),</span>
+<span id="cb74-7"><a href="session5.html#cb74-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">sd =</span> <span class="fu">sd</span>(response.rt),</span>
+<span id="cb74-8"><a href="session5.html#cb74-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">N =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span> </span>
+<span id="cb74-9"><a href="session5.html#cb74-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span></code></pre></div>
 <p>I can also add a new column in my data frame that will include information on the mean per gender.</p>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="session5.html#cb50-1"></a>df <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb50-2"><a href="session5.html#cb50-2"></a><span class="st">  </span><span class="kw">group_by</span>(gender) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb50-3"><a href="session5.html#cb50-3"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">mean =</span> <span class="kw">mean</span>(response.rt)) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb50-4"><a href="session5.html#cb50-4"></a><span class="st">  </span><span class="kw">ungroup</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="session5.html#cb75-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
+<span id="cb75-2"><a href="session5.html#cb75-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(gender) <span class="sc">%&gt;%</span> </span>
+<span id="cb75-3"><a href="session5.html#cb75-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">mean =</span> <span class="fu">mean</span>(response.rt)) <span class="sc">%&gt;%</span> </span>
+<span id="cb75-4"><a href="session5.html#cb75-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span></code></pre></div>
 <p>Not that meaningful to be honest. Lets try again but this time grouping by participant.</p>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="session5.html#cb51-1"></a>df <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb51-2"><a href="session5.html#cb51-2"></a><span class="st">  </span><span class="kw">group_by</span>(participant) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb51-3"><a href="session5.html#cb51-3"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">mean =</span> <span class="kw">mean</span>(response.rt)) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb51-4"><a href="session5.html#cb51-4"></a><span class="st">  </span><span class="kw">ungroup</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="session5.html#cb76-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
+<span id="cb76-2"><a href="session5.html#cb76-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(participant) <span class="sc">%&gt;%</span> </span>
+<span id="cb76-3"><a href="session5.html#cb76-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">mean =</span> <span class="fu">mean</span>(response.rt)) <span class="sc">%&gt;%</span> </span>
+<span id="cb76-4"><a href="session5.html#cb76-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span></code></pre></div>
 <p>This is much more useful from our perspective. Which brings us to the point that we can pretty much reshape a data frame in any way we want. So your work with R should be guided by your end goal, which is how you want your data file to look before your analysis.</p>
 
 </div>
@@ -324,7 +338,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -343,6 +356,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -363,6 +377,10 @@ gitbook.start({
 "text": null
 },
 "download": ["Kent R training.pdf", "Kent R training.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }

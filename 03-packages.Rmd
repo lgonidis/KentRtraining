@@ -2,7 +2,7 @@
 
 ## What we have learnt so far
 
-In the first two labs (Week 2 and Week 3) we learnt about variables, vectors, and operators. Furthermore, we were introduced to the used of functions and their arguments. These were the fundamental steps that we had to take before we can start carrying out statistical tasks. In the last lab session, we began exploring some basic statistical tasks such as creating grouped frequency tables and histograms. These steps, even though simple, they allowed us to develop a sense of our data. Creating visual representations of our data is one of R's strongest aspects. For the time being we only practiced with **hist()** and **pie()**, however as we become more confident with R we will also explore some additional features that R **packages** can give us.  
+In the first two parts we learnt about variables, objects, and operators. Furthermore, we were introduced to the used of functions and their arguments. These were the fundamental steps that we had to take before we can start carrying out statistical tasks. In the last lab session, we began exploring some basic statistical tasks such as creating grouped frequency tables and histograms. These steps, even though simple, they allowed us to develop a sense of our data. Creating visual representations of our data is one of R's strongest aspects. For the time being we only practiced with **hist()** and **pie()**, however as we become more confident with R we will also explore some additional features that R **packages** can give us.  
 
 R in its core installation has a number of useful functions. However, these functions do not cover all the possible tasks we would wish to perform. In order to overcome this weakness R allows us to install and use additional **packages**. These packages are more specialised than the core R and can provide us with numerous new statistical tools. Today we will learn how to install and use such packages and see how they can provide us with useful new features. We will also see a number of examples of how to use R to acquire the **mean, median, and mode** of a sample. **Finally, in order to make things more interesting we will use some experimental data that R offers by default. So today we will not be generating datasets comprised of random data.** Instead we will be using some of the built-in datasets. 
 
@@ -42,7 +42,7 @@ ToothGrowth$dose
 
 So if I want to work with one of the variables in a dataset I can call it by typing the name of the dataset, then type the **$** symbol, and in after that type the name of the variable. 
 
-**Exercise 4**
+**Exercise 3.1**
 Try to create a histogram for the variable **len** of the dataset **ToothGrowth**. If you are not certain how to do this you can check the solution at the end of this pdf
 
 
@@ -71,7 +71,7 @@ You probably got the answer "numeric". This is because the function **mode()** c
 
 ## Adding a new package
 
-In order to have a function that can find the mode of our sample we need to install a new package called **DescTools**. We do that by clicking **Tools** in the menu and then **Install Packages...**. Then where it says packages type in **DescTools** and click **Install**. If you are promtped with any questions then click on **Yes**. RStudio will download and install everything automatically and you should be ready to go once you can see the **>** symbol in the console. Once you install a package you can use it in all future projects and scripts without the need to re-install it. Now we can tell R that we want to use this package in our script by adding and running the following command:
+In order to have a function that can find the mode of our sample we need to install a new package called **DescTools**. We do that by clicking **Tools** in the menu and then **Install Packages...**. Then where it says packages type in **DescTools** and click **Install**. If you are prompted with any questions then click on **Yes**. RStudio will download and install everything automatically and you should be ready to go once you can see the **>** symbol in the console. Once you install a package you can use it in all future projects and scripts without the need to re-install it. Now we can tell R that we want to use this package in our script by adding and running the following command:
 
 ```{r eval=FALSE}
 library(DescTools)
@@ -96,26 +96,26 @@ This means that your mode is 26.4 and it has a frequency of 4.
 
 ## To sum up
 
-As we progress through our course we will be using specific packages and functions. You do not need to memorise the packages names. We will be providing those for you. You will also not need to memorise the names of the functions for this term. We will be providing those too.
+As we progress through our course we will be using specific packages and functions. You do not need to memorise the names of the packages. We will be providing those for you. You will also not need to memorise the names of the functions. We will be providing those too.
 
 
 ## Additional Exercises (spoiler alert: if you get stuck the answers are at the end of the pdf)
 
 Another dataset that comes build-in with R is called **iris**. iris dataset gives the measurements in centimeters of the variables sepal length, sepal width, petal length and petal width, respectively, for 50 flowers from each of 3 species of iris. The species are Iris setosa, versicolor, and virginica. The following exercises should be completed in one script and are in practice one exercise. They are broken down to smaller questions to make your work easier, as well as making it easier to refer to the solutions in the end.
 
-**Exercise 5**
+**Exercise 3.2**
 Create a new script and name it **session4_iris**. Then type in and execute the right command in order to load the dataset **iris**
 
 
-**Exercise 6**
+**Exercise 3.3**
 Explore the data frame called **iris** (you can find it in your **Environment**). You should be able to see that some of the included variables are **Sepal.Length**, **Sepal.Width**, **Petal.Length**, and **Petal.Width**. Write the right code that would create one histogram for each of the above variables. Do spend some time to observe each histogram and think about how the scores are distributed and whether we have **skewed** distributions. **(CAUTION: In R upper case and lower case letters do matter, make sure to type them exactly as you see them)**
 
 
-**Exercise 7**
+**Exercise 3.4**
 Type the right code in order to get the **mean** and the **median** for all the above variables.
 
 
-**Exercise 8**
+**Exercise 3.5**
 Type the right code in order to get the **mode** for all the above variables. (Hint: do not forget the **library** and remember the importance of upper case letters.)
 . 
   
@@ -140,17 +140,17 @@ Type the right code in order to get the **mode** for all the above variables. (H
 
 ## Solutions: SPOILER ALERT
 
-**Exercise 4**
+**Exercise 3.1**
 ```{r }
 hist(ToothGrowth$len)
 ```
 
-**Exercise 5**
+**Exercise 3.2**
 ```{r }
 data(iris)
 ```
 
-**Exercise 6**
+**Exercise 3.3**
 ```{r }
 hist(iris$Sepal.Length)
 hist(iris$Sepal.Width)
@@ -158,7 +158,7 @@ hist(iris$Petal.Length)
 hist(iris$Petal.Width)
 ```
 
-**Exercise 7**
+**Exercise 3.4**
 ```{r collapse=TRUE}
 mean(iris$Sepal.Length)
 mean(iris$Sepal.Width)
@@ -171,7 +171,7 @@ median(iris$Petal.Width)
 ```
 
 
-**Exercise 8**
+**Exercise 3.5**
 ```{r collapse=TRUE}
 library(DescTools)
 Mode(iris$Sepal.Length)

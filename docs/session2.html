@@ -4,19 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Session 3 Using Vectors and Functions | Kent R training</title>
+  <title>Chapter3 Using Vectors and Functions | Kent R training</title>
   <meta name="description" content="This is a work in progress" />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Session 3 Using Vectors and Functions | Kent R training" />
+  <meta property="og:title" content="Chapter3 Using Vectors and Functions | Kent R training" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="This is a work in progress" />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Session 3 Using Vectors and Functions | Kent R training" />
+  <meta name="twitter:title" content="Chapter3 Using Vectors and Functions | Kent R training" />
   
   <meta name="twitter:description" content="This is a work in progress" />
   
@@ -24,7 +23,7 @@
 <meta name="author" content="Lazaros Gonidis" />
 
 
-<meta name="date" content="2020-11-03" />
+<meta name="date" content="2022-04-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,8 +32,8 @@
   
 <link rel="prev" href="introduction.html"/>
 <link rel="next" href="session3.html"/>
-<script src="libs/header-attrs-2.4/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -50,14 +49,16 @@
 
 
 
-
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -118,6 +119,7 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 
@@ -137,7 +139,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prelude</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#a-few-words"><i class="fa fa-check"></i><b>1.1</b> A few words…</a></li>
-<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#a-comment-on-the-book-structure"><i class="fa fa-check"></i><b>1.2</b> A comment on the book structure</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#a-comment-on-the-course-structure"><i class="fa fa-check"></i><b>1.2</b> A comment on the course structure</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>2</b> Introduction</a>
 <ul>
@@ -146,20 +148,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.3" data-path="introduction.html"><a href="introduction.html#starting-with-rstudio"><i class="fa fa-check"></i><b>2.3</b> Starting with RStudio</a></li>
 <li class="chapter" data-level="2.4" data-path="introduction.html"><a href="introduction.html#console"><i class="fa fa-check"></i><b>2.4</b> Console</a>
 <ul>
-<li class="chapter" data-level="2.4.1" data-path="introduction.html"><a href="introduction.html#exercise-1"><i class="fa fa-check"></i><b>2.4.1</b> Exercise 1</a></li>
+<li class="chapter" data-level="2.4.1" data-path="introduction.html"><a href="introduction.html#exercise-1.1"><i class="fa fa-check"></i><b>2.4.1</b> Exercise 1.1</a></li>
 </ul></li>
 <li class="chapter" data-level="2.5" data-path="introduction.html"><a href="introduction.html#environment"><i class="fa fa-check"></i><b>2.5</b> Environment</a></li>
 <li class="chapter" data-level="2.6" data-path="introduction.html"><a href="introduction.html#files"><i class="fa fa-check"></i><b>2.6</b> Files</a></li>
 <li class="chapter" data-level="2.7" data-path="introduction.html"><a href="introduction.html#scripts"><i class="fa fa-check"></i><b>2.7</b> Scripts</a></li>
-<li class="chapter" data-level="2.8" data-path="introduction.html"><a href="introduction.html#exercise-2"><i class="fa fa-check"></i><b>2.8</b> Exercise 2</a></li>
+<li class="chapter" data-level="2.8" data-path="introduction.html"><a href="introduction.html#exercise-1.2"><i class="fa fa-check"></i><b>2.8</b> Exercise 1.2</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="session2.html"><a href="session2.html"><i class="fa fa-check"></i><b>3</b> Using Vectors and Functions</a>
 <ul>
 <li class="chapter" data-level="3.1" data-path="session2.html"><a href="session2.html#learning-objectives-1"><i class="fa fa-check"></i><b>3.1</b> Learning Objectives</a></li>
-<li class="chapter" data-level="3.2" data-path="session2.html"><a href="session2.html#vectors"><i class="fa fa-check"></i><b>3.2</b> Vectors</a></li>
-<li class="chapter" data-level="3.3" data-path="session2.html"><a href="session2.html#creating-vectors-with-random-numbers"><i class="fa fa-check"></i><b>3.3</b> Creating vectors with random numbers</a></li>
-<li class="chapter" data-level="3.4" data-path="session2.html"><a href="session2.html#frequency-tables-in-r-and-histograms"><i class="fa fa-check"></i><b>3.4</b> Frequency tables in R and Histograms</a></li>
-<li class="chapter" data-level="3.5" data-path="session2.html"><a href="session2.html#exercise-3"><i class="fa fa-check"></i><b>3.5</b> Exercise 3</a></li>
+<li class="chapter" data-level="3.2" data-path="session2.html"><a href="session2.html#r-objects-vectors"><i class="fa fa-check"></i><b>3.2</b> R-objects: Vectors</a></li>
+<li class="chapter" data-level="3.3" data-path="session2.html"><a href="session2.html#r-objects-lists"><i class="fa fa-check"></i><b>3.3</b> R-objects: Lists</a></li>
+<li class="chapter" data-level="3.4" data-path="session2.html"><a href="session2.html#r-objects-dataframes"><i class="fa fa-check"></i><b>3.4</b> R-objects: Dataframes</a></li>
+<li class="chapter" data-level="3.5" data-path="session2.html"><a href="session2.html#r-objects-factors"><i class="fa fa-check"></i><b>3.5</b> R-objects: Factors</a></li>
+<li class="chapter" data-level="3.6" data-path="session2.html"><a href="session2.html#exercise-2.1"><i class="fa fa-check"></i><b>3.6</b> Exercise 2.1</a></li>
+<li class="chapter" data-level="3.7" data-path="session2.html"><a href="session2.html#creating-vectors-with-random-numbers"><i class="fa fa-check"></i><b>3.7</b> Creating vectors with random numbers</a></li>
+<li class="chapter" data-level="3.8" data-path="session2.html"><a href="session2.html#frequency-tables-in-r-and-histograms"><i class="fa fa-check"></i><b>3.8</b> Frequency tables in R and Histograms</a></li>
+<li class="chapter" data-level="3.9" data-path="session2.html"><a href="session2.html#exercise-2.2"><i class="fa fa-check"></i><b>3.9</b> Exercise 2.2</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="session3.html"><a href="session3.html"><i class="fa fa-check"></i><b>4</b> Packages</a>
 <ul>
@@ -172,38 +178,42 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.7" data-path="session3.html"><a href="session3.html#additional-exercises-spoiler-alert-if-you-get-stuck-the-answers-are-at-the-end-of-the-pdf"><i class="fa fa-check"></i><b>4.7</b> Additional Exercises (spoiler alert: if you get stuck the answers are at the end of the pdf)</a></li>
 <li class="chapter" data-level="4.8" data-path="session3.html"><a href="session3.html#solutions-spoiler-alert"><i class="fa fa-check"></i><b>4.8</b> Solutions: SPOILER ALERT</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="session4.html"><a href="session4.html"><i class="fa fa-check"></i><b>5</b> Tidyverse 1</a>
+<li class="chapter" data-level="5" data-path="session4.html"><a href="session4.html"><i class="fa fa-check"></i><b>5</b> Starting to work with datafiles using Tidyverse</a>
 <ul>
 <li class="chapter" data-level="5.1" data-path="session4.html"><a href="session4.html#thinking-ahead"><i class="fa fa-check"></i><b>5.1</b> Thinking ahead</a></li>
 <li class="chapter" data-level="5.2" data-path="session4.html"><a href="session4.html#learning-objectives-3"><i class="fa fa-check"></i><b>5.2</b> Learning objectives</a></li>
 <li class="chapter" data-level="5.3" data-path="session4.html"><a href="session4.html#our-first-data-file"><i class="fa fa-check"></i><b>5.3</b> Our first data file</a></li>
 <li class="chapter" data-level="5.4" data-path="session4.html"><a href="session4.html#correcting-variable-types"><i class="fa fa-check"></i><b>5.4</b> Correcting Variable Types</a></li>
-<li class="chapter" data-level="5.5" data-path="session4.html"><a href="session4.html#recoding"><i class="fa fa-check"></i><b>5.5</b> Recoding</a></li>
-<li class="chapter" data-level="5.6" data-path="session4.html"><a href="session4.html#exercise-9"><i class="fa fa-check"></i><b>5.6</b> Exercise 9</a></li>
+<li class="chapter" data-level="5.5" data-path="session4.html"><a href="session4.html#exercise-4.1"><i class="fa fa-check"></i><b>5.5</b> Exercise 4.1</a></li>
+<li class="chapter" data-level="5.6" data-path="session4.html"><a href="session4.html#dropping-columns-and-rows"><i class="fa fa-check"></i><b>5.6</b> Dropping columns and rows</a></li>
+<li class="chapter" data-level="5.7" data-path="session4.html"><a href="session4.html#exercise-4.2"><i class="fa fa-check"></i><b>5.7</b> Exercise 4.2</a></li>
+<li class="chapter" data-level="5.8" data-path="session4.html"><a href="session4.html#recoding"><i class="fa fa-check"></i><b>5.8</b> Recoding</a></li>
+<li class="chapter" data-level="5.9" data-path="session4.html"><a href="session4.html#exercise-4.3"><i class="fa fa-check"></i><b>5.9</b> Exercise 4.3</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="session5.html"><a href="session5.html"><i class="fa fa-check"></i><b>6</b> Tidyverse 2</a>
 <ul>
 <li class="chapter" data-level="6.1" data-path="session5.html"><a href="session5.html#reflecting-on-the-last-session"><i class="fa fa-check"></i><b>6.1</b> Reflecting on the last session</a></li>
-<li class="chapter" data-level="6.2" data-path="session5.html"><a href="session5.html#pipe-operator"><i class="fa fa-check"></i><b>6.2</b> Pipe Operator <code>%&gt;%</code></a></li>
-<li class="chapter" data-level="6.3" data-path="session5.html"><a href="session5.html#exercise-10"><i class="fa fa-check"></i><b>6.3</b> Exercise 10</a></li>
-<li class="chapter" data-level="6.4" data-path="session5.html"><a href="session5.html#grouping-spliting-and-summarizing-variables-across-out-data-frame"><i class="fa fa-check"></i><b>6.4</b> Grouping, spliting, and summarizing variables across out data frame</a></li>
+<li class="chapter" data-level="6.2" data-path="session5.html"><a href="session5.html#learning-objectives-4"><i class="fa fa-check"></i><b>6.2</b> Learning objectives</a></li>
+<li class="chapter" data-level="6.3" data-path="session5.html"><a href="session5.html#pipe-operator"><i class="fa fa-check"></i><b>6.3</b> Pipe Operator <code>%&gt;%</code></a></li>
+<li class="chapter" data-level="6.4" data-path="session5.html"><a href="session5.html#exercise-6.1"><i class="fa fa-check"></i><b>6.4</b> Exercise 6.1</a></li>
+<li class="chapter" data-level="6.5" data-path="session5.html"><a href="session5.html#grouping-spliting-and-summarizing-variables-across-out-data-frame"><i class="fa fa-check"></i><b>6.5</b> Grouping, spliting, and summarizing variables across out data frame</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="session7.html"><a href="session7.html"><i class="fa fa-check"></i><b>7</b> Bringing Everything Together. Part I</a>
 <ul>
 <li class="chapter" data-level="7.1" data-path="session7.html"><a href="session7.html#reflecting-on-day-1"><i class="fa fa-check"></i><b>7.1</b> Reflecting on Day 1</a></li>
-<li class="chapter" data-level="7.2" data-path="session7.html"><a href="session7.html#learning-objectives-4"><i class="fa fa-check"></i><b>7.2</b> Learning Objectives</a></li>
+<li class="chapter" data-level="7.2" data-path="session7.html"><a href="session7.html#learning-objectives-5"><i class="fa fa-check"></i><b>7.2</b> Learning Objectives</a></li>
 <li class="chapter" data-level="7.3" data-path="session7.html"><a href="session7.html#working-with-the-file"><i class="fa fa-check"></i><b>7.3</b> Working with the file</a></li>
 <li class="chapter" data-level="7.4" data-path="session7.html"><a href="session7.html#exercise-11"><i class="fa fa-check"></i><b>7.4</b> Exercise 11</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="session8.html"><a href="session8.html"><i class="fa fa-check"></i><b>8</b> Bringing Everything Together. Part II</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="session8.html"><a href="session8.html#learning-objectives-5"><i class="fa fa-check"></i><b>8.1</b> Learning Objectives</a></li>
+<li class="chapter" data-level="8.1" data-path="session8.html"><a href="session8.html#learning-objectives-6"><i class="fa fa-check"></i><b>8.1</b> Learning Objectives</a></li>
 <li class="chapter" data-level="8.2" data-path="session8.html"><a href="session8.html#continuing-with-the-exercise-10-and-two-way-anova"><i class="fa fa-check"></i><b>8.2</b> Continuing with the exercise 10 and two-way ANOVA</a></li>
 <li class="chapter" data-level="8.3" data-path="session8.html"><a href="session8.html#exercise-12"><i class="fa fa-check"></i><b>8.3</b> Exercise 12</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="session9.html"><a href="session9.html"><i class="fa fa-check"></i><b>9</b> Restructuring and Merging Data.</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="session9.html"><a href="session9.html#learning-objectives-6"><i class="fa fa-check"></i><b>9.1</b> Learning Objectives</a></li>
+<li class="chapter" data-level="9.1" data-path="session9.html"><a href="session9.html#learning-objectives-7"><i class="fa fa-check"></i><b>9.1</b> Learning Objectives</a></li>
 <li class="chapter" data-level="9.2" data-path="session9.html"><a href="session9.html#restructuring-data"><i class="fa fa-check"></i><b>9.2</b> Restructuring Data</a></li>
 </ul></li>
 <li class="divider"></li>
@@ -226,115 +236,173 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="session2" class="section level1" number="3">
-<h1><span class="header-section-number">Session 3</span> Using Vectors and Functions</h1>
-<div id="learning-objectives-1" class="section level2" number="3.1">
-<h2><span class="header-section-number">3.1</span> Learning Objectives</h2>
-<p>In this session we be introducing the concepts of <strong>vectors</strong> and <strong>functions</strong>. These are two elements of <strong>R</strong> that will prove to be very useful in your day to day practice.<br />
+<div id="session2" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">Chapter3</span> Using Vectors and Functions<a href="session2.html#session2" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="learning-objectives-1" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Learning Objectives<a href="session2.html#learning-objectives-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In this session we be introducing the concepts of <strong>R-objects</strong>, ** and <strong>functions</strong>. These are two elements of <strong>R</strong> that will prove to be very useful in your day to day practice.<br />
 We will also start working on some basic concepts of statistical exploration of data. One of the first steps we take as Psychologists when we want to analyse our data, is first to get a “feel”, or gist if you want, of how are data are <strong>distributed</strong>.</p>
 <p>By the end of this Lab session you should have a clear understanding of the following concepts:</p>
 <ul>
-<li><strong>Vectors</strong></li>
+<li><strong>R-objects such as Vectors, Lists, Matrices, Dataframes etc</strong></li>
 <li><strong>Functions and Arguments</strong></li>
 <li><strong>Creating Random Data for Practice Purposes</strong></li>
 <li><strong>Grouping Data using R</strong></li>
 <li><strong>Creating Frequency Tables using R</strong></li>
-<li><strong>Creating a basic Histograms using R</strong></li>
+<li><strong>Creating a basic Histogram using R</strong></li>
 </ul>
-<p>Before we begin, do make sure you start a new project and name it <strong>Session 2</strong>.<br />
-<strong>Note:</strong>If you are running RStudio Cloud do not start a new project, continue working on the same one from last week.</p>
 </div>
-<div id="vectors" class="section level2" number="3.2">
-<h2><span class="header-section-number">3.2</span> Vectors</h2>
+<div id="r-objects-vectors" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> R-objects: Vectors<a href="session2.html#r-objects-vectors" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Let us assume that we asked 15 participants to report their age. One way to record this in R would be to use one variable per participant. It would look something like the following (DO NOT TYPE THE FOLLOWING IN RSTUDIO!!)</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="session2.html#cb6-1"></a>age1 &lt;-<span class="st"> </span><span class="dv">18</span></span>
-<span id="cb6-2"><a href="session2.html#cb6-2"></a>age2 &lt;-<span class="st"> </span><span class="dv">20</span></span>
-<span id="cb6-3"><a href="session2.html#cb6-3"></a>age3 &lt;-<span class="st"> </span><span class="dv">35</span></span>
-<span id="cb6-4"><a href="session2.html#cb6-4"></a><span class="co"># and so on all the way down until we reach</span></span>
-<span id="cb6-5"><a href="session2.html#cb6-5"></a>age15 &lt;-<span class="st"> </span><span class="dv">32</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="session2.html#cb6-1" aria-hidden="true" tabindex="-1"></a>age1 <span class="ot">&lt;-</span> <span class="dv">18</span></span>
+<span id="cb6-2"><a href="session2.html#cb6-2" aria-hidden="true" tabindex="-1"></a>age2 <span class="ot">&lt;-</span> <span class="dv">20</span></span>
+<span id="cb6-3"><a href="session2.html#cb6-3" aria-hidden="true" tabindex="-1"></a>age3 <span class="ot">&lt;-</span> <span class="dv">35</span></span>
+<span id="cb6-4"><a href="session2.html#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># and so on all the way down until we reach</span></span>
+<span id="cb6-5"><a href="session2.html#cb6-5" aria-hidden="true" tabindex="-1"></a>age15 <span class="ot">&lt;-</span> <span class="dv">32</span></span></code></pre></div>
 <p>As you can see this would take 15 variables. Not only it would look horrible but also it would be a very wasteful way to store our information.</p>
-<p>For cases where we want to store multiple observations single value variables are not the best way forward. Actually they are the worst way forward. Instead we can use a variable that can store many different values at once, a <strong>vector</strong>. The following is an example of a vector that stores our participants 15 ages. Please do type the following in your R script and do run each line to see the output. You should name your R script “session2”.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="session2.html#cb7-1"></a><span class="co"># We are creating a vector c and we are populating it with 15 values</span></span>
-<span id="cb7-2"><a href="session2.html#cb7-2"></a><span class="co"># Then we assign it to a variable called Age</span></span>
-<span id="cb7-3"><a href="session2.html#cb7-3"></a></span>
-<span id="cb7-4"><a href="session2.html#cb7-4"></a>Age &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">18</span>, <span class="dv">18</span>, <span class="dv">20</span>, <span class="dv">32</span>, <span class="dv">45</span>, <span class="dv">33</span>, <span class="dv">19</span>, <span class="dv">19</span>, <span class="dv">20</span>, <span class="dv">58</span>, <span class="dv">63</span>, <span class="dv">21</span>, <span class="dv">19</span>, <span class="dv">19</span>, <span class="dv">18</span>)</span>
-<span id="cb7-5"><a href="session2.html#cb7-5"></a></span>
-<span id="cb7-6"><a href="session2.html#cb7-6"></a><span class="co"># If we call the variable Age we will get all 15 values</span></span>
-<span id="cb7-7"><a href="session2.html#cb7-7"></a>Age</span></code></pre></div>
+<p>For cases where we want to store multiple observations single value variables are not the best way forward. Actually they are the worst way forward. Instead we can use a variable that can store many different values at once, using a <strong>vector</strong>. The following is an example of a vector that stores our participants 15 ages. Please do type the following in your R script and do run each line to see the output. You should name your R script “session2”.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="session2.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># We are creating a vector c and we are populating it with 15 values</span></span>
+<span id="cb7-2"><a href="session2.html#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Then we assign it to a variable called Age</span></span>
+<span id="cb7-3"><a href="session2.html#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="session2.html#cb7-4" aria-hidden="true" tabindex="-1"></a>Age <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">18</span>, <span class="dv">18</span>, <span class="dv">20</span>, <span class="dv">32</span>, <span class="dv">45</span>, <span class="dv">33</span>, <span class="dv">19</span>, <span class="dv">19</span>, <span class="dv">20</span>, <span class="dv">58</span>, <span class="dv">63</span>, <span class="dv">21</span>, <span class="dv">19</span>, <span class="dv">19</span>, <span class="dv">18</span>)</span>
+<span id="cb7-5"><a href="session2.html#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="session2.html#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co"># If we call the variable Age we will get all 15 values</span></span>
+<span id="cb7-7"><a href="session2.html#cb7-7" aria-hidden="true" tabindex="-1"></a>Age</span></code></pre></div>
 <p>[1] 18 18 20 32 45 33 19 19 20 58 63 21 19 19 18</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="session2.html#cb8-1"></a><span class="co"># But we can also access any of the 15 entries we want by calling its &quot;location&quot;</span></span>
-<span id="cb8-2"><a href="session2.html#cb8-2"></a>Age[<span class="dv">7</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="session2.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># But we can also access any of the 15 entries we want by calling its &quot;location&quot;</span></span>
+<span id="cb8-2"><a href="session2.html#cb8-2" aria-hidden="true" tabindex="-1"></a>Age[<span class="dv">7</span>]</span></code></pre></div>
 <p>[1] 19</p>
-<p><strong>Note</strong> we always use <strong>c()</strong> to define a vector.</p>
+<p><strong>Note</strong> we always use <strong>c()</strong> to create a vector. We should note here that a vector can only hold one type of information (e.g., numeric)</p>
 <p>The same way we did calculations with simple value variables we can also do with vectors. For example, we may have a vector or prices for products and we may want to double the price of all of the products at once:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="session2.html#cb9-1"></a><span class="co"># We are creating a vector c and we are populating it with 5 prices.</span></span>
-<span id="cb9-2"><a href="session2.html#cb9-2"></a><span class="co"># The prices could be in £ or any other currency (we only type the value in).</span></span>
-<span id="cb9-3"><a href="session2.html#cb9-3"></a><span class="co"># Then we assign our vector to a variable called Prices.</span></span>
-<span id="cb9-4"><a href="session2.html#cb9-4"></a></span>
-<span id="cb9-5"><a href="session2.html#cb9-5"></a>Prices &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">115</span>, <span class="dv">120</span>, <span class="dv">200</span>, <span class="dv">300</span>, <span class="dv">500</span>)</span>
-<span id="cb9-6"><a href="session2.html#cb9-6"></a></span>
-<span id="cb9-7"><a href="session2.html#cb9-7"></a><span class="co"># call Price to see the values in the console</span></span>
-<span id="cb9-8"><a href="session2.html#cb9-8"></a></span>
-<span id="cb9-9"><a href="session2.html#cb9-9"></a>Prices</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="session2.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># We are creating a vector c and we are populating it with 5 prices.</span></span>
+<span id="cb9-2"><a href="session2.html#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co"># The prices could be in £ or any other currency (we only type the value in).</span></span>
+<span id="cb9-3"><a href="session2.html#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Then we assign our vector to a variable called Prices.</span></span>
+<span id="cb9-4"><a href="session2.html#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="session2.html#cb9-5" aria-hidden="true" tabindex="-1"></a>Prices <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">115</span>, <span class="dv">120</span>, <span class="dv">200</span>, <span class="dv">300</span>, <span class="dv">500</span>)</span>
+<span id="cb9-6"><a href="session2.html#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="session2.html#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co"># call Price to see the values in the console</span></span>
+<span id="cb9-8"><a href="session2.html#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-9"><a href="session2.html#cb9-9" aria-hidden="true" tabindex="-1"></a>Prices</span></code></pre></div>
 <p>[1] 115 120 200 300 500</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="session2.html#cb10-1"></a><span class="co"># We now want a new variable that will include the old prices doubled.</span></span>
-<span id="cb10-2"><a href="session2.html#cb10-2"></a><span class="co"># We can call the new variable anything we want, let us call it Newprices</span></span>
-<span id="cb10-3"><a href="session2.html#cb10-3"></a></span>
-<span id="cb10-4"><a href="session2.html#cb10-4"></a>Newprices &lt;-<span class="st"> </span><span class="dv">2</span><span class="op">*</span>Prices</span>
-<span id="cb10-5"><a href="session2.html#cb10-5"></a><span class="co"># call Price to see the values in the console</span></span>
-<span id="cb10-6"><a href="session2.html#cb10-6"></a>Newprices</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="session2.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># We now want a new variable that will include the old prices doubled.</span></span>
+<span id="cb10-2"><a href="session2.html#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co"># We can call the new variable anything we want, let us call it Newprices</span></span>
+<span id="cb10-3"><a href="session2.html#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="session2.html#cb10-4" aria-hidden="true" tabindex="-1"></a>Newprices <span class="ot">&lt;-</span> <span class="dv">2</span><span class="sc">*</span>Prices</span>
+<span id="cb10-5"><a href="session2.html#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co"># call Price to see the values in the console</span></span>
+<span id="cb10-6"><a href="session2.html#cb10-6" aria-hidden="true" tabindex="-1"></a>Newprices</span></code></pre></div>
 <p>[1] 230 240 400 600 1000</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="session2.html#cb11-1"></a><span class="co"># But we can also access any of the 15 entries we want by calling its &quot;location&quot;</span></span>
-<span id="cb11-2"><a href="session2.html#cb11-2"></a>Age[<span class="dv">7</span>]</span></code></pre></div>
-<p>[1] 19</p>
-<p>You see how powerful and handy vectors can be as they allow us to work with many values as once. We will be using vectors a lot in our work, as well as an extension of vectors called dataframes. (More about dataframes in the next sessions)</p>
+<p>You see how powerful and handy vectors can be as they allow us to work with many values as once. We will be using vectors a lot in our work.</p>
 </div>
-<div id="creating-vectors-with-random-numbers" class="section level2" number="3.3">
-<h2><span class="header-section-number">3.3</span> Creating vectors with random numbers</h2>
+<div id="r-objects-lists" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> R-objects: Lists<a href="session2.html#r-objects-lists" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>As mentioned above a vector is restricted to only include entries of one type of information. If we want to store different types of information we can use a list.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="session2.html#cb11-1" aria-hidden="true" tabindex="-1"></a>Shopping <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="st">&quot;butter&quot;</span>, <span class="st">&quot;milk&quot;</span>, <span class="st">&quot;eggs&quot;</span>), <span class="dv">50</span>, <span class="st">&quot;Monday&quot;</span>, <span class="st">&quot;Coffee&quot;</span>, <span class="cn">TRUE</span>)</span>
+<span id="cb11-2"><a href="session2.html#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="session2.html#cb11-3" aria-hidden="true" tabindex="-1"></a>Shopping</span></code></pre></div>
+<p>[[1]]
+[1] “butter” “milk” “eggs”</p>
+<p>[[2]]
+[1] 50</p>
+<p>[[3]]
+[1] “Monday”</p>
+<p>[[4]]
+[1] “Coffee”</p>
+<p>[[5]]
+[1] TRUE</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="session2.html#cb12-1" aria-hidden="true" tabindex="-1"></a>Shopping[[<span class="dv">4</span>]]</span></code></pre></div>
+<p>[1] “Coffee”</p>
+<p>Even though we will not be creating many lists ourselves, we will be seeing many lists. This is because many statistical analysis functions generate different pieces of information that is stored in a list and we can call when we need. As a example thing of a 3x2 ANOVA. The <em>output</em> will include the anova values, the assumption checks, the sphericity check and corrections and so on. All that will be stored in a list.</p>
+</div>
+<div id="r-objects-dataframes" class="section level2 hasAnchor" number="3.4">
+<h2><span class="header-section-number">3.4</span> R-objects: Dataframes<a href="session2.html#r-objects-dataframes" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>A dataframe is a two-dimensional version of a list. This will appear to be the most intuitive structure for us Psychologists as it resembles the most how we usually see our data. That is, observations per row and each column can have its own name. This means that each column is restricted to one type of data.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="session2.html#cb13-1" aria-hidden="true" tabindex="-1"></a>work <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">participant =</span> <span class="fu">c</span>(<span class="st">&quot;1001&quot;</span>, <span class="st">&quot;1002&quot;</span>, <span class="st">&quot;1003&quot;</span>, <span class="st">&quot;1004&quot;</span>),  </span>
+<span id="cb13-2"><a href="session2.html#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">gender =</span> <span class="fu">c</span>(<span class="st">&quot;female&quot;</span>, <span class="st">&quot;male&quot;</span>, <span class="st">&quot;female&quot;</span>, <span class="st">&quot;other&quot;</span>), <span class="at">strikesupport =</span> <span class="fu">c</span>(<span class="st">&quot;yes&quot;</span>, <span class="st">&quot;no&quot;</span>, <span class="st">&quot;yes&quot;</span>,<span class="st">&quot;no&quot;</span>))</span>
+<span id="cb13-3"><a href="session2.html#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="session2.html#cb13-4" aria-hidden="true" tabindex="-1"></a>work</span></code></pre></div>
+<p>participant gender strikesupport
+1 1001 female yes
+2 1002 male no
+3 1003 female yes
+4 1004 other no</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="session2.html#cb14-1" aria-hidden="true" tabindex="-1"></a>work<span class="sc">$</span>participant</span></code></pre></div>
+<p>[1] “1001” “1002” “1003” “1004”</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="session2.html#cb15-1" aria-hidden="true" tabindex="-1"></a>work<span class="sc">$</span>participant[<span class="dv">2</span>]</span></code></pre></div>
+<p>[1] “1002”</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="session2.html#cb16-1" aria-hidden="true" tabindex="-1"></a>work[<span class="dv">2</span>]</span></code></pre></div>
+<p>gender
+1 female
+2 male
+3 female
+4 other</p>
+</div>
+<div id="r-objects-factors" class="section level2 hasAnchor" number="3.5">
+<h2><span class="header-section-number">3.5</span> R-objects: Factors<a href="session2.html#r-objects-factors" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Factor is special R object for storing categorical data. This is very similar to how we regard factors in Psychology, where we have different levels. We can either create a factor variable or we can define an existing variable as a factor.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="session2.html#cb17-1" aria-hidden="true" tabindex="-1"></a>gender <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">&quot;female&quot;</span>, <span class="st">&quot;male&quot;</span>, <span class="st">&quot;other&quot;</span>, <span class="st">&quot;female&quot;</span>))</span>
+<span id="cb17-2"><a href="session2.html#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="session2.html#cb17-3" aria-hidden="true" tabindex="-1"></a>gender</span></code></pre></div>
+<p>[1] female male other female
+Levels: female male other</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="session2.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">attributes</span>(gender)</span></code></pre></div>
+<p>$levels
+[1] “female” “male” “other”</p>
+<p>$class
+[1] “factor”</p>
+<p>In the next session we will see two ways to create to change an existing variable to factor.</p>
+<p>You can get more information on R-objects including matrices and arrays here: <a href="https://rstudio-education.github.io/hopr/r-objects.html" class="uri">https://rstudio-education.github.io/hopr/r-objects.html</a></p>
+</div>
+<div id="exercise-2.1" class="section level2 hasAnchor" number="3.6">
+<h2><span class="header-section-number">3.6</span> Exercise 2.1<a href="session2.html#exercise-2.1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Create a dataframe that will have four columns and three rows. You can call your columns any name you want and the data can be of any type of your choice. Once you are done write the right code in order to see the contents of your third column. Furthermore, write the right code to see the element that is on the first column and second row.</p>
+</div>
+<div id="creating-vectors-with-random-numbers" class="section level2 hasAnchor" number="3.7">
+<h2><span class="header-section-number">3.7</span> Creating vectors with random numbers<a href="session2.html#creating-vectors-with-random-numbers" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>As we do not have any real data yet, we might want to practice out learning with some made up data sets. That is absolutely fine but it poses a problem. If we want to create a vector with 200 made up values it will take us quite a while to actually type 200 values. Luckily, there is a solution to that. We can use an R <strong>function</strong> to create these numbers automatically. Let us see this in practice with a small example.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="session2.html#cb12-1"></a><span class="co"># I am using a R function called sample.int()</span></span>
-<span id="cb12-2"><a href="session2.html#cb12-2"></a><span class="co"># This function creates random integer numbers</span></span>
-<span id="cb12-3"><a href="session2.html#cb12-3"></a>numbers &lt;-<span class="st"> </span><span class="kw">sample.int</span>(<span class="dv">10</span>, <span class="dv">5</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</span>
-<span id="cb12-4"><a href="session2.html#cb12-4"></a></span>
-<span id="cb12-5"><a href="session2.html#cb12-5"></a>numbers</span></code></pre></div>
-<p>[1] 3 10 2 6 5</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="session2.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># I am using a R function called sample.int()</span></span>
+<span id="cb19-2"><a href="session2.html#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="co"># This function creates random integer numbers</span></span>
+<span id="cb19-3"><a href="session2.html#cb19-3" aria-hidden="true" tabindex="-1"></a>numbers <span class="ot">&lt;-</span> <span class="fu">sample.int</span>(<span class="dv">10</span>, <span class="dv">5</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb19-4"><a href="session2.html#cb19-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-5"><a href="session2.html#cb19-5" aria-hidden="true" tabindex="-1"></a>numbers</span></code></pre></div>
+<p>[1] 4 5 5 8 10</p>
 <p>As mentioned above, I used a function called <strong>sample.int()</strong>. A <strong>function</strong> in R, is a mechanism that can perform a task. In this case our function can select an integer number randomly. A function also includes two brackets (). Within these brackets we can specify our own arguments in order to be clear what we want R to do for us when this function is used.</p>
 <p>Notice the number 10, this <strong>argument</strong> instructs our function that we want to pick randomly a number between 1 and 10.</p>
 <p>Notice the second number 5, this <strong>argument</strong> instructs our function to give 5 such numbers from 1 to 10.</p>
 <p>Notice the <strong>replace = TRUE</strong> part, this is another argument instructing R that numbers could be repeated. In other words, we can see the same number appearing more than once.</p>
 </div>
-<div id="frequency-tables-in-r-and-histograms" class="section level2" number="3.4">
-<h2><span class="header-section-number">3.4</span> Frequency tables in R and Histograms</h2>
+<div id="frequency-tables-in-r-and-histograms" class="section level2 hasAnchor" number="3.8">
+<h2><span class="header-section-number">3.8</span> Frequency tables in R and Histograms<a href="session2.html#frequency-tables-in-r-and-histograms" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Let us now proceed to a larger data set comprised of 200 random integers between 1 and 50. We will organise that data in 5 groups and produce a <strong>grouped frequency table</strong>. Then lastly, we will create a histogram with the same 5 groups.</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="session2.html#cb13-1"></a><span class="co"># Similarly as above, I will call sample.int()</span></span>
-<span id="cb13-2"><a href="session2.html#cb13-2"></a><span class="co"># But this time I need 200 numbers between 1 and 50.</span></span>
-<span id="cb13-3"><a href="session2.html#cb13-3"></a><span class="co"># See how my arguments have now changed.</span></span>
-<span id="cb13-4"><a href="session2.html#cb13-4"></a>numbers &lt;-<span class="st"> </span><span class="kw">sample.int</span>(<span class="dv">50</span>, <span class="dv">200</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</span>
-<span id="cb13-5"><a href="session2.html#cb13-5"></a>numbers</span></code></pre></div>
-<p>[1] 14 25 26 27 5 27 28 9 29 35 8 26 7 42 9 19 36 14 17 43 39 12 15 32 42
-[26] 45 7 9 41 10 23 27 7 27 32 38 25 34 29 5 8 12 13 18 33 27 25 38 21 15
-[51] 41 47 26 31 16 30 6 43 8 22 22 39 31 48 17 50 49 34 4 13 5 25 22 25 32
-[76] 46 25 23 35 40 48 30 12 31 46 30 35 14 29 32 7 3 23 15 21 37 8 10 50 42
-[101] 44 34 10 22 12 20 46 17 46 35 40 46 30 15 24 49 23 43 7 29 15 23 26 38 46
-[126] 32 7 27 42 5 6 16 24 32 21 11 36 44 46 19 25 39 26 9 7 34 48 13 19 47
-[151] 39 4 1 40 30 30 25 16 24 11 48 20 40 3 29 36 44 22 49 42 20 11 8 46 21
-[176] 45 2 43 13 46 6 8 44 32 36 45 14 16 23 33 40 40 10 25 8 18 9 7 7 10</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="session2.html#cb14-1"></a><span class="co"># Now we will call a new function to help us group our data.</span></span>
-<span id="cb14-2"><a href="session2.html#cb14-2"></a><span class="co"># First put them in 5 groups. The numbers in c() declare the numbers that define each group.</span></span>
-<span id="cb14-3"><a href="session2.html#cb14-3"></a></span>
-<span id="cb14-4"><a href="session2.html#cb14-4"></a>groups &lt;-<span class="st"> </span><span class="kw">cut</span>(numbers, <span class="dt">breaks =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">10</span>,<span class="dv">20</span>,<span class="dv">30</span>,<span class="dv">40</span>,<span class="dv">50</span>), <span class="dt">right =</span> <span class="ot">TRUE</span>)</span>
-<span id="cb14-5"><a href="session2.html#cb14-5"></a></span>
-<span id="cb14-6"><a href="session2.html#cb14-6"></a><span class="co"># Now I can produce my frequency table using another function</span></span>
-<span id="cb14-7"><a href="session2.html#cb14-7"></a><span class="kw">summary</span>(groups)</span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="session2.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Similarly as above, I will call sample.int()</span></span>
+<span id="cb20-2"><a href="session2.html#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="co"># But this time I need 200 numbers between 1 and 50.</span></span>
+<span id="cb20-3"><a href="session2.html#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="co"># See how my arguments have now changed.</span></span>
+<span id="cb20-4"><a href="session2.html#cb20-4" aria-hidden="true" tabindex="-1"></a>numbers <span class="ot">&lt;-</span> <span class="fu">sample.int</span>(<span class="dv">50</span>, <span class="dv">200</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb20-5"><a href="session2.html#cb20-5" aria-hidden="true" tabindex="-1"></a>numbers</span></code></pre></div>
+<p>[1] 16 2 29 42 15 45 22 15 30 33 19 38 23 12 32 35 42 15 23 9 26 23 46 41 17
+[26] 10 16 43 26 10 12 22 29 33 41 35 28 46 9 41 9 32 10 8 36 25 47 21 26 40
+[51] 10 6 32 39 1 23 18 24 11 50 32 39 34 49 37 27 12 1 36 39 15 32 25 24 5
+[76] 34 42 44 33 3 15 32 25 9 26 19 34 44 1 25 28 13 47 6 19 8 24 20 8 3
+[101] 50 12 17 4 11 47 30 47 4 43 24 21 35 16 43 3 8 18 45 17 16 16 24 32 5
+[126] 3 31 43 17 40 42 32 14 19 15 20 26 42 41 22 38 1 24 11 9 11 11 6 42 41
+[151] 38 8 44 41 3 4 18 14 47 33 18 17 6 33 8 8 2 26 46 49 14 47 43 50 38
+[176] 38 28 46 50 12 48 22 44 13 41 43 7 37 17 5 6 13 41 21 47 34 28 10 34 23</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="session2.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Now we will call a new function to help us group our data.</span></span>
+<span id="cb21-2"><a href="session2.html#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="co"># First put them in 5 groups. The numbers in c() declare the numbers that define each group.</span></span>
+<span id="cb21-3"><a href="session2.html#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-4"><a href="session2.html#cb21-4" aria-hidden="true" tabindex="-1"></a>groups <span class="ot">&lt;-</span> <span class="fu">cut</span>(numbers, <span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">10</span>,<span class="dv">20</span>,<span class="dv">30</span>,<span class="dv">40</span>,<span class="dv">50</span>), <span class="at">right =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb21-5"><a href="session2.html#cb21-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-6"><a href="session2.html#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Now I can produce my frequency table using another function</span></span>
+<span id="cb21-7"><a href="session2.html#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(groups)</span></code></pre></div>
 <p>(0,10] (10,20] (20,30] (30,40] (40,50]
-39 35 50 38 38</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="session2.html#cb15-1"></a><span class="co"># We will now use a new function called hist that creates histograms.</span></span>
-<span id="cb15-2"><a href="session2.html#cb15-2"></a><span class="co"># Note that this function has to work with the original numbers</span></span>
-<span id="cb15-3"><a href="session2.html#cb15-3"></a><span class="co"># and not with the groups.</span></span>
-<span id="cb15-4"><a href="session2.html#cb15-4"></a></span>
-<span id="cb15-5"><a href="session2.html#cb15-5"></a></span>
-<span id="cb15-6"><a href="session2.html#cb15-6"></a><span class="kw">hist</span>(numbers, <span class="dt">breaks =</span> <span class="dv">5</span>, <span class="dt">labels =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
-<p><img src="Kent-R-training_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+40 43 37 36 44</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="session2.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># We will now use a new function called hist that creates histograms.</span></span>
+<span id="cb22-2"><a href="session2.html#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Note that this function has to work with the original numbers</span></span>
+<span id="cb22-3"><a href="session2.html#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="co"># and not with the groups.</span></span>
+<span id="cb22-4"><a href="session2.html#cb22-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-5"><a href="session2.html#cb22-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-6"><a href="session2.html#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(numbers, <span class="at">breaks =</span> <span class="dv">5</span>, <span class="at">labels =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<p><img src="Kent-R-training_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
 <p>Let’s discuss the <strong>functions</strong> we used:</p>
 <p><strong>sample.init()</strong> creates a sample of integer numbers</p>
 <p><strong>cut()</strong> cuts our sample in smaller pieces. For arguments we had to provide our original sample (<strong>numbers</strong>). We then specified at what numbers we wanted the breaks to be (<strong>c(0,10,20,30,40,50)</strong>). Finally, we wanted the numbers on the right end of each group to be included in the count.</p>
@@ -342,8 +410,8 @@ We will also start working on some basic concepts of statistical exploration of 
 <p><strong>hist()</strong> creates a histogram from our original sample (<strong>not the grouped one!!!</strong>). The arguments here were our sample (<strong>numbers</strong>), how many breaks we wanted (<strong>breaks = 5</strong>), and we wanted each bar to have its frequency at the top (<strong>labels = TRUE</strong>). As you can see we can define how many groups we want when we ask for our histogram. So when all we want is a histogram, then the <strong>cut()</strong> and <strong>summary()</strong> steps can be omitted. The histogram will do that behind the scenes and show us the frequencies in the graph. Try it out on your own by changing the number of breaks in the histogram.</p>
 <p><strong>Notice</strong> each time your run your code you will get a different frequency distribution and a different histogram. This is because we create these 200 numbers randomly and each time we are getting a new set.</p>
 </div>
-<div id="exercise-3" class="section level2" number="3.5">
-<h2><span class="header-section-number">3.5</span> Exercise 3</h2>
+<div id="exercise-2.2" class="section level2 hasAnchor" number="3.9">
+<h2><span class="header-section-number">3.9</span> Exercise 2.2<a href="session2.html#exercise-2.2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Create a random set of 200 integers between 1 and 40. Group that data in 8 groups and produce the grouped frequency table. Then produce a histogram using these 8 groups. Spend some time to experiments with the number of bars in the histogram as well as generating new random numbers. This will allow you to become more confident with the use of <strong>arguments</strong> in <strong>functions</strong>.</p>
 
 </div>
@@ -358,7 +426,6 @@ We will also start working on some basic concepts of statistical exploration of 
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -377,6 +444,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -397,6 +465,10 @@ gitbook.start({
 "text": null
 },
 "download": ["Kent R training.pdf", "Kent R training.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }

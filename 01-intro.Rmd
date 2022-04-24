@@ -3,7 +3,8 @@
 
 ## Learning Objectives
 
-In this first session we will introduce you to some basic features of R. This will allow you to write your first basic scripts. It should be noted that R is a versatile programming language with numerous features and capabilities. However, we will be focusing on concepts that are directly relevant to us, as Psychologists. Therefore, do not consider this course as an exhaustive guide to R. Instead treat it as a spotlight that will be shedding light on specific topics and techniques.   
+In this first session you will be introduce you to some basic features of R. This will allow you to write your first basic scripts. It should be noted that R is a versatile programming language with numerous features and capabilities. However, we will be focusing on concepts that are directly relevant to us, as Psychologists. Therefore, do not consider this course as an exhaustive guide to R. Instead treat it as a spotlight that will be shedding light on specific topics and techniques.  
+
 By the end of this session you should have a clear understanding of the following concepts:  
    
 * **Variables**   
@@ -68,7 +69,7 @@ day <- "Monday"
 
 The above variable "day" is what we called a character variable. Notice how we used the **""** symbols around the value that we want to assign. 
 
-### Exercise 1
+### Exercise 1.1
 
 In the **console** carry out the following operation:
 1. assign the value of 5 to a variable called **f**  
@@ -101,10 +102,11 @@ days <- 25
 salary <- hours*hourly
 ```
 
-Now that you have typed all that nothing seems to be happening. This is because contrary to the Console, in a script a command is not executed when we press "Enter" or "Return". Instead we have place our cursor in the line we want to execute and then click "Run". When we click "Run" the lines is being executed and the cursor moves automatically to the next line, we click "Run" again and so on. Every time we click "Run" we can see the outcome in our Console, as well as in the Environment. Notice that our script also contains lines starting with **"#", these are comment lines** that I include in my code to make it easier to read and understand. The use of "#" and comments is highly advisable and considered as **a good practice*. You should spend some time now to visually explore the screen in front you. Familiarise yourself with the different windows and click on different tabs to see what kind of information they contain. Also do not forget to save our script giving it a meaningful name. I suggest something like "the most amazing script". You can save it by clicking File >> Save, and then type a name of your preference. Once you do that you should be able to see the new scripts in the "Files" window too.  
+Now that you have typed all that nothing seems to be happening. This is because contrary to the Console, in a script a command is not executed when we press "Enter" or "Return". Instead we have place our cursor in the line we want to execute and then click "Run". When we click "Run" the lines is being executed and the cursor moves automatically to the next line, we click "Run" again and so on. Every time we click "Run" we can see the outcome in our Console, as well as in the Environment. Notice that our script also contains lines starting with **"#", these are comment lines** that I include in my code to make it easier to read and understand. The use of "#" and comments is highly advised and considered as **a good practice*. You should spend some time now to visually explore the screen in front you. Familiarise yourself with the different windows and click on different tabs to see what kind of information they contain. Also do not forget to save our script giving it a meaningful name. I suggest something like "the most amazing script". You can save it by clicking File >> Save, and then type a name of your preference. Once you do that you should be able to see the new scripts in the "Files" window too.  
 
-## Exercise 2
+## Exercise 1.2
 
 Create a new script and name it "Exercise2". Write the necessary lines of code that can solve the following problem:  
-"The price for one cinema ticket is £10. The price for a large popcorn in £8. The price for one soft drink is £4. We want to calculate the total amount of money we spent if we bought 5 tickets, 3 popcorns and 4 soft drinks". Make sure you create a variable for each of the above costs, as well as one variable for the total. Also, make sure to include detailed comments as the ones in the example above.
+"The price for one cinema ticket is £10. The price for a large popcorn in £8. The price for one soft drink is £4. We want to calculate the total amount of money we spent if we bought 5 tickets, 3 popcorns and 4 soft drinks". Make sure you create a variable for each of the above costs, as well as one variable for the total. Also, make sure to include detailed comments as the ones in the example above.  
+
 
