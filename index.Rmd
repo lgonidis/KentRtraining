@@ -16,7 +16,7 @@ description: "This is a work in progress"
 
 ...regarding the structure of this course. Given that this course is tailored mainly for psychologists we will not be discussing statistical concepts in great detail but instead we will be focusing on the R programming required to carry out different analyses. We will however, discussing assumptions where relevant as will help build a structure for our analysis.  
 
-## A comment on the book structure
+## A comment on the course structure
 
 **The first six chapters will be covered mainly in Day 1 of the training event. From the seventh chapter (session) onwards we are focusing on Day 2 of the training.**
 
@@ -31,3 +31,7 @@ description: "This is a work in progress"
 5. Once we are happy with how our data files look, we will proceed to data visualisations using another powerful package called **ggppubr**. **ggpubr** relies on **ggplot2** but it is simpler to use as it was built with graphs for publications in mind.  
 
 6. Finally, we will *open the floor* to more practice examples and questions for you. You can even try today's techniques to some of your own data files and ask me questions in the process. This will conclude the first session and prepare us for the next session where we will be carrying out different types of analysis.
+
+
+
+**Last Edit**: `r format(Sys.Date(), "%d. %B %Y")`
