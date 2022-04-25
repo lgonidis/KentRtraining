@@ -23,7 +23,7 @@
 <meta name="author" content="Lazaros Gonidis" />
 
 
-<meta name="date" content="2022-04-24" />
+<meta name="date" content="2022-04-25" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -195,21 +195,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.1" data-path="session5.html"><a href="session5.html#reflecting-on-the-last-session"><i class="fa fa-check"></i><b>6.1</b> Reflecting on the last session</a></li>
 <li class="chapter" data-level="6.2" data-path="session5.html"><a href="session5.html#learning-objectives-4"><i class="fa fa-check"></i><b>6.2</b> Learning objectives</a></li>
 <li class="chapter" data-level="6.3" data-path="session5.html"><a href="session5.html#pipe-operator"><i class="fa fa-check"></i><b>6.3</b> Pipe Operator <code>%&gt;%</code></a></li>
-<li class="chapter" data-level="6.4" data-path="session5.html"><a href="session5.html#exercise-6.1"><i class="fa fa-check"></i><b>6.4</b> Exercise 6.1</a></li>
-<li class="chapter" data-level="6.5" data-path="session5.html"><a href="session5.html#grouping-spliting-and-summarizing-variables-across-out-data-frame"><i class="fa fa-check"></i><b>6.5</b> Grouping, spliting, and summarizing variables across out data frame</a></li>
+<li class="chapter" data-level="6.4" data-path="session5.html"><a href="session5.html#an-example-of-a-fyp-data-analysis"><i class="fa fa-check"></i><b>6.4</b> An example of a FYP data analysis</a></li>
+<li class="chapter" data-level="6.5" data-path="session5.html"><a href="session5.html#a-brief-overview-of-our-data"><i class="fa fa-check"></i><b>6.5</b> A brief overview of our data</a></li>
+<li class="chapter" data-level="6.6" data-path="session5.html"><a href="session5.html#exercise-6.1"><i class="fa fa-check"></i><b>6.6</b> Exercise 6.1</a></li>
+<li class="chapter" data-level="6.7" data-path="session5.html"><a href="session5.html#working-through-our-participants-section"><i class="fa fa-check"></i><b>6.7</b> Working through our participants section</a></li>
+<li class="chapter" data-level="6.8" data-path="session5.html"><a href="session5.html#exercise-6.2"><i class="fa fa-check"></i><b>6.8</b> Exercise 6.2</a></li>
+<li class="chapter" data-level="6.9" data-path="session5.html"><a href="session5.html#running-a-simple-correlational-analysis-for-frequency-and-days"><i class="fa fa-check"></i><b>6.9</b> Running a simple correlational analysis for Frequency and Days</a></li>
+<li class="chapter" data-level="6.10" data-path="session5.html"><a href="session5.html#in-conclusion"><i class="fa fa-check"></i><b>6.10</b> In conclusion</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="session7.html"><a href="session7.html"><i class="fa fa-check"></i><b>7</b> Bringing Everything Together. Part I</a>
 <ul>
 <li class="chapter" data-level="7.1" data-path="session7.html"><a href="session7.html#reflecting-on-day-1"><i class="fa fa-check"></i><b>7.1</b> Reflecting on Day 1</a></li>
 <li class="chapter" data-level="7.2" data-path="session7.html"><a href="session7.html#learning-objectives-5"><i class="fa fa-check"></i><b>7.2</b> Learning Objectives</a></li>
 <li class="chapter" data-level="7.3" data-path="session7.html"><a href="session7.html#working-with-the-file"><i class="fa fa-check"></i><b>7.3</b> Working with the file</a></li>
-<li class="chapter" data-level="7.4" data-path="session7.html"><a href="session7.html#exercise-11"><i class="fa fa-check"></i><b>7.4</b> Exercise 11</a></li>
+<li class="chapter" data-level="7.4" data-path="session7.html"><a href="session7.html#exercise-6.1-1"><i class="fa fa-check"></i><b>7.4</b> Exercise 6.1</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="session8.html"><a href="session8.html"><i class="fa fa-check"></i><b>8</b> Bringing Everything Together. Part II</a>
 <ul>
 <li class="chapter" data-level="8.1" data-path="session8.html"><a href="session8.html#learning-objectives-6"><i class="fa fa-check"></i><b>8.1</b> Learning Objectives</a></li>
 <li class="chapter" data-level="8.2" data-path="session8.html"><a href="session8.html#continuing-with-the-exercise-10-and-two-way-anova"><i class="fa fa-check"></i><b>8.2</b> Continuing with the exercise 10 and two-way ANOVA</a></li>
-<li class="chapter" data-level="8.3" data-path="session8.html"><a href="session8.html#exercise-12"><i class="fa fa-check"></i><b>8.3</b> Exercise 12</a></li>
+<li class="chapter" data-level="8.3" data-path="session8.html"><a href="session8.html#exercise-7.1"><i class="fa fa-check"></i><b>8.3</b> Exercise 7.1</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="session9.html"><a href="session9.html"><i class="fa fa-check"></i><b>9</b> Restructuring and Merging Data.</a>
 <ul>
@@ -248,76 +253,76 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 For example, in the previous stroop paradigm we may want to have one column for the <strong>salient</strong> reaction times and one column for the **neutral* reaction times. One reason why we may need this is because we may want to calculate a new variable that will be the difference between the two variables. That way we will end up having one row per participant which will make our dataset ideal for merging with another dataset that contains questionnaires responses. Our goal for this session will be to merge experimental and survey data in one file and carry out correlational analysis.</p>
 <p>For restructuring our data we will be using <strong>pivot_wider()</strong> and <strong>pivot_longer()</strong>. Both are part of tidyverse and specifically <strong>tidyr</strong>. They are new implementations and will probably replace <strong>spread()</strong> and <strong>gather()</strong>. Most tutorials on the web use spread and gather. We will use both the new and old approach.</p>
 <p>Let us continue our work from the previous session and work with the file “stroopfinal”.</p>
-<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="session9.html#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb90-2"><a href="session9.html#cb90-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-3"><a href="session9.html#cb90-3" aria-hidden="true" tabindex="-1"></a>dflong <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;stroopfinal.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="session9.html#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb96-2"><a href="session9.html#cb96-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-3"><a href="session9.html#cb96-3" aria-hidden="true" tabindex="-1"></a>dflong <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;stroopfinal.csv&quot;</span>)</span></code></pre></div>
 <p>We will now convert our dataframe from long to wide format. We will do using two different ways. Spread() and gather() are being depreciated but we still use them as an example.</p>
-<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="session9.html#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="do">## we now want to bring the file to a form that will have two RTs columns</span></span>
-<span id="cb91-2"><a href="session9.html#cb91-2" aria-hidden="true" tabindex="-1"></a><span class="do">## one for salience trials and one for neutral trials</span></span>
-<span id="cb91-3"><a href="session9.html#cb91-3" aria-hidden="true" tabindex="-1"></a>dfwide <span class="ot">&lt;-</span> dflong <span class="sc">%&gt;%</span> </span>
-<span id="cb91-4"><a href="session9.html#cb91-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> salience, <span class="at">values_from =</span> RT)</span>
-<span id="cb91-5"><a href="session9.html#cb91-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb91-6"><a href="session9.html#cb91-6" aria-hidden="true" tabindex="-1"></a><span class="do">## we could do the same with spread()</span></span>
-<span id="cb91-7"><a href="session9.html#cb91-7" aria-hidden="true" tabindex="-1"></a>dfwide2 <span class="ot">&lt;-</span> dflong <span class="sc">%&gt;%</span> </span>
-<span id="cb91-8"><a href="session9.html#cb91-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">spread</span>(salience, RT)</span></code></pre></div>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="session9.html#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="do">## we now want to bring the file to a form that will have two RTs columns</span></span>
+<span id="cb97-2"><a href="session9.html#cb97-2" aria-hidden="true" tabindex="-1"></a><span class="do">## one for salience trials and one for neutral trials</span></span>
+<span id="cb97-3"><a href="session9.html#cb97-3" aria-hidden="true" tabindex="-1"></a>dfwide <span class="ot">&lt;-</span> dflong <span class="sc">%&gt;%</span> </span>
+<span id="cb97-4"><a href="session9.html#cb97-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> salience, <span class="at">values_from =</span> RT)</span>
+<span id="cb97-5"><a href="session9.html#cb97-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-6"><a href="session9.html#cb97-6" aria-hidden="true" tabindex="-1"></a><span class="do">## we could do the same with spread()</span></span>
+<span id="cb97-7"><a href="session9.html#cb97-7" aria-hidden="true" tabindex="-1"></a>dfwide2 <span class="ot">&lt;-</span> dflong <span class="sc">%&gt;%</span> </span>
+<span id="cb97-8"><a href="session9.html#cb97-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">spread</span>(salience, RT)</span></code></pre></div>
 <p>Just for practice we can revert back from wide to long format.</p>
-<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="session9.html#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Let us now try to convert the wide file back to long</span></span>
-<span id="cb92-2"><a href="session9.html#cb92-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb92-3"><a href="session9.html#cb92-3" aria-hidden="true" tabindex="-1"></a>dflong2 <span class="ot">&lt;-</span> dfwide <span class="sc">%&gt;%</span> </span>
-<span id="cb92-4"><a href="session9.html#cb92-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(Gambling, Neutral), </span>
-<span id="cb92-5"><a href="session9.html#cb92-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">&quot;Salience&quot;</span>, </span>
-<span id="cb92-6"><a href="session9.html#cb92-6" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">&quot;Reaction&quot;</span>)</span>
-<span id="cb92-7"><a href="session9.html#cb92-7" aria-hidden="true" tabindex="-1"></a><span class="do">### It would be very similar using gather</span></span>
-<span id="cb92-8"><a href="session9.html#cb92-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb92-9"><a href="session9.html#cb92-9" aria-hidden="true" tabindex="-1"></a>dflong3 <span class="ot">&lt;-</span> dfwide <span class="sc">%&gt;%</span> </span>
-<span id="cb92-10"><a href="session9.html#cb92-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gather</span>(<span class="at">key =</span> <span class="st">&quot;Salience&quot;</span>, <span class="at">value =</span> <span class="st">&quot;Reaction&quot;</span>, Gambling, Neutral)</span>
-<span id="cb92-11"><a href="session9.html#cb92-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb92-12"><a href="session9.html#cb92-12" aria-hidden="true" tabindex="-1"></a><span class="do">## dflong2 and dflong3 look different as they are sorted by different variable</span></span>
-<span id="cb92-13"><a href="session9.html#cb92-13" aria-hidden="true" tabindex="-1"></a><span class="do">## this is just a visual difference but we can fix it anyway</span></span>
-<span id="cb92-14"><a href="session9.html#cb92-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb92-15"><a href="session9.html#cb92-15" aria-hidden="true" tabindex="-1"></a>dflong3 <span class="ot">&lt;-</span> dflong3 <span class="sc">%&gt;%</span> </span>
-<span id="cb92-16"><a href="session9.html#cb92-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(participant, group)</span></code></pre></div>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="session9.html#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Let us now try to convert the wide file back to long</span></span>
+<span id="cb98-2"><a href="session9.html#cb98-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-3"><a href="session9.html#cb98-3" aria-hidden="true" tabindex="-1"></a>dflong2 <span class="ot">&lt;-</span> dfwide <span class="sc">%&gt;%</span> </span>
+<span id="cb98-4"><a href="session9.html#cb98-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(Gambling, Neutral), </span>
+<span id="cb98-5"><a href="session9.html#cb98-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">&quot;Salience&quot;</span>, </span>
+<span id="cb98-6"><a href="session9.html#cb98-6" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">&quot;Reaction&quot;</span>)</span>
+<span id="cb98-7"><a href="session9.html#cb98-7" aria-hidden="true" tabindex="-1"></a><span class="do">### It would be very similar using gather</span></span>
+<span id="cb98-8"><a href="session9.html#cb98-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-9"><a href="session9.html#cb98-9" aria-hidden="true" tabindex="-1"></a>dflong3 <span class="ot">&lt;-</span> dfwide <span class="sc">%&gt;%</span> </span>
+<span id="cb98-10"><a href="session9.html#cb98-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gather</span>(<span class="at">key =</span> <span class="st">&quot;Salience&quot;</span>, <span class="at">value =</span> <span class="st">&quot;Reaction&quot;</span>, Gambling, Neutral)</span>
+<span id="cb98-11"><a href="session9.html#cb98-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-12"><a href="session9.html#cb98-12" aria-hidden="true" tabindex="-1"></a><span class="do">## dflong2 and dflong3 look different as they are sorted by different variable</span></span>
+<span id="cb98-13"><a href="session9.html#cb98-13" aria-hidden="true" tabindex="-1"></a><span class="do">## this is just a visual difference but we can fix it anyway</span></span>
+<span id="cb98-14"><a href="session9.html#cb98-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-15"><a href="session9.html#cb98-15" aria-hidden="true" tabindex="-1"></a>dflong3 <span class="ot">&lt;-</span> dflong3 <span class="sc">%&gt;%</span> </span>
+<span id="cb98-16"><a href="session9.html#cb98-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(participant, group)</span></code></pre></div>
 <p>As I said we do not need to revert back to the long format. We will carry on working with the wide format and calculate our <strong>diff</strong> variable.</p>
-<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="session9.html#cb93-1" aria-hidden="true" tabindex="-1"></a>dfwide <span class="ot">&lt;-</span> dfwide <span class="sc">%&gt;%</span> </span>
-<span id="cb93-2"><a href="session9.html#cb93-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">diff =</span> Gambling <span class="sc">-</span> Neutral)</span></code></pre></div>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="session9.html#cb99-1" aria-hidden="true" tabindex="-1"></a>dfwide <span class="ot">&lt;-</span> dfwide <span class="sc">%&gt;%</span> </span>
+<span id="cb99-2"><a href="session9.html#cb99-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">diff =</span> Gambling <span class="sc">-</span> Neutral)</span></code></pre></div>
 <p>It would be very interesting now to see whether this difference correlates with the frequency of games. Let’s also load the questionnaire.csv and merge it with our widedf.</p>
-<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="session9.html#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="do">## load our datafile</span></span>
-<span id="cb94-2"><a href="session9.html#cb94-2" aria-hidden="true" tabindex="-1"></a>questionnaire <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;questionnaire.csv&quot;</span>)</span>
-<span id="cb94-3"><a href="session9.html#cb94-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-4"><a href="session9.html#cb94-4" aria-hidden="true" tabindex="-1"></a><span class="do">## let&#39;s merge the two datasets dfwide and questionnaire</span></span>
-<span id="cb94-5"><a href="session9.html#cb94-5" aria-hidden="true" tabindex="-1"></a><span class="do">## first lets do it the wrong way</span></span>
-<span id="cb94-6"><a href="session9.html#cb94-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-7"><a href="session9.html#cb94-7" aria-hidden="true" tabindex="-1"></a>dfall <span class="ot">&lt;-</span><span class="fu">left_join</span>(dfwide, questionnaire)</span>
-<span id="cb94-8"><a href="session9.html#cb94-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-9"><a href="session9.html#cb94-9" aria-hidden="true" tabindex="-1"></a><span class="do">## this will generate an error as group in questionnaire is not a factor</span></span>
-<span id="cb94-10"><a href="session9.html#cb94-10" aria-hidden="true" tabindex="-1"></a><span class="do">## also group in the questionnaire is 1 and 2 not the same as in dfwide</span></span>
-<span id="cb94-11"><a href="session9.html#cb94-11" aria-hidden="true" tabindex="-1"></a><span class="do">## also left_join() is not the appropriate function for our case</span></span>
-<span id="cb94-12"><a href="session9.html#cb94-12" aria-hidden="true" tabindex="-1"></a>questionnaire <span class="ot">&lt;-</span> questionnaire <span class="sc">%&gt;%</span> </span>
-<span id="cb94-13"><a href="session9.html#cb94-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">group =</span> <span class="fu">recode</span>(group,<span class="st">&#39;1&#39;</span> <span class="ot">=</span> <span class="st">&quot;gambling&quot;</span>, <span class="st">&#39;2&#39;</span><span class="ot">=</span><span class="st">&quot;control&quot;</span>),</span>
-<span id="cb94-14"><a href="session9.html#cb94-14" aria-hidden="true" tabindex="-1"></a>         <span class="at">group =</span> <span class="fu">as.factor</span>(group))</span>
-<span id="cb94-15"><a href="session9.html#cb94-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-16"><a href="session9.html#cb94-16" aria-hidden="true" tabindex="-1"></a>dfwide<span class="sc">$</span>group <span class="ot">=</span> <span class="fu">as.factor</span>(dfwide<span class="sc">$</span>group)</span>
-<span id="cb94-17"><a href="session9.html#cb94-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-18"><a href="session9.html#cb94-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-19"><a href="session9.html#cb94-19" aria-hidden="true" tabindex="-1"></a><span class="do">## let&#39;s merge the two datasets dfwide and questionnaire</span></span>
-<span id="cb94-20"><a href="session9.html#cb94-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-21"><a href="session9.html#cb94-21" aria-hidden="true" tabindex="-1"></a>dfall <span class="ot">&lt;-</span><span class="fu">full_join</span>(dfwide, questionnaire)</span></code></pre></div>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="session9.html#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="do">## load our datafile</span></span>
+<span id="cb100-2"><a href="session9.html#cb100-2" aria-hidden="true" tabindex="-1"></a>questionnaire <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;questionnaire.csv&quot;</span>)</span>
+<span id="cb100-3"><a href="session9.html#cb100-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb100-4"><a href="session9.html#cb100-4" aria-hidden="true" tabindex="-1"></a><span class="do">## let&#39;s merge the two datasets dfwide and questionnaire</span></span>
+<span id="cb100-5"><a href="session9.html#cb100-5" aria-hidden="true" tabindex="-1"></a><span class="do">## first lets do it the wrong way</span></span>
+<span id="cb100-6"><a href="session9.html#cb100-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb100-7"><a href="session9.html#cb100-7" aria-hidden="true" tabindex="-1"></a>dfall <span class="ot">&lt;-</span><span class="fu">left_join</span>(dfwide, questionnaire)</span>
+<span id="cb100-8"><a href="session9.html#cb100-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb100-9"><a href="session9.html#cb100-9" aria-hidden="true" tabindex="-1"></a><span class="do">## this will generate an error as group in questionnaire is not a factor</span></span>
+<span id="cb100-10"><a href="session9.html#cb100-10" aria-hidden="true" tabindex="-1"></a><span class="do">## also group in the questionnaire is 1 and 2 not the same as in dfwide</span></span>
+<span id="cb100-11"><a href="session9.html#cb100-11" aria-hidden="true" tabindex="-1"></a><span class="do">## also left_join() is not the appropriate function for our case</span></span>
+<span id="cb100-12"><a href="session9.html#cb100-12" aria-hidden="true" tabindex="-1"></a>questionnaire <span class="ot">&lt;-</span> questionnaire <span class="sc">%&gt;%</span> </span>
+<span id="cb100-13"><a href="session9.html#cb100-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">group =</span> <span class="fu">recode</span>(group,<span class="st">&#39;1&#39;</span> <span class="ot">=</span> <span class="st">&quot;gambling&quot;</span>, <span class="st">&#39;2&#39;</span><span class="ot">=</span><span class="st">&quot;control&quot;</span>),</span>
+<span id="cb100-14"><a href="session9.html#cb100-14" aria-hidden="true" tabindex="-1"></a>         <span class="at">group =</span> <span class="fu">as.factor</span>(group))</span>
+<span id="cb100-15"><a href="session9.html#cb100-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb100-16"><a href="session9.html#cb100-16" aria-hidden="true" tabindex="-1"></a>dfwide<span class="sc">$</span>group <span class="ot">=</span> <span class="fu">as.factor</span>(dfwide<span class="sc">$</span>group)</span>
+<span id="cb100-17"><a href="session9.html#cb100-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb100-18"><a href="session9.html#cb100-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb100-19"><a href="session9.html#cb100-19" aria-hidden="true" tabindex="-1"></a><span class="do">## let&#39;s merge the two datasets dfwide and questionnaire</span></span>
+<span id="cb100-20"><a href="session9.html#cb100-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb100-21"><a href="session9.html#cb100-21" aria-hidden="true" tabindex="-1"></a>dfall <span class="ot">&lt;-</span><span class="fu">full_join</span>(dfwide, questionnaire)</span></code></pre></div>
 <p>That worked fine, even though we have some missing values. Let’s see now if we have any significant correlation between the stroop difference and the frequency of games.</p>
 <p>Let’ s start with a simple scatterplot.</p>
-<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="session9.html#cb95-1" aria-hidden="true" tabindex="-1"></a>scatter <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(dfall, <span class="fu">aes</span>(<span class="at">x =</span> games, <span class="at">y =</span> diff)) <span class="sc">+</span></span>
-<span id="cb95-2"><a href="session9.html#cb95-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() </span>
-<span id="cb95-3"><a href="session9.html#cb95-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb95-4"><a href="session9.html#cb95-4" aria-hidden="true" tabindex="-1"></a>scatter</span></code></pre></div>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="session9.html#cb101-1" aria-hidden="true" tabindex="-1"></a>scatter <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(dfall, <span class="fu">aes</span>(<span class="at">x =</span> games, <span class="at">y =</span> diff)) <span class="sc">+</span></span>
+<span id="cb101-2"><a href="session9.html#cb101-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() </span>
+<span id="cb101-3"><a href="session9.html#cb101-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-4"><a href="session9.html#cb101-4" aria-hidden="true" tabindex="-1"></a>scatter</span></code></pre></div>
 <p>This looks rather unexciting, perhaps group can make things more interesting.</p>
-<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="session9.html#cb96-1" aria-hidden="true" tabindex="-1"></a>scatter <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(dfall, <span class="fu">aes</span>(<span class="at">x =</span> games, <span class="at">y =</span> diff, <span class="at">color =</span> group)) <span class="sc">+</span></span>
-<span id="cb96-2"><a href="session9.html#cb96-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() </span>
-<span id="cb96-3"><a href="session9.html#cb96-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb96-4"><a href="session9.html#cb96-4" aria-hidden="true" tabindex="-1"></a>scatter</span></code></pre></div>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="session9.html#cb102-1" aria-hidden="true" tabindex="-1"></a>scatter <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(dfall, <span class="fu">aes</span>(<span class="at">x =</span> games, <span class="at">y =</span> diff, <span class="at">color =</span> group)) <span class="sc">+</span></span>
+<span id="cb102-2"><a href="session9.html#cb102-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() </span>
+<span id="cb102-3"><a href="session9.html#cb102-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb102-4"><a href="session9.html#cb102-4" aria-hidden="true" tabindex="-1"></a>scatter</span></code></pre></div>
 <p>Let’s carry out the correlational analysis next.</p>
-<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="session9.html#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(Hmisc)</span>
-<span id="cb97-2"><a href="session9.html#cb97-2" aria-hidden="true" tabindex="-1"></a>dfgambling <span class="ot">&lt;-</span> dfall <span class="sc">%&gt;%</span> </span>
-<span id="cb97-3"><a href="session9.html#cb97-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(group <span class="sc">==</span> <span class="st">&quot;gambling&quot;</span>)</span>
-<span id="cb97-4"><a href="session9.html#cb97-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rcorr</span>(dfgambling<span class="sc">$</span>games, dfgambling<span class="sc">$</span>diff)</span></code></pre></div>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="session9.html#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(Hmisc)</span>
+<span id="cb103-2"><a href="session9.html#cb103-2" aria-hidden="true" tabindex="-1"></a>dfgambling <span class="ot">&lt;-</span> dfall <span class="sc">%&gt;%</span> </span>
+<span id="cb103-3"><a href="session9.html#cb103-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(group <span class="sc">==</span> <span class="st">&quot;gambling&quot;</span>)</span>
+<span id="cb103-4"><a href="session9.html#cb103-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rcorr</span>(dfgambling<span class="sc">$</span>games, dfgambling<span class="sc">$</span>diff)</span></code></pre></div>
 
 </div>
 </div>

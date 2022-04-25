@@ -20,7 +20,7 @@ Working with the datafile **"alcohol_exp.csv"** we want to bring the dataset to 
 7. **meditation**: discussed above, the same as **group**. This should be a factor.
 8. **gender**: self-explanatory 
 9. **age**: self-explanatory 
-
+ 
 **A few words on the design**  
 
 For the above, we can say that **participant**, **group**, **meditation**, are between-subjects variables. Whereas, **session**, **image**, **duration**, are within-subjects variables.  
@@ -127,7 +127,7 @@ mutate(across(c(group , session, meditation, gender, group), as.factor))
 
 As you work more with tidyverse you can decide on the style and approach that suites you most. For the purposes of this training we will stick to the first approach so you can work out the steps that you followed.
 
-Our variables should fine for now. Looking at the image provided, we want participant, meditation, and session to be the first three variables. Group seems to have been dropped. We will move **meditation** after participant and **group** at the end of the dataframe  
+Our variables should be fine for now. Looking at the image provided, we want participant, meditation, and session to be the first three variables. Group seems to have been dropped. We will move **meditation** after participant and **group** at the end of the dataframe  
 
 ```{r eval=FALSE}
 
@@ -175,7 +175,7 @@ We now have to deal with the fact that our DV is just trial responses. We want t
 
 ## we will group our data using the variables above
 ## and then we will calculate the mean of the responses
-## these mean values will be assigned to the the new variable called ration
+## these mean values will be assigned to the the new variable called ratio
 ## do not forget to ungroup at the end of your grouping work
 ## we carried the variable session forward for your upcoming exercise
 ## we will drop it from the grouping as we do not need it for this
@@ -194,7 +194,7 @@ Let's do a final check on variable types and correct any discrepancies.
 This is also a good point to take a short break before we continue with the exrcise.
 
 
-## Exercise 11  
+## Exercise 6.1 
 Load the datafile **stroopy stroop.csv** and assign it to a dataframe called **stroop**. This contains the data from a Stroop experiment and you should go through the process of preparing it for a two-way ANOVA. You should complete the following steps, which are not given necessarily in the correct order.  
 
 1. Create a **group** variable by recoding the **participant** variable. Participants with value below 2000 should be in the **control** group. Participants with value above 2000 should be in the **gambling** group.  
