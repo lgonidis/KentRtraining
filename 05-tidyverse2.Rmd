@@ -91,6 +91,26 @@ The rest of the columns are irrelevant and we will not be working with them. Bef
 7. Add a column that is the mean of Freq1, Freq2, Freq3, and the above reversed coded variable
 8. Save the final file using a file name of your choice.
 
+```{r}
+library(tidyverse)
+library(rstatix)
+
+
+df <- read_csv("alcohol_qualtrics.csv")
+
+
+df2 <- df %>% 
+  select(1:17) %>% 
+  filter(participant>100 & participant<300) %>% 
+  mutate(Days = Days1 + Days2 + Days3 + Days4) %>% 
+  mutate(Freq4_r = recode(Freq4, '1'=5, '2'=4, '3'=3, '4'=2, '5'=1)) %>% 
+  mutate(Frequency = (Freq1+Freq2+Freq3+Freq4_r)/4) %>% 
+  mutate(gender=as.factor(gender)) %>% 
+  mutate(Smoke=as.factor(Smoke))
+
+write_csv(df2, "exercise61.csv")
+```
+
 
 
 ## Working through our participants section   
@@ -101,7 +121,7 @@ Typically in our participants section we want to provide some descriptive figure
 library(tidyverse)
 library(rstatix)  
 
-df <- read_csv("alcohol_qualtrics.csv")
+df <- read_csv("exercise61.csv")
 
 df$gender <- as.factor(df$gender)
 

@@ -343,54 +343,82 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Add a column that is the mean of Freq1, Freq2, Freq3, and the above reversed coded variable</li>
 <li>Save the final file using a file name of your choice.</li>
 </ol>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="session5.html#cb84-1"></a><span class="kw">library</span>(tidyverse)</span>
+<span id="cb84-2"><a href="session5.html#cb84-2"></a><span class="kw">library</span>(rstatix)</span></code></pre></div>
+<pre><code>## Warning: package &#39;rstatix&#39; was built under R version 4.0.5</code></pre>
+<pre><code>## 
+## Attaching package: &#39;rstatix&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:stats&#39;:
+## 
+##     filter</code></pre>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="session5.html#cb88-1"></a>df &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;alcohol_qualtrics.csv&quot;</span>)</span></code></pre></div>
+<pre><code>## Rows: 105 Columns: 33</code></pre>
+<pre><code>## -- Column specification --------------------------------------------------------
+## Delimiter: &quot;,&quot;
+## chr  (7): StartDate, EndDate, IPAddress, RecordedDate, ResponseId, Distribut...
+## dbl (22): id, participant, gender, Age, Days1, Days2, Days3, Days4, Smoke, D...
+## lgl  (4): RecipientLastName, RecipientFirstName, RecipientEmail, ExternalRef...</code></pre>
+<pre><code>## 
+## i Use `spec()` to retrieve the full column specification for this data.
+## i Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="session5.html#cb92-1"></a>df2 &lt;-<span class="st"> </span>df <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb92-2"><a href="session5.html#cb92-2"></a><span class="st">  </span><span class="kw">select</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">17</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb92-3"><a href="session5.html#cb92-3"></a><span class="st">  </span><span class="kw">filter</span>(participant<span class="op">&gt;</span><span class="dv">100</span> <span class="op">&amp;</span><span class="st"> </span>participant<span class="op">&lt;</span><span class="dv">300</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb92-4"><a href="session5.html#cb92-4"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Days =</span> Days1 <span class="op">+</span><span class="st"> </span>Days2 <span class="op">+</span><span class="st"> </span>Days3 <span class="op">+</span><span class="st"> </span>Days4) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb92-5"><a href="session5.html#cb92-5"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Freq4_r =</span> <span class="kw">recode</span>(Freq4, <span class="st">&#39;1&#39;</span>=<span class="dv">5</span>, <span class="st">&#39;2&#39;</span>=<span class="dv">4</span>, <span class="st">&#39;3&#39;</span>=<span class="dv">3</span>, <span class="st">&#39;4&#39;</span>=<span class="dv">2</span>, <span class="st">&#39;5&#39;</span>=<span class="dv">1</span>)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb92-6"><a href="session5.html#cb92-6"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Frequency =</span> (Freq1<span class="op">+</span>Freq2<span class="op">+</span>Freq3<span class="op">+</span>Freq4_r)<span class="op">/</span><span class="dv">4</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb92-7"><a href="session5.html#cb92-7"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">gender=</span><span class="kw">as.factor</span>(gender)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb92-8"><a href="session5.html#cb92-8"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Smoke=</span><span class="kw">as.factor</span>(Smoke))</span>
+<span id="cb92-9"><a href="session5.html#cb92-9"></a></span>
+<span id="cb92-10"><a href="session5.html#cb92-10"></a><span class="kw">write_csv</span>(df2, <span class="st">&quot;exercise61.csv&quot;</span>)</span></code></pre></div>
 </div>
 <div id="working-through-our-participants-section" class="section level2" number="6.7">
 <h2><span class="header-section-number">6.7</span> Working through our participants section</h2>
 <p>Typically in our participants section we want to provide some descriptive figures for age and frequencies per gender.</p>
-<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="session5.html#cb84-1"></a><span class="kw">library</span>(tidyverse)</span>
-<span id="cb84-2"><a href="session5.html#cb84-2"></a><span class="kw">library</span>(rstatix)  </span>
-<span id="cb84-3"><a href="session5.html#cb84-3"></a></span>
-<span id="cb84-4"><a href="session5.html#cb84-4"></a>df &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;alcohol_qualtrics.csv&quot;</span>)</span>
-<span id="cb84-5"><a href="session5.html#cb84-5"></a></span>
-<span id="cb84-6"><a href="session5.html#cb84-6"></a>df<span class="op">$</span>gender &lt;-<span class="st"> </span><span class="kw">as.factor</span>(df<span class="op">$</span>gender)</span>
-<span id="cb84-7"><a href="session5.html#cb84-7"></a></span>
-<span id="cb84-8"><a href="session5.html#cb84-8"></a></span>
-<span id="cb84-9"><a href="session5.html#cb84-9"></a><span class="co">### Overall demographics  </span></span>
-<span id="cb84-10"><a href="session5.html#cb84-10"></a></span>
-<span id="cb84-11"><a href="session5.html#cb84-11"></a>df <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb84-12"><a href="session5.html#cb84-12"></a><span class="st">  </span><span class="kw">get_summary_stats</span>(Age)</span></code></pre></div>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="session5.html#cb93-1"></a><span class="kw">library</span>(tidyverse)</span>
+<span id="cb93-2"><a href="session5.html#cb93-2"></a><span class="kw">library</span>(rstatix)  </span>
+<span id="cb93-3"><a href="session5.html#cb93-3"></a></span>
+<span id="cb93-4"><a href="session5.html#cb93-4"></a>df &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;exercise61.csv&quot;</span>)</span>
+<span id="cb93-5"><a href="session5.html#cb93-5"></a></span>
+<span id="cb93-6"><a href="session5.html#cb93-6"></a>df<span class="op">$</span>gender &lt;-<span class="st"> </span><span class="kw">as.factor</span>(df<span class="op">$</span>gender)</span>
+<span id="cb93-7"><a href="session5.html#cb93-7"></a></span>
+<span id="cb93-8"><a href="session5.html#cb93-8"></a></span>
+<span id="cb93-9"><a href="session5.html#cb93-9"></a><span class="co">### Overall demographics  </span></span>
+<span id="cb93-10"><a href="session5.html#cb93-10"></a></span>
+<span id="cb93-11"><a href="session5.html#cb93-11"></a>df <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb93-12"><a href="session5.html#cb93-12"></a><span class="st">  </span><span class="kw">get_summary_stats</span>(Age)</span></code></pre></div>
 <pre><code>## # A tibble: 1 x 13
 ##   variable     n   min   max median    q1    q3   iqr   mad  mean    sd    se
 ##   &lt;chr&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-## 1 Age        105    18    99     19    19    20     1  1.48  20.6  9.15 0.893
+## 1 Age        103    18    30     19  18.5    20   1.5  1.48  19.4  1.56 0.154
 ## # ... with 1 more variable: ci &lt;dbl&gt;</code></pre>
-<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="session5.html#cb86-1"></a>df <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb86-2"><a href="session5.html#cb86-2"></a><span class="st">  </span><span class="kw">count</span>(gender)</span></code></pre></div>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="session5.html#cb95-1"></a>df <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb95-2"><a href="session5.html#cb95-2"></a><span class="st">  </span><span class="kw">count</span>(gender)</span></code></pre></div>
 <pre><code>## # A tibble: 2 x 2
 ##   gender     n
 ##   &lt;fct&gt;  &lt;int&gt;
-## 1 1         13
+## 1 1         11
 ## 2 2         92</code></pre>
 <p>In some cases we might also want to further break down that information per group. Below we can see how we can achieve that.</p>
-<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="session5.html#cb88-1"></a><span class="co">### If you havent done so make sure Smoke is a factor</span></span>
-<span id="cb88-2"><a href="session5.html#cb88-2"></a></span>
-<span id="cb88-3"><a href="session5.html#cb88-3"></a>df <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb88-4"><a href="session5.html#cb88-4"></a><span class="st">  </span><span class="kw">group_by</span>(Smoke) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb88-5"><a href="session5.html#cb88-5"></a><span class="st">  </span><span class="kw">get_summary_stats</span>(Age)</span></code></pre></div>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="session5.html#cb97-1"></a><span class="co">### If you havent done so make sure Smoke is a factor</span></span>
+<span id="cb97-2"><a href="session5.html#cb97-2"></a></span>
+<span id="cb97-3"><a href="session5.html#cb97-3"></a>df <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb97-4"><a href="session5.html#cb97-4"></a><span class="st">  </span><span class="kw">group_by</span>(Smoke) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb97-5"><a href="session5.html#cb97-5"></a><span class="st">  </span><span class="kw">get_summary_stats</span>(Age)</span></code></pre></div>
 <pre><code>## # A tibble: 2 x 14
 ##   Smoke variable     n   min   max median    q1    q3   iqr   mad  mean    sd
 ##   &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-## 1     1 Age         18    18    99     20  19    20.8  1.75  1.48  26.8 21.3 
-## 2     2 Age         87    18    30     19  18.5  20    1.5   1.48  19.3  1.49
+## 1     1 Age         16    18    26   19.5  18.8    20  1.25 0.741  19.8  1.95
+## 2     2 Age         87    18    30   19    18.5    20  1.5  1.48   19.3  1.49
 ## # ... with 2 more variables: se &lt;dbl&gt;, ci &lt;dbl&gt;</code></pre>
-<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="session5.html#cb90-1"></a>df <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb90-2"><a href="session5.html#cb90-2"></a><span class="st">  </span><span class="kw">group_by</span>(Smoke) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb90-3"><a href="session5.html#cb90-3"></a><span class="st">  </span><span class="kw">count</span>(gender)</span></code></pre></div>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="session5.html#cb99-1"></a>df <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb99-2"><a href="session5.html#cb99-2"></a><span class="st">  </span><span class="kw">group_by</span>(Smoke) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb99-3"><a href="session5.html#cb99-3"></a><span class="st">  </span><span class="kw">count</span>(gender)</span></code></pre></div>
 <pre><code>## # A tibble: 4 x 3
 ## # Groups:   Smoke [2]
 ##   Smoke gender     n
 ##   &lt;dbl&gt; &lt;fct&gt;  &lt;int&gt;
-## 1     1 1          4
+## 1     1 1          2
 ## 2     1 2         14
 ## 3     2 1          9
 ## 4     2 2         78</code></pre>
@@ -402,10 +430,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="running-a-simple-correlational-analysis-for-frequency-and-days" class="section level2" number="6.9">
 <h2><span class="header-section-number">6.9</span> Running a simple correlational analysis for Frequency and Days</h2>
 <p>We can now carry out a simple correlational analysis. This will be just as means of demonstration. There will be a dedicated session on Correlation and Regression. As we have already prepared our Frequency and Days variables we can proceed with the correlation function.</p>
-<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="session5.html#cb92-1"></a><span class="co">###  cor_test is part of the rstatix package</span></span>
-<span id="cb92-2"><a href="session5.html#cb92-2"></a></span>
-<span id="cb92-3"><a href="session5.html#cb92-3"></a>df <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb92-4"><a href="session5.html#cb92-4"></a><span class="st">  </span><span class="kw">cor_test</span>(Frequency, Days, <span class="dt">method =</span> <span class="st">&quot;pearson&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="session5.html#cb101-1"></a><span class="co">###  cor_test is part of the rstatix package</span></span>
+<span id="cb101-2"><a href="session5.html#cb101-2"></a></span>
+<span id="cb101-3"><a href="session5.html#cb101-3"></a>df <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb101-4"><a href="session5.html#cb101-4"></a><span class="st">  </span><span class="kw">cor_test</span>(Frequency, Days, <span class="dt">method =</span> <span class="st">&quot;pearson&quot;</span>)</span></code></pre></div>
 <p>The <strong>cor_test()</strong> function offers a variety of arguments that will allow us to run all sorts of correlation combination. Let us see the <strong>help</strong> for this function. We can access the help is built-in within R in a number of different ways. We could place our cursor in the function we need help for and press F1. Or at the bottom right pane we can click on Help and then type the name of the function.</p>
 </div>
 <div id="in-conclusion" class="section level2" number="6.10">
