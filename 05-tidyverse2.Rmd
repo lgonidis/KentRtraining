@@ -44,7 +44,7 @@ df3 <- df %>%
   filter(gender == 2) %>% 
   filter(response.rt < 1.5) %>% ### this could be done with the above
   mutate(gender = recode(gender,'1' = "Male", '2'="Female")) %>% 
-  mutate(gender = recode(group,'1' = "High", '2'="Low"))
+  mutate(group = recode(group,'1' = "High", '2'="Low"))
 
 
 
