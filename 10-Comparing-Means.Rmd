@@ -20,7 +20,7 @@ By the end of today's session you should a good understanding on how to perform 
 2. Paired samples parametric t-test   
 3. Non-parametric independent samples test (Mann-Whitney test)   
 4. Non-parametric paired samples test (Wilcoxon test)   
-5. Acquire effect-sizes    
+5. Acquiring effect-sizes    
 6. Converting a dataframe from wide to long format and vice-versa   
 
 
@@ -48,6 +48,200 @@ head(df)
 
 ```
 
+
+It is also a good idea to get a quick summary of your dataframe to check that everything is in order.   
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+summary(df)
+```
+
+We see that **participant** is recognised are numeric, **salience** and **group** as character variables. We need to change all three to factors.   
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+
+df$participant <- as.factor(df$participant)
+df$salience <- as.factor(df$salience)
+df$group <- as.factor(df$group)
+
+summary(df)
+```
+
+
+We want to compare the reaction times (RT) for Salient images between group 1 and group 2. Before we do that we need to check our two assumptions. First, the assumption of normality. There are a few ways to do that but for convenience we will use a Shapiro Test.  Remember we need to check this assumption for each group so we will group our data using the function **group_by()**.   
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+df %>% 
+  group_by(group) %>% 
+  shapiro_test(RT)
+```
+
+Checking the p-values in the output we see that both are above .05 therefore our assumption for normality stands. We will now proceed to check that both groups have equal variance. Again, there are a few ways to check this but for convenience we will use Levene's test.  
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+levene_test(df, RT~salience)
+```
+
+Our p-value is above .05 therefore we did not violate the assumption of equal variance. We are now ready to carry out our comparison of meant RT between Groups 1 and 2.  
+
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+t_test(df, RT~salience, paired = FALSE, var.equal = TRUE)
+```
+
+Note that we used two arguments, **paired = FALSE** to indeicate that we do not have paired samples, and **var.equal = TRUE** to indicate that we have equal variance. If had violated the equal variance assumption all we had to do is change to **var.equal = FALSE** and R would automatically run Welch test. 
+
+
+We can also acquire some descriptive statistics per group as well as the Cohen's effect size.   
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+df %>% 
+  group_by(group) %>% 
+  get_summary_stats(RT)
+
+cohens_d(df, RT~salience, paired = FALSE, var.equal = TRUE)
+```
+
+Note that for calculating Cohen's effect size we use exactly the same arguments as we did in the **t_test()** above
+
+## Independent samples non-parametric test   
+
+As we saw above the first assumption we check is that of normality. We will now see an example of how we proceed to a **Mann-Whitney test** when our data are not normally distributed. We will work with the datafile **Mann.csv**.   
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(rstatix)
+
+df <- read_csv("Mann.csv")
+
+head(df)
+
+summary(df)
+```
+
+
+We see that group is not a factor so we need to fix this.   
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+df$group <- as.factor(df$group)
+summary(df)
+```
+
+We will now proceed to check the normality assumption for each group.   
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+df %>% 
+  group_by(group) %>% 
+  shapiro_test(performance)
+```
+
+From the output we see that the intervention group clearly violates the normality assumption (the control group is not much better either). Therefore, we have to run a non-parametric Mann-Whitney test, which ironically is ran by using the function **wilcox_test()**. We can also acquire the effect size and some useful descriptive statistics. (You might need to have the function **coin** installed first).
+
+```{r}
+wilcox_test(df, performance ~ group, paired = FALSE)
+wilcox_effsize(df, performance ~ group, paired = FALSE)
+
+df %>% 
+  group_by(group) %>% 
+  get_summary_stats(performance)
+```
+
+
+
+## Paired-samples parametric t-test   
+We now want to compare the mean RT between salient and neutral images across our sample. In order to do that we will need to carry out a paired-samples t-test. The paired-samples t-test has different assumptions to the independent samples one. This time we want the difference between the two measurements (salient vs neutral) to be normally distributes. Let us observe our dataframe (the same one from the independent samples example, but I will reload it just to avoid confusion).   
+
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(rstatix)
+
+df <- read_csv("stroopfinal.csv")
+
+head(df)
+
+df$participant <- as.factor(df$participant)
+df$group <- as.factor(df$group)
+df$salience <- as.factor(df$salience)
+
+```
+
+As we can see our dataframe is in **long format**, which is not very convenient for calculating the difference if RT between Gambling and Neutral images per participants (it is actually doable but for training purposes we will leave it for now). If you had a chance to look at the previous chapter you might have noticed that we went through a restructure examples there. In practice we have **salience** as a factor variable (long format) and instead we want two have two new variables (Gamblling, Neutral) with the two measurement per participant. We can do that by using the function **pivot_wider** that converts a dataframe from long to wide format.
+
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+dfwide <- df %>% 
+  pivot_wider(names_from = salience, values_from = RT)
+
+summary(dfwide)
+
+head(dfwide)
+
+```
+
+
+It is now straight forward to calculate the difference and assign it to a new column. Then we can check form normality using the same function as above (Shapiro_test())
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+dfwide$difference <- dfwide$Gambling - dfwide$Neutral
+
+dfwide %>% 
+  group_by(group) %>% 
+  shapiro_test(difference)
+
+```
+
+From the output we can see that both groups have normally distributed difference between Gambling and Neutral measurements. We can now proceed to carrying out our paired-samples t-test. We will need to use our original dataframe that was in long format. We no longer need the **var.equal** argument and we need to specify that **paired = TRUE** this time.
+
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+t_test(df, RT~salience, paired = TRUE)
+cohens_d(df, RT~salience, paired = TRUE)
+get_summary_stats(df, RT)
+```
+
+
+If we wanted to carry out one paired-samples t-test per group we could do that as well.   
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+
+df %>% 
+  group_by(group) %>% 
+  t_test(RT~salience, paired = TRUE)
+
+df %>% 
+  group_by(group) %>% 
+  cohens_d(RT~salience, paired = TRUE)
+
+df %>% 
+  group_by(group) %>% 
+  get_summary_stats(RT)
+```
+
+
+
+## Paired-samples non-parametric t-test  
+
+Similarly to the non-parametric independent samples test, if our paired-samples normality check had failed we would have to resort to a non-parametric equivalent. We can see an example below.   
+The datafile **Wilc.csv** contains data the alcohol consumption in units per year before and after an intervention. I will leave the normality check to you and we will proceed to the non-parametric paired-samples test (Wilcoxon Test.)
+
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(rstatix)
+
+df <- read_csv("Wilc.csv")
+
+head(df)
+df$intervention <- as.factor(df$intervention)
+
+wilcox_test(df, units ~ intervention, paired = TRUE)
+wilcox_effsize(df, units ~ intervention, paired = TRUE)
+
+df %>% 
+  group_by(intervention) %>% 
+  get_summary_stats(units)
+
+```
 
 
 

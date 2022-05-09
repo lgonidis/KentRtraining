@@ -63,5 +63,9 @@ exercise-7.1
 session9
 learning-objectives-7
 restructuring-data
+comparing-means.-parametric-and-non-parametric-tests
 learning-objectives-8
 independent-samples-parametric-t-test-student-and-welch
+independent-samples-non-parametric-test
+paired-samples-parametric-t-test
+paired-samples-non-parametric-t-test

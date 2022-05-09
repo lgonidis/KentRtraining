@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter10 Comparing Means. Parametric and non-parametric tests | Comparing Means</title>
+  <meta name="description" content="This is a work in progress" />
+  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter10 Comparing Means. Parametric and non-parametric tests | Comparing Means" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="This is a work in progress" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter10 Comparing Means. Parametric and non-parametric tests | Comparing Means" />
+  
+  <meta name="twitter:description" content="This is a work in progress" />
+  
+
+<meta name="author" content="Lazaros Gonidis" />
+
+
+<meta name="date" content="2022-05-09" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="session9.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Kent R training</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prelude</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#a-few-words"><i class="fa fa-check"></i><b>1.1</b> A few words…</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#a-comment-on-the-course-structure"><i class="fa fa-check"></i><b>1.2</b> A comment on the course structure</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>2</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="introduction.html"><a href="introduction.html#learning-objectives"><i class="fa fa-check"></i><b>2.1</b> Learning Objectives</a></li>
+<li class="chapter" data-level="2.2" data-path="introduction.html"><a href="introduction.html#getting-things-ready"><i class="fa fa-check"></i><b>2.2</b> Getting Things Ready</a></li>
+<li class="chapter" data-level="2.3" data-path="introduction.html"><a href="introduction.html#starting-with-rstudio"><i class="fa fa-check"></i><b>2.3</b> Starting with RStudio</a></li>
+<li class="chapter" data-level="2.4" data-path="introduction.html"><a href="introduction.html#console"><i class="fa fa-check"></i><b>2.4</b> Console</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="introduction.html"><a href="introduction.html#exercise-1.1"><i class="fa fa-check"></i><b>2.4.1</b> Exercise 1.1</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="introduction.html"><a href="introduction.html#environment"><i class="fa fa-check"></i><b>2.5</b> Environment</a></li>
+<li class="chapter" data-level="2.6" data-path="introduction.html"><a href="introduction.html#files"><i class="fa fa-check"></i><b>2.6</b> Files</a></li>
+<li class="chapter" data-level="2.7" data-path="introduction.html"><a href="introduction.html#scripts"><i class="fa fa-check"></i><b>2.7</b> Scripts</a></li>
+<li class="chapter" data-level="2.8" data-path="introduction.html"><a href="introduction.html#exercise-1.2"><i class="fa fa-check"></i><b>2.8</b> Exercise 1.2</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="session2.html"><a href="session2.html"><i class="fa fa-check"></i><b>3</b> Using Vectors and Functions</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="session2.html"><a href="session2.html#learning-objectives-1"><i class="fa fa-check"></i><b>3.1</b> Learning Objectives</a></li>
+<li class="chapter" data-level="3.2" data-path="session2.html"><a href="session2.html#r-objects-vectors"><i class="fa fa-check"></i><b>3.2</b> R-objects: Vectors</a></li>
+<li class="chapter" data-level="3.3" data-path="session2.html"><a href="session2.html#r-objects-lists"><i class="fa fa-check"></i><b>3.3</b> R-objects: Lists</a></li>
+<li class="chapter" data-level="3.4" data-path="session2.html"><a href="session2.html#r-objects-dataframes"><i class="fa fa-check"></i><b>3.4</b> R-objects: Dataframes</a></li>
+<li class="chapter" data-level="3.5" data-path="session2.html"><a href="session2.html#r-objects-factors"><i class="fa fa-check"></i><b>3.5</b> R-objects: Factors</a></li>
+<li class="chapter" data-level="3.6" data-path="session2.html"><a href="session2.html#exercise-2.1"><i class="fa fa-check"></i><b>3.6</b> Exercise 2.1</a></li>
+<li class="chapter" data-level="3.7" data-path="session2.html"><a href="session2.html#creating-vectors-with-random-numbers"><i class="fa fa-check"></i><b>3.7</b> Creating vectors with random numbers</a></li>
+<li class="chapter" data-level="3.8" data-path="session2.html"><a href="session2.html#frequency-tables-in-r-and-histograms"><i class="fa fa-check"></i><b>3.8</b> Frequency tables in R and Histograms</a></li>
+<li class="chapter" data-level="3.9" data-path="session2.html"><a href="session2.html#exercise-2.2"><i class="fa fa-check"></i><b>3.9</b> Exercise 2.2</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="session3.html"><a href="session3.html"><i class="fa fa-check"></i><b>4</b> Packages</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="session3.html"><a href="session3.html#what-we-have-learnt-so-far"><i class="fa fa-check"></i><b>4.1</b> What we have learnt so far</a></li>
+<li class="chapter" data-level="4.2" data-path="session3.html"><a href="session3.html#learning-objectives-2"><i class="fa fa-check"></i><b>4.2</b> Learning objectives</a></li>
+<li class="chapter" data-level="4.3" data-path="session3.html"><a href="session3.html#lets-get-started"><i class="fa fa-check"></i><b>4.3</b> Let’s get started</a></li>
+<li class="chapter" data-level="4.4" data-path="session3.html"><a href="session3.html#measures-of-central-tendency"><i class="fa fa-check"></i><b>4.4</b> Measures of Central Tendency</a></li>
+<li class="chapter" data-level="4.5" data-path="session3.html"><a href="session3.html#adding-a-new-package"><i class="fa fa-check"></i><b>4.5</b> Adding a new package</a></li>
+<li class="chapter" data-level="4.6" data-path="session3.html"><a href="session3.html#to-sum-up"><i class="fa fa-check"></i><b>4.6</b> To sum up</a></li>
+<li class="chapter" data-level="4.7" data-path="session3.html"><a href="session3.html#additional-exercises-spoiler-alert-if-you-get-stuck-the-answers-are-at-the-end-of-the-pdf"><i class="fa fa-check"></i><b>4.7</b> Additional Exercises (spoiler alert: if you get stuck the answers are at the end of the pdf)</a></li>
+<li class="chapter" data-level="4.8" data-path="session3.html"><a href="session3.html#solutions-spoiler-alert"><i class="fa fa-check"></i><b>4.8</b> Solutions: SPOILER ALERT</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="session4.html"><a href="session4.html"><i class="fa fa-check"></i><b>5</b> Starting to work with datafiles using Tidyverse</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="session4.html"><a href="session4.html#thinking-ahead"><i class="fa fa-check"></i><b>5.1</b> Thinking ahead</a></li>
+<li class="chapter" data-level="5.2" data-path="session4.html"><a href="session4.html#learning-objectives-3"><i class="fa fa-check"></i><b>5.2</b> Learning objectives</a></li>
+<li class="chapter" data-level="5.3" data-path="session4.html"><a href="session4.html#our-first-data-file"><i class="fa fa-check"></i><b>5.3</b> Our first data file</a></li>
+<li class="chapter" data-level="5.4" data-path="session4.html"><a href="session4.html#correcting-variable-types"><i class="fa fa-check"></i><b>5.4</b> Correcting Variable Types</a></li>
+<li class="chapter" data-level="5.5" data-path="session4.html"><a href="session4.html#exercise-4.1"><i class="fa fa-check"></i><b>5.5</b> Exercise 4.1</a></li>
+<li class="chapter" data-level="5.6" data-path="session4.html"><a href="session4.html#dropping-columns-and-rows"><i class="fa fa-check"></i><b>5.6</b> Dropping columns and rows</a></li>
+<li class="chapter" data-level="5.7" data-path="session4.html"><a href="session4.html#exercise-4.2"><i class="fa fa-check"></i><b>5.7</b> Exercise 4.2</a></li>
+<li class="chapter" data-level="5.8" data-path="session4.html"><a href="session4.html#recoding"><i class="fa fa-check"></i><b>5.8</b> Recoding</a></li>
+<li class="chapter" data-level="5.9" data-path="session4.html"><a href="session4.html#exercise-4.3"><i class="fa fa-check"></i><b>5.9</b> Exercise 4.3</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="session5.html"><a href="session5.html"><i class="fa fa-check"></i><b>6</b> Tidyverse 2</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="session5.html"><a href="session5.html#reflecting-on-the-last-session"><i class="fa fa-check"></i><b>6.1</b> Reflecting on the last session</a></li>
+<li class="chapter" data-level="6.2" data-path="session5.html"><a href="session5.html#learning-objectives-4"><i class="fa fa-check"></i><b>6.2</b> Learning objectives</a></li>
+<li class="chapter" data-level="6.3" data-path="session5.html"><a href="session5.html#pipe-operator"><i class="fa fa-check"></i><b>6.3</b> Pipe Operator <code>%&gt;%</code></a></li>
+<li class="chapter" data-level="6.4" data-path="session5.html"><a href="session5.html#an-example-of-a-fyp-data-analysis"><i class="fa fa-check"></i><b>6.4</b> An example of a FYP data analysis</a></li>
+<li class="chapter" data-level="6.5" data-path="session5.html"><a href="session5.html#a-brief-overview-of-our-data"><i class="fa fa-check"></i><b>6.5</b> A brief overview of our data</a></li>
+<li class="chapter" data-level="6.6" data-path="session5.html"><a href="session5.html#exercise-6.1"><i class="fa fa-check"></i><b>6.6</b> Exercise 6.1</a></li>
+<li class="chapter" data-level="6.7" data-path="session5.html"><a href="session5.html#working-through-our-participants-section"><i class="fa fa-check"></i><b>6.7</b> Working through our participants section</a></li>
+<li class="chapter" data-level="6.8" data-path="session5.html"><a href="session5.html#exercise-6.2"><i class="fa fa-check"></i><b>6.8</b> Exercise 6.2</a></li>
+<li class="chapter" data-level="6.9" data-path="session5.html"><a href="session5.html#running-a-simple-correlational-analysis-for-frequency-and-days"><i class="fa fa-check"></i><b>6.9</b> Running a simple correlational analysis for Frequency and Days</a></li>
+<li class="chapter" data-level="6.10" data-path="session5.html"><a href="session5.html#in-conclusion"><i class="fa fa-check"></i><b>6.10</b> In conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="session7.html"><a href="session7.html"><i class="fa fa-check"></i><b>7</b> Bringing Everything Together. Part I</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="session7.html"><a href="session7.html#reflecting-on-day-1"><i class="fa fa-check"></i><b>7.1</b> Reflecting on Day 1</a></li>
+<li class="chapter" data-level="7.2" data-path="session7.html"><a href="session7.html#learning-objectives-5"><i class="fa fa-check"></i><b>7.2</b> Learning Objectives</a></li>
+<li class="chapter" data-level="7.3" data-path="session7.html"><a href="session7.html#working-with-the-file"><i class="fa fa-check"></i><b>7.3</b> Working with the file</a></li>
+<li class="chapter" data-level="7.4" data-path="session7.html"><a href="session7.html#exercise-6.1-1"><i class="fa fa-check"></i><b>7.4</b> Exercise 6.1</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="session8.html"><a href="session8.html"><i class="fa fa-check"></i><b>8</b> Bringing Everything Together. Part II</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="session8.html"><a href="session8.html#learning-objectives-6"><i class="fa fa-check"></i><b>8.1</b> Learning Objectives</a></li>
+<li class="chapter" data-level="8.2" data-path="session8.html"><a href="session8.html#continuing-with-the-exercise-10-and-two-way-anova"><i class="fa fa-check"></i><b>8.2</b> Continuing with the exercise 10 and two-way ANOVA</a></li>
+<li class="chapter" data-level="8.3" data-path="session8.html"><a href="session8.html#exercise-7.1"><i class="fa fa-check"></i><b>8.3</b> Exercise 7.1</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="session9.html"><a href="session9.html"><i class="fa fa-check"></i><b>9</b> Restructuring and Merging Data.</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="session9.html"><a href="session9.html#learning-objectives-7"><i class="fa fa-check"></i><b>9.1</b> Learning Objectives</a></li>
+<li class="chapter" data-level="9.2" data-path="session9.html"><a href="session9.html#restructuring-data"><i class="fa fa-check"></i><b>9.2</b> Restructuring Data</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="comparing-means.-parametric-and-non-parametric-tests.html"><a href="comparing-means.-parametric-and-non-parametric-tests.html"><i class="fa fa-check"></i><b>10</b> Comparing Means. Parametric and non-parametric tests</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="comparing-means.-parametric-and-non-parametric-tests.html"><a href="comparing-means.-parametric-and-non-parametric-tests.html#learning-objectives-8"><i class="fa fa-check"></i><b>10.1</b> Learning Objectives</a></li>
+<li class="chapter" data-level="10.2" data-path="comparing-means.-parametric-and-non-parametric-tests.html"><a href="comparing-means.-parametric-and-non-parametric-tests.html#independent-samples-parametric-t-test-student-and-welch"><i class="fa fa-check"></i><b>10.2</b> Independent samples parametric t-test (Student and Welch)</a></li>
+<li class="chapter" data-level="10.3" data-path="comparing-means.-parametric-and-non-parametric-tests.html"><a href="comparing-means.-parametric-and-non-parametric-tests.html#independent-samples-non-parametric-test"><i class="fa fa-check"></i><b>10.3</b> Independent samples non-parametric test</a></li>
+<li class="chapter" data-level="10.4" data-path="comparing-means.-parametric-and-non-parametric-tests.html"><a href="comparing-means.-parametric-and-non-parametric-tests.html#paired-samples-parametric-t-test"><i class="fa fa-check"></i><b>10.4</b> Paired-samples parametric t-test</a></li>
+<li class="chapter" data-level="10.5" data-path="comparing-means.-parametric-and-non-parametric-tests.html"><a href="comparing-means.-parametric-and-non-parametric-tests.html#paired-samples-non-parametric-t-test"><i class="fa fa-check"></i><b>10.5</b> Paired-samples non-parametric t-test</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Comparing Means</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="comparing-means.-parametric-and-non-parametric-tests" class="section level1 hasAnchor" number="10">
+<h1><span class="header-section-number">Chapter10</span> Comparing Means. Parametric and non-parametric tests<a href="comparing-means.-parametric-and-non-parametric-tests.html#comparing-means.-parametric-and-non-parametric-tests" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="learning-objectives-8" class="section level2 hasAnchor" number="10.1">
+<h2><span class="header-section-number">10.1</span> Learning Objectives<a href="comparing-means.-parametric-and-non-parametric-tests.html#learning-objectives-8" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>By the end of today’s session you should a good understanding on how to perform the following tasks using R:</p>
+<ol style="list-style-type: decimal">
+<li>Independent samples parametric t-test (Student and Welch)<br />
+</li>
+<li>Paired samples parametric t-test<br />
+</li>
+<li>Non-parametric independent samples test (Mann-Whitney test)<br />
+</li>
+<li>Non-parametric paired samples test (Wilcoxon test)<br />
+</li>
+<li>Acquiring effect-sizes<br />
+</li>
+<li>Converting a dataframe from wide to long format and vice-versa</li>
+</ol>
+</div>
+<div id="independent-samples-parametric-t-test-student-and-welch" class="section level2 hasAnchor" number="10.2">
+<h2><span class="header-section-number">10.2</span> Independent samples parametric t-test (Student and Welch)<a href="comparing-means.-parametric-and-non-parametric-tests.html#independent-samples-parametric-t-test-student-and-welch" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>When we are comparing means for independent samples we usually employ Student’s t-test. However, in order to do so we have to check that our variable meets two assumptions:<br />
+1. Our measurements are normally distributed<br />
+2. Our measurements have equal variance</p>
+<p>If the first assumption is violated then we have to carry out a non-parametric equivalent (Mann-Whitney test).<br />
+When our second assumption is violated we have to carry out a Welch t-test (still parametric). So, in practice before carrying out an indepedent samples t-test we have to check these two assumptions first. Let’s see below how we do this. First, we load the datafile <strong>stroopfinal.csv</strong> into a dataframe.</p>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="comparing-means.-parametric-and-non-parametric-tests.html#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb110-2"><a href="comparing-means.-parametric-and-non-parametric-tests.html#cb110-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rstatix)</span>
+<span id="cb110-3"><a href="comparing-means.-parametric-and-non-parametric-tests.html#cb110-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb110-4"><a href="comparing-means.-parametric-and-non-parametric-tests.html#cb110-4" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;stroopfinal.csv&quot;</span>)</span>
+<span id="cb110-5"><a href="comparing-means.-parametric-and-non-parametric-tests.html#cb110-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb110-6"><a href="comparing-means.-parametric-and-non-parametric-tests.html#cb110-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 4
+##   participant group   salience    RT
+##         &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;    &lt;dbl&gt;
+## 1        1001 control Gambling  964.
+## 2        1001 control Neutral   993.
+## 3        1002 control Gambling 1095.
+## 4        1002 control Neutral  1025.
+## 5        1003 control Gambling 1168.
+## 6        1003 control Neutral  1195.</code></pre>
+<p>It is also a good idea to get a quick summary of your dataframe to check that everything is in order.</p>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="comparing-means.-parametric-and-non-parametric-tests.html#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(df)</span></code></pre></div>
+<pre><code>##   participant      group             salience               RT        
+##  Min.   :1001   Length:74          Length:74          Min.   : 646.6  
+##  1st Qu.:1011   Class :character   Class :character   1st Qu.: 755.4  
+##  Median :1022   Mode  :character   Mode  :character   Median : 842.9  
+##  Mean   :2332                                         Mean   : 858.7  
+##  3rd Qu.:3001                                         3rd Qu.: 935.2  
+##  Max.   :6007                                         Max.   :1195.0</code></pre>
+<p>We see that <strong>participant</strong> is recognised are numeric, <strong>salience</strong> and <strong>group</strong> as character variables. We need to change all three to factors.</p>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="comparing-means.-parametric-and-non-parametric-tests.html#cb114-1" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>participant <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(df<span class="sc">$</span>participant)</span>
+<span id="cb114-2"><a href="comparing-means.-parametric-and-non-parametric-tests.html#cb114-2" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>salience <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(df<span class="sc">$</span>salience)</span>
+<span id="cb114-3"><a href="comparing-means.-parametric-and-non-parametric-tests.html#cb114-3" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>group <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(df<span class="sc">$</span>group)</span>
+<span id="cb114-4"><a href="comparing-means.-parametric-and-non-parametric-tests.html#cb114-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb114-5"><a href="comparing-means.-parametric-and-non-parametric-tests.html#cb114-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(df)</span></code></pre></div>
+<pre><code>##   participant      group        salience        RT        
+##  1001   : 2   control :38   Gambling:37   Min.   : 646.6  
+##  1002   : 2   gambling:36   Neutral :37   1st Qu.: 755.4  
+##  1003   : 2                               Median : 842.9  
+##  1005   : 2                               Mean   : 858.7  
+##  1006   : 2                               3rd Qu.: 935.2  
+##  1007   : 2                               Max.   :1195.0  
+##  (Other):62</code></pre>
+<p>We want to compare the reaction times (RT) for Salient images between group 1 and group 2. Before we do that we need to check our two assumptions. First, the assumption of normality. There are a few ways to do that but for convenience we will use a Shapiro Test. Remember we need to check this assumption for each group so we will group our data using the function <strong>group_by()</strong>.</p>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="comparing-means.-parametric-and-non-parametric-tests.html#cb116-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
+<span id="cb116-2"><a href="comparing-means.-parametric-and-non-parametric-tests.html#cb116-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(group) <span class="sc">%&gt;%</span> </span>
+<span id="cb116-3"><a href="comparing-means.-parametric-and-non-parametric-tests.html#cb116-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">shapiro_test</span>(RT)</span></code></pre></div>
+<pre><code>## # A tibble: 2 × 4
+##   group    variable statistic      p
+##   &lt;fct&gt;    &lt;chr&gt;        &lt;dbl&gt;  &lt;dbl&gt;
+## 1 control  RT           0.951 0.0963
+## 2 gambling RT           0.948 0.0926</code></pre>
+<p>Checking the p-values in the output we see that both are above .05 therefore our assumption for normality stands. We will now proceed to check that both groups have equal variance. Again, there are a few ways to check this but for convenience we will use Levene’s test.</p>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="comparing-means.-parametric-and-non-parametric-tests.html#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levene_test</span>(df, RT<span class="sc">~</span>salience)</span></code></pre></div>
+<pre><code>## # A tibble: 1 × 4
+##     df1   df2 statistic     p
+##   &lt;int&gt; &lt;int&gt;     &lt;dbl&gt; &lt;dbl&gt;
+## 1     1    72 0.0000127 0.997</code></pre>
+<p>Our p-value is above .05 therefore we did not violate the assumption of equal variance. We are now ready to carry out our comparison of meant RT between Groups 1 and 2.</p>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="comparing-means.-parametric-and-non-parametric-tests.html#cb120-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t_test</span>(df, RT<span class="sc">~</span>salience, <span class="at">paired =</span> <span class="cn">FALSE</span>, <span class="at">var.equal =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 1 × 8
+##   .y.   group1   group2     n1    n2 statistic    df     p
+## * &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;   &lt;int&gt; &lt;int&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1 RT    Gambling Neutral    37    37     0.282    72 0.779</code></pre>
+<p>Note that we used two arguments, <strong>paired = FALSE</strong> to indeicate that we do not have paired samples, and <strong>var.equal = TRUE</strong> to indicate that we have equal variance. If had violated the equal variance assumption all we had to do is change to <strong>var.equal = FALSE</strong> and R would automatically run Welch test.</p>
+<p>We can also acquire some descriptive statistics per group as well as the Cohen’s effect size.</p>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="comparing-means.-parametric-and-non-parametric-tests.html#cb122-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
+<span id="cb122-2"><a href="comparing-means.-parametric-and-non-parametric-tests.html#cb122-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(group) <span class="sc">%&gt;%</span> </span>
+<span id="cb122-3"><a href="comparing-means.-parametric-and-non-parametric-tests.html#cb122-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">get_summary_stats</span>(RT)</span></code></pre></div>
+<pre><code>## # A tibble: 2 × 14
+##   group    variable     n   min   max median    q1    q3   iqr   mad  mean    sd
+##   &lt;fct&gt;    &lt;chr&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1 control  RT          38  697. 1195.   875.  811. 1017.  207.  153.  904. 138. 
+## 2 gambling RT          36  647.  972.   802.  731.  885.  154.  108.  811.  94.1
+## # … with 2 more variables: se &lt;dbl&gt;, ci &lt;dbl&gt;</code></pre>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="comparing-means.-parametric-and-non-parametric-tests.html#cb124-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cohens_d</span>(df, RT<span class="sc">~</span>salience, <span class="at">paired =</span> <span class="cn">FALSE</span>, <span class="at">var.equal =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 1 × 7
+##   .y.   group1   group2  effsize    n1    n2 magnitude 
+## * &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;     &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;ord&gt;     
+## 1 RT    Gambling Neutral  0.0656    37    37 negligible</code></pre>
+<p>Note that for calculating Cohen’s effect size we use exactly the same arguments as we did in the <strong>t_test()</strong> above</p>
+</div>
+<div id="independent-samples-non-parametric-test" class="section level2 hasAnchor" number="10.3">
+<h2><span class="header-section-number">10.3</span> Independent samples non-parametric test<a href="comparing-means.-parametric-and-non-parametric-tests.html#independent-samples-non-parametric-test" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>As we saw above the first assumption we check is that of normality. We will now see an example of how we proceed to a <strong>Mann-Whitney test</strong> when our data are not normally distributed. We will work with the datafile <strong>Mann.csv</strong>.</p>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="comparing-means.-parametric-and-non-parametric-tests.html#cb126-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb126-2"><a href="comparing-means.-parametric-and-non-parametric-tests.html#cb126-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rstatix)</span>
+<span id="cb126-3"><a href="comparing-means.-parametric-and-non-parametric-tests.html#cb126-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb126-4"><a href="comparing-means.-parametric-and-non-parametric-tests.html#cb126-4" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;Mann.csv&quot;</span>)</span>
+<span id="cb126-5"><a href="comparing-means.-parametric-and-non-parametric-tests.html#cb126-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb126-6"><a href="comparing-means.-parametric-and-non-parametric-tests.html#cb126-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 2
+##   group   performance
+##   &lt;chr&gt;         &lt;dbl&gt;
+## 1 control        3.48
+## 2 control        4.01
+## 3 control        1.68
+## 4 control        3.54
+## 5 control        1.81
+## 6 control        1.75</code></pre>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="comparing-means.-parametric-and-non-parametric-tests.html#cb128-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(df)</span></code></pre></div>
+<pre><code>##     group            performance   
+##  Length:100         Min.   :1.028  
+##  Class :character   1st Qu.:2.099  
+##  Mode  :character   Median :2.898  
+##                     Mean   :2.993  
+##                     3rd Qu.:3.774  
+##                     Max.   :4.953</code></pre>
+<p>We see that group is not a factor so we need to fix this.</p>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="comparing-means.-parametric-and-non-parametric-tests.html#cb130-1" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>group <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(df<span class="sc">$</span>group)</span>
+<span id="cb130-2"><a href="comparing-means.-parametric-and-non-parametric-tests.html#cb130-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(df)</span></code></pre></div>
+<pre><code>##      group     performance   
+##  control:50   Min.   :1.028  
+##  diet   :50   1st Qu.:2.099  
+##               Median :2.898  
+##               Mean   :2.993  
+##               3rd Qu.:3.774  
+##               Max.   :4.953</code></pre>
+<p>We will now proceed to check the normality assumption for each group.</p>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="comparing-means.-parametric-and-non-parametric-tests.html#cb132-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
+<span id="cb132-2"><a href="comparing-means.-parametric-and-non-parametric-tests.html#cb132-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(group) <span class="sc">%&gt;%</span> </span>
+<span id="cb132-3"><a href="comparing-means.-parametric-and-non-parametric-tests.html#cb132-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">shapiro_test</span>(performance)</span></code></pre></div>
+<pre><code>## # A tibble: 2 × 4
+##   group   variable    statistic       p
+##   &lt;fct&gt;   &lt;chr&gt;           &lt;dbl&gt;   &lt;dbl&gt;
+## 1 control performance     0.954 0.0520 
+## 2 diet    performance     0.924 0.00329</code></pre>
+<p>From the output we see that the intervention group clearly violates the normality assumption (the control group is not much better either). Therefore, we have to run a non-parametric Mann-Whitney test, which ironically is ran by using the function <strong>wilcox_test()</strong>. We can also acquire the effect size and some useful descriptive statistics. (You might need to have the function <strong>coin</strong> installed first).</p>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="comparing-means.-parametric-and-non-parametric-tests.html#cb134-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wilcox_test</span>(df, performance <span class="sc">~</span> group, <span class="at">paired =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 1 × 7
+##   .y.         group1  group2    n1    n2 statistic         p
+## * &lt;chr&gt;       &lt;chr&gt;   &lt;chr&gt;  &lt;int&gt; &lt;int&gt;     &lt;dbl&gt;     &lt;dbl&gt;
+## 1 performance control diet      50    50       632 0.0000207</code></pre>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="comparing-means.-parametric-and-non-parametric-tests.html#cb136-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wilcox_effsize</span>(df, performance <span class="sc">~</span> group, <span class="at">paired =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 1 × 7
+##   .y.         group1  group2 effsize    n1    n2 magnitude
+## * &lt;chr&gt;       &lt;chr&gt;   &lt;chr&gt;    &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;ord&gt;    
+## 1 performance control diet     0.426    50    50 moderate</code></pre>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="comparing-means.-parametric-and-non-parametric-tests.html#cb138-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
+<span id="cb138-2"><a href="comparing-means.-parametric-and-non-parametric-tests.html#cb138-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(group) <span class="sc">%&gt;%</span> </span>
+<span id="cb138-3"><a href="comparing-means.-parametric-and-non-parametric-tests.html#cb138-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">get_summary_stats</span>(performance)</span></code></pre></div>
+<pre><code>## # A tibble: 2 × 14
+##   group   variable      n   min   max median    q1    q3   iqr   mad  mean    sd
+##   &lt;fct&gt;   &lt;chr&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1 control performa…    50  1.03  4.01   2.62  1.77  3.2   1.43  1.18  2.52 0.843
+## 2 diet    performa…    50  1.61  4.95   3.42  2.70  4.44  1.74  1.47  3.47 1.07 
+## # … with 2 more variables: se &lt;dbl&gt;, ci &lt;dbl&gt;</code></pre>
+</div>
+<div id="paired-samples-parametric-t-test" class="section level2 hasAnchor" number="10.4">
+<h2><span class="header-section-number">10.4</span> Paired-samples parametric t-test<a href="comparing-means.-parametric-and-non-parametric-tests.html#paired-samples-parametric-t-test" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We now want to compare the mean RT between salient and neutral images across our sample. In order to do that we will need to carry out a paired-samples t-test. The paired-samples t-test has different assumptions to the independent samples one. This time we want the difference between the two measurements (salient vs neutral) to be normally distributes. Let us observe our dataframe (the same one from the independent samples example, but I will reload it just to avoid confusion).</p>
+<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="comparing-means.-parametric-and-non-parametric-tests.html#cb140-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb140-2"><a href="comparing-means.-parametric-and-non-parametric-tests.html#cb140-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rstatix)</span>
+<span id="cb140-3"><a href="comparing-means.-parametric-and-non-parametric-tests.html#cb140-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb140-4"><a href="comparing-means.-parametric-and-non-parametric-tests.html#cb140-4" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;stroopfinal.csv&quot;</span>)</span>
+<span id="cb140-5"><a href="comparing-means.-parametric-and-non-parametric-tests.html#cb140-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb140-6"><a href="comparing-means.-parametric-and-non-parametric-tests.html#cb140-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 4
+##   participant group   salience    RT
+##         &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;    &lt;dbl&gt;
+## 1        1001 control Gambling  964.
+## 2        1001 control Neutral   993.
+## 3        1002 control Gambling 1095.
+## 4        1002 control Neutral  1025.
+## 5        1003 control Gambling 1168.
+## 6        1003 control Neutral  1195.</code></pre>
+<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="comparing-means.-parametric-and-non-parametric-tests.html#cb142-1" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>participant <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(df<span class="sc">$</span>participant)</span>
+<span id="cb142-2"><a href="comparing-means.-parametric-and-non-parametric-tests.html#cb142-2" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>group <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(df<span class="sc">$</span>group)</span>
+<span id="cb142-3"><a href="comparing-means.-parametric-and-non-parametric-tests.html#cb142-3" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>salience <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(df<span class="sc">$</span>salience)</span></code></pre></div>
+<p>As we can see our dataframe is in <strong>long format</strong>, which is not very convenient for calculating the difference if RT between Gambling and Neutral images per participants (it is actually doable but for training purposes we will leave it for now). If you had a chance to look at the previous chapter you might have noticed that we went through a restructure examples there. In practice we have <strong>salience</strong> as a factor variable (long format) and instead we want two have two new variables (Gamblling, Neutral) with the two measurement per participant. We can do that by using the function <strong>pivot_wider</strong> that converts a dataframe from long to wide format.</p>
+<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="comparing-means.-parametric-and-non-parametric-tests.html#cb143-1" aria-hidden="true" tabindex="-1"></a>dfwide <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> </span>
+<span id="cb143-2"><a href="comparing-means.-parametric-and-non-parametric-tests.html#cb143-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> salience, <span class="at">values_from =</span> RT)</span>
+<span id="cb143-3"><a href="comparing-means.-parametric-and-non-parametric-tests.html#cb143-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb143-4"><a href="comparing-means.-parametric-and-non-parametric-tests.html#cb143-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(dfwide)</span></code></pre></div>
+<pre><code>##   participant      group       Gambling         Neutral      
+##  1001   : 1   control :19   Min.   : 672.5   Min.   : 646.6  
+##  1002   : 1   gambling:18   1st Qu.: 765.9   1st Qu.: 754.4  
+##  1003   : 1                 Median : 845.3   Median : 836.9  
+##  1005   : 1                 Mean   : 862.9   Mean   : 854.5  
+##  1006   : 1                 3rd Qu.: 935.5   3rd Qu.: 930.9  
+##  1007   : 1                 Max.   :1167.9   Max.   :1195.0  
+##  (Other):31</code></pre>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="comparing-means.-parametric-and-non-parametric-tests.html#cb145-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dfwide)</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 4
+##   participant group   Gambling Neutral
+##   &lt;fct&gt;       &lt;fct&gt;      &lt;dbl&gt;   &lt;dbl&gt;
+## 1 1001        control     964.    993.
+## 2 1002        control    1095.   1025.
+## 3 1003        control    1168.   1195.
+## 4 1005        control    1118.   1153.
+## 5 1006        control     819.    788.
+## 6 1007        control     881.    864.</code></pre>
+<p>It is now straight forward to calculate the difference and assign it to a new column. Then we can check form normality using the same function as above (Shapiro_test())</p>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="comparing-means.-parametric-and-non-parametric-tests.html#cb147-1" aria-hidden="true" tabindex="-1"></a>dfwide<span class="sc">$</span>difference <span class="ot">&lt;-</span> dfwide<span class="sc">$</span>Gambling <span class="sc">-</span> dfwide<span class="sc">$</span>Neutral</span>
+<span id="cb147-2"><a href="comparing-means.-parametric-and-non-parametric-tests.html#cb147-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb147-3"><a href="comparing-means.-parametric-and-non-parametric-tests.html#cb147-3" aria-hidden="true" tabindex="-1"></a>dfwide <span class="sc">%&gt;%</span> </span>
+<span id="cb147-4"><a href="comparing-means.-parametric-and-non-parametric-tests.html#cb147-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(group) <span class="sc">%&gt;%</span> </span>
+<span id="cb147-5"><a href="comparing-means.-parametric-and-non-parametric-tests.html#cb147-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">shapiro_test</span>(difference)</span></code></pre></div>
+<pre><code>## # A tibble: 2 × 4
+##   group    variable   statistic     p
+##   &lt;fct&gt;    &lt;chr&gt;          &lt;dbl&gt; &lt;dbl&gt;
+## 1 control  difference     0.951 0.415
+## 2 gambling difference     0.962 0.642</code></pre>
+<p>From the output we can see that both groups have normally distributed difference between Gambling and Neutral measurements. We can now proceed to carrying out our paired-samples t-test. We will need to use our original dataframe that was in long format. We no longer need the <strong>var.equal</strong> argument and we need to specify that <strong>paired = TRUE</strong> this time.</p>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="comparing-means.-parametric-and-non-parametric-tests.html#cb149-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t_test</span>(df, RT<span class="sc">~</span>salience, <span class="at">paired =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 1 × 8
+##   .y.   group1   group2     n1    n2 statistic    df      p
+## * &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;   &lt;int&gt; &lt;int&gt;     &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
+## 1 RT    Gambling Neutral    37    37      1.72    36 0.0941</code></pre>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="comparing-means.-parametric-and-non-parametric-tests.html#cb151-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cohens_d</span>(df, RT<span class="sc">~</span>salience, <span class="at">paired =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 1 × 7
+##   .y.   group1   group2  effsize    n1    n2 magnitude
+## * &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;     &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;ord&gt;    
+## 1 RT    Gambling Neutral   0.283    37    37 small</code></pre>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="comparing-means.-parametric-and-non-parametric-tests.html#cb153-1" aria-hidden="true" tabindex="-1"></a><span class="fu">get_summary_stats</span>(df, RT)</span></code></pre></div>
+<pre><code>## # A tibble: 1 × 13
+##   variable     n   min   max median    q1    q3   iqr   mad  mean    sd    se
+##   &lt;chr&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1 RT          74  647. 1195.   843.  755.  935.  180.  134.  859.  127.  14.7
+## # … with 1 more variable: ci &lt;dbl&gt;</code></pre>
+<p>If we wanted to carry out one paired-samples t-test per group we could do that as well.</p>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="comparing-means.-parametric-and-non-parametric-tests.html#cb155-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
+<span id="cb155-2"><a href="comparing-means.-parametric-and-non-parametric-tests.html#cb155-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(group) <span class="sc">%&gt;%</span> </span>
+<span id="cb155-3"><a href="comparing-means.-parametric-and-non-parametric-tests.html#cb155-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">t_test</span>(RT<span class="sc">~</span>salience, <span class="at">paired =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 2 × 9
+##   group    .y.   group1   group2     n1    n2 statistic    df      p
+## * &lt;fct&gt;    &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;   &lt;int&gt; &lt;int&gt;     &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
+## 1 control  RT    Gambling Neutral    19    19    -0.337    18 0.74  
+## 2 gambling RT    Gambling Neutral    18    18     3.85     17 0.0013</code></pre>
+<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="comparing-means.-parametric-and-non-parametric-tests.html#cb157-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
+<span id="cb157-2"><a href="comparing-means.-parametric-and-non-parametric-tests.html#cb157-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(group) <span class="sc">%&gt;%</span> </span>
+<span id="cb157-3"><a href="comparing-means.-parametric-and-non-parametric-tests.html#cb157-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cohens_d</span>(RT<span class="sc">~</span>salience, <span class="at">paired =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 2 × 8
+##   .y.   group1   group2  effsize group       n1    n2 magnitude 
+## * &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;     &lt;dbl&gt; &lt;fct&gt;    &lt;int&gt; &lt;int&gt; &lt;ord&gt;     
+## 1 RT    Gambling Neutral -0.0773 control     19    19 negligible
+## 2 RT    Gambling Neutral  0.906  gambling    18    18 large</code></pre>
+<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="comparing-means.-parametric-and-non-parametric-tests.html#cb159-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
+<span id="cb159-2"><a href="comparing-means.-parametric-and-non-parametric-tests.html#cb159-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(group) <span class="sc">%&gt;%</span> </span>
+<span id="cb159-3"><a href="comparing-means.-parametric-and-non-parametric-tests.html#cb159-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">get_summary_stats</span>(RT)</span></code></pre></div>
+<pre><code>## # A tibble: 2 × 14
+##   group    variable     n   min   max median    q1    q3   iqr   mad  mean    sd
+##   &lt;fct&gt;    &lt;chr&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1 control  RT          38  697. 1195.   875.  811. 1017.  207.  153.  904. 138. 
+## 2 gambling RT          36  647.  972.   802.  731.  885.  154.  108.  811.  94.1
+## # … with 2 more variables: se &lt;dbl&gt;, ci &lt;dbl&gt;</code></pre>
+</div>
+<div id="paired-samples-non-parametric-t-test" class="section level2 hasAnchor" number="10.5">
+<h2><span class="header-section-number">10.5</span> Paired-samples non-parametric t-test<a href="comparing-means.-parametric-and-non-parametric-tests.html#paired-samples-non-parametric-t-test" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Similarly to the non-parametric independent samples test, if our paired-samples normality check had failed we would have to resort to a non-parametric equivalent. We can see an example below.<br />
+The datafile <strong>Wilc.csv</strong> contains data the alcohol consumption in units per year before and after an intervention. I will leave the normality check to you and we will proceed to the non-parametric paired-samples test (Wilcoxon Test.)</p>
+<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="comparing-means.-parametric-and-non-parametric-tests.html#cb161-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb161-2"><a href="comparing-means.-parametric-and-non-parametric-tests.html#cb161-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rstatix)</span>
+<span id="cb161-3"><a href="comparing-means.-parametric-and-non-parametric-tests.html#cb161-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb161-4"><a href="comparing-means.-parametric-and-non-parametric-tests.html#cb161-4" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;Wilc.csv&quot;</span>)</span>
+<span id="cb161-5"><a href="comparing-means.-parametric-and-non-parametric-tests.html#cb161-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb161-6"><a href="comparing-means.-parametric-and-non-parametric-tests.html#cb161-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 2
+##   intervention units
+##   &lt;chr&gt;        &lt;dbl&gt;
+## 1 before         372
+## 2 before         352
+## 3 before         332
+## 4 before         337
+## 5 before         424
+## 6 before         432</code></pre>
+<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="comparing-means.-parametric-and-non-parametric-tests.html#cb163-1" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>intervention <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(df<span class="sc">$</span>intervention)</span>
+<span id="cb163-2"><a href="comparing-means.-parametric-and-non-parametric-tests.html#cb163-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb163-3"><a href="comparing-means.-parametric-and-non-parametric-tests.html#cb163-3" aria-hidden="true" tabindex="-1"></a><span class="fu">wilcox_test</span>(df, units <span class="sc">~</span> intervention, <span class="at">paired =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 1 × 7
+##   .y.   group1 group2    n1    n2 statistic       p
+## * &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;  &lt;int&gt; &lt;int&gt;     &lt;dbl&gt;   &lt;dbl&gt;
+## 1 units after  before    10    10         0 0.00195</code></pre>
+<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="comparing-means.-parametric-and-non-parametric-tests.html#cb165-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wilcox_effsize</span>(df, units <span class="sc">~</span> intervention, <span class="at">paired =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 1 × 7
+##   .y.   group1 group2 effsize    n1    n2 magnitude
+## * &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;    &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;ord&gt;    
+## 1 units after  before   0.886    10    10 large</code></pre>
+<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="comparing-means.-parametric-and-non-parametric-tests.html#cb167-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
+<span id="cb167-2"><a href="comparing-means.-parametric-and-non-parametric-tests.html#cb167-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(intervention) <span class="sc">%&gt;%</span> </span>
+<span id="cb167-3"><a href="comparing-means.-parametric-and-non-parametric-tests.html#cb167-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">get_summary_stats</span>(units)</span></code></pre></div>
+<pre><code>## # A tibble: 2 × 14
+##   intervention variable     n   min   max median    q1    q3   iqr   mad  mean
+##   &lt;fct&gt;        &lt;chr&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1 after        units       10   182   252    203  197.  215.  18    9.64  208.
+## 2 before       units       10   332   432    382  354.  408   53.5 43.0   382.
+## # … with 3 more variables: sd &lt;dbl&gt;, se &lt;dbl&gt;, ci &lt;dbl&gt;</code></pre>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="session9.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["Kent R training.pdf", "Kent R training.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

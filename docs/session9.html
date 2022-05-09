@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="session8.html"/>
-
+<link rel="next" href="comparing-means.-parametric-and-non-parametric-tests.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -220,8 +220,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="9.1" data-path="session9.html"><a href="session9.html#learning-objectives-7"><i class="fa fa-check"></i><b>9.1</b> Learning Objectives</a></li>
 <li class="chapter" data-level="9.2" data-path="session9.html"><a href="session9.html#restructuring-data"><i class="fa fa-check"></i><b>9.2</b> Restructuring Data</a></li>
-<li class="chapter" data-level="9.3" data-path="session9.html"><a href="session9.html#learning-objectives-8"><i class="fa fa-check"></i><b>9.3</b> Learning Objectives</a></li>
-<li class="chapter" data-level="9.4" data-path="session9.html"><a href="session9.html#independent-samples-parametric-t-test-student-and-welch"><i class="fa fa-check"></i><b>9.4</b> Independent samples parametric t-test (Student and Welch)</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="comparing-means.-parametric-and-non-parametric-tests.html"><a href="comparing-means.-parametric-and-non-parametric-tests.html"><i class="fa fa-check"></i><b>10</b> Comparing Means. Parametric and non-parametric tests</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="comparing-means.-parametric-and-non-parametric-tests.html"><a href="comparing-means.-parametric-and-non-parametric-tests.html#learning-objectives-8"><i class="fa fa-check"></i><b>10.1</b> Learning Objectives</a></li>
+<li class="chapter" data-level="10.2" data-path="comparing-means.-parametric-and-non-parametric-tests.html"><a href="comparing-means.-parametric-and-non-parametric-tests.html#independent-samples-parametric-t-test-student-and-welch"><i class="fa fa-check"></i><b>10.2</b> Independent samples parametric t-test (Student and Welch)</a></li>
+<li class="chapter" data-level="10.3" data-path="comparing-means.-parametric-and-non-parametric-tests.html"><a href="comparing-means.-parametric-and-non-parametric-tests.html#independent-samples-non-parametric-test"><i class="fa fa-check"></i><b>10.3</b> Independent samples non-parametric test</a></li>
+<li class="chapter" data-level="10.4" data-path="comparing-means.-parametric-and-non-parametric-tests.html"><a href="comparing-means.-parametric-and-non-parametric-tests.html#paired-samples-parametric-t-test"><i class="fa fa-check"></i><b>10.4</b> Paired-samples parametric t-test</a></li>
+<li class="chapter" data-level="10.5" data-path="comparing-means.-parametric-and-non-parametric-tests.html"><a href="comparing-means.-parametric-and-non-parametric-tests.html#paired-samples-non-parametric-t-test"><i class="fa fa-check"></i><b>10.5</b> Paired-samples non-parametric t-test</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -327,55 +333,14 @@ For example, in the previous stroop paradigm we may want to have one column for 
 <span id="cb109-4"><a href="session9.html#cb109-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rcorr</span>(dfgambling<span class="sc">$</span>games, dfgambling<span class="sc">$</span>diff)</span></code></pre></div>
 
 </div>
-<div id="learning-objectives-8" class="section level2 hasAnchor" number="9.3">
-<h2><span class="header-section-number">9.3</span> Learning Objectives<a href="session9.html#learning-objectives-8" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>By the end of today’s session you should a good understanding on how to perform the following tasks using R:</p>
-<ol style="list-style-type: decimal">
-<li>Independent samples parametric t-test (Student and Welch)<br />
-</li>
-<li>Paired samples parametric t-test<br />
-</li>
-<li>Non-parametric independent samples test (Mann-Whitney test)<br />
-</li>
-<li>Non-parametric paired samples test (Wilcoxon test)<br />
-</li>
-<li>Acquire effect-sizes<br />
-</li>
-<li>Converting a dataframe from wide to long format and vice-versa</li>
-</ol>
-</div>
-<div id="independent-samples-parametric-t-test-student-and-welch" class="section level2 hasAnchor" number="9.4">
-<h2><span class="header-section-number">9.4</span> Independent samples parametric t-test (Student and Welch)<a href="session9.html#independent-samples-parametric-t-test-student-and-welch" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>When we are comparing means for independent samples we usually employ Student’s t-test. However, in order to do so we have to check that our variable meets two assumptions:<br />
-1. Our measurements are normally distributed<br />
-2. Our measurements have equal variance</p>
-<p>If the first assumption is violated then we have to carry out a non-parametric equivalent (Mann-Whitney test).<br />
-When our second assumption is violated we have to carry out a Welch t-test (still parametric). So, in practice before carrying out an indepedent samples t-test we have to check these two assumptions first. Let’s see below how we do this. First, we load the datafile <strong>stroopfinal.csv</strong> into a dataframe.</p>
-<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="session9.html#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb110-2"><a href="session9.html#cb110-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rstatix)</span>
-<span id="cb110-3"><a href="session9.html#cb110-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb110-4"><a href="session9.html#cb110-4" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;stroopfinal.csv&quot;</span>)</span>
-<span id="cb110-5"><a href="session9.html#cb110-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb110-6"><a href="session9.html#cb110-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span></code></pre></div>
-<pre><code>## # A tibble: 6 × 4
-##   participant group   salience    RT
-##         &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;    &lt;dbl&gt;
-## 1        1001 control Gambling  964.
-## 2        1001 control Neutral   993.
-## 3        1002 control Gambling 1095.
-## 4        1002 control Neutral  1025.
-## 5        1003 control Gambling 1168.
-## 6        1003 control Neutral  1195.</code></pre>
-
-</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="session8.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="session8.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="comparing-means.-parametric-and-non-parametric-tests.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
