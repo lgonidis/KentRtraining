@@ -1,0 +1,50 @@
+---
+title: "Comparing Means"
+author: "Lazaros Gonidis"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Learning Objectives  
+
+By the end of today's session you should a good understanding on how to perform the following tasks using R:   
+
+1. Independent samples parametric t-test (Student and Welch)   
+2. Paired samples parametric t-test   
+3. Non-parametric independent samples test (Mann-Whitney test)   
+4. Non-parametric paired samples test (Wilcoxon test)   
+5. Acquire effect-sizes    
+6. Converting a dataframe from wide to long format and vice-versa   
+
+
+
+
+
+
+## Independent samples parametric t-test (Student and Welch)   
+
+When we are comparing means for independent samples we usually employ Student's t-test. However, in order to do so we have to check that our variable meets two assumptions:   
+1. Our measurements are normally distributed   
+2. Our measurements have equal variance   
+
+If the first assumption is violated then we have to carry out a non-parametric equivalent (Mann-Whitney test).     
+When our second assumption is violated we have to carry out a Welch t-test (still parametric). So, in practice before carrying out an indepedent samples t-test we have to check these two assumptions first. Let's see below how we do this. First, we load the datafile **stroopfinal.csv** into a dataframe.
+
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(rstatix)
+
+df <- read_csv("stroopfinal.csv")
+
+head(df)
+
+```
+
+
+
+

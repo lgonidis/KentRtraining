@@ -4,19 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter2 Introduction | Kent R training</title>
+  <title>Chapter2 Introduction | Comparing Means</title>
   <meta name="description" content="This is a work in progress" />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter2 Introduction | Kent R training" />
+  <meta property="og:title" content="Chapter2 Introduction | Comparing Means" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="This is a work in progress" />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter2 Introduction | Kent R training" />
+  <meta name="twitter:title" content="Chapter2 Introduction | Comparing Means" />
   
   <meta name="twitter:description" content="This is a work in progress" />
   
@@ -24,7 +23,7 @@
 <meta name="author" content="Lazaros Gonidis" />
 
 
-<meta name="date" content="2022-04-26" />
+<meta name="date" content="2022-05-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +32,6 @@
   
 <link rel="prev" href="index.html"/>
 <link rel="next" href="session2.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -51,15 +49,16 @@
 
 
 
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -221,6 +220,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="9.1" data-path="session9.html"><a href="session9.html#learning-objectives-7"><i class="fa fa-check"></i><b>9.1</b> Learning Objectives</a></li>
 <li class="chapter" data-level="9.2" data-path="session9.html"><a href="session9.html#restructuring-data"><i class="fa fa-check"></i><b>9.2</b> Restructuring Data</a></li>
+<li class="chapter" data-level="9.3" data-path="session9.html"><a href="session9.html#learning-objectives-8"><i class="fa fa-check"></i><b>9.3</b> Learning Objectives</a></li>
+<li class="chapter" data-level="9.4" data-path="session9.html"><a href="session9.html#independent-samples-parametric-t-test-student-and-welch"><i class="fa fa-check"></i><b>9.4</b> Independent samples parametric t-test (Student and Welch)</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -234,7 +235,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Kent R training</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Comparing Means</a>
           </h1>
         </div>
 
@@ -242,10 +243,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="introduction" class="section level1" number="2">
-<h1><span class="header-section-number">Chapter2</span> Introduction</h1>
-<div id="learning-objectives" class="section level2" number="2.1">
-<h2><span class="header-section-number">2.1</span> Learning Objectives</h2>
+<div id="introduction" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">Chapter2</span> Introduction<a href="introduction.html#introduction" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="learning-objectives" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> Learning Objectives<a href="introduction.html#learning-objectives" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In this first session you will be introduce you to some basic features of R. This will allow you to write your first basic scripts. It should be noted that R is a versatile programming language with numerous features and capabilities. However, we will be focusing on concepts that are directly relevant to us, as Psychologists. Therefore, do not consider this course as an exhaustive guide to R. Instead treat it as a spotlight that will be shedding light on specific topics and techniques.</p>
 <p>By the end of this session you should have a clear understanding of the following concepts:</p>
 <ul>
@@ -260,70 +261,70 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><strong>How to write your own simple script to calculate an arithmetic expression</strong></li>
 </ul>
 </div>
-<div id="getting-things-ready" class="section level2" number="2.2">
-<h2><span class="header-section-number">2.2</span> Getting Things Ready</h2>
+<div id="getting-things-ready" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> Getting Things Ready<a href="introduction.html#getting-things-ready" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Ideally, we would like you to have your R related files organised. This will make your work easier to maintain but also help us to aid you when you get stuck. Therefore, we recommend creating a folder on your desktop called “R training”. Inside that folder you could be creating a new project for every session. This will make it much easier for you to navigate back and forth from topic to topic and look at different aspects of your work. Before you proceed with the following steps make sure you have created a folder named “R training” on your “Desktop” folder.</p>
 </div>
-<div id="starting-with-rstudio" class="section level2" number="2.3">
-<h2><span class="header-section-number">2.3</span> Starting with RStudio</h2>
+<div id="starting-with-rstudio" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> Starting with RStudio<a href="introduction.html#starting-with-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Run RStudio and create a new project by clicking on File &gt;&gt; New Project … .Then select New Directory and then New Project. Enter a Directory name. As mentioned above we recommend naming the folder <strong>“Introduction to R”</strong> and by clicking Browse make sure you place that folder in your <strong>“R training”</strong> folder that you created on your Desktop.Click “Create Project” to finalise creating your new project.</p>
 <p>You should now be seeing <strong>three main windows</strong>, the <strong>Console</strong>, the <strong>Environment</strong>, and the <strong>Files</strong>.</p>
 </div>
-<div id="console" class="section level2" number="2.4">
-<h2><span class="header-section-number">2.4</span> Console</h2>
+<div id="console" class="section level2 hasAnchor" number="2.4">
+<h2><span class="header-section-number">2.4</span> Console<a href="introduction.html#console" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In the console we typically see the “&gt;” symbol and the cursor flashing next to it. Here we can type in R commands straight away and execute them by hitting “Enter” or “Return”.
 You can try it out. Go to your console and type the following and press “Enter”</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="introduction.html#cb1-1"></a><span class="dv">3</span><span class="op">+</span><span class="dv">2</span></span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="introduction.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span><span class="sc">+</span><span class="dv">2</span></span></code></pre></div>
 <p>Once you have done that you should be able to see the result of the calculation:</p>
 <p>[1] 5</p>
 <p>So with the above command line we executed a simple calculation, an addition of 3 and 2. The symbol <strong>+</strong> is called an <strong>operator</strong>. R accepts a number of operators, for more information on operators see: <a href="https://www.datamentor.io/r-programming/operator/" class="uri">https://www.datamentor.io/r-programming/operator/</a> . Most of them are straight forward and you have used them numerous times doing arithmetic calculations. For our purposes we will mostly be using the most common ones.</p>
 <p>Sometimes in programming we might want to carry out a calculation and use the results in many different occasions. We would not want to keep typing in the Console the same and the same operation, especially if it is a rather big expression. In order to save ourselves time and effort we can assign the result of an operation to <strong>variable</strong>. For example type the following in your Console and then hit “Enter”:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="introduction.html#cb2-1"></a>p &lt;-<span class="st"> </span><span class="dv">3</span><span class="op">+</span><span class="dv">2</span></span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="introduction.html#cb2-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="dv">3</span><span class="sc">+</span><span class="dv">2</span></span></code></pre></div>
 <p>By doing the above, strangely enough we do not get an answer from R. Instead our Console looks like nothing really happened. In actual truth two things happened. First, R calculated the result of “3+2” and then it assigned the result of that calculation in to a <strong>variable</strong> called “p”. The reason that we do not see any result is because we did not instruct R to show the content of the variable “p”. If we want to see the content of the variable named “p” we have to type its name in the Console. Just type p and press enter. You should be able now to see the value that the variable p holds.</p>
 <p>[1] 5</p>
 <p>This is extremely valuable as I can now use the symbol p to refer to that content anywhere I need to, for example I can calculate the surface of a square with size equal to 5 (or p in this case). Type the following and press “Enter”.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="introduction.html#cb3-1"></a>surface &lt;-<span class="st"> </span>p<span class="op">*</span>p</span>
-<span id="cb3-2"><a href="introduction.html#cb3-2"></a>surface</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="introduction.html#cb3-1" aria-hidden="true" tabindex="-1"></a>surface <span class="ot">&lt;-</span> p<span class="sc">*</span>p</span>
+<span id="cb3-2"><a href="introduction.html#cb3-2" aria-hidden="true" tabindex="-1"></a>surface</span></code></pre></div>
 <p>[1] 25</p>
 <p>So you see now that R calculated the result of 5x5, then assigned it to a new variable called “surface” and then returned the value of “surface” in the console, 25. We will be using <strong>variables</strong> a lot in our work in SP300 and it is worth noting that a variable is not restricted to numerical content. Other types of data can also be assigned to a variable. For example characters:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="introduction.html#cb4-1"></a>day &lt;-<span class="st"> &quot;Monday&quot;</span></span></code></pre></div>
-<p>The above variable “day” is what we called a character variable. Notice how we used the <strong>""</strong> symbols around the value that we want to assign.</p>
-<div id="exercise-1.1" class="section level3" number="2.4.1">
-<h3><span class="header-section-number">2.4.1</span> Exercise 1.1</h3>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="introduction.html#cb4-1" aria-hidden="true" tabindex="-1"></a>day <span class="ot">&lt;-</span> <span class="st">&quot;Monday&quot;</span></span></code></pre></div>
+<p>The above variable “day” is what we called a character variable. Notice how we used the <strong>““</strong> symbols around the value that we want to assign.</p>
+<div id="exercise-1.1" class="section level3 hasAnchor" number="2.4.1">
+<h3><span class="header-section-number">2.4.1</span> Exercise 1.1<a href="introduction.html#exercise-1.1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>In the <strong>console</strong> carry out the following operation:
 1. assign the value of 5 to a variable called <strong>f</strong><br />
 2. assign the value of 8 to a variable called <strong>g</strong><br />
 3. calculate the product of f*g, without assigning it to a new variable</p>
 </div>
 </div>
-<div id="environment" class="section level2" number="2.5">
-<h2><span class="header-section-number">2.5</span> Environment</h2>
+<div id="environment" class="section level2 hasAnchor" number="2.5">
+<h2><span class="header-section-number">2.5</span> Environment<a href="introduction.html#environment" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Usually the <strong>Environment</strong> window is on the top right side of our session. It includes valuable information about our work. For example you might already be able to see that it shows our two variable p and surface as well as their values. It also includes some other tabs next to the Environment but we will discuss those in the future.<br />
 Let’s have a look at what is already in our <strong>Environment</strong>. You should the value of <strong>f</strong> being <strong>5</strong> and the value of <strong>g</strong> being <strong>8</strong>. Notice that the __f*g__ is not there. This is because we never assigned it to a variable.</p>
 </div>
-<div id="files" class="section level2" number="2.6">
-<h2><span class="header-section-number">2.6</span> Files</h2>
+<div id="files" class="section level2 hasAnchor" number="2.6">
+<h2><span class="header-section-number">2.6</span> Files<a href="introduction.html#files" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>At the bottom right of our session (usually) we can see our <strong>Files</strong> window. This includes information about the files that we are working on. At the moment you should be able to see just one file (probably), that should be your project name file. Next to Files we can also see a number of tabs that we will discuss in the future.</p>
 </div>
-<div id="scripts" class="section level2" number="2.7">
-<h2><span class="header-section-number">2.7</span> Scripts</h2>
+<div id="scripts" class="section level2 hasAnchor" number="2.7">
+<h2><span class="header-section-number">2.7</span> Scripts<a href="introduction.html#scripts" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Once we get more familiarised with R we will need to type a number of commands so we can complete more complex tasks than just simple arithmetic calculations. Furthermore, we might want to be able to run again and again with different data files. So typing commands straight into the Console would be rather time wasteful. A more efficient way to work is to create a <strong>script</strong> instead that will allow us to carry out many commands at once as well as save our work for future use.<br />
 Let us create our first script. Go to File &gt;&gt; New File &gt;&gt; R Script . That should create a new Untitled script in a new window that just opened above the Console window. We will be referring to this new window as the <strong>script window</strong>. Let’s now go ahead and type a number of commands in our new script. Type the following commands as you see them below:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="introduction.html#cb5-1"></a><span class="co">## hourly refers to the hourly pay of £9 per hour</span></span>
-<span id="cb5-2"><a href="introduction.html#cb5-2"></a>hourly &lt;-<span class="st"> </span><span class="dv">9</span></span>
-<span id="cb5-3"><a href="introduction.html#cb5-3"></a></span>
-<span id="cb5-4"><a href="introduction.html#cb5-4"></a><span class="co">## hours refers to the number of hours I worked per day</span></span>
-<span id="cb5-5"><a href="introduction.html#cb5-5"></a>hours &lt;-<span class="st"> </span><span class="dv">7</span></span>
-<span id="cb5-6"><a href="introduction.html#cb5-6"></a></span>
-<span id="cb5-7"><a href="introduction.html#cb5-7"></a><span class="co">## days refers to the number of days I worked in the current month</span></span>
-<span id="cb5-8"><a href="introduction.html#cb5-8"></a>days &lt;-<span class="st"> </span><span class="dv">25</span></span>
-<span id="cb5-9"><a href="introduction.html#cb5-9"></a></span>
-<span id="cb5-10"><a href="introduction.html#cb5-10"></a><span class="co">## the total salary can be calculated by multiplying all the above</span></span>
-<span id="cb5-11"><a href="introduction.html#cb5-11"></a>salary &lt;-<span class="st"> </span>hours<span class="op">*</span>hourly</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="introduction.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="do">## hourly refers to the hourly pay of £9 per hour</span></span>
+<span id="cb5-2"><a href="introduction.html#cb5-2" aria-hidden="true" tabindex="-1"></a>hourly <span class="ot">&lt;-</span> <span class="dv">9</span></span>
+<span id="cb5-3"><a href="introduction.html#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="introduction.html#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="do">## hours refers to the number of hours I worked per day</span></span>
+<span id="cb5-5"><a href="introduction.html#cb5-5" aria-hidden="true" tabindex="-1"></a>hours <span class="ot">&lt;-</span> <span class="dv">7</span></span>
+<span id="cb5-6"><a href="introduction.html#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="introduction.html#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="do">## days refers to the number of days I worked in the current month</span></span>
+<span id="cb5-8"><a href="introduction.html#cb5-8" aria-hidden="true" tabindex="-1"></a>days <span class="ot">&lt;-</span> <span class="dv">25</span></span>
+<span id="cb5-9"><a href="introduction.html#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="introduction.html#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="do">## the total salary can be calculated by multiplying all the above</span></span>
+<span id="cb5-11"><a href="introduction.html#cb5-11" aria-hidden="true" tabindex="-1"></a>salary <span class="ot">&lt;-</span> hours<span class="sc">*</span>hourly</span></code></pre></div>
 <p>Now that you have typed all that nothing seems to be happening. This is because contrary to the Console, in a script a command is not executed when we press “Enter” or “Return”. Instead we have place our cursor in the line we want to execute and then click “Run”. When we click “Run” the lines is being executed and the cursor moves automatically to the next line, we click “Run” again and so on. Every time we click “Run” we can see the outcome in our Console, as well as in the Environment. Notice that our script also contains lines starting with <strong>“#”, these are comment lines</strong> that I include in my code to make it easier to read and understand. The use of “#” and comments is highly advised and considered as **a good practice*. You should spend some time now to visually explore the screen in front you. Familiarise yourself with the different windows and click on different tabs to see what kind of information they contain. Also do not forget to save our script giving it a meaningful name. I suggest something like “the most amazing script”. You can save it by clicking File &gt;&gt; Save, and then type a name of your preference. Once you do that you should be able to see the new scripts in the “Files” window too.</p>
 </div>
-<div id="exercise-1.2" class="section level2" number="2.8">
-<h2><span class="header-section-number">2.8</span> Exercise 1.2</h2>
+<div id="exercise-1.2" class="section level2 hasAnchor" number="2.8">
+<h2><span class="header-section-number">2.8</span> Exercise 1.2<a href="introduction.html#exercise-1.2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Create a new script and name it “Exercise2”. Write the necessary lines of code that can solve the following problem:<br />
 “The price for one cinema ticket is £10. The price for a large popcorn in £8. The price for one soft drink is £4. We want to calculate the total amount of money we spent if we bought 5 tickets, 3 popcorns and 4 soft drinks”. Make sure you create a variable for each of the above costs, as well as one variable for the total. Also, make sure to include detailed comments as the ones in the example above.</p>
 

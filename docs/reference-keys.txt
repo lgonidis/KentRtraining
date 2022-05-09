@@ -63,3 +63,5 @@ exercise-7.1
 session9
 learning-objectives-7
 restructuring-data
+learning-objectives-8
+independent-samples-parametric-t-test-student-and-welch
